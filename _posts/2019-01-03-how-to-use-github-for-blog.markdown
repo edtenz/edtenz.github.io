@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "use Jekyll & github for personal blog"
+title:  "使用github搭建自己的博客"
 date:   2019-01-03 11:08:00 +0000
 categories: github jekyll
 ---
@@ -28,8 +28,8 @@ source ~/.bashrc
 gem install jekyll bundler
 ```
 
-### MacOS和Windows待补充
-
+### MacOS和Windows系统
+MacOS和Windows环境下的安装[Jekyll install][jekyll-install]
 
 ## 创建博客工作区
 
@@ -49,14 +49,13 @@ bundle exec jekyll serve
 
 ## 托管在github上
 为了使用github进行博客展示，需要先再github上创建一个repository
-命名示例如下：EdgarTeng.github.io
+命名示例如下：`EdgarTeng.github.io`
 
 
 ## 在个人云主机上（待补充）
 
 
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
 [jekyll-docs]: https://jekyllrb.com/docs/
+[jekyll-install]: https://jekyllrb.com/docs/installation/
 

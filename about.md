@@ -4,15 +4,10 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Java研发工程师，专注于分布式系统中间件的研发。熟悉python和golang语言。
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+个人GitHub: 
+[EdgarTeng][EdgarTeng-github]
 
 
-[jekyll-organization]: https://github.com/jekyll
+[EdgarTeng-github]: https://github.com/EdgarTeng
