@@ -198,6 +198,6 @@ sudo systemd status supervisord
 ---
 
 ## 参考资料：
-1、[supervisord官方文档](http://supervisord.org/configuration.html) 
-2、[supervisor FATAL Exited too quickly](https://github.com/Supervisor/supervisor/issues/578#issuecomment-74214443)
-3、[阮一峰systemd配置](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
+1. [supervisord官方文档](http://supervisord.org/configuration.html) 
+2. [supervisor FATAL Exited too quickly](https://github.com/Supervisor/supervisor/issues/578#issuecomment-74214443)
+3. [阮一峰systemd配置](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
