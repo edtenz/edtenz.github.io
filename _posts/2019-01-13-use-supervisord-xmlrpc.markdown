@@ -7,14 +7,13 @@ categories: supervisord linux
 
 ## 一、建立连接
 1. 连接服务器：
-
-```py
+```
 import xmlrpc.client
 def connection(host, port, username, password):
-    if username == "" and password == "":
-        address = "http://{0}:{1}/RPC2".format(host, port)
+    if username == '' and password == '':
+        address = 'http://{0}:{1}/RPC2'.format(host, port)
     else:
-        address = "http://{0}:{1}@{2}:{3}/RPC2".format(
+        address = 'http://{0}:{1}@{2}:{3}/RPC2'.format(
             username, password, host, port
         )
     try:
@@ -33,7 +32,7 @@ methods = server.system.listMethods()
 print(methods)
 ```
 支持的方法:
-> supervisor.addProcessGroup
+supervisor.addProcessGroup
 supervisor.clearAllProcessLogs
 supervisor.clearLog
 supervisor.clearProcessLog
