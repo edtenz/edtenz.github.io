@@ -7,9 +7,9 @@ categories: supervisord linux
 
 ## 一、建立连接
 1. 连接服务器：
+
 ```py
 import xmlrpc.client
-
 def connection(host, port, username, password):
     if username == "" and password == "":
         address = "http://{0}:{1}/RPC2".format(host, port)
@@ -17,7 +17,6 @@ def connection(host, port, username, password):
         address = "http://{0}:{1}@{2}:{3}/RPC2".format(
             username, password, host, port
         )
-
     try:
         return xmlrpc.client.ServerProxy(address)
     except Exception as e:
