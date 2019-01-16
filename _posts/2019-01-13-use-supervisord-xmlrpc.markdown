@@ -13,9 +13,6 @@ Python3的SDK原生支持。
 ### 示例
 1. 连接服务器：
 ```
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import xmlrpc.client
 def connection(host, port, username, password):
     if username == '' and password == '':
@@ -32,7 +29,7 @@ def connection(host, port, username, password):
 ```
 
 2. 获取supervisord状态：
-```py
+```
 stat = server.supervisor.getState()
 ```
 
@@ -76,7 +73,7 @@ go get github.com/foolin/gosupervisor
 
 ### 示例：
 
-1. 构造URL
+StartProcess示例：
 
 ```
 type SupervisorClient struct {
@@ -106,15 +103,12 @@ func BuildURL(host string, port int, username, passwd string) string {
 	}
 }
 
-```
-
-2. 启动进程
-```
 func (s *SupervisorClient) StartProcess(name string, wait bool) (success bool, err error) {
 	params := []interface{}{name, wait}
 	err = s.client.Call("supervisor.startProcess", params, &success)
 	return
 }
+
 ```
 
 ---
