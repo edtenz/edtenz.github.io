@@ -31,12 +31,12 @@ clear  maintail  quit  reread  signal    stop    version
 ## 二、基本配置
 新建配置目录：
 ```sh
-sudo mkdir /etc/supervisor.d/init.d
+sudo mkdir /etc/supervisor/conf.d
 ```
 
 新建主配置文件：
 ```sh
-/etc/supervisor.d/supervisord.conf
+/etc/supervisor/supervisord.conf
 ```
 
 内容如下：
@@ -78,7 +78,7 @@ files=init.d/*.conf
 
 以shadowsocks程序为例:
 ```sh
-sudo vim /etc/supervisor.d/supervisord.conf/init.d/shadowsocks.conf
+sudo vim /etc/supervisor/conf.d/shadowsocks.conf
 ```
 内容如下：
 ```ini
