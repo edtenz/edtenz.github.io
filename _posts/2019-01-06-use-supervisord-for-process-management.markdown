@@ -8,12 +8,12 @@ categories: supervisord linux
 ## 一、基本命令
 启动supervisord服务
 ```sh
-supervisord -c /etc/supervisor.d/supervisord.conf
+supervisord -c /etc/supervisor/supervisord.conf
 ```
 
 启动supervisorctl客户端
 ```sh
-supervisorctl -c /etc/supervisor.d/supervisord.conf
+supervisorctl -c /etc/supervisor/supervisord.conf
 ```
 或者
 ```sh
@@ -103,7 +103,7 @@ stdout_logfile_backups=5
 
 配置好启动supervisord后台服务：
 ```sh
-sudo supervisord -c /etc/supervisor.d/supervisord.conf
+sudo supervisord -c /etc/supervisor/supervisord.conf
 ```
 
 通过supervisorctl连接：
@@ -155,9 +155,9 @@ After=network.target
 [Service]
 Type=forking
 PIDFile=/run/supervisord.pid
-ExecStart=/usr/local/bin/supervisord -c /etc/supervisor.d/supervisord.conf
-ExecStop=/usr/local/bin/supervisorctl -c /etc/supervisor.d/supervisord.conf shutdown
-ExecReload=/usr/local/bin/supervisorctl -c /etc/supervisor.d/supervisord.conf reload
+ExecStart=/usr/local/bin/supervisord -c /etc/supervisor/supervisord.conf
+ExecStop=/usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf shutdown
+ExecReload=/usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf reload
 KillMode=process
 Restart=on-failure
 RestartSec=50s
