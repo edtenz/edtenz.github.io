@@ -15,7 +15,7 @@ sudo apt-get install nginx
 
 ## 二、基本配置
 
-1. 使用systemd来进行管理nginx的开机自启动和启停。
+- 使用systemd来进行管理nginx的开机自启动和启停。
 
 查看`/lib/systemd/system/nginx.service`是否存在，不存在则添加该文件
 ```
@@ -52,9 +52,9 @@ sudo systemctl stop nginx	#停止
 sudo systemctl reload nginx	#重新加载
 ```
 
-启动好之后就可以通过http://localhost访问了。
+启动好之后就可以通过`http://localhost`s访问了。
 
-2. 禁用默认主页
+- 禁用默认主页
 ```
 sudo vim /etc/nginx/nginx.conf
 ```
@@ -87,7 +87,7 @@ server {
 ```
 sudo systemctl reload nginx
 ```
-通过http://www.example.com即可访问服务。
+通过`http://www.example.com`即可访问服务。
 
 ## 四、HTTPS支持
 安装Certbot
@@ -109,7 +109,7 @@ sudo ufw allow https
 sudo ufw enable
 
 ```
-通过https://www.example.com即可访问。
+通过`https://www.example.com`即可访问。
 
 对于新增nginx反向代理HTTPS的支持，比如增加`/etc/nginx/conf.d/example2.conf`
 再执行：
