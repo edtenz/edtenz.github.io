@@ -2,7 +2,8 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://tenchael.xyz
+#url: https://tenchael.xyz
+url: https://edgarteng.github.io
 date_format: "ordinal"
 title: 且行且记
 subtitle: "简洁是智慧的灵魂"
