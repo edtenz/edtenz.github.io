@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "使用supervisord做进程管理"
-date:   2019-01-06 09:46:05 +0000
-categories: supervisord linux
+description: "使用supervisord做进程管理"
+categories: supervisor
 ---
 
 ## 一、基本命令
@@ -15,14 +15,17 @@ supervisord -c /etc/supervisor/supervisord.conf
 ```sh
 supervisorctl -c /etc/supervisor/supervisord.conf
 ```
+
 或者
 ```sh
 supervisorctl -u <user> -p <password>
 ```
+
 直接使用命令
 ```sh
 supervisorctl -u <user> -p <password> <opts>
 ```
+
 opts包括:
 > add    exit      open  reload  restart   start   tail   
 avail  fg        pid   remove  shutdown  status  update 
@@ -40,7 +43,6 @@ sudo mkdir /etc/supervisor/conf.d
 ```
 
 内容如下：
-
 ```ini
 [unix_http_server]
 file=/tmp/supervisor.sock 

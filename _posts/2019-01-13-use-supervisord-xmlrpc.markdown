@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "使用supervisord的xmlrpc做自定义开发"
-date:   2019-01-13 18:46:05 +0000
-categories: supervisord linux
+description: "使用supervisord的xmlrpc做自定义开发"
+categories: supervisor
 ---
 
 ## 一、Python客户端
@@ -12,7 +12,7 @@ Python3的SDK原生支持。
 
 ### 示例
 1. 连接服务器：
-```
+```java
 import xmlrpc.client
 def connection(host, port, username, password):
     if username == '' and password == '':
@@ -29,7 +29,7 @@ def connection(host, port, username, password):
 ```
 
 2. 获取supervisord状态：
-```
+```java
 stat = server.supervisor.getState()
 ```
 
@@ -48,7 +48,7 @@ result = server.supervisor.startProcess('jetty')
 使用开源的[aXMLRPC](https://github.com/gturri/aXMLRPC)客户端。aXMLRPC是一个轻量级的XML-RPC的java类库，在java和安卓上都可使用。
 
 ### maven依赖
-```
+```xml
 <dependency>
     <groupId>fr.turri</groupId>
     <artifactId>aXMLRPC</artifactId>
@@ -56,18 +56,18 @@ result = server.supervisor.startProcess('jetty')
 </dependency>
 ```
 ### 示例：
-```
+```java
 XMLRPCClient client = new XMLRPCClient(new URL("http://localhost:9001/RPC2"));
 client.setLoginData("someuser", "somepass");
 return client.call(serviceName, params);
 ```
 
-## Golang客户端
+## 三、Golang客户端
 示例底层依赖 [gosupervisor](https://github.com/foolin/gosupervisor)
 
 ### 安装依赖
 
-```
+```sh
 go get github.com/foolin/gosupervisor
 ```
 
@@ -75,7 +75,7 @@ go get github.com/foolin/gosupervisor
 
 StartProcess示例：
 
-```
+```go
 type SupervisorClient struct {
 	url       string
 	client    xmlrpc.Client

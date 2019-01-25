@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "使用github搭建自己的博客"
-date:   2019-01-03 11:08:00 +0000
-categories: github jekyll
+description: "使用github搭建自己的博客"
+categories: 环境搭建 jekyll
 ---
 使用github搭建自己的博客系统，可以简单归为3个步骤：
 
@@ -13,18 +13,20 @@ Jekyll的安装详情见官网[Jekyll docs][jekyll-docs]，现在以为Ubuntu系
 
 ### Ubuntu系统
 1. 安装ruby依赖
-```shell
+```sh
 sudo apt-get install ruby-full build-essential zlib1g-dev
 ```
+
 2. 设置环境变量
-```shell
+```sh
 echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
 echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
 echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
+
 3. gem安装Jekyll
-```shell
+```sh
 gem install jekyll bundler
 ```
 
@@ -34,14 +36,14 @@ MacOS和Windows环境下的安装[Jekyll install][jekyll-install]
 ## 创建博客工作区
 
 创建工作目录：
-```
+```sh
 mkdir blogs & cd blogs
 jekyll new myblog
 ```
 会产生一个Jekyll项目的基本框架，包括一些子目录和文件，`_posts`用于存放文章,`_sites`是生成的静态HTML页面。
 
 在本地运行：
-```shell
+```sh
 cd myblog
 bundle exec jekyll serve
 ```

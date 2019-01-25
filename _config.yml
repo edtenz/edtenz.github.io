@@ -1,40 +1,125 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# ---------------- #
+#   Main Configs   #
+# ---------------- #
+baseurl:
+url: https://tenchael.xyz
+date_format: "ordinal"
+title: 且行且记
+subtitle: "简洁是智慧的灵魂"
+description: "工作，生活的一些记录"
+keywords: 且行且记, Edgar Teng, Edgar
+timezone: Asia/Shanghai
+encoding: "utf-8"
+side_bar_repo_limit: 5
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: 十年磨一剑
-# email: tzz1002@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  简洁是智慧的灵魂
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://edgarteng.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  EdgarTeng
+# ---------------- #
+#      Author      #
+# ---------------- #
+author: Tenchael
+organization: nucc.com
+organization_url: https://www.nucc.com
+github_username: EdgarTeng
+location: Beijing, China
+email: tzz1002@gmail.com
 
-# Build settings
+# ---------------- #
+#    Navigation    #
+# ---------------- #
+navs:
+  -
+    href: /
+    label: 首页
+
+  -
+    href: /categories/
+    label: 分类
+
+#   -
+#     href: /archives/
+#     label: 归档
+
+  -
+    href: /wiki/
+    label: 维基
+
+  -
+    href: /links/
+    label: 链接
+
+  -
+    href: /about/
+    label: 关于
+
+# ---------------- #
+#       RSS        #
+# ---------------- #
+subscribe_rss: /feed.xml
+
+# ---------------- #
+#      Jekyll      #
+# ---------------- #
 markdown: kramdown
-theme: minima
+kramdown:
+    input: GFM
+highlighter: rouge
+paginate: 10
+lsi: false
+quiet: false
+excerpt_separator: "\n\n"
+permalink: /:year/:month/:day/:title/
 plugins:
-#  - jekyll-feed
+    - jekyll-github-metadata
+    - rouge
+    - jekyll-html-pipeline
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-feed
+    - jemoji
+    - jekyll-mentions
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# repository: EdgarTeng/EdgarTeng.github.io
+
+# ---------------- #
+#      Comments    #
+# ---------------- #
+# support provider: disqus, gitment, gitalk
+comments_provider: gitalk
+# !!!重要!!! 请修改下面这些信息为你自己申请的
+# !!!Important!!! Please modify infos below to yours
+# https://disqus.com
+disqus:
+    username: 
+# https://imsun.net/posts/gitment-introduction/
+gitment:
+    owner: tengzz
+    repo: blog-comments
+    oauth:
+        client_id: kkk
+        client_secret: mmmmmm
+# https://github.com/gitalk/gitalk#install
+gitalk:
+    owner: tenchael
+    repo: blog-comments
+    clientID: kkkkkkk
+    clientSecret: kkkkkkkkksss
+# 在使用其它评论组件时可点击显示 Disqus
+lazy_load_disqus : false
+
+# ---------------- #
+#      Search      #
+# ---------------- #
+simple_jekyll_search:
+    # 是否支持全文搜索
+    fulltext: false
+    # 最多显示多少条搜索结果
+    limit: 10
+
+# ---------------- #
+#    Analytics     #
+# ---------------- #
+google:
+    analytics_id: UA-80669434-1

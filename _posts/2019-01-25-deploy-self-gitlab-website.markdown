@@ -1,22 +1,23 @@
 ---
 layout: post
 title:  "搭建gitlab服务器"
-date:   2019-01-25 14:46:05 +0000
-categories: gitlab linux
+description: "在ubuntu下搭建gitlab服务器"
+categories: gitlab
 ---
 
 ## 一、安装gitlab
 
 在ubuntu系统下使用apt安装：
 在线安装：
-```
+```sh
 # 下载脚本
 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 # 安装
 sudo apt-get install gitlab-ce=8.12.7-ce.0
 ```
+
 或者使用离线安装：
-```
+```sh
 # 下载
 wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_8.12.7-ce.0_amd64.deb/download.deb
 # 安装
@@ -26,35 +27,35 @@ sudo dpkg -i gitlab-ce_8.12.7-ce.0_amd64.deb
 
 ## 二、基本配置
 
-- 安装后配置`/etc/gitlab/gitlab.rb`。
+安装后配置`/etc/gitlab/gitlab.rb`。
 
-```
+```sh
 sudo vim /etc/gitlab/gitlab.rb
 ```
 
 内容下列配置：
-```
+```sh
 external_url 'http://gitlab.example.com'
 # 使用系统的nginx
 web_server['external_users'] = ['www-data']
 nginx['enable'] = false
-
 ```
 
 修改之后执行：
 
-```
+```sh
 sudo gitlab-ctl reconfigure
 ```
 
 ## 三、配置反向代理
 在`/etc/nginx/conf.d`目录下增加`gitlab.conf`文件：
 假设本机已经启用一个8080端口的web服务。
-```
+```sh
 sudo vim /etc/nginx/conf.d/gitlab.conf
 ```
+
 内容如下：
-```
+```sh
 upstream gitlab {
   server unix://var/opt/gitlab/gitlab-rails/sockets/gitlab.socket;
 }
@@ -117,11 +118,12 @@ server {
 ```
 
 再执行：
-```
+```sh
 sudo nginx -t 			#nginx配置语法检查
 sudo certbot --nginx		#https证书关联
 sudo systemctl reload nginx	#nginx配置重新加载
 ```
+
 即可。
 
 然后通过`https://gitlab.example.com`访问，首次会让设置管理员密码。
