@@ -10,7 +10,9 @@ categories: gitlab linux
 在ubuntu系统下使用apt安装：
 在线安装：
 ```
+# 下载脚本
 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+# 安装
 sudo apt-get install gitlab-ce=8.12.7-ce.0
 ```
 或者使用离线安装：
