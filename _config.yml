@@ -82,7 +82,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-# repository: EdgarTeng/EdgarTeng.github.io
+repository: EdgarTeng/EdgarTeng.github.io
 
 # ---------------- #
 #      Comments    #
@@ -92,21 +92,21 @@ comments_provider: gitalk
 # !!!重要!!! 请修改下面这些信息为你自己申请的
 # !!!Important!!! Please modify infos below to yours
 # https://disqus.com
-disqus:
-    username: 
+#disqus:
+#    username: 
 # https://imsun.net/posts/gitment-introduction/
-gitment:
-    owner: tengzz
-    repo: blog-comments
-    oauth:
-        client_id: kkk
-        client_secret: mmmmmm
+#gitment:
+#    owner: 
+#    repo: blog-comments
+#    oauth:
+#        client_id: kkk
+#        client_secret: mmmmmm
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: tenchael
+    owner: EdgarTeng
     repo: blog-comments
-    clientID: kkkkkkk
-    clientSecret: kkkkkkkkksss
+    clientID: afd6e299c79471cda9a0
+    clientSecret: c02f19dcbcdf1769d296da2e5a2b64409b124d66
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
