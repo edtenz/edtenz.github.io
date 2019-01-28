@@ -5,10 +5,10 @@ baseurl:
 #url: https://tenchael.xyz
 url: https://edgarteng.github.io
 date_format: "ordinal"
-title: 且行且记
-subtitle: "简洁是智慧的灵魂"
-description: "工作，生活的一些记录"
-keywords: 且行且记, Edgar Teng, Edgar
+title: ET's cyberspace
+subtitle: "Learn and be curious"
+description: "The records of study"
+keywords: ET's cyberspace, Edgar Teng, Edgar
 timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
@@ -29,11 +29,11 @@ email: tzz1002@gmail.com
 navs:
   -
     href: /
-    label: 首页
+    label: Home
 
   -
     href: /categories/
-    label: 分类
+    label: Categories
 
 #   -
 #     href: /archives/
@@ -41,15 +41,15 @@ navs:
 
   -
     href: /wiki/
-    label: 维基
+    label: Wiki
 
   -
     href: /links/
-    label: 链接
+    label: Links
 
   -
     href: /about/
-    label: 关于
+    label: About
 
 # ---------------- #
 #       RSS        #

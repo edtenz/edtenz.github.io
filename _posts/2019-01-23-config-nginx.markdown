@@ -80,8 +80,15 @@ server {
     server_name www.example.com;
     location / {
         proxy_pass http://localhost:8080/;
-        proxy_buffering off;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header    Host             $host;
+        proxy_set_header    X-Real-IP        $remote_addr;
+        proxy_set_header    X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Client-Verify  SUCCESS;
+        proxy_set_header    X-Client-DN      $ssl_client_s_dn;
+        proxy_set_header    X-SSL-Subject    $ssl_client_s_dn;
+        proxy_set_header    X-SSL-Issuer     $ssl_client_i_dn;
+        proxy_read_timeout 1800;
+        proxy_connect_timeout 1800;
     }
 }
 ```
