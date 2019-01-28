@@ -4,6 +4,9 @@ title:  "使用github搭建自己的博客"
 description: "使用github搭建自己的博客"
 categories: 环境搭建 jekyll
 ---
+Github 是流行的代码托管平台，除此之外还提供了一个书写博客的空间，github上默认使用jekyll来实现编写的 `markdown` 格式文章到静态 `html` 文件的转换，撰写者可以省去很多精力排布格式等问题。同时，使用 github 作为博客平台还有一个好处是可以避免国内博客平台的一些非必要的审查。本文介绍了使用 github 作为博客平台的基本配置和使用。
+
+
 使用github搭建自己的博客系统，可以简单归为3个步骤：
 
 ## 安装Jekyll 

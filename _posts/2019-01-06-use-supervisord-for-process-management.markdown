@@ -4,6 +4,8 @@ title:  "使用supervisord做进程管理"
 description: "使用supervisord做进程管理"
 categories: supervisor
 ---
+supervisord 是一个Python开发的进程管理服务，包含了进程生命周期管理的基本流程（开始、停止、重启）。本文经典介绍了supervisord 的基本配置和使用。
+
 
 ## 一、基本命令
 启动supervisord服务

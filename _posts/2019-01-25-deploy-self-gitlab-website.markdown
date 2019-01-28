@@ -4,6 +4,8 @@ title:  "搭建gitlab服务器"
 description: "在ubuntu下搭建gitlab服务器"
 categories: gitlab
 ---
+Gitlab 是一个开源的代码管理系统，提供了类似 Github 的服务，在企业届自建代码管理平台已得到大量使用。本文基于 Gitlab 的社区版本  `8.12.7` 介绍了 Gitlab 在 Ubuntu 系统下的搭建。当然，在真正使用时，一般会做高可用部署，本文则没有介绍到。
+
 
 ## 一、安装gitlab
 

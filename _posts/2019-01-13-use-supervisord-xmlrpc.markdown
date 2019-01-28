@@ -4,6 +4,7 @@ title:  "使用supervisord的xmlrpc做自定义开发"
 description: "使用supervisord的xmlrpc做自定义开发"
 categories: supervisor
 ---
+supervisor 由 supervisord, supervisorctl 和 web-UI组成，除此之外还提供了基于 XMLRPC 的接口供开发者使用，已满足个性化需求。本文主要介绍了 python, java, golang语言的 supervisor 客户端的实现范例，更多的使用按照范例扩展即可快速实现。
 
 ## 一、Python客户端
 

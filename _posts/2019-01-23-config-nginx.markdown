@@ -4,6 +4,8 @@ title:  "为nginx配置HTTPS访问"
 description: "为nginx配置HTTPS访问"
 categories: nginx
 ---
+Nginx 是一个高效的 HTTP 服务器，一般可用于做网站的反向代理和负载均衡。本文简单介绍了 Nginx 的基本配置和 SSL 安全通信的配置及使用。
+
 
 ## 一、安装Nginx
 
