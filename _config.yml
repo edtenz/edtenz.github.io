@@ -2,8 +2,8 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-#url: https://tenchael.xyz
-url: https://edgarteng.github.io
+url: https://tenchael.xyz
+# url: https://edgarteng.github.io
 date_format: "ordinal"
 title: ET's cyberspace
 subtitle: "Learn and be curious"
@@ -17,7 +17,7 @@ side_bar_repo_limit: 5
 #      Author      #
 # ---------------- #
 author: Tenchael
-organization: nucc.com
+# organization: nucc.com
 organization_url: https://www.nucc.com
 github_username: EdgarTeng
 location: Beijing, China
