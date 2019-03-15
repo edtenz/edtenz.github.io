@@ -2,8 +2,8 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://tenchael.xyz
-# url: https://edgarteng.github.io
+# url: https://tenchael.xyz
+url: https://edgarteng.github.io
 date_format: "ordinal"
 title: ET's cyberspace
 subtitle: "Learn and be curious"
