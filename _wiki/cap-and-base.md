@@ -20,7 +20,7 @@ CAP理论为：一个分布式系统最多只能同时满足一致性（Consiste
 
 ---
 
-### 二、 BASE理论
+## 二、 BASE理论
 ASE理论是对CAP理论的延伸，核心思想是即使无法做到强一致性（Strong Consistency，CAP的一致性就是强一致性），但应用可以采用适合的方式达到最终一致性（Eventual Consitency）。
 
 BASE是指基本可用（Basically Available）、软状态（ Soft State）、最终一致性（ Eventual Consistency）。
