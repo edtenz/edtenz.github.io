@@ -75,6 +75,32 @@ docker container stop [containerId]
 docker container kill [containerId]
 ```
 
+- 其他有用命令
+
+```sh
+# 查看 docker 容器的输出
+docker container logs [containerID]
+
+# 命令用于进入一个正在运行的 docker 容器，一旦进入了容器，就可以在容器的 Shell 执行命令了
+docker container exec -it [containerID] /bin/bash
+
+# 从正在运行的 Docker 容器里面，将文件拷贝到本机
+docker container cp [containID]:[/path/to/file.ext] [/local/path]
+
+# 拷贝本地文件到从正在运行的 Docker 容器里面，并覆盖文件
+docker container cp [/local/path/file.ext] [containID]:[/path/to/file.ext]
+
+# 查看docker中的进程
+docker ps -a
+
+# 用本地文件替换 docker 容器中的对应目录
+# -v $PWD/www:/www把主机当前目录下的www目录绑定到了docker中www目录。
+# 由于docker容器需要对nginx.conf的访问权限，因此，绑定nginx.conf文件时，后面添加--privileged=true命令。
+docker run -p 80:80 --name mynginx -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf --privileged=true -v $PWD/logs:/www/logs -v $PWD/html:/etc/nginx/html  -d nginx
+```
+
+
+
 
 ### 2) 如何下载一个第三方镜像？
 
