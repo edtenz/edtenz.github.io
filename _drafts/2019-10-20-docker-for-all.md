@@ -113,8 +113,31 @@ docker run --name nacos-standalone -e MODE=standalone -p 8848:8848 nacos/nacos-s
 ```
 
 ### 3) 如何发布一个自己的镜像？
+1. 编写dockerFile
 
-TODO
+```dockerfile
+FROM java:8
+COPY dist/ /app/
+WORKDIR /app
+EXPOSE 8082
+ENTRYPOINT ["bin/run.sh"]
+```
+
+   
+
+
+2. 构建镜像
+
+```sh
+docker image build -t five-chess:v1 .
+```
+上面代码中，-t参数用来指定 image 文件的名字，后面还可以用冒号指定标签。如果不指定，默认的标签就是latest。最后的那个点表示 Dockerfile 文件所在的路径，上例是当前路径，所以是一个点。
+
+
+3. 运行
+```sh
+docker run --name chess -p 8082:8082 five-chess:v1
+```
 
 ## 四、总结
 
