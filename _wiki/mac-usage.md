@@ -1,7 +1,7 @@
 ---
 layout: wiki
 title: macOS使用
-categories: [OS], wiki]
+categories: [OS, wiki]
 description: macOS使用
 keywords: macOS, 苹果操作系统, 使用教程
 ---
