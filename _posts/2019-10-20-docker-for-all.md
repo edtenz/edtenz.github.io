@@ -8,18 +8,61 @@ keywords: "虚拟化", "docker"
 
 ## 一、docker解决什么问题？
 
-TODO
+1) 环境配置的难题；
+2) 快速扩缩容；
+3) 虚拟机资源占用过多；
 
+
+Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口。它是目前最流行的 Linux 容器解决方案。
+Docker 将应用程序和环境依赖打包成一个文件，运行这个文件，生成一个虚拟容器文件，进程在容器运行就像在真是的物理机上运行一样。且能通过docker实现应用及其环境的复制、分发，实现共享。
 
 ## 二、如何安装？
 
 ### 1) 在Linux下的安装
 
-TODO
+- Unbuntu
+安装参考：[Get Docker Engine - Community for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1)
 
-### 2) 在Mac下的安装
+基本启停：
+```sh
+sudo systemctl start docker
+sudo systemctl stop docker
+sudo systemctl status docker
+```
 
-TODO
+1) 解决普通用户无法运行 docker 的问题：
+> Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/images/search?limit=25&term=nginx: dial unix /var/run/docker.sock: connect: permission denied
+
+解决方案：
+```sh
+# 创建 docker 组
+sudo groupadd docker
+# 将用户加入到 docker 组
+sudo usermod -aG docker $USER
+```
+注销用户重新登录即可！
+
+2) 配置国内镜像:
+```sh
+vim /etc/docker/daemon.json
+```
+内容如下：
+```js
+{
+  "registry-mirrors": ["https://yourcode.mirror.aliyuncs.com"]
+}
+```
+重启：
+```sh
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+### 2) 在Mac & Windows 下的安装
+
+安装参考：
+[Mac](https://docs.docker.com/docker-for-mac/install/)
+[Windows](https://docs.docker.com/docker-for-windows/install/)
 
 ### 3) 验证
 
@@ -141,10 +184,11 @@ docker run --name chess -p 8082:8082 five-chess:v1
 
 ## 四、总结
 
-TODO
+本文对 Docker 的一些基本概念、解决什么问题做了介绍，并整理了在安装和使用 Docker 过程中常碰到的问题和，经常用到的命令。最后通过一个小例子，演示了如何生成自己的 Docker 镜像文件。
 
 
 
 ## 参考资料：
 1. [Docker 入门教程]([link](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html))
+2. [Get Docker Engine - Community for Ubuntu]([link](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1))
 
