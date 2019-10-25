@@ -9,8 +9,11 @@ Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接
 ## 一、docker解决什么问题？
 
 1) 环境配置的难题；
+   
 2) 快速扩缩容；
+   
 3) 虚拟机资源占用过多（虚拟化方案，相对于虚拟机的优势）；
+   
 4) 应用程序及其环境的复制、分发，实现共享；
 
 
@@ -19,9 +22,11 @@ Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接
 ### 1) 在Linux下的安装
 
 - Unbuntu
+  
 安装参考：[Get Docker Engine - Community for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1)
 
 基本启停：
+
 ```sh
 sudo systemctl start docker
 sudo systemctl stop docker
@@ -29,22 +34,28 @@ sudo systemctl status docker
 ```
 
 1) 解决普通用户无法运行 docker 的问题：
+
 > Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/images/search?limit=25&term=nginx: dial unix /var/run/docker.sock: connect: permission denied
 
 解决方案：
+
 ```sh
 # 创建 docker 组
 sudo groupadd docker
 # 将用户加入到 docker 组
 sudo usermod -aG docker $USER
 ```
+
 注销用户重新登录即可！
 
-2) 配置国内镜像:
+1) 配置国内镜像:
+   
 ```sh
 vim /etc/docker/daemon.json
 ```
+
 内容如下：
+
 ```js
 {
   "registry-mirrors": ["https://yourcode.mirror.aliyuncs.com"]
@@ -77,6 +88,7 @@ docker info
 
 - 镜像
 Docker 把应用程序及其依赖，打包在 image 文件里面。
+
 ```sh
 # 列出本机的所有 image 文件。
 docker image ls
@@ -93,6 +105,7 @@ docker pull [imageName]
 
 - 容器
 image 文件生成的容器实例，本身也是一个文件，称为容器文件。
+
 ```sh
 # 列出本机正在运行的容器
 docker container ls
@@ -140,9 +153,6 @@ docker ps -a
 docker run -p 80:80 --name mynginx -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf --privileged=true -v $PWD/logs:/www/logs -v $PWD/html:/etc/nginx/html  -d nginx
 ```
 
-
-
-
 ### 2) 如何下载一个第三方镜像？
 
 ```sh
@@ -154,6 +164,7 @@ docker run --name nacos-standalone -e MODE=standalone -p 8848:8848 nacos/nacos-s
 ```
 
 ### 3) 如何发布一个自己的镜像？
+
 1. 编写dockerFile
 
 ```dockerfile
@@ -172,10 +183,12 @@ ENTRYPOINT ["bin/run.sh"]
 ```sh
 docker image build -t five-chess:v1 .
 ```
+
 上面代码中，-t参数用来指定 image 文件的名字，后面还可以用冒号指定标签。如果不指定，默认的标签就是latest。最后的那个点表示 Dockerfile 文件所在的路径，上例是当前路径，所以是一个点。
 
 
 3. 运行
+   
 ```sh
 docker run --name chess -p 8082:8082 five-chess:v1
 ```
