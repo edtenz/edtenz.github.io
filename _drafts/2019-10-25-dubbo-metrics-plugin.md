@@ -27,4 +27,4 @@ TODO
 
 
 ## 参考资料：
-1. [titile](link)
+1. [Dubbo Filter Extension](http://dubbo.apache.org/en-us/docs/dev/impls/filter.html)
