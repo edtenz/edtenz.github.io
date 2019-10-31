@@ -20,11 +20,13 @@ sudo apt-get install nginx
 1. 使用systemd来进行管理nginx的开机自启动和启停。
 
 查看`/lib/systemd/system/nginx.service`是否存在，不存在则添加该文件
+
 ```sh
 sudo vim /lib/systemd/system/nginx.service
 ```
 
 内容如下：
+
 ```ini
 [Unit]
 Description=A high performance web server and a reverse proxy server
@@ -46,6 +48,7 @@ WantedBy=multi-user.target
 ```
 
 添加之后执行：
+
 ```sh
 sudo systemctl enable nginx	#开机自启动
 sudo systemctl start nginx	#启动
@@ -62,19 +65,25 @@ sudo vim /etc/nginx/nginx.conf
 ```
 
 将`include /etc/nginx/sites-enabled/*;`改为`include /etc/nginx/sites-enabled/*.conf;`，再禁用默认：
+
 ```sh
 sudo mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.disable
 ```
 
 
 ## 三、配置反向代理
+
+1) HTTP(S) 反向代理配置
+
 在`/etc/nginx/conf.d`目录下增加`example.conf`文件：
 假设本机已经启用一个8080端口的web服务。
+
 ```sh
 sudo vim /etc/nginx/conf.d/example.conf
 ```
 
 内容如下：
+
 ```sh
 server {
     listen 80;
@@ -96,11 +105,29 @@ server {
 ```
 
 重新加载nginx配置：
+
 ```sh
 sudo systemctl reload nginx
 ```
 
 通过`http://www.example.com`即可访问服务。
+
+2) TCP 反向代理配置
+
+比如配置本地 `12345` 端口到 `backend1.example.com:12345` 的转发，在 nginx.conf 顶层标签增加：
+
+```js
+stream {
+    upstream backend {
+        server backend1.example.com:12345;
+    }
+
+    server {
+        listen 12345;
+        proxy_pass backend;
+    }
+}
+```
 
 ## 四、HTTPS支持
 安装Certbot
