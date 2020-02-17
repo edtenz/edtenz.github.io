@@ -8,12 +8,22 @@ supervisord 是一个Python开发的进程管理服务，包含了进程生命�
 
 
 ## 一、基本命令
+
+安装
+以 ubuntu 系统为例：
+
+```sh
+sudo apt-get install supervisor
+```
+
 启动supervisord服务
+
 ```sh
 supervisord -c /etc/supervisor/supervisord.conf
 ```
 
 启动supervisorctl客户端
+
 ```sh
 supervisorctl -c /etc/supervisor/supervisord.conf
 ```
@@ -24,22 +34,26 @@ supervisorctl -u <user> -p <password>
 ```
 
 直接使用命令
+
 ```sh
 supervisorctl -u <user> -p <password> <opts>
 ```
 
 opts包括:
+
 > add    exit      open  reload  restart   start   tail   
 avail  fg        pid   remove  shutdown  status  update 
 clear  maintail  quit  reread  signal    stop    version
 
 ## 二、基本配置
 新建配置目录：
+
 ```sh
 sudo mkdir /etc/supervisor/conf.d
 ```
 
 新建主配置文件：
+
 ```sh
 /etc/supervisor/supervisord.conf
 ```
@@ -75,7 +89,7 @@ password=loginpass
 
 
 [include]
-files=init.d/*.conf
+files=conf.d/*.conf
 ```
 
 这里涉及到一个访问控制的问题，设置好登录名和密码（注意，这里的登录用户区别于系统里的用户）
@@ -145,20 +159,23 @@ print(stat)
 ```
 
 ## 四、使用systemd启动supervisord
+* （新版版默认自带）*
+
 新增配置文件：
+
 ```sh
-sudo vim /lib/systemd/system/supervisord.service
+sudo vim /lib/systemd/system/supervisor.service
 ```
 内容如下：
 ```sh
 [Unit]
-Description=supervisord
+Description=supervisor
 After=syslog.target
 After=network.target
 
 [Service]
 Type=forking
-PIDFile=/run/supervisord.pid
+PIDFile=/run/supervisor.pid
 ExecStart=/usr/local/bin/supervisord -c /etc/supervisor/supervisord.conf
 ExecStop=/usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf shutdown
 ExecReload=/usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf reload
@@ -173,24 +190,24 @@ WantedBy=multi-user.target
 ```
 开机自启动：
 ```sh
-sudo systemctl enable supervisord.service
+sudo systemctl enable supervisor.service
 ```
 取消开机自启动：
 ```sh
-sudo systemctl disable supervisord.service
+sudo systemctl disable supervisor.service
 ```
 Systemd 默认从目录`/etc/systed/system/`读取配置文件。但是，里面存放的大部分文件都是符号链接，指向目录`/lib/systemd/system/`，真正的配置文件存放在那个目录。
 
 `systemctl enable`命令用于在上面两个目录之间，建立符号链接关系。
 与之对应的，`systemctl disable`命令用于在两个目录之间，撤销符号链接关系，相当于撤销开机启动。
 
-使用systemd启动supervisord：
+使用systemd启动supervisor：
 ```sh
-sudo systemd start supervisord
+sudo systemctl start supervisor
 ```
-查看supervisord状态：
+查看supervisor状态：
 ```sh
-sudo systemd status supervisord
+sudo systemctl status supervisor
 ```
 
 ## 五、更多第三方应用或类库
