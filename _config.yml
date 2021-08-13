@@ -3,7 +3,7 @@
 # ---------------- #
 baseurl:
 # url: https://tenchael.xyz
-url: https://edgarteng.github.io
+url: https://edditen.github.io
 date_format: "ordinal"
 title: ET's cyberspace
 subtitle: "Learn and be curious"
@@ -18,8 +18,8 @@ side_bar_repo_limit: 5
 # ---------------- #
 author: Tenchael
 organization_url: https://www.shopee.com
-github_username: EdgarTeng
-location: Shenzhen, China
+github_username: edditeng
+location: Singapore, Singapore
 email: tzz1002@gmail.com
 
 # ---------------- #
@@ -80,7 +80,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: EdgarTeng/EdgarTeng.github.io
+repository: edditen/edditen.github.io
 
 # ---------------- #
 #      Comments    #
@@ -101,7 +101,7 @@ comments_provider: gitalk
 #        client_secret: mmmmmm
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: EdgarTeng
+    owner: edditeng
     repo: blog-comments
     clientID: afd6e299c79471cda9a0
     clientSecret: c02f19dcbcdf1769d296da2e5a2b64409b124d66
