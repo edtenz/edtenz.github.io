@@ -18,7 +18,7 @@ side_bar_repo_limit: 5
 # ---------------- #
 author: Tenchael
 organization_url: https://www.shopee.com
-github_username: edditeng
+github_username: edditen
 location: Singapore, Singapore
 email: tzz1002@gmail.com
 
@@ -101,7 +101,7 @@ comments_provider: gitalk
 #        client_secret: mmmmmm
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: edditeng
+    owner: edditen
     repo: blog-comments
     clientID: afd6e299c79471cda9a0
     clientSecret: c02f19dcbcdf1769d296da2e5a2b64409b124d66
