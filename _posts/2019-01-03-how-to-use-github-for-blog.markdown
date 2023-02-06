@@ -54,7 +54,7 @@ bundle exec jekyll serve
 
 ## 托管在github上
 为了使用github进行博客展示，需要先再github上创建一个repository
-命名示例如下：`edditen.github.io`
+命名示例如下：`edtenz.github.io`
 
 
 ## 在个人云主机上（待补充）
