@@ -79,7 +79,7 @@ sudo mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.disabl
 
 在 `/etc/nginx/conf.d` 目录下增加 `example.conf` 文件：
 
-假设本机已经启用一个 8080 端口的web服务。
+考虑一种常见使用场景：启用一个 80 端口的 web 服务。静态文件从 `/www/front` 加载，动态 API 转发至监听 `8090` 端口的 web 服务。
 
 ```sh
 sudo vim /etc/nginx/conf.d/example.conf
@@ -89,28 +89,30 @@ sudo vim /etc/nginx/conf.d/example.conf
 
 ```sh
 server {
-        listen       8080;
-        server_name  www.example.com;
+    listen 80;
+    listen [::]:80;
+    server_name www.example.com;
 
-        location / {
-            root   /usr/local/var/www/front;
-            index  index.html index.htm;
-        }
+    location / {
+        root   /usr/local/var/www/front;
+        index  index.html index.htm;
+    }
 
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
 
-        location ^~ /api/ {
-            proxy_pass http://localhost:8080/api/;
-        }
-        location ^~ /admin/ {
-            proxy_pass http://localhost:8088/admin/;
+    location ^~ /api/ {
+        proxy_pass http://localhost:8090/api/;
+    }
 
-        }
+    location ^~ /admin/ {
+        proxy_pass http://localhost:8090/admin/;
 
     }
+
+}
 
 ```
 
