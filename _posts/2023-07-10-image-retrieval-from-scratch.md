@@ -37,25 +37,23 @@ keywords: python, es, milvus, faiss
 
 ### 图像搜索系统是如何工作的？
 
-  图像搜索系统的工作流程如下：
+#### 工作流程
 
     1. 图像预处理：对于用户上传的图片，系统会对其进行预处理，包括缩放、裁剪、归一化等操作，以便后续的特征提取。
     2. 特征提取：系统会对预处理后的图片提取特征，这些特征可以是颜色、形状、纹理、模式等。特征提取的方法包括传统的计算机视觉技术，如SIFT、SURF、HOG等，也包括深度学习技术，如CNN、ResNet等。本文将介绍如何使用深度学习技术进行特征提取。
     3. 特征存储：系统会提前将提取的特征存储在数据库中，以便后续的搜索。
     4. 特征匹配与搜索：当用户上传一张图片作为查询时，系统会对其进行预处理和特征提取，然后与数据库中的特征进行比较，找到与查询图片相似的结果。
     
-  整体结构：
+#### 整体结构：
 
 ![image search](https://user-images.githubusercontent.com/6406562/252523247-7e6adc9a-c74d-4f56-99bb-9f1c361b4b13.jpeg)
 
 
 ### 相关技术介绍
 
-图像识别，特征提取
-
-  - 图像识别，也叫主体识别，一张图片中可能包含多个物体，比如你划船的照片，既有船，也有人。图像识别的目的是找到图片中的主体，比如照片中的船或人。目前图像识别的技术已经非常成熟，可以达到非常高的准确率。深度学习中的目标检测技术，如 Faster R-CNN、YOLO 等，可以实现图像识别。
-  - 特征提取，在图像搜索系统中，特征提取的目的是将图片转化为一组特征向量，以便后续的相似度计算。深度学习中的特征提取技术包括 ResNet, Vit 等。
-- 图像相似度的概念以及它在图像搜索系统中的作用
+- 图像识别，也叫主体识别，一张图片中可能包含多个物体，比如你划船的照片，既有船，也有人。图像识别的目的是找到图片中的主体，比如照片中的船或人。目前图像识别的技术已经非常成熟，可以达到非常高的准确率。深度学习中的目标检测技术，如 Faster R-CNN、YOLO 等，可以实现图像识别。
+- 特征提取，在图像搜索系统中，特征提取的目的是将图片转化为一组特征向量，以便后续的相似度计算。深度学习中的特征提取技术包括 ResNet, Vit 等。
+- 图像相似度以及它在图像搜索系统中的作用
   - 相似度算法：如余弦相似度（DP, dot product），欧式距离(L2)等，用于比较两张图片的相似度。DP 和 L2 都是常用的相似度算法，DP 计算两个向量的夹角余弦，分值越高，相似度越高；L2 计算两个向量的欧式距离，分值越低，相似度越高。
 - 向量搜索：ANN 最大临近搜索，用于在数据库中快速找到与查询图片相似的结果。ANN 最大临近搜索算法的原理是将数据库中的向量构建成一棵树，然后在树中搜索与查询图片最相似的结果。ANN 最大临近搜索算法的优点是速度快，缺点是准确率不高。ANN 最大临近搜索算法的实现有多种，如 KNN、KD-Tree、K-Means 等。
 
@@ -76,7 +74,8 @@ keywords: python, es, milvus, faiss
 ## 四、 构建图像搜索系统
 
 - 图像预处理：缩放，裁剪等
-  - 缩放，使用 OpenCV 的 thumbnail 函数，代码如下：
+
+  缩放：使用 OpenCV 的 thumbnail 函数，代码如下：
 
   ```py
   import cv2
@@ -104,7 +103,7 @@ keywords: python, es, milvus, faiss
       return output.getvalue()
   ```
 
-  裁剪使用了 Towhee 的图像处理模块，需要传人图像和图像边框 box [x1,y1,x2,y2]（左上点 + 右下点）代码如下：
+  裁剪：使用了 Towhee 的图像处理模块，需要传人图像和图像边框 box [x1,y1,x2,y2]（左上点 + 右下点）代码如下：
 
   ```py
   self.detect_pipeline.flat_map(('img', 'box'), 'object', ops.towhee.image_crop())
@@ -112,6 +111,7 @@ keywords: python, es, milvus, faiss
 
 
 - 图片识别：
+
   使用 YOLO 模型进行图片识别，通过 Towhee 加载，代码如下：
 
   ```py
@@ -126,6 +126,7 @@ keywords: python, es, milvus, faiss
   其他图片识别模型，如 Faster R-CNN 等，也可以使用 Towhee 加载。更多请参考：[Object-Detection](https://towhee.io/tasks/detail/operator?field_name=Computer-Vision&task_name=Object-Detection)
 
 - 特征提取：
+
   使用 VIT 模型进行特征提取，通过 Towhee 加载，代码如下：
 
   ```py
@@ -139,14 +140,15 @@ keywords: python, es, milvus, faiss
   其他特征提取模型，如 ResNet 等，也可以使用 Towhee 加载。更多请参考：[Image-Embedding](https://towhee.io/tasks/detail/operator?field_name=Computer-Vision&task_name=Image-Embedding)
 
 - 特征存储：
-  使用 Elasticsearch 存储图像特征，注意需要使用 Elasticsearch 8 及以上版本，因为需要使用 Elasticsearch 的向量相似度搜索功能。索引构建代码如下：
 
-  image_key: 图片的唯一标识，可以是图片的 url 或者其他唯一标识
-  image_url: 图片的 url
-  bbox: 图片中物体的边框
-  bbox_score: 图片中物体的边框得分
-  label: 图片中物体的类别
-  features: 图片的特征向量，使用 dense_vector 类型存储
+  使用 Elasticsearch 存储图像特征，注意需要使用 Elasticsearch 8 及以上版本，因为需要使用 Elasticsearch 的向量相似度搜索功能。
+
+  - image_key: 图片的唯一标识，可以是图片的 url 或者其他唯一标识
+  - image_url: 图片的 url
+  - bbox: 图片中物体的边框
+  - bbox_score: 图片中物体的边框得分
+  - label: 图片中物体的类别
+  - features: 图片的特征向量，使用 dense_vector 类型存储
 
   ```py
   # create index
@@ -195,7 +197,9 @@ keywords: python, es, milvus, faiss
     }
   }
   ```
+
 - 特征匹配与搜索：
+
   如何使用相似度算法比较和搜索图像，ANN 或 KNN 搜索算法，如何使用 Elasticsearch 的向量相似度搜索功能，如何使用 Towhee 加载 ANN 或 KNN 搜索算法，如何使用 Towhee 加载 Elasticsearch 的向量相似度搜索功能，代码如下：
 
   ```py
@@ -219,7 +223,9 @@ keywords: python, es, milvus, faiss
 
 完整代码：[repo](https://github.com/edtenz/imgsch)
 
+
 ## 五、实例演示
+
 
 - 基于实际图像数据，提前把图片储存到 MinIO 中，为了方便模型流水线作业，针对 Minio 开发了一个图片代理服务，支持图片的 HTTP 上传和下载。
 - 通过 fastAPI 开发了一个图片搜索服务，提供 HTTP 接口，支持图片的搜索，搜索结果返回图片的 url 和边框信息。
@@ -232,6 +238,7 @@ keywords: python, es, milvus, faiss
 ```
   
 - 效果演示：
+
 ![image search](https://user-images.githubusercontent.com/6406562/252523338-c0cef17f-8ee0-4155-bad2-aabded7abd50.png)
 
 ## 六、 优化与提升
