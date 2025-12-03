@@ -13,3 +13,8 @@ build:
 deploy:
 	@echo "Deploying hugo site to GitHub Pages..."
 	git push origin master
+
+.PHONY new:
+new:
+	@echo "Creating new post..."
+	hugo new posts/new-post.md
