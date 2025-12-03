@@ -1,0 +1,54 @@
+baseURL = 'https://edtenz.github.io/'
+languageCode = 'zh-cn'
+title = "ET's cyberspace"
+theme = 'PaperMod'
+
+[params]
+  env = 'production'
+  description = "The records of study"
+  keywords = ["ET's cyberspace", "Edgar Teng", "Edgar"]
+  author = "Tenchael"
+  authorLink = "https://github.com/edtenz"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  [params.homeInfoParams]
+    Title = "ET's cyberspace"
+    Content = "Learn and be curious"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 30
+
+[markup]
+  [markup.highlight]
+    style = "github"
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+

@@ -1,8 +1,24 @@
+# Hugo
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jekyll (legacy)
 _site/
 .sass-cache/
-.DS_Store
-*.swp
-*.~vsd
-\#*\#
-*~
-Gemfile.lock
+.jekyll-cache/
+.jekyll-metadata
+
+# Drafts (optional - uncomment if you don't want to commit drafts)
+# _drafts/
