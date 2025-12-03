@@ -6,8 +6,8 @@ theme = 'PaperMod'
 [params]
   env = 'production'
   description = "The records of study"
-  keywords = ["ET's cyberspace", "Edgar Teng", "Edgar"]
-  author = "Tenchael"
+  keywords = ["ET's cyberspace", "Eddie Tenz", "Eddie"]
+  author = "Eddie Tenz"
   authorLink = "https://github.com/edtenz"
   ShowReadingTime = true
   ShowPostNavLinks = true
