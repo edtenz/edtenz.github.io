@@ -33,9 +33,15 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
+
+      - name: List posts before build
+        run: ls -la public/posts || true
       
       - name: Build
         run: hugo --minify
+
+      - name: List posts after build
+        run: ls -la public/posts || true
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
