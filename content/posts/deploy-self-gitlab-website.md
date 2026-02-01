@@ -137,3 +137,4 @@ sudo systemctl reload nginx	#nginx配置重新加载
 1. [gitlab](https://docs.gitlab.com/omnibus/) 
 
 
+

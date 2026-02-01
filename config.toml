@@ -35,10 +35,15 @@ theme = 'PaperMod'
     url = "/posts/"
     weight = 20
   [[menu.main]]
+    identifier = "deep"
+    name = "Deep"
+    url = "/deep/"
+    weight = 30
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 30
+    weight = 40
 
 [markup]
   [markup.highlight]
@@ -51,4 +56,3 @@ theme = 'PaperMod'
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-
