@@ -1,4 +1,4 @@
-name: Deploy Hugo site to Pages
+name: Deploy Hugo site
 
 on:
   push:
@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -40,6 +40,12 @@ jobs:
 
       - name: Build
         run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}"
+
+      - name: List output
+        run: |
+          ls -la public
+          ls -la public/posts || true
+          ls -la public/deep || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
