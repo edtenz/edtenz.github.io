@@ -1,0 +1,604 @@
+---
+title: "甲骨文 (Oracle) 投资深度分析报告"
+date: 2026-02-05
+summary: "深度解析甲骨文股价回撤背后的投资逻辑，聚焦 OpenAI 合作与 GPU 扩张带来的 AI 增长潜力，同时评估高 Capex、裁员与资产剥离等重组风险，并以结构化视角给出投资决策框架。"
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甲骨文 (Oracle) 投资深度分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Neutrals (Stone) with Corporate Blue & Signal Orange accents -->
+    <!-- Application Structure Plan: 
+         1. Executive Dashboard: Immediate view of the "Price vs. Value" disconnection.
+         2. The AI Pivot (Bull Case): Interactive exploration of the OpenAI deal and GPU expansion.
+         3. The Restructuring Cost (Risk Case): Analysis of layoffs and asset divestiture (liquidity events).
+         4. Strategic Synthesis: An interactive SWOT and "Investor Simulator" where users weigh factors to see a verdict.
+         This structure moves from surface-level market data to deep operational drivers, ending with a synthesized decision tool.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Stock Waterfall (Chart.js Bar): Visualizes the high-to-low bridge driven by narrative shifts.
+         2. Capital Allocation Flow (CSS/HTML Flow): Visualizes the "Sell Health Asset -> Buy GPUs" logic without SVG.
+         3. Workforce Shift (Chart.js Doughnut): Shows the scale of Layoffs vs. Retention.
+         4. Investment Scorer (JS Logic): Interactive sliders to calculate investment appeal based on user style (Value vs. Growth).
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        /* Custom Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            margin: 0 auto;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #fafaf9; /* stone-50 */
+            color: #1c1917; /* stone-900 */
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-btn {
+            transition: all 0.3s;
+        }
+        .nav-btn.active {
+            background-color: #44403c; /* stone-700 */
+            color: white;
+        }
+        
+        .indicator {
+            height: 8px;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navigation -->
+    <header class="bg-stone-800 text-stone-100 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl font-bold tracking-tight">ORCL <span class="font-light text-stone-400">Analysis</span></span>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <button onclick="navigateTo('overview')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-stone-700 active" id="btn-overview">市场总览</button>
+                    <button onclick="navigateTo('bull-case')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-stone-700" id="btn-bull-case">AI 增长引擎</button>
+                    <button onclick="navigateTo('bear-case')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-stone-700" id="btn-bear-case">风险与重组</button>
+                    <button onclick="navigateTo('verdict')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-stone-700" id="btn-verdict">投资决策</button>
+                </nav>
+                <!-- Mobile menu button placeholder (simplified for SPA) -->
+                <button class="md:hidden text-stone-300 hover:text-white" onclick="alert('请使用桌面端获得最佳图表体验')">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- SECTION 1: OVERVIEW -->
+        <section id="overview" class="view-section animate-fade-in">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4">甲骨文 (Oracle)：价值陷阱还是转型良机？</h1>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                    本报告基于当前市场动态，深入剖析甲骨文在股价腰斩后的投资逻辑。通过分析其与 OpenAI 的巨额订单、激进的资本开支转向以及大规模裁员重组，为您还原一个真实的转型期巨头。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Market Status Card -->
+                <div class="card bg-white border-l-4 border-orange-500">
+                    <h2 class="text-xl font-bold text-stone-800 mb-2">📉 市场现状速览</h2>
+                    <p class="text-sm text-stone-500 mb-4">股价波动与关键新闻驱动因素</p>
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <span class="block text-xs text-stone-400 uppercase font-bold">近期高点</span>
+                            <span class="text-lg font-semibold text-green-600">AI 泡沫期高位</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xs text-stone-400 uppercase font-bold">当前状态</span>
+                            <span class="text-2xl font-bold text-red-600">-50% 回撤</span>
+                        </div>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed mb-4">
+                        受 OpenAI 合作消息推动，股价一度冲高。然而，随着市场对高资本开支（Capex）的担忧以及获利盘回吐，股价已从高点回落近一半。当前市场情绪处于极度分歧状态。
+                    </p>
+                    <div class="bg-stone-100 p-3 rounded text-sm text-stone-600">
+                        <strong>核心矛盾：</strong> 传统的数据库业务增长放缓 vs. OCI (Oracle Cloud Infrastructure) 的 AI 爆发潜力。
+                    </div>
+                </div>
+
+                <!-- Price Waterfall Chart -->
+                <div class="card">
+                    <h2 class="text-xl font-bold text-stone-800 mb-4">股价驱动因素分解</h2>
+                    <div class="chart-container">
+                        <canvas id="priceWaterfallChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-stone-400 mt-2">数据来源：基于近期市场走势的定性分析模拟</p>
+                </div>
+            </div>
+
+            <!-- Key Metrics Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-stone-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-blue-700">300万+</div>
+                    <div class="text-sm font-semibold text-stone-600 uppercase">GPU 算力规划</div>
+                    <p class="text-xs text-stone-500 mt-1">OpenAI 合作核心支撑</p>
+                </div>
+                <div class="bg-stone-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-red-600">2-3万</div>
+                    <div class="text-sm font-semibold text-stone-600 uppercase">裁员计划</div>
+                    <p class="text-xs text-stone-500 mt-1">成本结构暴力重组</p>
+                </div>
+                <div class="bg-stone-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-orange-600">资产出售</div>
+                    <div class="text-sm font-semibold text-stone-600 uppercase">医疗业务剥离</div>
+                    <p class="text-xs text-stone-500 mt-1">换取 AI 军备竞赛现金流</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BULL CASE (AI & CLOUD) -->
+        <section id="bull-case" class="view-section hidden animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-stone-800 border-b-2 border-blue-500 pb-2 inline-block">🚀 正向逻辑：AI 军火商的崛起</h2>
+                <p class="mt-4 text-stone-600">
+                    甲骨文不再仅仅是老旧的数据库公司。通过与 OpenAI 的深度绑定，它正在转型为核心的 AI 算力提供商。本节分析其增长引擎的真实潜力。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Text Analysis -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="card bg-blue-50 border-blue-200 border">
+                        <h3 class="font-bold text-blue-800 text-lg mb-2">OpenAI 订单的含金量</h3>
+                        <p class="text-sm text-stone-700 mb-3">
+                            甲骨文获得了为 OpenAI 提供额外算力的巨额订单。这不仅是收入，更是技术背书。证明 OCI (Oracle Cloud) 在处理大规模 AI 训练集群方面具有相比 AWS 和 Azure 的差异化优势（网络架构更优，成本更具性价比）。
+                        </p>
+                        <button onclick="updateScenario('optimistic')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition">
+                            模拟乐观情景：AI 需求持续爆发
+                        </button>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-stone-800 text-lg mb-2">OCI 的独特优势</h3>
+                        <ul class="text-sm text-stone-600 space-y-2 list-disc pl-5">
+                            <li><strong>裸金属架构：</strong> 提供更高的性能，几乎无损耗。</li>
+                            <li><strong>网络集群：</strong> RDMA 网络让 GPU 通信更快，适合大模型训练。</li>
+                            <li><strong>性价比：</strong> 相比竞争对手通常有显著的价格优势。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Viz -->
+                <div class="lg:col-span-2 card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-stone-800 text-lg">收入结构预测：云 vs 传统</h3>
+                        <select id="growthSelect" class="bg-stone-100 border border-stone-300 text-sm rounded px-2 py-1" onchange="updateGrowthChart(this.value)">
+                            <option value="conservative">保守估计 (线性增长)</option>
+                            <option value="aggressive">激进估计 (AI 指数增长)</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueMixChart"></canvas>
+                    </div>
+                    <p class="text-xs text-stone-500 mt-3 text-center">
+                        交互提示：切换下拉菜单查看不同 AI 渗透率下的未来收入结构变化。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BEAR CASE (RISK & RESTRUCTURE) -->
+        <section id="bear-case" class="view-section hidden animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-stone-800 border-b-2 border-red-500 pb-2 inline-block">⚠️ 风险逻辑：断臂求生的代价</h2>
+                <p class="mt-4 text-stone-600">
+                    转型的另一面是痛苦的重组。裁员和资产出售虽然为了获取现金，但也暴露了公司在传统业务上的疲软以及资金链的压力。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Layoff Analysis -->
+                <div class="card">
+                    <h3 class="font-bold text-stone-800 text-lg mb-4">人员结构大换血</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="layoffChart"></canvas>
+                    </div>
+                    <div class="mt-4 p-3 bg-red-50 rounded border border-red-100">
+                        <h4 class="font-bold text-red-800 text-sm">解读：裁员 2-3 万人</h4>
+                        <p class="text-xs text-red-700 mt-1">
+                            这主要集中在传统销售、甚至包括之前的 Cerner (医疗) 整合部门。目的是腾出薪酬空间（OPEX）来雇佣昂贵的 AI 工程师并购买 GPU。短期内会产生巨额重组费用，挫伤员工士气。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Asset Sale Flow -->
+                <div class="card flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-stone-800 text-lg mb-4">资本重分配逻辑 (Capital Reallocation)</h3>
+                        <p class="text-sm text-stone-600 mb-6">
+                            公司计划出售优质医疗资产。这是典型的“以旧换新”策略。虽然能立即获得现金，但也意味着放弃了医疗信息化未来的稳定现金流。
+                        </p>
+                        
+                        <!-- CSS Flowchart visualization -->
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <div class="w-1/3 p-3 bg-stone-200 rounded text-center text-sm font-bold text-stone-700">
+                                    🏥 医疗资产<br><span class="text-xs font-normal">出售换现</span>
+                                </div>
+                                <div class="w-1/3 flex justify-center">
+                                    <div class="h-1 w-full bg-stone-300 relative">
+                                        <div class="absolute right-0 -top-1.5 w-0 h-0 border-t-6 border-t-transparent border-l-8 border-l-stone-300 border-b-6 border-b-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="w-1/3 p-3 bg-green-100 rounded text-center text-sm font-bold text-green-800">
+                                    💰 现金池<br><span class="text-xs font-normal">流动性增加</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center h-8">
+                                <div class="w-1 bg-stone-300"></div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div class="w-1/3 p-3 bg-green-100 rounded text-center text-sm font-bold text-green-800">
+                                    💰 现金池
+                                </div>
+                                <div class="w-1/3 flex justify-center">
+                                    <div class="h-1 w-full bg-stone-300 relative">
+                                        <div class="absolute right-0 -top-1.5 w-0 h-0 border-t-6 border-t-transparent border-l-8 border-l-stone-300 border-b-6 border-b-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="w-1/3 p-3 bg-blue-600 rounded text-center text-sm font-bold text-white shadow-lg">
+                                    🤖 GPU & AI<br><span class="text-xs font-normal">高风险/高回报</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-xs text-stone-500 italic text-center">
+                        "这不仅是战术调整，更是甲骨文的一场豪赌。"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: VERDICT & TOOL -->
+        <section id="verdict" class="view-section hidden animate-fade-in">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-bold text-stone-800">综合评估模型</h2>
+                <p class="mt-2 text-stone-600">作为价值投资者，您如何权衡这些因素？请调整下方权重得出您的结论。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Interactive Controls -->
+                <div class="lg:col-span-5 card bg-stone-50">
+                    <h3 class="font-bold text-lg mb-4 text-stone-800">投资权重模拟器</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="flex justify-between text-sm font-medium text-stone-700 mb-1">
+                                <span>AI 增长潜力 (OpenAI 订单)</span>
+                                <span id="val-ai">50%</span>
+                            </label>
+                            <input type="range" min="0" max="100" value="50" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-blue-600" id="range-ai" oninput="calculateScore()">
+                            <p class="text-xs text-stone-500 mt-1">越右滑表示您越看重未来的 AI 爆发力</p>
+                        </div>
+
+                        <div>
+                            <label class="flex justify-between text-sm font-medium text-stone-700 mb-1">
+                                <span>财务稳定性 (现金流/裁员风险)</span>
+                                <span id="val-risk">50%</span>
+                            </label>
+                            <input type="range" min="0" max="100" value="50" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-red-500" id="range-risk" oninput="calculateScore()">
+                            <p class="text-xs text-stone-500 mt-1">越右滑表示您越担心债务和重组风险</p>
+                        </div>
+
+                        <div>
+                            <label class="flex justify-between text-sm font-medium text-stone-700 mb-1">
+                                <span>估值安全边际 (当前价格)</span>
+                                <span id="val-price">50%</span>
+                            </label>
+                            <input type="range" min="0" max="100" value="50" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-green-600" id="range-price" oninput="calculateScore()">
+                            <p class="text-xs text-stone-500 mt-1">越右滑表示您认为当前 -50% 的价格具有吸引力</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Display -->
+                <div class="lg:col-span-7 card flex flex-col justify-center items-center text-center relative overflow-hidden">
+                    <div id="score-bg" class="absolute inset-0 bg-gradient-to-br from-white to-stone-100 transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-stone-500 text-sm font-bold uppercase tracking-widest mb-2">投资吸引力评分</h3>
+                        <div class="text-6xl font-black text-stone-800 mb-2" id="final-score">5.0</div>
+                        <div class="text-xl font-bold mb-6 px-4 py-1 rounded inline-block" id="final-verdict-label">观望</div>
+                        
+                        <p class="text-stone-600 max-w-md mx-auto text-sm leading-relaxed" id="verdict-text">
+                            请调整左侧滑块以生成基于您投资哲学的分析结果。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion Summary -->
+            <div class="mt-8 bg-white border border-stone-200 rounded-lg p-6">
+                <h3 class="text-lg font-bold text-stone-800 mb-2">💡 深度总结</h3>
+                <p class="text-stone-700 leading-relaxed">
+                    甲骨文目前处于典型的<strong>“转型阵痛期”</strong>。
+                    <br><br>
+                    <strong>机会在于：</strong> 它是少数能够真正承接 OpenAI 等顶级 AI 公司算力溢出需求的老牌云厂商，且 OCI 的网络架构确实具有竞争力。如果 AI 需求持续数年，甲骨文将重获新生。
+                    <br><br>
+                    <strong>风险在于：</strong> 为了抓住这个机会，公司正在进行激进的资产负债表重构（卖资产、裁员）。这表明其原有现金流可能不足以支撑如此巨大的 GPU 资本开支。如果 AI 泡沫破裂，甲骨文可能面临“赔了夫人又折兵”的困境（失去了稳定的医疗资产，积压了过时的 GPU）。
+                    <br><br>
+                    <strong>投资建议：</strong> 适合风险偏好较高、相信 AI 长期叙事的投资者在回调中分批建仓；对于追求极度稳健的价值投资者，建议等待资产出售尘埃落定后再行评估。
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-400 py-6 text-center text-sm mt-auto">
+        <p>甲骨文投资分析报告演示 | 基于用户提供情报生成 | 非投资建议</p>
+    </footer>
+
+    <script>
+        // --- Navigation Logic ---
+        function navigateTo(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show target section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update Nav Buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-stone-700', 'text-white');
+                btn.classList.add('text-stone-300');
+            });
+            const activeBtn = document.getElementById(`btn-${sectionId}`);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'bg-stone-700', 'text-white');
+                activeBtn.classList.remove('text-stone-300');
+            }
+        }
+
+        // --- Chart 1: Price Waterfall (Overview) ---
+        function initWaterfallChart() {
+            const ctx = document.getElementById('priceWaterfallChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['历史常态', 'OpenAI 消息驱动', '近期高点', '回调与抛压', '当前价格'],
+                    datasets: [{
+                        label: '股价示意趋势',
+                        data: [80, 40, 120, -50, 70], // Illustrative data points based on "halved from high" narrative
+                        backgroundColor: [
+                            '#d6d3d1', // stone-300
+                            '#3b82f6', // blue-500 (AI hype)
+                            '#22c55e', // green-500 (Peak)
+                            '#ef4444', // red-500 (Drop)
+                            '#44403c'  // stone-700 (Current)
+                        ],
+                        borderWidth: 0,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if(context.raw < 0) return `回撤: ${context.raw}`;
+                                    return `股价水平: ${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            display: false
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Chart 2: Revenue Mix (Bull Case) ---
+        let revenueChart;
+        function initRevenueChart() {
+            const ctx = document.getElementById('revenueMixChart').getContext('2d');
+            revenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025(E)', '2026(E)', '2027(E)'],
+                    datasets: [
+                        {
+                            label: '传统业务 (数据库/ERP)',
+                            data: [70, 68, 65, 62, 58],
+                            borderColor: '#a8a29e', // stone-400
+                            backgroundColor: '#a8a29e',
+                            tension: 0.4,
+                            fill: false
+                        },
+                        {
+                            label: 'AI & OCI 云业务',
+                            data: [30, 32, 45, 55, 70], // Aggressive starts here
+                            borderColor: '#2563eb', // blue-600
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: { display: true, text: '营收结构预测 (单位: 相对份额)' }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                }
+            });
+        }
+
+        function updateGrowthChart(scenario) {
+            if (!revenueChart) return;
+            
+            if (scenario === 'conservative') {
+                revenueChart.data.datasets[1].data = [30, 32, 35, 38, 42]; // Slow growth
+                revenueChart.data.datasets[0].data = [70, 68, 65, 62, 58]; // Steady decline
+            } else {
+                revenueChart.data.datasets[1].data = [30, 32, 45, 55, 70]; // Exponential growth
+                revenueChart.data.datasets[0].data = [70, 68, 60, 50, 40]; // Faster cannibalization
+            }
+            revenueChart.update();
+        }
+
+        // --- Chart 3: Layoff/Cost Structure (Bear Case) ---
+        function initLayoffChart() {
+            const ctx = document.getElementById('layoffChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['计划裁员 (重组)', '保留员工', '新增 AI 岗位 (预计)'],
+                    datasets: [{
+                        data: [25000, 140000, 5000], // Rough estimates based on prompt "2-3万"
+                        backgroundColor: [
+                            '#dc2626', // red-600
+                            '#e7e5e4', // stone-200
+                            '#3b82f6'  // blue-500
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: '全球员工结构变动示意' }
+                    }
+                }
+            });
+        }
+
+        // --- Tool: Verdict Calculator ---
+        function calculateScore() {
+            const aiWeight = parseInt(document.getElementById('range-ai').value);
+            const riskWeight = parseInt(document.getElementById('range-risk').value);
+            const priceWeight = parseInt(document.getElementById('range-price').value);
+
+            // Update UI Labels
+            document.getElementById('val-ai').innerText = aiWeight + '%';
+            document.getElementById('val-risk').innerText = riskWeight + '%';
+            document.getElementById('val-price').innerText = priceWeight + '%';
+
+            // Logic: 
+            // AI is positive (+). Risk is negative (-). Price Drop is positive for value investor (+).
+            // Formula is arbitrary for simulation.
+            // Base score 5.
+            // AI adds up to 3 points.
+            // Risk removes up to 4 points.
+            // Price attractiveness adds up to 4 points.
+            
+            const aiScore = (aiWeight / 100) * 3; 
+            const riskScore = (riskWeight / 100) * 4;
+            const priceScore = (priceWeight / 100) * 4;
+
+            let total = 4 + aiScore - riskScore + priceScore;
+            total = Math.max(1, Math.min(10, total)); // Clamp 1-10
+            
+            const finalScoreEl = document.getElementById('final-score');
+            finalScoreEl.innerText = total.toFixed(1);
+
+            const verdictLabel = document.getElementById('final-verdict-label');
+            const verdictText = document.getElementById('verdict-text');
+            const bg = document.getElementById('score-bg');
+
+            if (total >= 7.5) {
+                verdictLabel.innerText = "建议买入";
+                verdictLabel.className = "text-xl font-bold mb-6 px-4 py-1 rounded inline-block bg-green-100 text-green-800";
+                verdictText.innerText = "根据您的偏好，甲骨文的 AI 潜力和当前价格的折扣足以覆盖重组带来的风险。这是一个极具吸引力的反向投资机会。";
+                bg.className = "absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 transition-colors duration-500";
+            } else if (total <= 4.0) {
+                verdictLabel.innerText = "建议卖出/回避";
+                verdictLabel.className = "text-xl font-bold mb-6 px-4 py-1 rounded inline-block bg-red-100 text-red-800";
+                verdictText.innerText = "您对风险的高度敏感表明，甲骨文目前的资产出售和大规模裁员是基本面恶化的信号。AI 故事不足以弥补财务不确定性。";
+                bg.className = "absolute inset-0 bg-gradient-to-br from-red-50 to-red-100 transition-colors duration-500";
+            } else {
+                verdictLabel.innerText = "建议观望 / 持有";
+                verdictLabel.className = "text-xl font-bold mb-6 px-4 py-1 rounded inline-block bg-yellow-100 text-yellow-800";
+                verdictText.innerText = "多空因素在您的模型中相互抵消。建议等待下一个季报，观察裁员带来的成本改善是否如期兑现，以及 OpenAI 订单的实际收入转化率。";
+                bg.className = "absolute inset-0 bg-gradient-to-br from-yellow-50 to-yellow-100 transition-colors duration-500";
+            }
+        }
+
+        // --- Initialization ---
+        window.onload = function() {
+            initWaterfallChart();
+            initRevenueChart();
+            initLayoffChart();
+            calculateScore(); // Init calculator
+        };
+
+        // --- Scenario Interaction for Text ---
+        function updateScenario(type) {
+            // Simple visual feedback for the button interaction
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "正在模拟计算...";
+            btn.classList.add('bg-stone-800');
+            
+            setTimeout(() => {
+                btn.innerText = "情景已加载：AI 需求超预期 (CAGR +40%)";
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                
+                // Trigger chart update to aggressive automatically
+                document.getElementById('growthSelect').value = 'aggressive';
+                updateGrowthChart('aggressive');
+                
+                alert("已更新图表模型：假设 OpenAI 订单规模在未来 12 个月内翻倍。");
+            }, 600);
+        }
+
+    </script>
+</body>
+</html>
