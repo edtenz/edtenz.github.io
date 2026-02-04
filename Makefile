@@ -1,4 +1,8 @@
 
+.PHONY init:
+init:
+	git submodule update --init --recursive
+
 .PHONY run:
 run:
 	@echo "Running hugo server in debug mode..."
