@@ -14,7 +14,12 @@ deploy:
 	@echo "Deploying hugo site to GitHub Pages..."
 	git push origin master
 
-.PHONY new:
-new:
+.PHONY new-post:
+new-post:
 	@echo "Creating new post..."
 	hugo new posts/new-post.md
+
+.PHONY new-deep:
+new-deep:
+	@echo "Creating new deep post..."
+	hugo new deep/new-deep.html

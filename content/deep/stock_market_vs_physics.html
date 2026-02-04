@@ -1,0 +1,657 @@
+---
+title: "芒格的思维模型：股市与物理学的区别"
+date: 2026-02-05T01:13:58+08:00
+summary: "以芒格“物理学嫉妒”为切入，解释市场的二级混沌与反馈机制，并用热带雨林隐喻展示生态竞争，最终落到价值投资的微观确定性与安全边际。"
+---
+
+<!-- Chosen Palette: Warm Stone & Earth (Minimalistic Warm Neutrals). Background: Warm Off-White (#FAFAF9). Accents: Muted Amber (#D97706), Sage Green (#65A30D), Slate Blue (#475569). Designed for calm harmony and readability. -->
+
+<!-- Application Structure Plan:
+    1.  **Hero Section**: Establishes the core conflict: "Physics vs. Ecology". immediate engagement with the central thesis.
+    2.  **Section 1: The Core Distinction (Physics Envy)**:
+        * **Goal**: Visually contrast Level 1 Chaos (Physics) with Level 2 Chaos (Markets).
+        * **Interaction**: A "System Switcher" toggle that updates a Radar Chart to show how attributes (Predictability, Feedback, Emotion) shift between the two systems.
+    3.  **Section 2: The Mechanism (Level 2 Chaos & Feedback)**:
+        * **Goal**: Explain *why* prediction fails (Reflexivity).
+        * **Interaction**: A step-by-step interactive flow diagram (HTML based) that demonstrates the "Observer Effect" in markets.
+        * **Viz**: Plotly Histogram comparing "Normal Distribution" (Physics expectation) with "Fat Tail" (Market reality).
+    4.  **Section 3: The Ecological Metaphor (The Rainforest)**:
+        * **Goal**: Illustrate the "Evolutionary" nature of markets.
+        * **Interaction**: Time-series view of industry dominance to show "Survival of the Fittest".
+    5.  **Section 4: The Strategy (Value Investing)**:
+        * **Goal**: Provide actionable takeaways (Circle of Competence, Margin of Safety).
+        * **Interaction**: An interactive "Margin of Safety" simulator where users adjust price vs. value to see potential outcomes.
+    **Rationale**: This structure moves from *Theory* (Physics vs Market) to *Mechanism* (Why it happens) to *Metaphor* (How to view it) to *Action* (What to do), mirroring the logical flow of understanding Munger's mental model.
+-->
+
+<!-- Visualization & Content Choices:
+    1.  **Radar Chart (Chart.js)**: Used to compare multi-dimensional attributes of "Physics" vs "Market" (e.g., Stability, Predictability). Best for showing the *shape* of the difference.
+    2.  **Interactive Flow Diagram (HTML/Tailwind)**: Used for the "Feedback Loop". No SVG/Mermaid. Uses styled Divs and JS to animate the logic flow of Reflexivity.
+    3.  **Histogram (Plotly.js)**: Used to show Probability Distributions. Plotly is superior for statistical viz. Compares Bell Curve vs. Fat Tails to explain "Risk".
+    4.  **Stacked Area Chart (Chart.js)**: Used for "Evolution". Shows how different sectors (Species) grow and die over time, fitting the "Rainforest" analogy.
+    5.  **Bar/Gauge Visualization (Chart.js + HTML)**: For Margin of Safety. Allows user to "feel" the concept of buffer zones.
+    * **Confirmation**: All charts use Canvas. Icons use Unicode/HTML. No SVG or Mermaid used.
+-->
+
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芒格的思维模型：股市与物理学的区别</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <style>
+        /* Custom Font Setup */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FAFAF9; /* Warm Stone 50 */
+            color: #44403C; /* Stone 700 */
+        }
+
+        /* --- Chart Container Styling (Mandatory) --- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Max width to prevent stretching */
+            height: 400px;    /* Base height */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #FFFFFF;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+                max-height: 300px;
+            }
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+                max-height: 500px;
+            }
+        }
+
+        /* Utility for Flow Diagram Arrows using CSS borders (No SVG) */
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #A8A29E;
+            margin: 0.5rem auto;
+        }
+
+        .arrow-right {
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid #A8A29E;
+            margin: auto 0.5rem;
+        }
+
+        /* Interactive Element Styling */
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .active-tab {
+            background-color: #D97706; /* Amber 600 */
+            color: white;
+        }
+        .inactive-tab {
+            background-color: #E7E5E4; /* Stone 200 */
+            color: #57534E;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl">🧠</span>
+                    <span class="font-bold text-xl tracking-tight text-stone-800">芒格思维模型</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#physics-envy" class="text-stone-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">物理学嫉妒</a>
+                    <a href="#chaos-theory" class="text-stone-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">二级混沌</a>
+                    <a href="#ecosystem" class="text-stone-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">雨林生态</a>
+                    <a href="#strategy" class="text-stone-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">投资策略</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-[#FAFAF9] pt-16 pb-12 lg:pt-24 lg:pb-16 text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-semibold mb-6">
+                Charlie Munger 的核心洞察
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-stone-800 mb-6 leading-tight">
+                股市不是物理机械<br>而是一座<span class="text-amber-600 decoration-4 underline-offset-4">热带雨林</span>
+            </h1>
+            <p class="text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                为什么用牛顿定律无法预测股价？为什么宏观预测往往失效？<br>探索芒格关于“物理学嫉妒”与“复杂自适应系统”的深刻智慧。
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#physics-envy" class="bg-stone-800 text-white px-8 py-3 rounded-lg font-medium hover:bg-stone-700 transition-all shadow-lg hover:shadow-xl">
+                    开始探索
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24">
+
+        <!-- SECTION 1: Physics Envy (Comparisons) -->
+        <section id="physics-envy" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">一、物理学嫉妒 (Physics Envy)</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                    芒格批评经济学界存在一种渴望像物理学一样精确的倾向。然而，物理世界（一级系统）与金融市场（二级系统）有着本质的区别。
+                    试图用简单的数学公式去套用复杂的市场，会导致“确认误判”。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Textual Analysis -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                        <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center">
+                            <span class="text-2xl mr-2">🪐</span> 物理世界 (Physics)
+                        </h3>
+                        <ul class="space-y-2 text-stone-600 text-sm">
+                            <li>• <strong>一级混沌</strong>: 预测不会改变结果。</li>
+                            <li>• <strong>规则</strong>: 牛顿定律，永恒不变。</li>
+                            <li>• <strong>系统</strong>: 机械的，像钟表。</li>
+                            <li>• <strong>数学</strong>: 精确，可重复验证。</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                        <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center">
+                            <span class="text-2xl mr-2">🌴</span> 股市生态 (Market)
+                        </h3>
+                        <ul class="space-y-2 text-stone-600 text-sm">
+                            <li>• <strong>二级混沌</strong>: 预测会反过来影响结果。</li>
+                            <li>• <strong>规则</strong>: 博弈论，随参与者变化。</li>
+                            <li>• <strong>系统</strong>: 有机的，像热带雨林。</li>
+                            <li>• <strong>数学</strong>: 模糊，概率分布不稳定。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Radar Chart -->
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-6 border border-stone-100">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-stone-700">系统属性对比雷达图</h3>
+                        <div class="flex bg-stone-100 rounded-lg p-1">
+                            <button onclick="updateRadar('physics')" id="btn-physics" class="px-4 py-1 rounded-md text-sm font-medium transition-all active-tab">物理视角</button>
+                            <button onclick="updateRadar('market')" id="btn-market" class="px-4 py-1 rounded-md text-sm font-medium transition-all inactive-tab">市场视角</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="systemComparisonChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-stone-500 mt-4 bg-stone-50 p-2 rounded">
+                        <span id="radar-caption">物理系统拥有极高的可预测性和稳定性，且不受人类情绪影响。</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Level 2 Chaos (The Mechanism) -->
+        <section id="chaos-theory" class="scroll-mt-24 bg-white rounded-2xl p-8 shadow-sm border border-stone-100">
+            <div class="mb-10">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">二、二级混沌与反馈回路</h2>
+                <div class="w-20 h-1 bg-amber-500 rounded-full mb-6"></div>
+                <p class="text-lg text-stone-600">
+                    在股市中，观测者本身就是参与者。当伯克希尔买入股票时，股价本身就会发生变化。这种<strong>反身性（Reflexivity）</strong>导致任何基于历史数据的精确预测都可能迅速失效。
+                </p>
+            </div>
+
+            <!-- Custom Interactive Flow Diagram -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Left: The Logic Flow -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6 text-stone-700">为什么预测会失效？</h3>
+                    <div class="space-y-2">
+                        <!-- Step 1 -->
+                        <div id="flow-step-1" class="bg-stone-50 p-4 rounded-lg border-l-4 border-stone-300 transition-all duration-500">
+                            <h4 class="font-bold text-stone-800">1. 形成预测</h4>
+                            <p class="text-sm text-stone-600">模型显示某公司股票被低估，预测股价将上涨。</p>
+                        </div>
+                        <div class="arrow-down"></div>
+                        
+                        <!-- Step 2 -->
+                        <div id="flow-step-2" class="bg-stone-50 p-4 rounded-lg border-l-4 border-stone-300 transition-all duration-500 opacity-50">
+                            <h4 class="font-bold text-stone-800">2. 参与者行动</h4>
+                            <p class="text-sm text-stone-600">大量资金根据预测涌入，买入该股票。</p>
+                        </div>
+                        <div class="arrow-down"></div>
+
+                        <!-- Step 3 -->
+                        <div id="flow-step-3" class="bg-stone-50 p-4 rounded-lg border-l-4 border-stone-300 transition-all duration-500 opacity-50">
+                            <h4 class="font-bold text-stone-800">3. 现实改变 (二级效应)</h4>
+                            <p class="text-sm text-stone-600">买入行为推高了股价，估值不再便宜，原本的预测模型失效。</p>
+                        </div>
+
+                        <button onclick="animateFlow()" class="mt-6 w-full py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition shadow-md font-bold">
+                            演示反馈回路
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: The Statistical Result (Fat Tails) -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6 text-stone-700">结果：肥尾效应 (Fat Tails)</h3>
+                    <p class="text-sm text-stone-500 mb-4">
+                        物理学通常假设正态分布（钟形曲线），但股市充满了极端的“黑天鹅”事件。试图用标准差来衡量风险是危险的。
+                    </p>
+                    <div class="chart-container" style="height: 300px;">
+                        <div id="distributionChart" class="w-full h-full"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: The Ecosystem (Evolution) -->
+        <section id="ecosystem" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">三、热带雨林：物竞天择</h2>
+                <div class="w-20 h-1 bg-green-600 mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                    芒格认为最贴切的类比是生物学。公司占据“生态位”，相互博弈。环境变化导致旧霸主灭绝，新物种崛起。
+                    这是一个<strong>进化</strong>的过程，而不是机械循环。
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                <div class="flex justify-between items-end mb-4">
+                    <h3 class="font-bold text-stone-700">市场生态位的演变 (1960 - 2024)</h3>
+                    <span class="text-xs text-stone-400">数据为模拟趋势展示</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="evolutionChart"></canvas>
+                </div>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 bg-stone-50 rounded-lg">
+                        <span class="text-2xl block mb-2">🏭</span>
+                        <h4 class="font-bold text-stone-700">传统工业</h4>
+                        <p class="text-xs text-stone-500">如同恐龙，体量巨大但适应性较慢，占比逐渐萎缩。</p>
+                    </div>
+                    <div class="p-4 bg-stone-50 rounded-lg">
+                        <span class="text-2xl block mb-2">⚡</span>
+                        <h4 class="font-bold text-stone-700">能源/金融</h4>
+                        <p class="text-xs text-stone-500">如同哺乳动物，周期性强，随环境资源波动。</p>
+                    </div>
+                    <div class="p-4 bg-stone-50 rounded-lg">
+                        <span class="text-2xl block mb-2">💻</span>
+                        <h4 class="font-bold text-stone-700">信息科技</h4>
+                        <p class="text-xs text-stone-500">如同迅猛进化的新物种，迅速占据顶级生态位。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Strategy (Actionable Advice) -->
+        <section id="strategy" class="scroll-mt-24 bg-stone-800 text-stone-100 rounded-2xl p-8 lg:p-12 shadow-xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">四、如何在丛林中生存？</h2>
+                    <p class="text-stone-300 text-lg mb-8">
+                        既然无法通过物理公式预测未来，芒格建议我们放弃宏观预测，转而专注于微观的确定性。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-2xl">🎯</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">坚守能力圈 (Circle of Competence)</h3>
+                                <p class="text-stone-400 text-sm mt-1">你不需要了解所有的公司。你只需要正确评估你能力范围内的那一小部分公司。弄清楚边界在哪里至关重要。</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-2xl">🛡️</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">安全边际 (Margin of Safety)</h3>
+                                <p class="text-stone-400 text-sm mt-1">这是工程学的概念。如果你建一座桥，不仅要让它能承受额定载重，还要留出巨大的冗余。买股票也是一样，必须在价格远低于价值时买入。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Strategy Tool -->
+                <div class="bg-stone-900 rounded-xl p-6 border border-stone-700">
+                    <h3 class="font-bold text-stone-200 mb-4 border-b border-stone-700 pb-2">安全边际模拟器</h3>
+                    
+                    <div class="mb-6 space-y-4">
+                        <div>
+                            <label class="flex justify-between text-sm text-stone-400 mb-1">
+                                <span>评估内在价值 (Intrinsic Value)</span>
+                                <span class="text-white font-mono">$100</span>
+                            </label>
+                            <div class="w-full bg-stone-700 h-2 rounded-full overflow-hidden">
+                                <div class="bg-green-500 h-full w-full"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="flex justify-between text-sm text-stone-400 mb-1">
+                                <span>当前市场价格 (Market Price)</span>
+                                <span id="price-display" class="text-white font-mono">$80</span>
+                            </label>
+                            <input type="range" id="price-slider" min="50" max="150" value="80" class="w-full h-2 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-800 rounded-lg p-4 text-center">
+                        <p class="text-sm text-stone-400 mb-2">安全边际 (Buffer)</p>
+                        <div id="safety-margin-text" class="text-3xl font-bold text-amber-500 mb-2">20%</div>
+                        <p id="decision-text" class="text-sm font-medium text-stone-300">观望中...</p>
+                    </div>
+
+                    <div class="mt-4 text-xs text-stone-500">
+                        *芒格提醒：价格本身会影响你的判断，需保持理性。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200 py-8 text-center">
+        <p class="text-stone-500 text-sm">Based on the Wisdom of Charlie Munger.</p>
+        <p class="text-stone-400 text-xs mt-2">Generated for educational exploration.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Radar Chart Logic (Physics vs Market) ---
+        const radarCtx = document.getElementById('systemComparisonChart').getContext('2d');
+        
+        const radarData = {
+            labels: ['可预测性', '稳定性', '数学精确度', '人类情绪影响', '反馈回路强度'],
+            datasets: [{
+                label: '当前视角',
+                data: [90, 95, 90, 5, 5], // Default Physics
+                fill: true,
+                backgroundColor: 'rgba(71, 85, 105, 0.2)', // Slate
+                borderColor: 'rgb(71, 85, 105)',
+                pointBackgroundColor: 'rgb(71, 85, 105)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(71, 85, 105)'
+            }]
+        };
+
+        const radarConfig = {
+            type: 'radar',
+            data: radarData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: { line: { borderWidth: 3 } },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: {
+                            font: { size: 14, family: "'Noto Sans SC', sans-serif" },
+                            color: '#44403C'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        };
+
+        const comparisonChart = new Chart(radarCtx, radarConfig);
+
+        function updateRadar(mode) {
+            const btnPhysics = document.getElementById('btn-physics');
+            const btnMarket = document.getElementById('btn-market');
+            const caption = document.getElementById('radar-caption');
+
+            if (mode === 'physics') {
+                // Update Data for Physics
+                comparisonChart.data.datasets[0].data = [90, 95, 90, 5, 5];
+                comparisonChart.data.datasets[0].backgroundColor = 'rgba(71, 85, 105, 0.2)';
+                comparisonChart.data.datasets[0].borderColor = 'rgb(71, 85, 105)';
+                comparisonChart.data.datasets[0].pointBackgroundColor = 'rgb(71, 85, 105)';
+                
+                // Update UI
+                btnPhysics.classList.add('active-tab');
+                btnPhysics.classList.remove('inactive-tab');
+                btnMarket.classList.remove('active-tab');
+                btnMarket.classList.add('inactive-tab');
+                caption.innerText = "物理系统（如行星运行）：拥有极高的可预测性和稳定性，且不受人类情绪影响。";
+            } else {
+                // Update Data for Market
+                comparisonChart.data.datasets[0].data = [10, 20, 30, 95, 95];
+                comparisonChart.data.datasets[0].backgroundColor = 'rgba(217, 119, 6, 0.2)'; // Amber
+                comparisonChart.data.datasets[0].borderColor = 'rgb(217, 119, 6)';
+                comparisonChart.data.datasets[0].pointBackgroundColor = 'rgb(217, 119, 6)';
+
+                // Update UI
+                btnMarket.classList.add('active-tab');
+                btnMarket.classList.remove('inactive-tab');
+                btnPhysics.classList.remove('active-tab');
+                btnPhysics.classList.add('inactive-tab');
+                caption.innerText = "股市生态：极度受情绪和反馈回路影响，数学精确度低，不可预测性高。";
+            }
+            comparisonChart.update();
+        }
+
+        // --- 2. Interactive Flow Animation ---
+        function animateFlow() {
+            const step1 = document.getElementById('flow-step-1');
+            const step2 = document.getElementById('flow-step-2');
+            const step3 = document.getElementById('flow-step-3');
+
+            // Reset
+            step1.classList.remove('border-amber-500', 'bg-amber-50');
+            step1.classList.add('border-stone-300', 'bg-stone-50');
+            step2.style.opacity = '0.5';
+            step2.classList.remove('border-amber-500', 'bg-amber-50');
+            step3.style.opacity = '0.5';
+            step3.classList.remove('border-amber-500', 'bg-amber-50');
+
+            // Sequence
+            setTimeout(() => {
+                step1.classList.remove('border-stone-300', 'bg-stone-50');
+                step1.classList.add('border-amber-500', 'bg-amber-50');
+            }, 100);
+
+            setTimeout(() => {
+                step2.style.opacity = '1';
+                step2.classList.remove('border-stone-300', 'bg-stone-50');
+                step2.classList.add('border-amber-500', 'bg-amber-50');
+            }, 1000);
+
+            setTimeout(() => {
+                step3.style.opacity = '1';
+                step3.classList.remove('border-stone-300', 'bg-stone-50');
+                step3.classList.add('border-red-500', 'bg-red-50');
+            }, 2000);
+        }
+
+        // --- 3. Plotly Histogram (Normal vs Fat Tail) ---
+        // Generate Data
+        const xValues = [];
+        const normalY = [];
+        const fatTailY = [];
+        
+        for (let i = -5; i <= 5; i += 0.1) {
+            xValues.push(i);
+            // Normal Distribution
+            normalY.push((1 / Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * i * i));
+            // Fat Tail (Cauchy-like representation for viz)
+            fatTailY.push(1 / (Math.PI * (1 + i * i))); 
+        }
+
+        const trace1 = {
+            x: xValues,
+            y: normalY,
+            type: 'scatter',
+            mode: 'lines',
+            name: '物理学假设 (正态)',
+            line: {color: '#94a3b8', width: 2, dash: 'dot'}
+        };
+
+        const trace2 = {
+            x: xValues,
+            y: fatTailY,
+            type: 'scatter',
+            mode: 'lines',
+            name: '股市现实 (肥尾)',
+            line: {color: '#d97706', width: 3},
+            fill: 'tozeroy',
+            fillcolor: 'rgba(217, 119, 6, 0.1)'
+        };
+
+        const layout = {
+            title: '风险分布：理论 vs 现实',
+            font: { family: 'Noto Sans SC' },
+            showlegend: true,
+            legend: { x: 0.7, y: 1 },
+            margin: { t: 40, r: 20, l: 40, b: 30 },
+            xaxis: { title: '波动幅度 (标准差)', showgrid: false },
+            yaxis: { showgrid: true, gridcolor: '#f5f5f4' },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            autosize: true
+        };
+
+        const config = { responsive: true, displayModeBar: false };
+        Plotly.newPlot('distributionChart', [trace1, trace2], layout, config);
+
+
+        // --- 4. Evolution Chart (Stacked Area) ---
+        const evoCtx = document.getElementById('evolutionChart').getContext('2d');
+        const evoData = {
+            labels: ['1960', '1970', '1980', '1990', '2000', '2010', '2020', '2024'],
+            datasets: [
+                {
+                    label: '科技 (Technology)',
+                    data: [5, 10, 15, 20, 35, 40, 50, 55],
+                    backgroundColor: 'rgba(101, 163, 13, 0.6)', // Green
+                    borderColor: 'rgba(101, 163, 13, 1)',
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: '金融 (Finance)',
+                    data: [15, 20, 25, 30, 25, 20, 15, 15],
+                    backgroundColor: 'rgba(217, 119, 6, 0.6)', // Amber
+                    borderColor: 'rgba(217, 119, 6, 1)',
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: '工业/能源 (Industrial)',
+                    data: [80, 70, 60, 50, 40, 40, 35, 30],
+                    backgroundColor: 'rgba(120, 113, 108, 0.6)', // Stone
+                    borderColor: 'rgba(120, 113, 108, 1)',
+                    fill: true,
+                    tension: 0.4
+                }
+            ]
+        };
+
+        new Chart(evoCtx, {
+            type: 'line',
+            data: evoData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { stacked: true, beginAtZero: true, max: 100, title: {display: true, text: '市值占比 %'} },
+                    x: { grid: {display: false} }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                elements: { point: { radius: 0, hitRadius: 10 } }
+            }
+        });
+
+        // --- 5. Margin of Safety Calculator ---
+        const priceSlider = document.getElementById('price-slider');
+        const priceDisplay = document.getElementById('price-display');
+        const marginText = document.getElementById('safety-margin-text');
+        const decisionText = document.getElementById('decision-text');
+
+        priceSlider.addEventListener('input', (e) => {
+            const price = parseInt(e.target.value);
+            const value = 100; // Fixed intrinsic value for demo
+            
+            priceDisplay.innerText = `$${price}`;
+            
+            const margin = ((value - price) / value) * 100;
+            const marginRounded = Math.round(margin);
+
+            marginText.innerText = marginRounded + "%";
+
+            if (marginRounded > 0) {
+                 marginText.className = "text-3xl font-bold text-green-500 mb-2";
+                 marginText.innerText = "+" + marginRounded + "%";
+            } else {
+                 marginText.className = "text-3xl font-bold text-red-500 mb-2";
+                 marginText.innerText = marginRounded + "%";
+            }
+
+            if (marginRounded >= 40) {
+                decisionText.innerText = "极佳机会！(Lollapalooza)";
+                decisionText.className = "text-sm font-bold text-green-400";
+            } else if (marginRounded >= 20) {
+                decisionText.innerText = "值得考虑 (有一定的缓冲)";
+                decisionText.className = "text-sm font-bold text-green-200";
+            } else if (marginRounded > 0) {
+                decisionText.innerText = "缓冲不足 (风险较高)";
+                decisionText.className = "text-sm font-bold text-amber-400";
+            } else {
+                decisionText.innerText = "价格过高！(无安全边际)";
+                decisionText.className = "text-sm font-bold text-red-400";
+            }
+        });
+
+    </script>
+</body>
+</html>
