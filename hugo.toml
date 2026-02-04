@@ -2,6 +2,7 @@ baseURL = 'https://edtenz.github.io/'
 languageCode = 'zh-cn'
 title = "ET's cyberspace"
 theme = 'PaperMod'
+buildFuture = true
 
 [params]
   env = 'production'
