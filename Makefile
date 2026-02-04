@@ -1,29 +1,57 @@
 
-.PHONY init:
+.PHONY: help
+help:
+	@echo "Available targets:"
+	@echo "  init         Initialize git submodules"
+	@echo "  run          Run Hugo server with drafts"
+	@echo "  run-prod     Run Hugo server (production mode)"
+	@echo "  build        Build Hugo site (production)"
+	@echo "  build-drafts Build Hugo site (include drafts/future)"
+	@echo "  clean        Remove public/ and resources/_gen/"
+	@echo "  deploy       Push to origin master"
+	@echo "  new-post     Create posts/new-post.md"
+	@echo "  new-deep     Create deep/new-deep.html"
+
+.PHONY: init
 init:
 	git submodule update --init --recursive
 
-.PHONY run:
+.PHONY: run
 run:
-	@echo "Running hugo server in debug mode..."
+	@echo "Running Hugo server with drafts..."
 	hugo server -D
 
-.PHONY build:
+.PHONY: run-prod
+run-prod:
+	@echo "Running Hugo server (production mode)..."
+	hugo server
+
+.PHONY: build
 build:
-	@echo "Building hugo site..."
+	@echo "Building Hugo site (production)..."
 	hugo
 
-.PHONY deploy:
+.PHONY: build-drafts
+build-drafts:
+	@echo "Building Hugo site (include drafts/future)..."
+	hugo -D -F
+
+.PHONY: clean
+clean:
+	@echo "Cleaning public/ and resources/_gen/..."
+	rm -rf public resources/_gen
+
+.PHONY: deploy
 deploy:
-	@echo "Deploying hugo site to GitHub Pages..."
+	@echo "Deploying Hugo site to GitHub Pages..."
 	git push origin master
 
-.PHONY new-post:
+.PHONY: new-post
 new-post:
 	@echo "Creating new post..."
 	hugo new posts/new-post.md
 
-.PHONY new-deep:
+.PHONY: new-deep
 new-deep:
 	@echo "Creating new deep post..."
 	hugo new deep/new-deep.html
