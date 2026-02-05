@@ -5,7 +5,6 @@ summary: "进入2026年，全球宏观经济体系正处于一场深远的范式
 ---
 
 
-# 2026年全球债务海啸与财富转移
 
 进入2026年，全球宏观经济体系正处于一场深远的范式转移之中。这种转变的核心在于，以美国国债为代表的全球主权债务规模已达到一个前所未有的临界点。根据最新财政数据，美国国家债务在2025财年末已飙升至37.9万亿美元，约占国内生产总值（GDP）的99.8% 。这一数字不仅在绝对规模上令人震惊，更因其背后的结构性失衡——即利息支出与财政收入增长的严重脱节——而引发了市场对“纸面资产”信用基石的广泛质疑 。
 
@@ -17,9 +16,7 @@ summary: "进入2026年，全球宏观经济体系正处于一场深远的范式
 
 债务占GDP比重的动态变化可以用经典的债务可持续性方程来描述：
 
-$$
-\Delta d_t = (r_t - g_t) d_{t-1} - p_t
-$$
+![math-mode](https://private-user-images.githubusercontent.com/6406562/545463482-7ffd181d-958a-4262-9efc-d1e7b8edb9a9.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzAyODE5NjgsIm5iZiI6MTc3MDI4MTY2OCwicGF0aCI6Ii82NDA2NTYyLzU0NTQ2MzQ4Mi03ZmZkMTgxZC05NThhLTQyNjItOWVmYy1kMWU3YjhlZGI5YTkucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwNSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDVUMDg1NDI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NGZjNWU0N2E5ZjNhOWU2YmVjZGYwNjFiMDA1NzliNjdmOGY2ZjdlZDFkY2EwNDBiYWYwOGFhOTAyMGFjNWVlMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.zMm9qZI2GawepTWBrGXb35n8GuS9hNKv18Mq2RFiIQQ)
 
 其中：
 
@@ -165,81 +162,4 @@ $$
 未来五年，全球财富将经历从“相信政府承诺”的人向“拥有真实资产”的人的剧烈转移。通货膨胀将不再是周期性的波动，而是解决债务困境的一种政策工具。在这种环境下，黄金的战略储备地位将进一步巩固，而具有强大护城河的企业股权将成为创造实际收益的核心引擎。
 
 正如历史所揭示的，在每一场伟大的债务危机中，最终的胜利者并非持有最多货币符号的人，而是那些理解货币本质，并将财富锚定在土地、稀缺实物和卓越生产力之上的预见者。这不仅是一场关于生存的竞赛，更是一场关于对全球金融底层逻辑重新定义的深刻认知革命。
-
-### **Works cited**
-
-1. The federal government booked a $1.8 trillion deficit last year, https://www.washingtonexaminer.com/premium/4433850/trump-congress-poised-add-more-red-ink-federal-government-deficit/
-
-2. Interest Costs on the National Debt - Peterson Foundation, https://www.pgpf.org/programs-and-projects/fiscal-policy/monthly-interest-tracker-national-debt/
-
-3. Interest on the Debt to Grow Past $1 Trillion Next Year-2025-02-06, https://www.crfb.org/blogs/interest-debt-grow-past-1-trillion-next-year
-
-4. Treasury Presentation to TBAC, https://home.treasury.gov/system/files/221/CombinedChargesforArchivesQ42025.pdf
-
-5. What Is the National Debt Costing Us? - Peterson Foundation, https://www.pgpf.org/article/what-is-the-national-debt-costing-us/
-
-6. Report to the Secretary of the Treasury from the Treasury Borrowing Advisory Committee, https://home.treasury.gov/news/press-releases/sb0385
-
-7. IMF / OCTOBER 2025 GLOBAL FINANCIAL STABILITY REPORT | UNifeed - UN Media, https://media.un.org/unifeed/en/asset/d347/d3471435
-
-8. Executive Summary in: Global Financial Stability Report, October 2025 - IMF eLibrary, https://www.elibrary.imf.org/display/book/9798229023184/SUM001.xml
-
-9. Financial Repression: Then and Now | PIIE, https://www.piie.com/commentary/op-eds/financial-repression-then-and-now
-
-10. What is financial repression – and should countries embrace it as debt climbs?, https://www.weforum.org/stories/2025/03/financial-repression-debt-management/
-
-11. Did the U.S. Really Grow Out of Its World War II Debt? in - IMF eLibrary, https://www.elibrary.imf.org/view/journals/001/2024/005/article-A001-en.xml
-
-12. Post-World War II debt reduction - Office for Budget Responsibility, https://obr.uk/box/post-world-war-ii-debt-reduction/
-
-13. Beware of Financial Repression: Lessons from History - Intereconomics, https://www.intereconomics.eu/contents/year/2019/number/4/article/beware-of-financial-repression-lessons-from-history.html
-
-14. Modern Monetary Theory - Wikipedia, https://en.wikipedia.org/wiki/Modern\_Monetary\_Theory
-
-15. Deficit Tracker - Bipartisan Policy Center, https://bipartisanpolicy.org/report/deficit-tracker/
-
-16. Global Financial Stability Report, October 2025: Shifting Ground ..., https://www.imf.org/en/publications/gfsr/issues/2025/10/14/global-financial-stability-report-october-2025
-
-17. How Has Treasury Market Liquidity Fared in 2025? - Liberty Street Economics, https://libertystreeteconomics.newyorkfed.org/2025/11/how-has-treasury-market-liquidity-fared-in-2025/
-
-18. What's behind Japan's High Government Debt? - Federal Reserve Bank of St. Louis, https://www.stlouisfed.org/on-the-economy/2025/apr/what-is-behind-japan-high-government-debt
-
-19. Foreign Holdings of Federal Debt | Congress.gov, https://www.congress.gov/crs-product/RS22331
-
-20. US dollar's share of global reserves shrinks amid policy uncertainty - Anadolu, https://www.aa.com.tr/en/economy/us-dollars-share-of-global-reserves-shrinks-amid-policy-uncertainty/3814225
-
-21. The Projected Impact of Generative AI on Future Productivity Growth ..., https://budgetmodel.wharton.upenn.edu/issues/2025/9/8/projected-impact-of-generative-ai-on-future-productivity-growth
-
-22. Full article: The U.S. Is Betting the Economy on 'Scaling' AI: Where Is the Intelligence When One Needs It? - Taylor & Francis, https://www.tandfonline.com/doi/full/10.1080/08911916.2026.2616133
-
-23. Global Economic Outlook 2026: New Engines of Growth in a Fragmenting World | Peak Re, https://peak-re.com/en/knowledge-hub-insights/global-economic-outlook-2026-new-engines-of-growth-in-a-fragmenting-world/
-
-24. Currency Composition of Official Foreign Exchange Reserves - IMF Data Brief, https://data.imf.org/en/news/imf%20data%20brief%20december%2019
-
-25. WGC: Gold Demand Tops 5000 Tons for the First Time on Investment, Central Bank Buying, https://investingnews.com/gold-demand-hits-5000-tons/
-
-26. Central Banks - World Gold Council, https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025/central-banks
-
-27. Central bank gold statistics: Buying momentum continues into November | Post by Marissa Salim | Gold Focus blog, https://www.gold.org/goldhub/gold-focus/2026/01/central-bank-gold-statistics-buying-momentum-continues-november
-
-28. World Gold Council | The Authority on Gold, https://www.gold.org/
-
-29. What we can learn about inflation from a humble Chocolate Candy? - 8VantEdge, https://8vantedge.com/what-we-can-learn-about-inflation-from-a-humble-chocolate-candy/
-
-30. Pricing a Box of Candy - Warren Buffett & See's - GuruFocus, https://www.gurufocus.com/news/229239/pricing-a-box-of-candy-warren-buffett-sees?mobile=true
-
-31. Understanding Pricing Power: Definition, Impact, and Examples, https://www.investopedia.com/terms/p/pricingpower.asp
-
-32. Gold vs S\&P 500: Inflation Impact on Asset Ratios - Discovery Alert, https://discoveryalert.com.au/gold-equity-relationship-inflation-2025/
-
-33. Hedging against inflation – gold or real estate? - Bennelong Funds Management, https://www.bennelongfunds.com/sites/default/files/2022-04/Quay%20Investment%20Perspectives%2077%20-%20Hedging%20against%20inflation%20%28Apr%202022%29.pdf
-
-34. Charted: Asset Class Returns Across Eras (1990–2025) - Visual Capitalist, https://www.visualcapitalist.com/charted-asset-class-returns-across-eras-1990-2025/
-
-35. Why Real Estate Beats Gold As Your Best Inflation Hedge In 2025 | Primior Group, https://primior.com/why-real-estate-beats-gold-as-your-best-inflation-hedge-in-2025/
-
-36. Stocks vs. Gold and Silver - Updated Chart - LongtermTrends, https://www.longtermtrends.com/stocks-vs-gold-comparison/
-
-37. Is Now a Good Time to Buy Gold After the Rebound?, https://www.ebc.com/forex/is-now-a-good-time-to-buy-gold-after-the-rebound
-
 
