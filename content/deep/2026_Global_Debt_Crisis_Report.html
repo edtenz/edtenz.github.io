@@ -1,0 +1,585 @@
+---
+title: "2026：债务海啸与财富大洗牌"
+date: 2026-02-05T08:15:05Z
+summary: "聚焦2026年美债危机引发的全球财富洗牌。剖析债务庞氏化背景下，政府必将通过高通胀“隐形赖账”的逻辑；警示长债与现金的购买力缩水风险；并提出增配优质股权、核心房产及黄金等“硬资产”的实战建议，助您在宏观震荡中保卫财富。"
+---
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026：债务海啸与财富大洗牌 - 深度交互报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans SC', sans-serif; background-color: #fdfbf7; color: #1f2937; }
+        
+        /* Chart Container Styling - Mandatory per instructions */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constrain width for readability */
+            height: 300px;    /* Base height */
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+        /* Animation Utilities */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .nav-item.active { background-color: #e5e7eb; color: #111827; font-weight: 700; border-left: 4px solid #b91c1c; }
+        
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals (Stone/Sand) with Dark Red (Crisis) and Emerald/Gold (Solution) accents. -->
+    <!-- Application Structure Plan:
+         1. Dashboard Layout: Sidebar for navigation, Main Content Area for dynamic views.
+         2. Section 1: The Crisis (Macro Data) - Visualizing the math of the debt trap.
+         3. Section 2: The Endgame (Logic) - Interactive scenario selector (Austerity vs Default vs Inflation).
+         4. Section 3: The Impact (Simulation) - Interactive chart showing wealth erosion via inflation.
+         5. Section 4: Survival (Strategy) - Cards detailing "Hard Asset" allocation.
+         6. Analyst Note: A toggleable section for critical evaluation and balance.
+    -->
+    <!-- Visualization & Content Choices:
+         - Fiscal Chart: Bar Chart. Goal: Inform. Shows Interest vs Income to prove sustainability is impossible.
+         - Wealth Simulator: Line Chart. Goal: Change. Users adjust inflation to see "Paper Asset" value drop vs "Hard Assets".
+         - Asset Mix: Doughnut Chart. Goal: Compare. Old Portfolio vs New Survival Portfolio.
+         - Interaction: Javascript handles nav switching, slider inputs for charts, and scenario text updates.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="h-screen flex overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-stone-100 border-r border-stone-200 hidden md:flex flex-col flex-shrink-0 z-20">
+        <div class="p-6 border-b border-stone-200">
+            <h1 class="text-2xl font-bold text-red-900 tracking-tight">2026 债务海啸</h1>
+            <p class="text-xs text-stone-500 mt-2">全球财富大洗牌生存指南</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li><button onclick="navigate('crisis')" id="nav-crisis" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-200 transition-colors active">1. 核心危机：债务死结</button></li>
+                <li><button onclick="navigate('endgame')" id="nav-endgame" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-200 transition-colors">2. 必然结局：隐形赖账</button></li>
+                <li><button onclick="navigate('risk')" id="nav-risk" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-200 transition-colors">3. 最大风险：现金毒药</button></li>
+                <li><button onclick="navigate('survival')" id="nav-survival" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-200 transition-colors">4. 生存法则：拥抱硬资产</button></li>
+                <li><button onclick="navigate('tactics')" id="nav-tactics" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-200 transition-colors">5. 务实战术行动</button></li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t border-stone-200 bg-stone-50">
+            <button onclick="toggleAnalystNote()" class="w-full bg-stone-700 text-white py-2 px-4 rounded shadow hover:bg-stone-800 text-sm">💡 分析师深度评估</button>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="md:hidden fixed top-0 left-0 w-full bg-stone-100 border-b border-stone-200 z-30 p-4 flex justify-between items-center">
+        <h1 class="text-lg font-bold text-red-900">2026 债务海啸</h1>
+        <button onclick="document.querySelector('aside').classList.toggle('hidden'); document.querySelector('aside').classList.toggle('absolute'); document.querySelector('aside').classList.toggle('h-full');" class="text-stone-600 focus:outline-none">
+            ☰ 菜单
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto bg-stone-50 p-4 md:p-8 pt-20 md:pt-8 relative">
+        
+        <!-- Section 1: The Crisis -->
+        <section id="view-crisis" class="fade-in space-y-6">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">不可持续的“债务庞氏骗局”</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl">
+                    本部分揭示了2026年美国面临的财政逻辑死结。当利息支出呈指数级增长并超过关键财政收入时，传统的借贷模式宣告破产。
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Stat Cards -->
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-600">
+                        <div class="text-sm text-gray-500 uppercase font-semibold">2026年 预计美债规模</div>
+                        <div class="text-4xl font-bold text-gray-900 mt-1">37 万亿美元</div>
+                        <p class="text-sm text-red-600 mt-2">⚠ 指数级增长中</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-orange-500">
+                        <div class="text-sm text-gray-500 uppercase font-semibold">年利息支出压力 (5%利率)</div>
+                        <div class="text-4xl font-bold text-gray-900 mt-1">~2 万亿美元</div>
+                        <p class="text-sm text-gray-600 mt-2">超过军费 + 医保的总和</p>
+                    </div>
+                    <div class="bg-stone-100 p-6 rounded-lg text-sm text-gray-700 leading-relaxed">
+                        <strong class="block mb-2 text-lg">逻辑死结：</strong>
+                        政府无法通过税收覆盖利息，被迫“借新还旧”。这不再是财政赤字，而是典型的庞氏骗局模式。市场对“美债无风险”的信仰正在因黄金价格飙升和流动性枯竭而动摇。
+                    </div>
+                </div>
+
+                <!-- Chart: The Budget Trap -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">财政支出对比 (利息的吞噬效应)</h3>
+                    <div class="chart-container">
+                        <canvas id="debtChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-400 mt-4">数据来源：基于当前趋势的估算模型</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Endgame -->
+        <section id="view-endgame" class="hidden fade-in space-y-6">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">必然的结局：通货膨胀式“隐形赖账”</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl">
+                    面对无法偿还的债务大山，政府只有三条路可选。通过简单的逻辑推演，我们可以看到为什么“高通胀”是唯一的政治可行解。
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Option 1 -->
+                <button onclick="selectScenario('austerity')" class="bg-white p-6 rounded-xl border-2 border-transparent hover:border-gray-300 shadow-sm transition-all text-left group focus:ring-2 ring-gray-400">
+                    <div class="text-2xl mb-3">✂️</div>
+                    <h3 class="font-bold text-lg text-gray-800 group-hover:text-blue-600">选项 1: 还钱 (缩减开支)</h3>
+                    <p class="text-sm text-gray-500 mt-2">大幅削减福利、军费和基建。</p>
+                </button>
+                <!-- Option 2 -->
+                <button onclick="selectScenario('default')" class="bg-white p-6 rounded-xl border-2 border-transparent hover:border-gray-300 shadow-sm transition-all text-left group focus:ring-2 ring-gray-400">
+                    <div class="text-2xl mb-3">💣</div>
+                    <h3 class="font-bold text-lg text-gray-800 group-hover:text-red-600">选项 2: 赖账 (直接违约)</h3>
+                    <p class="text-sm text-gray-500 mt-2">停止支付国债利息或本金。</p>
+                </button>
+                <!-- Option 3 -->
+                <button onclick="selectScenario('inflation')" class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-md ring-2 ring-blue-100 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs px-2 py-1">必然选择</div>
+                    <div class="text-2xl mb-3">💸</div>
+                    <h3 class="font-bold text-lg text-blue-900">选项 3: 通胀 (隐形赖账)</h3>
+                    <p class="text-sm text-blue-700 mt-2">美联储印钞买债，稀释债务价值。</p>
+                </button>
+            </div>
+
+            <!-- Interactive Logic Display -->
+            <div class="bg-stone-100 p-8 rounded-xl border border-stone-200">
+                <h3 id="scenario-title" class="text-xl font-bold text-gray-900 mb-3">为什么选择“通胀”？</h3>
+                <div id="scenario-content" class="text-gray-700 leading-relaxed space-y-4">
+                    <p>这是政府唯一的出路。通过<strong>债务货币化</strong>（央行印钱买国债），人为制造高通胀。</p>
+                    <ul class="list-disc list-inside space-y-2 ml-2">
+                        <li><strong>机制：</strong> 用贬值的货币偿还旧债。</li>
+                        <li><strong>实质：</strong> 向所有现金和债券持有者征收“隐形税”。</li>
+                        <li><strong>结果：</strong> 名义上没有违约，但你的钱购买力被“偷”走了。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Risk -->
+        <section id="view-risk" class="hidden fade-in space-y-6">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">最大的风险：现金与长债</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl">
+                    在通胀稀释债务的背景下，长期持有现金或固定收益债券（如国债）将面临“双重屠杀”：购买力缩水和价格下跌。
+                </p>
+            </header>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">购买力缩水模拟器</h3>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0 bg-stone-50 p-3 rounded-lg">
+                        <label class="text-sm font-medium text-gray-700">假设真实通胀率:</label>
+                        <input type="range" id="inflationSlider" min="2" max="15" value="8" class="w-32 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <span id="inflationValue" class="text-red-600 font-bold w-12 text-right">8%</span>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="inflationChart"></canvas>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-4 bg-red-50 rounded border border-red-100">
+                        <h4 class="font-bold text-red-800 text-sm mb-1">现金/长债持有者</h4>
+                        <p class="text-xs text-red-700">票面收益 5% - 真实通胀 <span class="dynamic-inflation">8</span>% = <strong class="text-red-900">每年亏损 <span class="dynamic-loss">3</span>%</strong>。除此之外，若利率上升，长债价格还将面临断头台式暴跌。</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded border border-green-100">
+                        <h4 class="font-bold text-green-800 text-sm mb-1">硬资产持有者</h4>
+                        <p class="text-xs text-green-700">优质资产随通胀重新定价。价格上涨并非资产变贵了，而是分母（货币）变“水”了。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Survival -->
+        <section id="view-survival" class="hidden fade-in space-y-6">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">生存法则：拥抱“硬资产”</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl">
+                    财富不会消失，只会转移。在这一轮大洗牌中，核心策略是从“纸面资产”进化到“硬资产”。
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Asset 1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-blue-900 h-2"></div>
+                    <div class="p-6 flex-1">
+                        <div class="text-3xl mb-4">🏭</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">1. 优质股权 (核心)</h3>
+                        <p class="text-gray-600 text-sm mb-4">寻找具有<strong>极强定价权</strong>的公司。它们能将通胀成本无损转嫁给消费者。</p>
+                        <div class="bg-blue-50 p-3 rounded text-xs text-blue-800 font-medium">
+                            示例: Costco, 喜诗糖果 (See's Candies)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asset 2 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-emerald-600 h-2"></div>
+                    <div class="p-6 flex-1">
+                        <div class="text-3xl mb-4">🏙️</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">2. 核心地段房产</h3>
+                        <p class="text-gray-600 text-sm mb-4">利用<strong>固定利率贷款</strong>对抗通胀。借“贵钱”，还“便宜钱”。</p>
+                        <div class="bg-emerald-50 p-3 rounded text-xs text-emerald-800 font-medium">
+                            关键: 固定债务 = 做空货币
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asset 3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-yellow-500 h-2"></div>
+                    <div class="p-6 flex-1">
+                        <div class="text-3xl mb-4">🏆</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">3. 黄金与商品</h3>
+                        <p class="text-gray-600 text-sm mb-4">信用崩溃时的救生艇。作为保险配置，而非主要生产性资产。</p>
+                        <div class="bg-yellow-50 p-3 rounded text-xs text-yellow-800 font-medium">
+                            作用: 避险、对冲极端危机
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Allocation Chart -->
+            <div class="mt-8 bg-white p-6 rounded-lg shadow-sm flex flex-col md:flex-row items-center justify-around">
+                <div class="w-full md:w-1/2 mb-6 md:mb-0">
+                     <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">建议资产结构转型</h3>
+                     <div class="chart-container" style="height: 250px;">
+                        <canvas id="allocationChart"></canvas>
+                     </div>
+                </div>
+                <div class="w-full md:w-1/3 text-sm text-gray-600 space-y-4">
+                    <p><strong>❌ 传统 60/40 组合：</strong> 60%股票 + 40%债券。在通胀环境下，债券部分将成为累赘。</p>
+                    <p><strong>✅ 生存组合：</strong> 大幅削减债券/现金，增加抗通胀股权和实物资产权重。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Tactics -->
+        <section id="view-tactics" class="hidden fade-in space-y-6">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">务实战术行动</h2>
+                <p class="text-gray-600 leading-relaxed max-w-3xl">
+                    与其恐慌，不如行动。以下是基于报告建议的个人财务体检清单。
+                </p>
+            </header>
+
+            <div class="bg-white rounded-lg shadow-sm border border-stone-200 divide-y divide-stone-100">
+                <label class="flex items-start p-5 hover:bg-stone-50 cursor-pointer transition">
+                    <input type="checkbox" class="mt-1 w-5 h-5 text-red-600 rounded focus:ring-red-500 border-gray-300">
+                    <div class="ml-4">
+                        <span class="block text-gray-900 font-bold">1. 清理隐形债券</span>
+                        <span class="block text-sm text-gray-500 mt-1">检查养老金(401k/年金)和理财产品，调低其中的长期债券配置比例。</span>
+                    </div>
+                </label>
+                <label class="flex items-start p-5 hover:bg-stone-50 cursor-pointer transition">
+                    <input type="checkbox" class="mt-1 w-5 h-5 text-red-600 rounded focus:ring-red-500 border-gray-300">
+                    <div class="ml-4">
+                        <span class="block text-gray-900 font-bold">2. 保留良性负债</span>
+                        <span class="block text-sm text-gray-500 mt-1">不要提前偿还低息房贷。让通胀帮你稀释债务的实际价值。</span>
+                    </div>
+                </label>
+                <label class="flex items-start p-5 hover:bg-stone-50 cursor-pointer transition">
+                    <input type="checkbox" class="mt-1 w-5 h-5 text-red-600 rounded focus:ring-red-500 border-gray-300">
+                    <div class="ml-4">
+                        <span class="block text-gray-900 font-bold">3. 现金仅作氧气</span>
+                        <span class="block text-sm text-gray-500 mt-1">只保留 6-12 个月的应急生活费。多余资金必须转化为抗通胀资产。</span>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mt-8">
+                <p class="font-bold text-red-900">总结语</p>
+                <p class="text-red-800 text-sm mt-1">这不是一场瞬间的爆炸，而是一场“静悄悄的窒息”。未来5年，财富将从相信纸币的人手中，大规模转移到拥有真实资产的人手中。</p>
+            </div>
+        </section>
+
+        <!-- Analyst Note Overlay (Hidden by default) -->
+        <div id="analyst-note" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-stone-800">📊 分析师深度评估报告</h3>
+                    <button onclick="toggleAnalystNote()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+                <div class="p-6 text-gray-700 space-y-4">
+                    <p class="text-sm font-bold bg-stone-100 p-2 rounded inline-block">针对用户请求的综合评估与合理性分析</p>
+                    
+                    <div>
+                        <h4 class="font-bold text-red-700">1. 合理性分析 (Valid Points)</h4>
+                        <ul class="list-disc ml-5 text-sm space-y-1 mt-1">
+                            <li><strong>债务数学无解：</strong> 美国利息支出超过财政收入增长确实是客观事实，长期来看不可持续。</li>
+                            <li><strong>通胀是阻力最小的路径：</strong> 历史上，拥有印钞权的主权国家几乎从未选择直接违约，而是选择通胀。逻辑上这最符合政府利益。</li>
+                            <li><strong>硬资产逻辑：</strong> 在货币超发周期，稀缺资产（核心房产、垄断性股权）跑赢法币是历史常态。</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-blue-700">2. 偏颇与风险提示 (Bias & Risks)</h4>
+                        <ul class="list-disc ml-5 text-sm space-y-1 mt-1">
+                            <li><strong>低估了美元霸权：</strong> 只要全球贸易仍主要使用美元，美国就可以向全球输出通胀，延缓危机爆发时间。2026年未必是“终点”，可能是漫长衰退的开始。</li>
+                            <li><strong>忽略了技术通缩：</strong> AI和自动化带来的生产力爆发可能会大幅降低商品成本，从而抵消部分货币通胀。这可能导致“资产通胀，商品通缩”的复杂局面。</li>
+                            <li><strong>“现金无用论”的极端化：</strong> 极端的现金仓位（仅留6个月）在市场黑天鹅事件（如股市暴跌）发生时极为危险。现金不仅是氧气，也是抄底的子弹。</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-yellow-50 p-4 rounded text-sm mt-4">
+                        <strong>综合建议：</strong> 报告的核心逻辑“债务不可持续 -> 必然通胀”是成立的。但对于时间点（2026）和烈度（海啸）应保持谨慎。建议采纳其<strong>“防御性资产配置”</strong>的思路，但不要盲目加杠杆赌通胀，保持适度流动性以应对市场波动。
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-50 text-right">
+                    <button onclick="toggleAnalystNote()" class="px-4 py-2 bg-stone-700 text-white rounded hover:bg-stone-800">关闭报告</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // State Management
+        let currentInflation = 8;
+        
+        // Navigation Logic
+        function navigate(viewId) {
+            // Update Menu UI
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active', 'border-l-4', 'border-red-600', 'font-bold'));
+            document.getElementById('nav-' + viewId).classList.add('active', 'border-l-4', 'border-red-600', 'font-bold');
+            
+            // Hide all sections
+            document.querySelectorAll('main > section').forEach(el => el.classList.add('hidden'));
+            
+            // Show target section
+            document.getElementById('view-' + viewId).classList.remove('hidden');
+            
+            // Trigger specific chart updates/renders if needed when tab is shown
+            // (Charts are reactive, but good to check resize)
+        }
+
+        // Scenario Logic for Section 2
+        function selectScenario(type) {
+            const title = document.getElementById('scenario-title');
+            const content = document.getElementById('scenario-content');
+            
+            if (type === 'austerity') {
+                title.innerHTML = "选项 1：缩减开支 (政治自杀)";
+                title.className = "text-xl font-bold text-gray-600 mb-3";
+                content.innerHTML = `<p><strong>结果：行不通。</strong><br>大幅削减医保和社保会激怒选民，导致政府倒台。削减军费会动摇美国霸权根基。在政治上，没有政党敢主动选择这条路。</p>`;
+            } else if (type === 'default') {
+                title.innerHTML = "选项 2：直接违约 (金融核弹)";
+                title.className = "text-xl font-bold text-red-600 mb-3";
+                content.innerHTML = `<p><strong>结果：代价太大。</strong><br>如果美国赖账，全球金融体系瞬间崩塌，美元信用归零，美国资产被抛售。这是同归于尽的做法，只有在国家崩溃时才会发生。</p>`;
+            } else {
+                title.innerHTML = "选项 3：通胀 (必然选择)";
+                title.className = "text-xl font-bold text-blue-900 mb-3";
+                content.innerHTML = `
+                    <p>这是政府唯一的出路。通过<strong>债务货币化</strong>（央行印钱买国债），人为制造高通胀。</p>
+                    <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+                        <li><strong>机制：</strong> 用贬值的货币偿还旧债。</li>
+                        <li><strong>实质：</strong> 向所有现金和债券持有者征收“隐形税”。</li>
+                        <li><strong>结果：</strong> 名义上没有违约，但你的钱购买力被“偷”走了。</li>
+                    </ul>`;
+            }
+        }
+
+        function toggleAnalystNote() {
+            const el = document.getElementById('analyst-note');
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Chart Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Debt Budget Chart
+            const ctxDebt = document.getElementById('debtChart').getContext('2d');
+            new Chart(ctxDebt, {
+                type: 'bar',
+                data: {
+                    labels: ['国防预算', '医疗保险', '2026预计利息支出'],
+                    datasets: [{
+                        label: '年度支出 (万亿美元)',
+                        data: [0.85, 1.6, 2.0], // Approximate values based on report logic
+                        backgroundColor: ['#d1d5db', '#d1d5db', '#dc2626'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' 万亿美元';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: '万亿美元' } }
+                    }
+                }
+            });
+
+            // 2. Inflation Simulator Chart
+            const ctxInflation = document.getElementById('inflationChart').getContext('2d');
+            const years = Array.from({length: 6}, (_, i) => 2026 + i);
+            
+            const inflationChart = new Chart(ctxInflation, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: '硬资产 (随通胀增值)',
+                            data: [], // Filled dynamically
+                            borderColor: '#059669', // Emerald 600
+                            backgroundColor: '#059669',
+                            borderWidth: 3,
+                            tension: 0.3
+                        },
+                        {
+                            label: '现金/债券 (购买力)',
+                            data: [], // Filled dynamically
+                            borderColor: '#dc2626', // Red 600
+                            backgroundColor: '#dc2626',
+                            borderWidth: 3,
+                            borderDash: [5, 5],
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(0) + '% (基准)';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { title: { display: true, text: '相对价值 %' } }
+                    }
+                }
+            });
+
+            // Update function for Inflation Chart
+            function updateInflationChart(rate) {
+                const startValue = 100;
+                const cashData = [startValue];
+                const assetData = [startValue];
+                
+                // Bond Yield assumption: 5% (nominal)
+                const bondYield = 0.05;
+                
+                for (let i = 1; i < years.length; i++) {
+                    // Hard Asset: Matches inflation (Real return ~0%, Nominal return = inflation)
+                    // Actually, "Wealth Preservation" means it keeps purchasing power parity relative to inflation
+                    // Let's visualize "Real Purchasing Power".
+                    
+                    // Cash/Bond Real Value = Previous * (1 + Yield) / (1 + Inflation)
+                    let prevCash = cashData[i-1];
+                    let realCash = prevCash * (1 + bondYield) / (1 + (rate/100));
+                    cashData.push(realCash);
+                    
+                    // Hard Asset Real Value = Maintains purchasing power (roughly 100 flat)
+                    // Or strictly per source: "Wealth transfer". 
+                    // Let's show Hard Asset staying at 100 (Store of Value) vs Cash dropping.
+                    assetData.push(100);
+                }
+                
+                inflationChart.data.datasets[0].data = assetData;
+                inflationChart.data.datasets[1].data = cashData;
+                inflationChart.update();
+                
+                // Update text
+                document.getElementById('inflationValue').innerText = rate + '%';
+                document.querySelectorAll('.dynamic-inflation').forEach(e => e.innerText = rate);
+                document.querySelectorAll('.dynamic-loss').forEach(e => e.innerText = (rate - 5).toFixed(0)); // Rate - 5% Yield
+            }
+
+            // Slider Event Listener
+            const slider = document.getElementById('inflationSlider');
+            slider.addEventListener('input', (e) => updateInflationChart(e.target.value));
+            
+            // Initial Call
+            updateInflationChart(8);
+
+
+            // 3. Allocation Chart
+            const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+            new Chart(ctxAllocation, {
+                type: 'doughnut',
+                data: {
+                    labels: ['债券/现金', '优质股权', '核心房产', '黄金/商品'],
+                    datasets: [
+                        {
+                            label: '传统组合 (60/40)',
+                            data: [40, 60, 0, 0],
+                            backgroundColor: ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'],
+                            weight: 1
+                        },
+                        {
+                            label: '生存组合 (建议)',
+                            data: [10, 40, 30, 20],
+                            backgroundColor: ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'],
+                            weight: 1.5 // Outer ring
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.label + ' ' + context.parsed + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+
