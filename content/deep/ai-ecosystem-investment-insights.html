@@ -1,0 +1,620 @@
+---
+title: "AI生态系统投资洞察：超越市场共识"
+date: 2026-03-05T23:34:44+08:00
+summary: "基于真实投资复盘（Lumentum的4倍错失），本报告打破盲信权威评测的框架。我们将视线从拥挤的英伟达转向更广阔的AI生态链，基于客观的发展周期，挖掘具备1-2倍增长潜力且市值尚小的关键卡位公司。"
+---
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI生态系统投资洞察：超越市场共识</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --bg-primary: #f5f5f4; /* Warm neutral stone-100 */
+            --text-main: #1c1917; /* stone-900 */
+            --accent-primary: #0f766e; /* teal-700 */
+            --accent-secondary: #b45309; /* amber-700 */
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* * Chart Container Styling Requirement (CRITICAL)
+         * Ensures charts occupy full width, have max-width, center alignment,
+         * and controlled responsive height preventing overflow.
+         */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 450px;
+            min-height: 300px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 35vh;
+                min-height: 250px;
+            }
+        }
+
+        /* Utility classes for UI polish */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .ecosystem-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .ecosystem-node:hover, .ecosystem-node.active {
+            background-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(15, 118, 110, 0.3);
+        }
+        .ecosystem-node.active p {
+            color: #e2e8f0;
+        }
+
+        /* Hide scrollbar for clean horizontal scroll areas if any */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Warm Stone Neutrals (slate/stone) with Teal (growth/rationality) and Amber (risk/warning) accents. Minimalist and professional to reflect investment research. -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Sets the thesis (Ecosystem vs Consensus). 
+         2. Reflection (Lumentum Case Study): Uses a line chart to visualize the "sold too early" pain point, establishing the danger of relying purely on analyst targets. 
+         3. Framework (Ecosystem Transmission): Interactive HTML/CSS block diagram showing how growth flows from Core GPU to peripheral sectors. 
+         4. Opportunity Matrix: Interactive dashboard to filter and explore 1-2x potential sectors/companies, fulfilling the request for 'deep research' and risk assessment over the next year. 
+         This logical flow moves the user from past experience -> theoretical framework -> actionable future research. -->
+    <!-- Visualization & Content Choices: 
+         - Lumentum Regret Curve: Goal: Inform/Change. Viz: Chart.js Line Chart. Interaction: Hover tooltips showing user decisions vs price. Justification: Best way to show price action and timing errors. Library: Chart.js.
+         - Ecosystem Map: Goal: Organize/Relationships. Viz: CSS Grid/Flex layout of nodes. Interaction: Click to reveal investment logic below. Justification: Clearer than complex SVGs, allows modular content updates. Method: Tailwind HTML/JS.
+         - Target Matrix: Goal: Compare/Explore. Viz: Dynamic List/Cards. Interaction: Filter by sector. Justification: Allows dense information (company, logic, risk) to be digestible.
+         - NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-card px-6 py-4 flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight text-teal-800">AI Alpha Insights</div>
+        <div class="space-x-4 text-sm font-medium hidden md:block">
+            <a href="#case-study" class="hover:text-teal-600 transition">复盘反思</a>
+            <a href="#ecosystem" class="hover:text-teal-600 transition">生态位理论</a>
+            <a href="#opportunities" class="hover:text-teal-600 transition">未来机遇预判</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-5xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-stone-800 mb-6 leading-tight">
+            穿越市场共识的迷雾：<br>
+            <span class="text-teal-700">AI生态系统投资法则</span>
+        </h1>
+        <p class="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            “市场共识往往意味着你可能挣不到钱。” <br>
+            本报告基于真实投资历程（Lumentum的4倍错失），打破盲信权威评测的框架。我们将视线从拥挤的英伟达转向更广阔的AI生态链，基于客观的发展周期，挖掘具备1-2倍增长潜力且市值尚小的关键卡位公司。
+        </p>
+        <div class="flex justify-center space-x-4">
+            <a href="#case-study" class="bg-stone-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-stone-700 transition shadow-lg">查看核心复盘</a>
+            <a href="#opportunities" class="bg-teal-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-teal-500 transition shadow-lg">探索未来标的</a>
+        </div>
+    </header>
+
+    <!-- Section 1: Case Study (Lumentum) -->
+    <section id="case-study" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">案例复盘：Lumentum 启示录</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto">
+                    本节展示了由于盲从专业机构“目标价”而导致的经典踏空案例。通过回溯Lumentum从$170到$600+的真实走势，我们揭示了市场共识在指数级爆发周期中的滞后性。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2">
+                    <div class="glass-card rounded-xl p-4 md:p-6">
+                        <div class="chart-container">
+                            <canvas id="lumentumChart"></canvas>
+                        </div>
+                        <p class="text-xs text-stone-400 mt-4 text-center">图表：Lumentum 假设价格轨迹与决策节点反馈。互动操作：悬浮节点查看决策细节。</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-stone-50 border border-stone-100 rounded-xl p-6 shadow-sm">
+                        <div class="text-amber-600 font-bold mb-2 flex items-center">
+                            <span class="text-xl mr-2">!</span> 核心痛点
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">权威评测的“锚定陷阱”</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            在市值翻倍时（约$340左右），评测机构给出的目标价低于实际交易价，释放了“估值过高”的假象。基于对风险的规避卖出后，错失了后续直达$600+（累计4倍）的主升浪。
+                        </p>
+                    </div>
+                    <div class="bg-teal-50 border border-teal-100 rounded-xl p-6 shadow-sm">
+                        <div class="text-teal-700 font-bold mb-2 flex items-center">
+                            <span class="text-xl mr-2">✓</span> 认知升级
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">超越共识寻找超额收益</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            评测机构往往基于静态线性模型预测。在AI这种颠覆性技术浪潮中，机构定价滞后于产业爆发。共识可以作为参考基线，但不能作为交易的充分条件。真正的超额收益存在于“共识尚未完全形成”的认知差中。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Framework (Ecosystem) -->
+    <section id="ecosystem" class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">底层逻辑：AI生态系统的“增长传递”</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto">
+                    本节展示了AI产业的投资逻辑框架。我们不应仅盯着天花板已被看见的霸主（如英伟达），而应关注增长红利是如何沿着产业链传递的。点击下方生态系统节点，查看不同生态位的投资逻辑。
+                </p>
+            </div>
+
+            <!-- Interactive Ecosystem Map (HTML/CSS Based) -->
+            <div class="mb-12">
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <div class="ecosystem-node active bg-white border border-stone-200 rounded-lg p-4 text-center w-40 shadow-sm" data-target="core-gpu" onclick="switchEcosystem('core-gpu')">
+                        <div class="font-bold text-lg mb-1">核心算力</div>
+                        <p class="text-xs text-stone-500 font-medium">代表: 英伟达</p>
+                    </div>
+                    <div class="hidden md:flex items-center text-stone-400">➔</div>
+                    <div class="ecosystem-node bg-white border border-stone-200 rounded-lg p-4 text-center w-40 shadow-sm" data-target="mfg-test" onclick="switchEcosystem('mfg-test')">
+                        <div class="font-bold text-lg mb-1">制造与封测</div>
+                        <p class="text-xs text-stone-500 font-medium">代表: 泰瑞达/爱玛克</p>
+                    </div>
+                    <div class="hidden md:flex items-center text-stone-400">➔</div>
+                    <div class="ecosystem-node bg-white border border-stone-200 rounded-lg p-4 text-center w-40 shadow-sm" data-target="optical" onclick="switchEcosystem('optical')">
+                        <div class="font-bold text-lg mb-1">光通信网络</div>
+                        <p class="text-xs text-stone-500 font-medium">代表: Lumentum</p>
+                    </div>
+                    <div class="hidden md:flex items-center text-stone-400">➔</div>
+                    <div class="ecosystem-node bg-white border border-stone-200 rounded-lg p-4 text-center w-40 shadow-sm" data-target="edge-app" onclick="switchEcosystem('edge-app')">
+                        <div class="font-bold text-lg mb-1">边缘推理设备</div>
+                        <p class="text-xs text-stone-500 font-medium">下一阶段爆发点</p>
+                    </div>
+                </div>
+
+                <!-- Ecosystem Detail Panel -->
+                <div id="ecosystem-detail-panel" class="glass-card rounded-xl p-8 max-w-4xl mx-auto border-t-4 border-teal-600 transition-opacity duration-300">
+                    <!-- Default Content (Core GPU) -->
+                    <div id="content-core-gpu">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-stone-800">核心算力 (以英伟达为代表)</h3>
+                            <span class="bg-stone-200 text-stone-700 text-xs px-2 py-1 rounded font-bold">生态位属性：生态引擎</span>
+                        </div>
+                        <p class="text-stone-700 mb-6">作为AI生态系统的心脏，GPU提供了绝对的算力基础。它是第一波受益者，市场确定性最高。</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold text-teal-700 mb-2">投资逻辑</h4>
+                                <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                                    <li>垄断地位带来极高的毛利率。</li>
+                                    <li>生态壁垒（如CUDA）极难打破。</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-700 mb-2">局限与风险</h4>
+                                <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                                    <li><strong>市值基数过大：</strong> 已经达到万亿级别，要求其在一年内再翻1-2倍，需要极端的宏观流动性配合，概率较低。</li>
+                                    <li>增长空间边际递减，更适合作为稳定底仓，而非高爆发标的。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Cap vs Growth Potential Chart -->
+            <div class="glass-card rounded-xl p-6 mt-8">
+                <h3 class="text-xl font-bold text-center mb-6">市值基数与赔率的关系模型</h3>
+                <div class="chart-container" style="height: 35vh;">
+                    <canvas id="marketCapChart"></canvas>
+                </div>
+                <p class="text-sm text-center text-stone-500 mt-4">图表说明：低市值+关键生态位 = 更大的翻倍空间（气泡大小代表爆发潜力）。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Future Opportunities -->
+    <section id="opportunities" class="py-16 bg-stone-800 text-stone-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-white">未来一年：1-2倍增长潜力深度调研</h2>
+                <p class="text-stone-300 max-w-3xl mx-auto">
+                    本节根据AI产业发展的客观规律（从训练走向推理，从单卡走向集群网络，从芯片制造走向先进封装），筛选出处于关键环节且当前估值仍具爆发空间的赛道与标的画像。我们不仅关注机会，更明确提示风险。
+                </p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="filterOpportunities('all')" class="filter-btn active bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium transition hover:bg-teal-500 shadow-md">全部赛道</button>
+                <button onclick="filterOpportunities('packaging')" class="filter-btn bg-stone-700 text-stone-200 border border-stone-600 px-4 py-2 rounded-full text-sm font-medium transition hover:bg-stone-600">先进封测 & 制造</button>
+                <button onclick="filterOpportunities('network')" class="filter-btn bg-stone-700 text-stone-200 border border-stone-600 px-4 py-2 rounded-full text-sm font-medium transition hover:bg-stone-600">高速网络 & 光模块</button>
+                <button onclick="filterOpportunities('power')" class="filter-btn bg-stone-700 text-stone-200 border border-stone-600 px-4 py-2 rounded-full text-sm font-medium transition hover:bg-stone-600">散热与能源管理</button>
+            </div>
+
+            <!-- Opportunities Grid -->
+            <div id="opportunities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript will populate this based on data -->
+            </div>
+            
+            <div class="mt-12 bg-stone-900 rounded-xl p-6 border border-amber-900/50">
+                <h4 class="text-amber-500 font-bold mb-3 flex items-center">
+                    <span class="text-xl mr-2">⚠</span> 核心风险提示 (基于发展规律判断)
+                </h4>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-stone-400">
+                    <p><strong>1. 宏观流动性紧缩：</strong> 高成长科技股对利率高度敏感。若通胀反弹导致降息预期落空，这些公司的估值乘数将被大幅压缩，即使业绩达标也会出现杀估值现象。</p>
+                    <p><strong>2. 资本支出（CapEx）拐点：</strong> 云厂商（微软、谷歌等）的AI基础设施投资若不能在1-2年内转化为显著的软件层收入，可能导致硬件采购的周期性削减，直接打击上述设备和组件供应商。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-500 text-center py-8 border-t border-stone-800">
+        <p class="text-sm">本分析框架基于用户提供的投资复盘逻辑构建。提及的特定公司（如Lumentum、泰瑞达等）仅作为投资哲学探讨的案例和代理标的，不构成具体的财务投资建议。</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* * Application State & Data 
+         */
+        const state = {
+            currentFilter: 'all'
+        };
+
+        // Ecosystem Data for dynamic panel
+        const ecosystemData = {
+            'core-gpu': {
+                title: '核心算力 (以英伟达为代表)',
+                role: '生态引擎',
+                desc: '作为AI生态系统的心脏，GPU提供了绝对的算力基础。它是第一波受益者，市场确定性最高。',
+                logic: ['垄断地位带来极高的毛利率。', '生态壁垒（如CUDA）极难打破，短期无法被取代。'],
+                risks: ['市值基数过大，万亿级别之上实现1-2倍翻倍极其困难。', '增长空间边际递减，适合作为确定性底仓。'],
+                colorClass: 'border-teal-600'
+            },
+            'mfg-test': {
+                title: '制造、封测与测试设备 (如泰瑞达、爱玛克等)',
+                role: '产能瓶颈突破口',
+                desc: 'AI芯片极其复杂，先进制程和CoWoS先进封装产能是目前最大的瓶颈。相关测试设备（如Teradyne）和封测大厂（如Amkor）承接了GPU爆发溢出的刚性需求。',
+                logic: ['市值适中，具备较强的业绩弹性空间。', '不仅服务于英伟达，也服务于AMD及各大自研芯片（ASIC）厂商，享受整个行业的β收益。', '测试复杂度呈指数上升，设备ASP（平均售价）大幅提高。'],
+                risks: ['半导体设备具有极强的周期性。', '客户集中度往往较高，订单波动风险大。'],
+                colorClass: 'border-blue-600'
+            },
+            'optical': {
+                title: '光通信与高速网络 (如Lumentum及光模块企业)',
+                role: '数据传输大动脉',
+                desc: '大模型训练需要数万张GPU互联。算力越强，对网络带宽、低延迟的要求就越高。光模块从800G向1.6T演进的速度甚至快于摩尔定律。',
+                logic: ['业绩兑现极快，是生态链中除GPU外最早见到真实大额订单的环节。', '技术迭代快，具有先发优势和良率优势的企业可以享受极高溢价。'],
+                risks: ['技术路线更迭风险（如硅光技术的渗透可能颠覆现有格局）。', '价格战风险，技术普及后毛利率可能迅速下降。'],
+                colorClass: 'border-purple-600'
+            },
+            'edge-app': {
+                title: '边缘推理与终端应用 (手机/PC AI芯片)',
+                role: '下一周期的主战场',
+                desc: 'AI最终要从云端走向终端。随着模型压缩技术成熟，AI PC和AI手机将带动新一轮换机潮和边缘侧芯片的繁荣。',
+                logic: ['目前市场共识仍在云端算力，边缘侧的预期差较大，存在左侧建仓机会。', '出货量基数大，一旦渗透率提升，爆发力惊人。'],
+                risks: ['杀手级应用（Killer App）尚未出现，消费者买单意愿存疑。', '技术路径尚不完全明确。'],
+                colorClass: 'border-amber-600'
+            }
+        };
+
+        // Opportunities Data for the filtering grid
+        const opportunitiesData = [
+            {
+                id: '1',
+                category: 'packaging',
+                name: '先进封装代理标的 (类Amkor)',
+                thesis: '随着摩尔定律放缓，晶体管微缩成本激增。未来性能提升严重依赖2.5D/3D先进封装（如CoWoS）。这些企业市值在百亿级别，承接海量云厂商定制芯片订单，具有明显的量价齐升逻辑。',
+                target: '1-1.5倍',
+                risk: '台积电等晶圆代工厂向下游扩展封装业务带来的直接竞争挤压。',
+                tags: ['量价齐升', '中盘股']
+            },
+            {
+                id: '2',
+                category: 'packaging',
+                name: '半导体测试设备 (类Teradyne)',
+                thesis: 'AI芯片晶体管密度极高，单片故障成本巨大，导致测试时间（Test Time）显著增加。设备需求与芯片复杂度成正比。其目前估值并未完全反映下一代芯片测试的增量。',
+                target: '1倍左右',
+                risk: '传统汽车、工业半导体市场疲软拖累整体营收。',
+                tags: ['高壁垒', '周期反转']
+            },
+            {
+                id: '3',
+                category: 'network',
+                name: '硅光技术领先者 (类Lumentum/Coherent)',
+                thesis: '传统可插拔光模块在1.6T时代面临功耗瓶颈。具备硅光子（Silicon Photonics）和CPO（共封装光学）技术储备的公司，将在未来1年内迎企业资本开支的重点倾斜。从170到600的逻辑依然在产业链延伸。',
+                target: '1-2倍',
+                risk: '技术良率爬坡不及预期；来自传统低成本光模块厂的内卷。',
+                tags: ['技术破局', '高弹性']
+            },
+            {
+                id: '4',
+                category: 'power',
+                name: '液冷散热与电力基建',
+                thesis: '下一代GPU（如B200级别）单卡功耗接近1000W，传统风冷已到物理极限。液冷渗透率将从目前的低个位数跃升。处于早期爆发阶段，市场共识刚开始形成。',
+                target: '1.5-2倍',
+                risk: '方案非标准化，大客户可能随时切换技术路径或扶持备用供应商。',
+                tags: ['渗透率拐点', '基建刚需']
+            }
+        ];
+
+        /*
+         * UI Interaction Logic
+         */
+
+        // 1. Ecosystem Switcher
+        function switchEcosystem(targetId) {
+            // Update active state of buttons
+            document.querySelectorAll('.ecosystem-node').forEach(node => {
+                node.classList.remove('active');
+            });
+            document.querySelector(`.ecosystem-node[data-target="${targetId}"]`).classList.add('active');
+
+            // Fetch data
+            const data = ecosystemData[targetId];
+            const panel = document.getElementById('ecosystem-detail-panel');
+            
+            // Fade out, update content, fade in
+            panel.style.opacity = 0;
+            
+            setTimeout(() => {
+                // Update top border color
+                panel.className = `glass-card rounded-xl p-8 max-w-4xl mx-auto border-t-4 ${data.colorClass} transition-opacity duration-300`;
+                
+                // Build HTML
+                let logicHtml = data.logic.map(l => `<li>${l}</li>`).join('');
+                let riskHtml = data.risks.map(r => `<li>${r}</li>`).join('');
+
+                panel.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-stone-800">${data.title}</h3>
+                        <span class="bg-stone-200 text-stone-700 text-xs px-2 py-1 rounded font-bold">生态位属性：${data.role}</span>
+                    </div>
+                    <p class="text-stone-700 mb-6">${data.desc}</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-teal-700 mb-2 flex items-center"><span class="mr-2">↗</span>投资逻辑</h4>
+                            <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                                ${logicHtml}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-amber-700 mb-2 flex items-center"><span class="mr-2">⚠</span>局限与风险</h4>
+                            <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                                ${riskHtml}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                panel.style.opacity = 1;
+            }, 300);
+        }
+
+        // 2. Opportunities Filter
+        function renderOpportunities() {
+            const grid = document.getElementById('opportunities-grid');
+            grid.innerHTML = ''; // clear
+
+            const filteredData = state.currentFilter === 'all' 
+                ? opportunitiesData 
+                : opportunitiesData.filter(d => d.category === state.currentFilter);
+
+            filteredData.forEach(item => {
+                const tagsHtml = item.tags.map(tag => `<span class="bg-stone-800 text-stone-400 text-xs px-2 py-1 rounded border border-stone-700">${tag}</span>`).join('');
+                
+                const card = document.createElement('div');
+                card.className = 'bg-stone-800 rounded-xl p-6 border border-stone-700 hover:border-teal-600 transition duration-300 shadow-lg flex flex-col h-full transform hover:-translate-y-1';
+                card.innerHTML = `
+                    <div class="mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">${item.name}</h3>
+                        </div>
+                        <div class="flex gap-2 mb-3">${tagsHtml}</div>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-sm text-stone-300 mb-4 leading-relaxed"><span class="text-teal-400 font-semibold">投资逻辑：</span>${item.thesis}</p>
+                    </div>
+                    <div class="border-t border-stone-700 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-stone-400">预期空间 (1年)</span>
+                            <span class="text-teal-400 font-bold">${item.target}</span>
+                        </div>
+                        <p class="text-xs text-amber-500/80 leading-tight"><strong>风险：</strong>${item.risk}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterOpportunities(category) {
+            state.currentFilter = category;
+            
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-teal-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-stone-700', 'text-stone-200');
+            });
+            
+            const activeBtn = document.querySelector(`.filter-btn[onclick="filterOpportunities('${category}')"]`);
+            activeBtn.classList.remove('bg-stone-700', 'text-stone-200');
+            activeBtn.classList.add('active', 'bg-teal-600', 'text-white', 'shadow-md');
+
+            renderOpportunities();
+        }
+
+        /*
+         * Chart Implementations
+         */
+        
+        // Define common chart styling variables matching Tailwind colors
+        const colorTeal = 'rgba(15, 118, 110, 1)';
+        const colorTealLight = 'rgba(20, 184, 166, 0.2)';
+        const colorAmber = 'rgba(180, 83, 9, 1)';
+        const colorStone = 'rgba(120, 113, 108, 0.5)';
+
+        function initCharts() {
+            Chart.defaults.font.family = "'Segoe UI', system-ui, -apple-system, sans-serif";
+            Chart.defaults.color = '#57534e'; // stone-500
+
+            // 1. Lumentum Regret Curve
+            const ctxLumentum = document.getElementById('lumentumChart').getContext('2d');
+            new Chart(ctxLumentum, {
+                type: 'line',
+                data: {
+                    labels: ['T0: 发掘与建仓', 'T1: 利润积累期', 'T2: 评级出炉/卖出点', 'T3: 错失主升浪', 'T4: 现状(翻4倍)'],
+                    datasets: [{
+                        label: 'Lumentum 价格走势 (假设指数)',
+                        data: [170, 250, 340, 480, 680],
+                        borderColor: colorTeal,
+                        backgroundColor: colorTealLight,
+                        borderWidth: 3,
+                        pointBackgroundColor: [colorTeal, colorTeal, colorAmber, colorStone, colorTeal],
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: [6, 6, 8, 6, 8],
+                        pointHoverRadius: 10,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(28, 25, 23, 0.9)', // stone-900
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 },
+                            padding: 12,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = ' 价格: $' + context.parsed.y;
+                                    return label;
+                                },
+                                afterBody: function(context) {
+                                    const index = context[0].dataIndex;
+                                    const insights = [
+                                        "基于AI生态视角的初步发掘",
+                                        "逻辑初步验证，开始翻倍",
+                                        "机构评级过低，产生风险厌恶情绪，清仓离场 (错!)",
+                                        "脱离共识锚定，业绩真实爆发驱动",
+                                        "完整验证：从170到680，生态卡位的恐怖爆发力"
+                                    ];
+                                    return '\n洞察：' + insights[index];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            title: { display: true, text: '股价/市值指数 ($)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // 2. Market Cap vs Growth Multiplier Scatter/Bubble Chart
+            const ctxCap = document.getElementById('marketCapChart').getContext('2d');
+            new Chart(ctxCap, {
+                type: 'bubble',
+                data: {
+                    datasets: [
+                        {
+                            label: '核心巨头',
+                            data: [{x: 90, y: 15, r: 25}], // High Cap, Low Multiplier space
+                            backgroundColor: 'rgba(120, 113, 108, 0.7)', // stone
+                            borderColor: 'rgba(120, 113, 108, 1)'
+                        },
+                        {
+                            label: '关键生态卡位公司 (泰瑞达/Amkor等)',
+                            data: [
+                                {x: 20, y: 60, r: 15},
+                                {x: 10, y: 80, r: 12},
+                                {x: 35, y: 45, r: 18}
+                            ],
+                            backgroundColor: 'rgba(15, 118, 110, 0.7)', // teal
+                            borderColor: colorTeal
+                        },
+                        {
+                            label: '边缘创新公司',
+                            data: [{x: 5, y: 90, r: 8}],
+                            backgroundColor: 'rgba(180, 83, 9, 0.7)', // amber
+                            borderColor: colorAmber
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { usePointStyle: true }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const ds = context.dataset.label;
+                                    return `${ds}: 潜在增长空间高`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: '当前市值基数 (相对大小)' },
+                            min: 0, max: 100,
+                            ticks: { display: false },
+                            grid: { display: false }
+                        },
+                        y: {
+                            title: { display: true, text: '1年内翻倍概率/空间' },
+                            min: 0, max: 100,
+                            ticks: { display: false },
+                            grid: { color: 'rgba(0,0,0,0.05)', borderDash: [5, 5] }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize application on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            renderOpportunities(); // Initial render of the grid
+        });
+
+    </script>
+</body>
+</html>
