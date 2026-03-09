@@ -1,0 +1,576 @@
+---
+title: "股市生态系统：复杂环境下的生存与进化指南"
+date: 2026-03-09T22:58:55+08:00
+summary: "在错综复杂的股市生态中，活得更久，赚得更多。本文通过宏观环境分析、企业基因评估和生存策略模拟，揭示了在AI爆发、新能源转型和地缘风险交织的时代，投资者如何建立动态适应的投资原则，实现长期生存与财富增长。"
+---
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股市生态系统：复杂环境下的生存与进化指南</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tailwind 配置与自定义样式 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-light': '#F8FAFC',    /* 极简暖中性背景 */
+                        'eco-dark': '#1E293B',     /* 深色文本 */
+                        'eco-primary': '#0F172A',  /* 核心强调色 */
+                        'eco-accent': '#059669',   /* 增长与生机的绿色 */
+                        'eco-risk': '#DC2626',     /* 风险提示色 */
+                        'eco-tech': '#2563EB',     /* 科技蓝色 */
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            scroll-behavior: smooth;
+        }
+        
+        /* 强制规范图表容器尺寸，防止溢出，满足响应式需求 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* 默认高度 */
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+
+        .tab-btn.active {
+            border-bottom: 2px solid #0F172A;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+
+    <!-- Chosen Palette: Warm Neutral (Slate/Gray base) with Emerald (Growth), Blue (Tech), and Red (Risk) accents. -->
+    <!-- Application Structure Plan: 
+         1. Header/Intro: Establishes the core metaphor (Stock Market = Ecosystem) and the goal (Survival & Profit).
+         2. Macro Environment (Interactive Tabs): Breaks down current complexities (AI, New Energy, Space Risks) allowing user to explore how facts change per sector.
+         3. Company Fitness Analysis (Radar Chart): Translates "company research" into a visual biological fitness model.
+         4. Evolution & Survival Strategy (Interactive Line Chart): Demonstrates the "not immutable" principle by comparing static vs. adaptive strategies over market phases.
+         Rationale: This structure logically flows from Macro (Environment) to Micro (Company) to Strategy (Action), matching the user's analytical needs. -->
+    <!-- Visualization & Content Choices: 
+         - Macro Context -> Tabs + Text Blocks -> Interaction: Click to switch contexts -> Justification: Manages dense qualitative info cleanly. No SVG needed.
+         - Company Evaluation -> Radar Chart (Chart.js) -> Interaction: Hover for metrics -> Justification: Perfect for showing multi-dimensional "fitness" (fundamentals, trend alignment). 
+         - Survival Strategy -> Line Chart (Chart.js) -> Interaction: Buttons to simulate different strategies -> Justification: Visually proves the user's point that principles must adapt to environments to "survive longer and get higher returns".
+         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. HTML/Tailwind for UI, Chart.js for data. -->
+</head>
+<body class="antialiased">
+
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 z-50 glass-card bg-white/80 border-b border-gray-200 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tight text-eco-primary">
+                📊 股市生态进化论
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="#philosophy" class="hover:text-eco-primary transition">核心哲学</a>
+                <a href="#macro" class="hover:text-eco-primary transition">宏观风向</a>
+                <a href="#micro" class="hover:text-eco-primary transition">企业基因</a>
+                <a href="#strategy" class="hover:text-eco-primary transition">生存策略</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部引言 -->
+    <header id="philosophy" class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-eco-primary leading-tight mb-6">
+                在错综复杂的股市生态中<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-eco-tech to-eco-accent">活得更久，赚得更多</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                股市与自然生态系统有着惊人的相似性。尊重事实是唯一的生存法则。这并非易事，高门槛正是暴利之源。在这个被AI爆发、新能源转型与太空地缘博弈重塑的时代，我们需要建立一套<strong>“动态适应”</strong>的投资原则。
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 text-sm font-semibold flex items-center">
+                    🔍 尊重事实
+                </div>
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 text-sm font-semibold flex items-center">
+                    🧬 研究基因(公司)
+                </div>
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 text-sm font-semibold flex items-center">
+                    🌪️ 洞察风向(行业)
+                </div>
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 text-sm font-semibold flex items-center">
+                    🔄 持续进化
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 宏观风向分析 (Interactive Tabs) -->
+    <section id="macro" class="max-w-6xl mx-auto px-6 py-12">
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-eco-primary mb-4">🌪️ 第一步：感知宏观生态环境</h2>
+            <p class="text-gray-600 max-w-2xl">
+                任何物种的生存都无法脱离大环境。当前股市生态正遭受三股强大暗流的冲击。点击下方标签，探索不同环境下的生存法则与风险。
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden shadow-lg">
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200 bg-gray-50/50">
+                <button onclick="switchTab('ai')" id="tab-ai" class="tab-btn active flex-1 py-4 text-center font-medium text-gray-500 hover:text-eco-primary transition">
+                    🧠 AI 强人工智能时代
+                </button>
+                <button onclick="switchTab('energy')" id="tab-energy" class="tab-btn flex-1 py-4 text-center font-medium text-gray-500 hover:text-eco-primary transition">
+                    🔋 新能源与大转型
+                </button>
+                <button onclick="switchTab('space')" id="tab-space" class="tab-btn flex-1 py-4 text-center font-medium text-gray-500 hover:text-eco-primary transition">
+                    🚀 太空争霸与地缘风险
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-8 bg-white min-h-[300px]">
+                <!-- AI Content -->
+                <div id="content-ai" class="block animate-fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-2xl mr-4">🤖</div>
+                        <h3 class="text-2xl font-bold text-gray-800">生产力大爆炸的生态位扩张</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        AI的发展正在以非线性的速度重塑所有行业。在股市生态中，这相当于一次“寒武纪大爆发”。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h4 class="font-bold text-blue-800 mb-2">生存策略 (顺风向)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>寻找“卖水人”：算力基础设施、数据中心、底层模型。</li>
+                                <li>关注降本增效拐点：能够率先利用AI大幅降低运营成本的传统企业。</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50/50 p-5 rounded-xl border border-red-100">
+                            <h4 class="font-bold text-red-800 mb-2">灭绝风险 (尊重事实)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>伪AI概念股：无核心技术，仅依靠PPT融资的物种将被市场无情淘汰。</li>
+                                <li>估值透支：需警惕过度乐观预期导致的估值泡沫破裂。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energy Content -->
+                <div id="content-energy" class="hidden animate-fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl mr-4">🌱</div>
+                        <h3 class="text-2xl font-bold text-gray-800">旧周期的衰退与新产能周期</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        新能源产业已跨过从0到1的阶段，正处于从1到10的惨烈厮杀期。生态特征表现为政策驱动减弱，市场化内卷加剧。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-green-50/50 p-5 rounded-xl border border-green-100">
+                            <h4 class="font-bold text-green-800 mb-2">生存策略 (顺风向)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>拥抱出海与全球化：能够在全球市场抢占生态位的物种生存力更强。</li>
+                                <li>技术迭代领先者：例如固态电池、新型光伏材料的真正突破者。</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50/50 p-5 rounded-xl border border-yellow-100">
+                            <h4 class="font-bold text-yellow-800 mb-2">内卷风险 (尊重事实)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>产能过剩：同质化严重、深陷价格战的中低端制造环节将被出清。</li>
+                                <li>技术被替代：押错技术路线的企业将迅速失去价值。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Space Content -->
+                <div id="content-space" class="hidden animate-fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-2xl mr-4">🛰️</div>
+                        <h3 class="text-2xl font-bold text-gray-800">极端气候：地缘博弈与安全溢价</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        太空军备竞赛与复杂的全球地缘政治，是股市生态中的“系统性气候异常”。它不讲基本面逻辑，而是情绪与安全的博弈。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h4 class="font-bold text-purple-800 mb-2">生存策略 (防御与反击)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>国防与航天资产：作为生态避险地，享有极高的“安全溢价”。</li>
+                                <li>自主可控产业链：在逆全球化趋势下，具备国产替代逻辑的核心科技（半导体、高端机床）。</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-100 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">黑天鹅风险 (系统危机)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                                <li>供应链断裂：高度依赖单一地缘原材料或市场的跨国物种极其脆弱。</li>
+                                <li>制裁与脱钩：突发政策可能导致某类公司瞬间失去生存土壤。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 微观基因分析 (Radar Chart) -->
+    <section id="micro" class="max-w-6xl mx-auto px-6 py-12 bg-white rounded-3xl shadow-sm my-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-eco-primary mb-4">🧬 第二步：评估企业“生存基因”</h2>
+                <p class="text-gray-600 mb-6">
+                    在这个充满不确定性的市场中，研究公司就像是评估一个生物的DNA。如果容易，大家都挣钱了。难点在于透过现象看本质。我们构建了“企业适应力多维模型”。
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="border-l-4 border-eco-tech pl-4">
+                        <h4 class="font-bold text-gray-800">时代契合度 (Macro Alignment)</h4>
+                        <p class="text-sm text-gray-500">业务方向是否顺应AI、新能源等核心风向？</p>
+                    </div>
+                    <div class="border-l-4 border-eco-accent pl-4">
+                        <h4 class="font-bold text-gray-800">护城河深度 (Moat Depth)</h4>
+                        <p class="text-sm text-gray-500">这就是“门槛”。技术壁垒、品牌优势、网络效应。</p>
+                    </div>
+                    <div class="border-l-4 border-eco-risk pl-4">
+                        <h4 class="font-bold text-gray-800">抗脆弱性 (Anti-fragility)</h4>
+                        <p class="text-sm text-gray-500">面对地缘打击、太空战争风险时的现金流储备和供应链韧性。</p>
+                    </div>
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <h4 class="font-bold text-gray-800">持续进化力 (Evolution Rate)</h4>
+                        <p class="text-sm text-gray-500">管理层的纠错能力与研发投入的转化效率。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Radar Chart Container -->
+            <div class="glass-card p-6 rounded-2xl w-full">
+                <div class="mb-4 flex justify-between items-center">
+                    <h3 class="font-bold text-gray-700">企业物种对比分析</h3>
+                    <select id="company-selector" onchange="updateRadarChart()" class="text-sm border-gray-300 rounded-md shadow-sm p-1">
+                        <option value="tech_giant">某AI科技巨头</option>
+                        <option value="traditional_mfg">传统燃油车企</option>
+                        <option value="defense_tech">高精尖军工/航天企业</option>
+                    </select>
+                </div>
+                <!-- 严格限制图表大小的容器 -->
+                <div class="chart-container h-[350px]">
+                    <canvas id="fitnessRadar"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 生存策略模拟 (Line Chart) -->
+    <section id="strategy" class="max-w-6xl mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-eco-primary mb-4">🔄 第三步：动态原则与生存模拟</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto">
+                “这套原则当然不是说一成不变的，在某一些阶段，某个环境，某个时期，需要持续地去适应。” 
+                以下模拟展示了在长周期中，固守单一原则与动态适应环境的收益/生存曲线差异。
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 md:p-8 shadow-xl">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <button onclick="runSimulation('static')" class="px-6 py-2 bg-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-300 transition">
+                        🔒 演示：刻舟求剑策略
+                    </button>
+                    <button onclick="runSimulation('adaptive')" class="px-6 py-2 bg-eco-primary text-white font-medium rounded-lg hover:bg-gray-800 shadow-md transition transform hover:scale-105">
+                        🌊 演示：动态适应策略
+                    </button>
+                </div>
+                <div id="sim-status" class="text-sm font-semibold px-4 py-2 rounded bg-blue-50 text-blue-800">
+                    等待开始模拟...
+                </div>
+            </div>
+
+            <!-- 严格限制图表大小的容器 -->
+            <div class="chart-container w-full h-[400px]">
+                <canvas id="survivalChart"></canvas>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                <div class="p-4 bg-gray-50 rounded">
+                    <strong>阶段 1：平稳发展期</strong><br>
+                    两者收益相近，市场按照常规基本面逻辑运行。
+                </div>
+                <div class="p-4 bg-gray-50 rounded">
+                    <strong>阶段 2：技术爆炸 (AI/新能源)</strong><br>
+                    动态策略迅速调仓拥抱主线；静态策略固守旧有低估值板块，错失机会。
+                </div>
+                <div class="p-4 bg-gray-50 rounded border border-red-100">
+                    <strong>阶段 3：地缘/黑天鹅冲击</strong><br>
+                    动态策略增加防守和现金，寻找安全资产；静态策略遭遇大幅回撤。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-eco-primary text-gray-400 py-8 text-center mt-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="mb-4">"在市场生态中，活得最久的不是最强壮的，也不是最聪明的，而是最能适应变化的。"</p>
+            <p class="text-xs opacity-50">© 2026 复杂生态下的股市生存指南. 仅供逻辑演示，不构成投资建议。</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 逻辑交互 -->
+    <script>
+        // ---------------------------------------------------------
+        // 1. 宏观风向 Tabs 切换逻辑
+        // ---------------------------------------------------------
+        function switchTab(tabId) {
+            // 隐藏所有内容
+            ['ai', 'energy', 'space'].forEach(id => {
+                document.getElementById('content-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('active', 'text-eco-primary', 'font-semibold');
+                document.getElementById('tab-' + id).classList.add('text-gray-500');
+            });
+            
+            // 显示目标内容
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('active', 'text-eco-primary', 'font-semibold');
+            document.getElementById('tab-' + tabId).classList.remove('text-gray-500');
+        }
+
+        // ---------------------------------------------------------
+        // 2. 微观基因分析 (雷达图)
+        // ---------------------------------------------------------
+        const radarDataStore = {
+            tech_giant: {
+                label: 'AI科技巨头',
+                data: [95, 85, 70, 90, 80], // 契合度, 护城河, 抗脆弱, 进化力, 估值合理性(反向)
+                color: 'rgba(37, 99, 235, 0.6)', // eco-tech
+                border: '#2563EB'
+            },
+            traditional_mfg: {
+                label: '传统燃油车企',
+                data: [30, 60, 50, 40, 90],
+                color: 'rgba(107, 114, 128, 0.6)', // gray
+                border: '#6B7280'
+            },
+            defense_tech: {
+                label: '军工/航天企业',
+                data: [80, 95, 100, 60, 50],
+                color: 'rgba(147, 51, 234, 0.6)', // purple
+                border: '#9333EA'
+            }
+        };
+
+        const ctxRadar = document.getElementById('fitnessRadar').getContext('2d');
+        let radarChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['时代契合度(AI/新能源)', '护城河深度', '抗脆弱性(防地缘风险)', '持续进化力', '安全边际(估值)'],
+                datasets: [{
+                    label: radarDataStore.tech_giant.label,
+                    data: radarDataStore.tech_giant.data,
+                    backgroundColor: radarDataStore.tech_giant.color,
+                    borderColor: radarDataStore.tech_giant.border,
+                    pointBackgroundColor: radarDataStore.tech_giant.border,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: radarDataStore.tech_giant.border,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // 必须为 false 以填满外层强制的 div 高度
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false } // 隐藏刻度数字使其更干净
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw + ' 分';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 下拉框更新雷达图
+        function updateRadarChart() {
+            const selected = document.getElementById('company-selector').value;
+            const newData = radarDataStore[selected];
+            
+            radarChart.data.datasets[0].label = newData.label;
+            radarChart.data.datasets[0].data = newData.data;
+            radarChart.data.datasets[0].backgroundColor = newData.color;
+            radarChart.data.datasets[0].borderColor = newData.border;
+            radarChart.data.datasets[0].pointBackgroundColor = newData.border;
+            radarChart.data.datasets[0].pointHoverBorderColor = newData.border;
+            
+            radarChart.update();
+        }
+
+        // ---------------------------------------------------------
+        // 3. 生存策略模拟 (折线图)
+        // ---------------------------------------------------------
+        const timeLabels = ['第一年(平稳)', '第二年(AI初现)', '第三年(AI爆发)', '第四年(泡沫/内卷)', '第五年(地缘危机)', '第六年(新周期)', '第七年(复苏)'];
+        
+        // 基础市场指数 (基准线)
+        const baseIndex = [100, 105, 115, 100, 80, 90, 110];
+        
+        // 固守策略：一套原则用到老（比如死守低估值传统行业）
+        const staticStrategy = [100, 108, 110, 105, 75, 70, 75];
+        
+        // 动态适应策略：尊重事实，阶段切换环境
+        const adaptiveStrategy = [100, 110, 140, 125, 115, 135, 160];
+
+        const ctxLine = document.getElementById('survivalChart').getContext('2d');
+        let survivalChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [
+                    {
+                        label: '大盘基准 (环境均值)',
+                        data: baseIndex,
+                        borderColor: '#9CA3AF', // 灰色
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // 适应外层 div
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: '净值 (初始100)' },
+                        suggestedMin: 50,
+                        suggestedMax: 180
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) { label += ': '; }
+                                if (context.parsed.y !== null) { label += context.parsed.y; }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 模拟运行逻辑
+        let simInterval;
+        function runSimulation(type) {
+            clearInterval(simInterval);
+            const statusEl = document.getElementById('sim-status');
+            
+            // 重置图表，保留基准线
+            survivalChart.data.datasets = [survivalChart.data.datasets[0]];
+            
+            let targetData = [];
+            let datasetConfig = {};
+
+            if (type === 'static') {
+                targetData = staticStrategy;
+                datasetConfig = {
+                    label: '刻舟求剑策略 (未适应环境)',
+                    data: [],
+                    borderColor: '#DC2626', // eco-risk
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                };
+                statusEl.textContent = '运行中：死守固有原则，遭遇系统性风险...';
+                statusEl.className = 'text-sm font-semibold px-4 py-2 rounded bg-red-50 text-red-800';
+            } else {
+                targetData = adaptiveStrategy;
+                datasetConfig = {
+                    label: '动态适应策略 (顺势而为)',
+                    data: [],
+                    borderColor: '#059669', // eco-accent
+                    backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                };
+                statusEl.textContent = '运行中：尊重事实，成功穿越牛熊与危机...';
+                statusEl.className = 'text-sm font-semibold px-4 py-2 rounded bg-green-50 text-green-800';
+            }
+
+            survivalChart.data.datasets.push(datasetConfig);
+            survivalChart.update();
+
+            // 动画打字机效果逐步添加数据点
+            let step = 0;
+            simInterval = setInterval(() => {
+                survivalChart.data.datasets[1].data.push(targetData[step]);
+                survivalChart.update();
+                step++;
+                
+                if (step >= targetData.length) {
+                    clearInterval(simInterval);
+                    statusEl.textContent = type === 'static' ? '模拟结束：资产缩水，被市场淘汰。' : '模拟结束：成功存活并获取超额收益！';
+                }
+            }, 500); // 半秒更新一个点
+        }
+
+        // 添加一个简单的淡入动画类
+        document.head.insertAdjacentHTML('beforeend', `<style>
+            .animate-fade-in {
+                animation: fadeIn 0.4s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(5px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>`);
+        
+    </script>
+</body>
+</html>
