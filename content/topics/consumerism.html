@@ -578,14 +578,14 @@ document.addEventListener('wheel', e => {
 });
 
 const cards = [
-  { icon:'🧺', name:'BASKET', latin:'a small useful thing', q:'What is one small thing you bought recently that made daily life easier? Why did it help?', zh:'最近你买过什么小东西，让日常生活变方便了一点？它为什么有用？' },
-  { icon:'🎁', name:'GIFT', latin:'value without price', q:'What gift have you received that felt meaningful, even if it was not expensive?', zh:'你收到过什么礼物很有意义，即使它并不贵？' },
-  { icon:'⏳', name:'WAIT', latin:'pause before buying', q:'When is waiting before buying a good idea? When might waiting be unnecessary?', zh:'什么时候买东西前等一等是好主意？什么时候其实没必要等？' },
-  { icon:'🪞', name:'STYLE', latin:'something that feels like you', q:'What is one item you own that feels very you? What makes it feel that way?', zh:'你拥有的哪件东西很像“你自己”？为什么它会有这种感觉？' },
-  { icon:'📱', name:'FEED', latin:'what keeps appearing', q:'What kind of product or lifestyle keeps appearing in your feed? Do you want to see more or less of it?', zh:'你的信息流里经常出现哪类产品或生活方式？你想多看到一点，还是少看到一点？' },
-  { icon:'🕰️', name:'TIME', latin:'money or time', q:'If you had two free hours this weekend, would you rather spend money or spend time? On what?', zh:'如果这个周末你有两个空闲小时，你更想花钱还是花时间？用在什么上？' },
-  { icon:'💬', name:'ADVICE', latin:'recommended by others', q:'What is something people around you often recommend buying? Do you agree with them?', zh:'身边的人常推荐买什么东西？你同意他们的推荐吗？' },
-  { icon:'🌱', name:'ENOUGH', latin:'already enough', q:'What is one area of life where you already have enough? How do you know?', zh:'生活中哪一个方面你已经觉得“够了”？你怎么知道它已经够了？' }
+  { icon:'🍬', name:'CANDY', latin:'mystery flavor', q:'What is one small thing that has made you happy recently? Why did it matter to you?', zh:'最近有什么小事让你开心？它为什么对你有意义？' },
+  { icon:'🍩', name:'DONUT', latin:'mystery flavor', q:'Think of a decision you made this year. What helped you make that choice?', zh:'想一个你今年做过的决定。是什么帮助你做出这个选择？' },
+  { icon:'🍰', name:'CAKE', latin:'mystery flavor', q:'When you feel stressed, what usually helps you feel normal again? How did you discover it?', zh:'当你感到压力大时，什么通常能让你恢复正常？你是怎么发现这个方法的？' },
+  { icon:'🧁', name:'CUPCAKE', latin:'mystery flavor', q:'What is one object, place, or habit that feels very you? What does it say about you?', zh:'哪件物品、哪个地方或哪个习惯很像“你自己”？它说明了你什么？' },
+  { icon:'🍭', name:'LOLLIPOP', latin:'mystery flavor', q:'What is a trend or idea people around you talk about a lot? What is your honest reaction to it?', zh:'身边的人最近常讨论什么潮流或想法？你真实的反应是什么？' },
+  { icon:'🍮', name:'PUDDING', latin:'mystery flavor', q:'If you could make one part of your daily life simpler, what would you change first?', zh:'如果你能让日常生活的某一部分更简单，你会先改变什么？' },
+  { icon:'🍪', name:'COOKIE', latin:'mystery flavor', q:'What is something you learned from a friend, family member, or coworker recently?', zh:'最近你从朋友、家人或同事身上学到了什么？' },
+  { icon:'🍫', name:'CHOCOLATE', latin:'mystery flavor', q:'What does "enough" mean to you right now: enough time, money, energy, friendship, or something else?', zh:'此刻对你来说，“足够”意味着什么：足够的时间、金钱、精力、友谊，还是别的东西？' }
 ];
 
 const questionCardsEl = document.getElementById('questionCards');
