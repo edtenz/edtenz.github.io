@@ -1,0 +1,569 @@
+---
+title: "Meaning of Travel"
+date: 2026-05-21T09:00:00Z
+summary: "Travel is the only thing you buy that makes you richer — but what exactly are you buying?"
+---
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Corner - What's the Point of Travel?</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', sans-serif; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(24px, 3vh, 48px) clamp(32px, 4vw, 72px);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+.slide.prev { opacity: 0; transform: translateX(-100%); }
+
+.bg-dark { background: #1B3A4B; color: #FFF; }
+.bg-cream { background: #FAF7F2; color: #1B3A4B; }
+.bg-white { background: #FFF; color: #1B3A4B; }
+.bg-accent { background: #D96D39; color: #FFF; }
+
+.tag { font: bold 18px/1 Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+.tag-gold { color: #E8A838; }
+.tag-accent { color: #D96D39; }
+.tag-white { color: #FFF; opacity: 0.8; }
+
+h1 { font: bold clamp(44px,7vw,88px)/1.08 Georgia, serif; margin: 32px 0 clamp(36px,4.5vh,64px); }
+h2 { font: bold clamp(34px,5.5vw,64px)/1.15 Georgia, serif; margin: 32px 0 clamp(34px,4.5vh,64px); }
+h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(30px,4vh,60px); }
+
+.subtitle { font-size: clamp(22px,3.5vw,40px); opacity: 0.9; margin-bottom: 20px; }
+.subtitle-zh { font-size: clamp(18px,3vw,32px); color: #E8A838; margin-bottom: 36px; }
+.meta { font-size: clamp(18px,2.5vw,26px); opacity: 0.72; margin-top: auto; }
+.separator { width: 100px; height: 4px; background: #E8A838; margin: 32px 0; }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+
+.card {
+  background: #FFF;
+  border-radius: 12px;
+  padding: clamp(18px,2vh,30px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-top: 4px solid #D96D39;
+}
+.card .icon { font-size: clamp(30px,4vw,50px); margin-bottom: 12px; }
+.card h4 { font: bold clamp(18px,2.4vw,27px) Georgia, serif; margin-bottom: 8px; }
+.card .zh { color: #D96D39; font-size: clamp(14px,1.8vw,20px); margin-bottom: 10px; }
+.card .role { font-size: clamp(13px,1.5vw,17px); font-weight: bold; opacity: 0.62; margin-bottom: 8px; }
+.card p { font-size: clamp(14px,1.75vw,20px); line-height: 1.55; opacity: 0.82; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(16px,2vw,30px); margin: clamp(16px,3vh,42px) 0; }
+.stat { text-align: center; }
+.stat-number { font: bold clamp(40px,6vw,86px)/1 Georgia, serif; color: #E8A838; }
+.stat-label { font-size: clamp(14px,1.75vw,20px); opacity: 0.76; margin-top: 10px; line-height: 1.4; }
+
+.round-title { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-height: 60vh; padding: clamp(24px,4vh,64px) 0; }
+.round-title h1 { font-size: clamp(56px,9vw,112px); }
+
+.q-card { background: #FAF7F2; border-radius: 12px; padding: clamp(18px,2vh,30px); border-left: 5px solid #D96D39; }
+.q-card .q-num { font: bold clamp(16px,2vw,24px) Georgia, serif; color: #D96D39; margin-bottom: 8px; }
+.q-card .q-title { font: bold clamp(17px,2.2vw,28px) Georgia, serif; color: #1B3A4B; margin-bottom: 10px; }
+.q-card p { font-size: clamp(14px,1.8vw,22px); line-height: 1.55; color: #4A4A5E; }
+
+.expr-box { background: #FFF; border-radius: 12px; padding: clamp(16px,2vh,28px); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.expr-box h4 { font-size: clamp(13px,1.5vw,20px); font-weight: bold; color: #D96D39; letter-spacing: 1px; margin-bottom: 14px; }
+.expr-item { font-size: clamp(16px,2vw,27px); padding: 9px 0; color: #1F1F2E; font-style: italic; }
+
+.debate-side { border-radius: 12px; padding: clamp(16px,2vh,28px); }
+.debate-side.side-a { background: #FFF0EB; border-left: 5px solid #D96D39; }
+.debate-side.side-b { background: #EBF4F8; border-left: 5px solid #1B3A4B; }
+.debate-side h4 { font-size: clamp(16px,2vw,24px); font-weight: bold; margin-bottom: 12px; }
+.debate-side li { font-size: clamp(14px,1.8vw,22px); line-height: 1.65; margin-left: 18px; color: #333; }
+
+.action-list { list-style: none; margin-top: clamp(14px,2vh,28px); }
+.action-list li { font-size: clamp(16px,2vw,27px); padding: 14px 20px; background: #FFF; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.action-list li::before { content: "→ "; color: #D96D39; font-weight: bold; }
+
+.quote-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.quote { font: italic clamp(22px,3vw,34px)/1.5 Georgia, serif; max-width: 820px; margin-bottom: 20px; }
+.quote-mark { font-size: 60px; color: #E8A838; line-height: 1; margin-bottom: 10px; }
+.quote-author { font-size: 18px; opacity: 0.65; }
+
+.bottom-note { text-align: center; font-size: 17px; margin-top: 22px; opacity: 0.72; font-style: italic; }
+
+.body-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; padding-top: clamp(8px, 3vh, 40px); }
+
+/* Compare boxes */
+.compare-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin-top: clamp(16px,2vh,36px); }
+.compare-box { background: #FFF; border-radius: 12px; padding: clamp(16px,2vh,28px); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.compare-box h4 { font-size: clamp(17px,2vw,26px); font-weight: bold; margin-bottom: 14px; }
+.compare-item { font-size: clamp(16px,1.8vw,24px); padding: 12px 0; border-bottom: 1px solid #F5F5F5; }
+.vs { font: bold clamp(32px,4vw,56px) Georgia, serif; color: #D96D39; }
+
+/* Nav */
+.progress { position: fixed; top: 0; left: 0; height: 3px; background: #D96D39; transition: width 0.3s; z-index: 1001; }
+.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; background: rgba(27,58,75,0.9); padding: 10px 24px; border-radius: 40px; z-index: 1000; backdrop-filter: blur(10px); }
+.nav button { background: none; border: none; color: #FFF; font-size: 20px; cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: background 0.2s; }
+.nav button:hover { background: rgba(255,255,255,0.1); }
+.nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav .page-info { color: #FAF7F2; font-size: 13px; min-width: 60px; text-align: center; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+.dot.active { background: #E8A838; transform: scale(1.3); }
+
+/* Bestiary / Blind Box */
+.bestiary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.creature { perspective: 800px; cursor: pointer; }
+.creature-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.creature.flipped .creature-inner { transform: rotateY(180deg); }
+.creature-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
+.creature-front { background: linear-gradient(135deg, #FAF7F2 0%, #FFF0EB 100%); border: 2px dashed #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
+.creature-front::after { content: '?'; position: absolute; top: -10px; right: -5px; font: bold 80px Georgia, serif; color: rgba(217,109,57,0.06); pointer-events: none; }
+.creature-front:hover { border-color: #D96D39; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(217,109,57,0.15); }
+.creature-front .c-icon { font-size: 40px; margin-bottom: 8px; }
+.creature-front .c-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #1B3A4B; }
+.creature-front .c-latin { font: italic 11px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
+.creature-front .c-hint { font-size: 10px; color: #D96D39; margin-top: 8px; letter-spacing: 0.5px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.creature-back { transform: rotateY(180deg); background: #1B3A4B; color: #FAF7F2; border: 2px solid #2a4d5e; text-align: center; gap: 8px; }
+.creature-back .c-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
+.creature-back .c-qzh { font-size: 12px; color: rgba(250,247,242,0.6); margin-top: 4px; }
+
+@media (max-width: 768px) {
+  .slide { padding: 40px 30px; overflow-y: auto; }
+  .grid-3, .grid-2, .grid-2x2, .bestiary-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .compare-row { grid-template-columns: 1fr; }
+  .vs { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide bg-dark active" data-slide="1">
+  <div class="round-title">
+    <div class="tag tag-gold">ENGLISH CORNER · DISCUSSION TOPIC</div>
+    <h1>What's the Point<br>of Travel?</h1>
+    <p class="subtitle" style="color:#FAF7F2">Check-in Tourism, Slow Travel, Solo Trips & The Instagram Trap</p>
+    <p class="subtitle-zh">旅行的意义：是在放松自己，还是在完成一种社交展示？</p>
+    <div class="separator"></div>
+    <p class="meta">A 90-min discussion · 2 rounds · 7 questions</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: Ice Breaker -->
+<div class="slide bg-cream" data-slide="2">
+  <div class="tag tag-accent">ICE BREAKER · 5 MIN</div>
+  <h2>Let's Get to Know Each Other ✈️</h2>
+  <div class="body-content">
+    <p style="font-size:clamp(16px,2vw,26px); color:#4A4A5E; margin-bottom:24px">Turn to the person next to you and introduce yourself in English:</p>
+    <div class="grid-3" style="margin-top:10px">
+      <div class="card">
+        <div class="icon">🙋</div>
+        <h4>Your Name</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"Hi, I'm ___ . You can call me ___ ."</p>
+      </div>
+      <div class="card">
+        <div class="icon">💼</div>
+        <h4>What You Do</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"I work as a ___ at ___ ." or "I'm a student majoring in ___ ."</p>
+      </div>
+      <div class="card">
+        <div class="icon">🗺️</div>
+        <h4>Last Trip</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"The last place I traveled to was ___ . I went because ___ ."</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="margin-top:30px; font-style:normal; color:#1B3A4B"><strong>1 minute per person.</strong> Keep it short — we'll dig deeper soon!</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: Warm-up -->
+<div class="slide bg-cream" data-slide="3">
+  <div class="tag tag-accent">WARM-UP · 3 MIN</div>
+  <h2>Quick poll. Raise your hand if…</h2>
+  <div class="body-content">
+    <div style="display:flex; flex-direction:column; gap:clamp(14px,2vh,24px); margin-top:20px">
+      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">🏃 You've visited 3+ cities in a single weekend</div>
+      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">📸 You've taken a photo of food before eating it on a trip</div>
+      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">📱 You've traveled somewhere mainly because you saw it on Xiaohongshu</div>
+      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">😴 You've felt more tired AFTER a vacation than before</div>
+      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">🧳 You've ever traveled alone — and liked it</div>
+    </div>
+    <p class="bottom-note">Look around. We all travel — but clearly not the same way. Let's talk about why.</p>
+  </div>
+</div>
+
+<!-- SLIDE 4: Three Concepts -->
+<div class="slide bg-white" data-slide="4">
+  <div class="tag tag-accent">THREE WORDS YOU NEED TODAY</div>
+  <h3>Three Styles, One Debate</h3>
+  <div class="body-content">
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">📸</div>
+        <h4>Check-in Tourism</h4>
+        <div class="zh">打卡式旅行</div>
+        <div class="role">See it, snap it, leave.</div>
+        <p>Travel as a checklist: visit the famous spots, take the photo, prove you were there. The destination is content, not experience.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏃</div>
+        <h4>Speed Tourism</h4>
+        <div class="zh">特种兵旅游</div>
+        <div class="role">Maximum places, minimum time.</div>
+        <p>A Gen-Z trend: overnight trains, 5am starts, 10 attractions in 48 hours. Exhausting but "efficient." Travel as endurance sport.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🐌</div>
+        <h4>Slow Travel</h4>
+        <div class="zh">深度旅行</div>
+        <div class="role">Be there, not just pass through.</div>
+        <p>Stay longer, see less, feel more. Cook local food, learn a few words, get lost on purpose. Travel as transformation, not transaction.</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-style:normal; font-size:16px; color:#4A4A5E">No judgment — all three are valid. But today we ask: what are you really looking for when you travel?</p>
+  </div>
+</div>
+
+<!-- SLIDE 5: Stats -->
+<div class="slide bg-dark" data-slide="5">
+  <div class="tag tag-gold">WHY THIS TOPIC MATTERS</div>
+  <h3 style="color:#FFF">China's travel boom in numbers.</h3>
+  <div class="body-content">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-number">6.1B</div><div class="stat-label">domestic trips taken in China in 2024</div></div>
+      <div class="stat"><div class="stat-number">73%</div><div class="stat-label">of Gen-Z say they travel "for content" (photos/videos to post)</div></div>
+      <div class="stat"><div class="stat-number">¥326</div><div class="stat-label">average daily spend for "特种兵" travelers (budget-conscious)</div></div>
+      <div class="stat"><div class="stat-number">61%</div><div class="stat-label">of travelers say their trip "looked better online than it felt"</div></div>
+    </div>
+    <p style="font-size:12px; opacity:0.5">Sources: China Tourism Academy (2024), Mafengwo Travel Report, iiMedia Research Gen-Z Survey 2024</p>
+    <p style="font-size:17px; margin-top:12px; color:#FAF7F2; font-style:italic">We're traveling more than ever — but are we experiencing more, or just consuming more?</p>
+  </div>
+</div>
+
+<!-- SLIDE 6: The Instagram Trap -->
+<div class="slide bg-cream" data-slide="6">
+  <div class="tag tag-accent">THE REAL QUESTION</div>
+  <h3>Are you traveling for yourself — or for your audience?</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4A4A5E; margin-bottom:20px">A 2023 study from the University of Southern California found:</p>
+    <div class="grid-2">
+      <div class="compare-box">
+        <h4>📱 When you photograph an experience</h4>
+        <div class="compare-item">Visual memory improves slightly</div>
+        <div class="compare-item">But emotional memory decreases</div>
+        <div class="compare-item">Enjoyment drops by ~15% in the moment</div>
+        <div class="compare-item">You remember what it looked like, not how it felt</div>
+      </div>
+      <div class="compare-box">
+        <h4>👁️ When you just experience it</h4>
+        <div class="compare-item">You are more emotionally present</div>
+        <div class="compare-item">You form richer, sensory memories</div>
+        <div class="compare-item">You report higher satisfaction afterward</div>
+        <div class="compare-item">You remember how it felt, not just how it looked</div>
+      </div>
+    </div>
+    <p style="font-size:16px; text-align:center; margin-top:20px"><strong>The camera becomes a wall between you and the moment.</strong> But does that mean we should stop taking photos?</p>
+  </div>
+</div>
+
+<!-- SLIDE 7: Round 1 Title -->
+<div class="slide bg-accent" data-slide="7">
+  <div class="round-title">
+    <div class="tag tag-white">ROUND 1 · 25 MIN</div>
+    <h1>Your Travel<br>Habits</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.8)">4 questions · small groups of 5–7 · share your real experience</p>
+  </div>
+</div>
+
+<!-- SLIDE 8: Round 1 Questions -->
+<div class="slide bg-white" data-slide="8">
+  <div class="tag tag-accent">ROUND 1 · 4 QUESTIONS · 25 MIN</div>
+  <h3>Your Travel Habits</h3>
+  <div class="body-content">
+    <div class="grid-2x2">
+      <div class="q-card">
+        <div class="q-num">Q1</div>
+        <div class="q-title">Your Travel Style</div>
+        <p>Are you more of a "特种兵" (speed traveler), a "打卡" (check-in) traveler, or a slow traveler? Give an example from your last trip.</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Q2</div>
+        <div class="q-title">The Phone Test</div>
+        <p>On your last trip, how much time did you spend taking or editing photos vs. just being present? Do you think it affected your experience?</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Q3</div>
+        <div class="q-title">Solo vs. Together</div>
+        <p>Have you ever traveled alone? If yes — what surprised you? If no — what stops you? What's different about traveling with others?</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Q4</div>
+        <div class="q-title">The "Was It Worth It?" Moment</div>
+        <p>Have you ever arrived at a famous spot and felt… disappointed? The reality didn't match the photos? What did you do next?</p>
+      </div>
+    </div>
+    <p style="font-size:15px; color:#4A4A5E; margin-top:16px; text-align:center">Take turns — each person answers Q1 before moving on. About 6 minutes per question.</p>
+  </div>
+</div>
+
+<!-- SLIDE 9: Useful Expressions -->
+<div class="slide bg-cream" data-slide="9">
+  <div class="tag tag-accent">USEFUL EXPRESSIONS</div>
+  <h3 style="color:#1B3A4B">Phrases to use in your discussion 🗣️</h3>
+  <div class="body-content">
+    <div class="grid-2">
+      <div class="expr-box">
+        <h4>DESCRIBING YOUR TRAVEL</h4>
+        <div class="expr-item">"I'm the kind of traveler who ___."</div>
+        <div class="expr-item">"For me, the best part of a trip is ___."</div>
+        <div class="expr-item">"I'd rather ___ than ___."</div>
+        <div class="expr-item">"My ideal trip looks like ___."</div>
+      </div>
+      <div class="expr-box">
+        <h4>SHARING OPINIONS</h4>
+        <div class="expr-item">"I think travel is really about ___."</div>
+        <div class="expr-item">"Honestly, I've caught myself ___."</div>
+        <div class="expr-item">"There's nothing wrong with ___, but ___."</div>
+        <div class="expr-item">"I used to think ___, but now I feel ___."</div>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:17px; color:#1B3A4B">Don't overthink it — just talk. <strong>The best trips start without a script.</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 10: Stakes -->
+<div class="slide bg-white" data-slide="10">
+  <div class="tag tag-accent">BEFORE ROUND 2 · THE BIGGER PICTURE</div>
+  <h3>Travel as a mirror of our times.</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4A4A5E; margin-bottom:20px">How we travel reveals what we value — and what we're running from.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">💰</div>
+        <h4>The Experience Economy</h4>
+        <p>We spend more on experiences than objects — but then reduce experiences to shareable content. Are we buying memories or buying proof?</p>
+      </div>
+      <div class="card">
+        <div class="icon">😰</div>
+        <h4>FOMO Tourism</h4>
+        <p>"Everyone's been to ___, so I have to go too." Travel driven by social comparison, not genuine curiosity. The anxiety of missing out becomes the trip itself.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏃</div>
+        <h4>Burnout Escapes</h4>
+        <p>Many young Chinese say they travel to "escape 996 culture" — but then fill their trips with the same productivity mindset: more, faster, optimized.</p>
+      </div>
+    </div>
+    <p style="font-size:12px; opacity:0.5; margin-top:16px">Sources: Pine & Gilmore "Experience Economy" (2011), Deloitte Travel Survey 2024, China Youth Daily</p>
+  </div>
+</div>
+
+<!-- SLIDE 11: Round 2 Title -->
+<div class="slide bg-dark" data-slide="11">
+  <div class="round-title">
+    <div class="tag tag-gold">ROUND 2 · 25 MIN</div>
+    <h1 style="color:#FFF">The Deeper<br>Questions</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.7)">3 questions · switch groups · go deeper</p>
+  </div>
+</div>
+
+<!-- SLIDE 12: Round 2 Q1 -->
+<div class="slide bg-white" data-slide="12">
+  <div class="tag tag-accent">ROUND 2 · QUESTION 1</div>
+  <h3>Relaxation or Performance?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4A4A5E; margin-bottom:16px; line-height:1.6">Be honest: when you travel, are you doing it for yourself — or partly to show others that you have an interesting life? Is there anything wrong with traveling "for the gram"?</p>
+    <div class="grid-2">
+      <div class="debate-side side-a">
+        <h4>📸 POSTING IS FINE</h4>
+        <ul>
+          <li>Sharing is a natural way to process joy</li>
+          <li>Photos help you remember the trip later</li>
+          <li>Inspiring others to travel is a good thing</li>
+          <li>You can enjoy something AND photograph it</li>
+        </ul>
+      </div>
+      <div class="debate-side side-b">
+        <h4>👁️ IT CHANGES THE EXPERIENCE</h4>
+        <ul>
+          <li>You start choosing destinations for their "shareability"</li>
+          <li>You experience the moment through a screen</li>
+          <li>The trip becomes labor — angles, captions, edits</li>
+          <li>If you didn't post it, would you still have gone?</li>
+        </ul>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:16px; color:#D96D39">Key question: If social media disappeared tomorrow, would your travel style change?</p>
+  </div>
+</div>
+
+<!-- SLIDE 13: Round 2 Q2 -->
+<div class="slide bg-white" data-slide="13">
+  <div class="tag tag-accent">ROUND 2 · QUESTION 2 · GROUP EXPLORATION</div>
+  <h3>What shapes how we travel?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4A4A5E; margin-bottom:16px">Our travel style isn't random — it's shaped by invisible forces. Split into 4 groups, each explores one force. 5 min prep, 10 min cross-discussion.</p>
+    <div class="grid-2x2">
+      <div class="card">
+        <div class="icon">📱</div>
+        <h4>SOCIAL MEDIA</h4>
+        <p style="font-size:14px; color:#666">(Xiaohongshu, Douyin, Instagram)</p>
+        <p style="margin-top:8px">Platforms reward photogenic moments over meaningful ones. How do algorithms shape where we go and what we do there?</p>
+      </div>
+      <div class="card">
+        <div class="icon">💼</div>
+        <h4>WORK CULTURE</h4>
+        <p style="font-size:14px; color:#666">(996, limited vacation, burnout)</p>
+        <p style="margin-top:8px">When you only have 3 days off, speed tourism is rational. Does overwork force us into shallow travel?</p>
+      </div>
+      <div class="card">
+        <div class="icon">👥</div>
+        <h4>PEER PRESSURE</h4>
+        <p style="font-size:14px; color:#666">(FOMO, status, comparison)</p>
+        <p style="margin-top:8px">"Everyone in my circle has been to Japan." Travel as social currency — when did it become competitive?</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h4>INNER NEEDS</h4>
+        <p style="font-size:14px; color:#666">(Escape, growth, curiosity)</p>
+        <p style="margin-top:8px">Some travel to run away, some to find something. What's the emotional engine behind your last trip?</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:15px; color:#D96D39">No force is good or bad — but awareness changes behavior. Which one drives YOU most?</p>
+  </div>
+</div>
+
+<!-- SLIDE 14: Round 2 Q3 -->
+<div class="slide bg-cream" data-slide="14">
+  <div class="tag tag-accent">ROUND 2 · QUESTION 3 · CLOSING</div>
+  <h3 style="color:#1B3A4B">Your next trip — with intention.</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4A4A5E; margin-bottom:8px">If you could design your "perfect" next trip based on what you actually need (not what looks good online), what would it look like?</p>
+    <p style="font-size:15px; font-weight:bold; color:#D96D39; margin-bottom:12px; letter-spacing:1px">PROMPTS TO HELP YOU THINK:</p>
+    <ul class="action-list">
+      <li>Would you go alone or with someone? Why?</li>
+      <li>Would you plan every hour — or leave it open?</li>
+      <li>Would you post about it — or keep it private?</li>
+      <li>What would you want to feel when you come home?</li>
+      <li>What's one thing you'd do differently from your last trip?</li>
+    </ul>
+    <p style="font-size:17px; margin-top:20px; text-align:center; color:#1B3A4B"><strong>Share with the group: "My next trip, I want to ___."</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 15: Blind Box Questions -->
+<div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
+  <div style="text-align:center; margin-bottom:16px">
+    <div class="tag tag-accent">A FINAL INVITATION</div>
+    <h3 style="font-family:Georgia,serif">Open Your Blind Box 🎁</h3>
+    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Eight boxes, eight questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
+  </div>
+  <div class="body-content">
+    <div class="bestiary-grid" id="bestiary"></div>
+  </div>
+  <p style="font-size:14px; text-align:center; color:#4A4A5E; margin-top:12px; font-style:italic">No right answers. Only honest ones. 🎲</p>
+</div>
+
+<!-- SLIDE 16: Closing Quote -->
+<div class="slide bg-dark" data-slide="16">
+  <div class="quote-slide">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; max-width:750px; width:100%">
+      <div class="quote-mark">"</div>
+      <p class="quote" style="margin-left:-4px">We travel not to escape life, but for life not to escape us.</p>
+      <p class="quote-author" style="align-self:flex-end">— Anonymous (often misattributed)</p>
+    </div>
+    <div class="separator" style="margin:20px auto"></div>
+    <p style="font-size:18px; opacity:0.8; margin-top:20px">Wherever you go next — go for yourself first.</p>
+    <p style="font-size:17px; color:#E8A838; margin-top:8px">无论下一次去哪里，先为自己出发。</p>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button id="prevBtn" onclick="navigate(-1)" disabled>‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn" onclick="navigate(1)">›</button>
+  <span class="page-info" id="pageInfo">1 / 16</span>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+function update() {
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'prev');
+    if (i === cur) s.classList.add('active');
+    else if (i < cur) s.classList.add('prev');
+  });
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === total - 1;
+  document.getElementById('pageInfo').textContent = (cur + 1) + ' / ' + total;
+  document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+function navigate(dir) { const n = cur + dir; if (n >= 0 && n < total) { cur = n; update(); } }
+function goTo(i) { cur = i; update(); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); navigate(1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
+document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1); });
+
+let wt;
+document.addEventListener('wheel', e => { if (wt) return; wt = setTimeout(() => { wt = null; }, 500); navigate(e.deltaY > 0 ? 1 : -1); });
+
+// Blind Box Questions (fruit themed)
+const creatures = [
+  { icon:'🍎', name:'APPLE', latin:'the familiar one', q:'What\'s a place you\'ve been to more than once — and why do you keep going back?', zh:'有没有一个地方你去了不止一次？为什么总想回去？' },
+  { icon:'🍋', name:'LEMON', latin:'the sour surprise', q:'What\'s the worst travel experience you\'ve had — and what did it teach you?', zh:'你最糟糕的旅行经历是什么？它教会了你什么？' },
+  { icon:'🍇', name:'GRAPE', latin:'the clustered one', q:'Do you prefer traveling with a big group, a small group, or alone? Has that changed over time?', zh:'你喜欢大团、小团、还是一个人旅行？这些年有变化吗？' },
+  { icon:'🍑', name:'PEACH', latin:'the soft one', q:'Describe a moment on a trip when you felt truly peaceful — no phone, no rush, just there.', zh:'描述一个旅途中真正平静的瞬间——没手机、不赶路、就只是在那里。' },
+  { icon:'🥝', name:'KIWI', latin:'the unexpected', q:'Have you ever gone somewhere with zero expectations — and been completely blown away?', zh:'有没有一次你毫无期待地去了一个地方，结果被彻底惊艳？' },
+  { icon:'🍒', name:'CHERRY', latin:'the tiny joy', q:'What\'s one small thing that makes any trip better? (A ritual, a habit, a snack...)', zh:'有什么小事能让任何旅行变得更好？（一个习惯、一个仪式、一种零食…）' },
+  { icon:'🥭', name:'MANGO', latin:'the tropical dream', q:'If money and time were no issue, where would you go — and what would you do differently from how you normally travel?', zh:'如果钱和时间都不是问题，你会去哪里？你的旅行方式会有什么不同？' },
+  { icon:'🫐', name:'BLUEBERRY', latin:'the quiet one', q:'Has a trip ever changed how you see your everyday life back home?', zh:'有没有一次旅行改变了你看待日常生活的方式？' }
+];
+const bestiaryEl = document.getElementById('bestiary');
+creatures.sort(() => Math.random() - 0.5).forEach(c => {
+  const el = document.createElement('div');
+  el.className = 'creature';
+  el.innerHTML = `<div class="creature-inner"><div class="creature-face creature-front"><div class="c-icon">${c.icon}</div><div class="c-name">${c.name}</div><div class="c-latin">${c.latin}</div><div class="c-hint">tap to reveal</div></div><div class="creature-face creature-back"><div class="c-q">"${c.q}"</div><div class="c-qzh">${c.zh}</div></div></div>`;
+  el.onclick = () => el.classList.toggle('flipped');
+  bestiaryEl.appendChild(el);
+});
+</script>
+</body>
+</html>
+
+
+
