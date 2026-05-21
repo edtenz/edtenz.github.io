@@ -1,0 +1,601 @@
+---
+title: "Consumerism"
+date: 2026-05-21T00:00:00Z
+summary: "Are we buying what we need, or buying a new version of anxiety?"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Corner - Consumerism</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', sans-serif; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(24px, 3vh, 48px) clamp(32px, 4vw, 72px);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+.slide.prev { opacity: 0; transform: translateX(-100%); }
+
+.bg-dark { background: #16213E; color: #FFF; }
+.bg-cream { background: #FAF7F2; color: #16213E; }
+.bg-white { background: #FFF; color: #16213E; }
+.bg-green { background: #1F6F5B; color: #FFF; }
+.bg-coral { background: #E76F51; color: #FFF; }
+
+.tag { font: bold 18px/1 Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+.tag-gold { color: #F2C078; }
+.tag-coral { color: #E76F51; }
+.tag-green { color: #1F6F5B; }
+.tag-white { color: #FFF; opacity: 0.86; }
+
+h1 { font: bold clamp(44px,7vw,88px)/1.08 Georgia, serif; margin: 32px 0 clamp(36px,4.5vh,64px); }
+h2 { font: bold clamp(34px,5.5vw,64px)/1.15 Georgia, serif; margin: 32px 0 clamp(34px,4.5vh,64px); }
+h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(30px,4vh,60px); }
+
+.subtitle { font-size: clamp(22px,3.5vw,40px); opacity: 0.9; margin-bottom: 20px; }
+.subtitle-zh { font-size: clamp(18px,3vw,32px); color: #F2C078; margin-bottom: 36px; }
+.meta { font-size: clamp(18px,2.5vw,26px); opacity: 0.72; margin-top: auto; }
+.separator { width: 100px; height: 4px; background: #F2C078; margin: 32px 0; }
+
+.body-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; padding-top: clamp(8px, 3vh, 40px); }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(14px,2vh,24px); margin-top: clamp(12px,2vh,28px); }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+
+.card {
+  background: #FFF;
+  border-radius: 12px;
+  padding: clamp(18px,2vh,30px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-top: 4px solid #E76F51;
+}
+.card.green { border-top-color: #1F6F5B; }
+.card.gold { border-top-color: #F2C078; }
+.card .icon { font-size: clamp(30px,4vw,50px); margin-bottom: 12px; }
+.card h4 { font: bold clamp(18px,2.4vw,27px) Georgia, serif; margin-bottom: 8px; }
+.card .zh { color: #E76F51; font-size: clamp(14px,1.8vw,20px); margin-bottom: 10px; }
+.card .role { font-size: clamp(13px,1.5vw,17px); font-weight: bold; opacity: 0.62; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.card p { font-size: clamp(14px,1.75vw,20px); line-height: 1.55; opacity: 0.82; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(16px,2vw,30px); margin: clamp(16px,3vh,42px) 0; }
+.stat { text-align: center; }
+.stat-number { font: bold clamp(40px,6vw,86px)/1 Georgia, serif; color: #F2C078; }
+.stat-label { font-size: clamp(14px,1.75vw,20px); opacity: 0.76; margin-top: 10px; line-height: 1.4; }
+
+.receipt-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(18px,3vw,48px); align-items: center; margin-top: clamp(12px,2vh,32px); }
+.receipt {
+  background: #FFF;
+  color: #16213E;
+  border-radius: 10px;
+  padding: clamp(18px,2.2vh,30px);
+  box-shadow: 0 5px 24px rgba(0,0,0,0.12);
+  border: 1px solid #ECE4D8;
+}
+.receipt h4 { font: bold clamp(18px,2.3vw,28px) Georgia, serif; color: #E76F51; margin-bottom: 12px; }
+.receipt-line { display: flex; justify-content: space-between; gap: 24px; padding: 10px 0; border-bottom: 1px dashed #DCCFBD; font-size: clamp(15px,1.8vw,23px); }
+.receipt-total { font-weight: bold; color: #1F6F5B; }
+.arrow-badge { font: bold clamp(38px,5vw,64px)/1 Georgia, serif; color: #E76F51; background: #FFF0EA; width: clamp(64px,6vw,94px); height: clamp(64px,6vw,94px); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+.round-title { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-height: 60vh; padding: clamp(24px,4vh,64px) 0; }
+.round-title h1 { font-size: clamp(56px,9vw,112px); }
+
+.q-card { background: #FAF7F2; border-radius: 12px; padding: clamp(18px,2vh,30px); border-left: 5px solid #E76F51; }
+.q-card.green { border-left-color: #1F6F5B; }
+.q-card .q-num { font: bold clamp(16px,2vw,24px) Georgia, serif; color: #E76F51; margin-bottom: 8px; }
+.q-card.green .q-num { color: #1F6F5B; }
+.q-card .q-title { font: bold clamp(17px,2.2vw,28px) Georgia, serif; color: #16213E; margin-bottom: 10px; }
+.q-card p { font-size: clamp(14px,1.8vw,22px); line-height: 1.55; color: #4B4F63; }
+
+.expr-box { background: #FFF; border-radius: 12px; padding: clamp(16px,2vh,28px); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.expr-box h4 { font-size: clamp(13px,1.5vw,20px); font-weight: bold; color: #E76F51; letter-spacing: 1px; margin-bottom: 14px; }
+.expr-item { font-size: clamp(16px,2vw,27px); padding: 9px 0; color: #1F1F2E; font-style: italic; }
+
+.debate-side { border-radius: 12px; padding: clamp(16px,2vh,28px); }
+.debate-side.need { background: #FFF0EA; border-left: 5px solid #E76F51; }
+.debate-side.desire { background: #EFF8F4; border-left: 5px solid #1F6F5B; }
+.debate-side h4 { font-size: clamp(16px,2vw,24px); font-weight: bold; margin-bottom: 12px; }
+.debate-side li { font-size: clamp(14px,1.8vw,22px); line-height: 1.62; margin-left: 18px; color: #333; }
+
+.action-list { list-style: none; margin-top: clamp(14px,2vh,28px); }
+.action-list li { font-size: clamp(16px,2vw,27px); padding: 14px 20px; background: #FFF; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.action-list li::before { content: "→ "; color: #E76F51; font-weight: bold; }
+
+.quote-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.quote { font: italic clamp(22px,3vw,34px)/1.5 Georgia, serif; max-width: 820px; margin-bottom: 20px; }
+.quote-mark { font-size: 60px; color: #F2C078; line-height: 1; margin-bottom: 10px; }
+.quote-author { font-size: 18px; opacity: 0.65; }
+.bottom-note { text-align: center; font-size: 17px; margin-top: 22px; opacity: 0.72; font-style: italic; }
+.source { font-size: 12px; opacity: 0.55; margin-top: 14px; line-height: 1.45; }
+
+.progress { position: fixed; top: 0; left: 0; height: 3px; background: #E76F51; transition: width 0.3s; z-index: 1001; }
+.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; background: rgba(22,33,62,0.9); padding: 10px 24px; border-radius: 40px; z-index: 1000; backdrop-filter: blur(10px); }
+.nav button { background: none; border: none; color: #FFF; font-size: 20px; cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: background 0.2s; }
+.nav button:hover { background: rgba(255,255,255,0.1); }
+.nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav .page-info { color: #FAF7F2; font-size: 13px; min-width: 60px; text-align: center; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+.dot.active { background: #F2C078; transform: scale(1.3); }
+
+.flip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.flip-card { perspective: 800px; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
+.flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.flip-front:hover { border-color: #E76F51; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+.flip-front .f-icon { font-size: 38px; margin-bottom: 8px; }
+.flip-front .f-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #16213E; }
+.flip-front .f-latin { font: italic 11px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
+.flip-front .f-hint { font-size: 10px; color: #E76F51; margin-top: 8px; letter-spacing: 0.5px; }
+.flip-back { transform: rotateY(180deg); background: #16213E; color: #FAF7F2; border: 2px solid #293554; text-align: center; gap: 8px; }
+.flip-back .f-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
+.flip-back .f-qzh { font-size: 12px; color: rgba(250,247,242,0.64); margin-top: 4px; }
+
+@media (max-width: 768px) {
+  .slide { padding: 40px 30px; overflow-y: auto; }
+  .grid-4, .grid-3, .grid-2, .grid-2x2, .flip-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .receipt-wrap { grid-template-columns: 1fr; }
+  .arrow-badge { margin: 0 auto; transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- SLIDE 1 -->
+<div class="slide bg-dark active" data-slide="1">
+  <div class="round-title">
+    <div class="tag tag-gold">ENGLISH CORNER · DISCUSSION TOPIC</div>
+    <h1>Consumerism</h1>
+    <p class="subtitle" style="color:#FAF7F2">Buying Needs, Buying Identity, Buying Anxiety</p>
+    <p class="subtitle-zh">消费主义：我们到底在买什么？</p>
+    <div class="separator"></div>
+    <p class="meta">A 90-min discussion · 2 rounds · 7 questions · 8 open cards</p>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide bg-cream" data-slide="2">
+  <div class="tag tag-coral">ICE BREAKER · 5 MIN</div>
+  <h2>Let's Get to Know Each Other</h2>
+  <div class="body-content">
+    <p style="font-size:clamp(16px,2vw,26px); color:#4B4F63; margin-bottom:24px">Turn to the person next to you and introduce yourself in English:</p>
+    <div class="grid-3" style="margin-top:10px">
+      <div class="card">
+        <div class="icon">🙋</div>
+        <h4>Your Name</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"Hi, I'm ___ . You can call me ___ ."</p>
+      </div>
+      <div class="card green">
+        <div class="icon">💼</div>
+        <h4>What You Do</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"I work as a ___ ." or "I'm studying ___ ."</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🛍️</div>
+        <h4>Recent Purchase</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"The last thing I bought online was ___ . It was worth it / not worth it."</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>1 minute per person.</strong> Keep it real: useful purchase, stupid purchase, or surprisingly meaningful purchase.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide bg-cream" data-slide="3">
+  <div class="tag tag-coral">WARM-UP · 3 MIN</div>
+  <h2>What was your last "I deserve it" purchase?</h2>
+  <div class="body-content">
+    <div class="receipt-wrap">
+      <div class="receipt">
+        <h4>The Need Receipt</h4>
+        <div class="receipt-line"><span>Replace broken charger</span><span>useful</span></div>
+        <div class="receipt-line"><span>Winter coat</span><span>practical</span></div>
+        <div class="receipt-line receipt-total"><span>Total feeling</span><span>relief</span></div>
+      </div>
+      <div class="arrow-badge">?</div>
+      <div class="receipt">
+        <h4>The Mood Receipt</h4>
+        <div class="receipt-line"><span>Blind box</span><span>comfort</span></div>
+        <div class="receipt-line"><span>Sale item</span><span>FOMO</span></div>
+        <div class="receipt-line receipt-total"><span>Total feeling</span><span>maybe anxiety</span></div>
+      </div>
+    </div>
+    <p class="bottom-note">Quick pair-share: did the purchase solve a problem, express who you are, or change your mood?</p>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide bg-white" data-slide="4">
+  <div class="tag tag-coral">THREE WORDS YOU NEED TODAY</div>
+  <h3>Three Concepts, One Question</h3>
+  <div class="body-content">
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🛒</div>
+        <h4>Consumerism</h4>
+        <div class="zh">消费主义</div>
+        <div class="role">The culture does it.</div>
+        <p>A way of life where buying is not just about use, but about identity, status, reward, and belonging.</p>
+      </div>
+      <div class="card green">
+        <div class="icon">⚡</div>
+        <h4>Impulse Buying</h4>
+        <div class="zh">冲动消费</div>
+        <div class="role">The moment does it.</div>
+        <p>You buy quickly because of emotion, social pressure, discounts, scarcity, or a persuasive recommendation.</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🧘</div>
+        <h4>Minimalism</h4>
+        <div class="zh">极简生活</div>
+        <div class="role">The boundary does it.</div>
+        <p>Owning fewer things on purpose, so your money, space, time, and attention serve what matters more.</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-style:normal; color:#4B4F63">Today's core question: <strong>Are we satisfying needs, or manufacturing new desires?</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide bg-dark" data-slide="5">
+  <div class="tag tag-gold">WHY THIS TOPIC MATTERS</div>
+  <h3 style="color:#FFF">Shopping is no longer just shopping.</h3>
+  <div class="body-content">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-number">15.97T</div><div class="stat-label">RMB online retail sales in China in 2025</div></div>
+      <div class="stat"><div class="stat-number">26.1%</div><div class="stat-label">of China's retail sales were physical goods sold online</div></div>
+      <div class="stat"><div class="stat-number">$807B</div><div class="stat-label">estimated China livestream e-commerce market in 2024</div></div>
+      <div class="stat"><div class="stat-number">833M</div><div class="stat-label">livestreaming users in China by Dec 2024</div></div>
+    </div>
+    <p class="source">Sources: National Bureau of Statistics of China, 2025; USDA Foreign Agricultural Service report on livestreaming e-commerce in China, 2025.</p>
+    <p style="font-size:17px; margin-top:12px; color:#FAF7F2; font-style:italic">When the mall moves into your pocket, the checkout counter is open all day.</p>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide bg-white" data-slide="6">
+  <div class="tag tag-coral">FROM DATA TO DAILY LIFE</div>
+  <h3>What do these numbers hide?</h3>
+  <div class="body-content">
+    <div class="grid-2x2">
+      <div class="q-card">
+        <div class="q-num">01</div>
+        <div class="q-title">Convenience</div>
+        <p>It is easier than ever to compare prices, buy essentials, and access products that were once hard to find.</p>
+      </div>
+      <div class="q-card green">
+        <div class="q-num">02</div>
+        <div class="q-title">Persuasion</div>
+        <p>Livestream hosts, reviews, algorithms, coupons, and countdown timers turn shopping into entertainment.</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">03</div>
+        <div class="q-title">Emotional Value</div>
+        <p>A 2025 Gen Z emotional consumption report cited by People's Daily says 56.3% of young respondents were willing to pay for happiness and comfort.</p>
+      </div>
+      <div class="q-card green">
+        <div class="q-num">04</div>
+        <div class="q-title">Environmental Cost</div>
+        <p>UNEP says the world generates about 92 million tonnes of textile waste each year.</p>
+      </div>
+    </div>
+    <p class="source">Sources: People's Daily Online, 2025; UNEP International Day of Zero Waste key messages, 2025.</p>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide bg-coral" data-slide="7">
+  <div class="round-title">
+    <div class="tag tag-white">ROUND 1 · 25 MIN</div>
+    <h1>Recognizing<br>Your Own Habits</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.84)">4 questions · small groups of 5-7 · start from real experience</p>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide bg-white" data-slide="8">
+  <div class="tag tag-coral">ROUND 1 · 4 QUESTIONS · 25 MIN</div>
+  <h3>Recognizing Your Own Habits</h3>
+  <div class="body-content">
+    <div class="grid-2x2">
+      <div class="q-card">
+        <div class="q-num">Q1</div>
+        <div class="q-title">The Last Purchase Test</div>
+        <p>Think of the last non-essential thing you bought. What triggered it: need, discount, mood, recommendation, boredom, or social pressure?</p>
+      </div>
+      <div class="q-card green">
+        <div class="q-num">Q2</div>
+        <div class="q-title">Online Shopping vs. Real Stores</div>
+        <p>Where are you more likely to buy things you didn't plan to buy: Taobao, JD, Xiaohongshu, Douyin livestreams, or offline stores? Why?</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Q3</div>
+        <div class="q-title">Brands and Identity</div>
+        <p>Is there a brand, gadget, clothing style, or product category that says something about who you are? Is that expression real, performed, or both?</p>
+      </div>
+      <div class="q-card green">
+        <div class="q-num">Q4</div>
+        <div class="q-title">Regret and Satisfaction</div>
+        <p>What purchase gave you long-term satisfaction? What purchase quickly became clutter? What was the difference?</p>
+      </div>
+    </div>
+    <p style="font-size:15px; color:#4B4F63; margin-top:16px; text-align:center">Take turns. Everyone answers Q1 first, then move deeper. About 6 minutes per question.</p>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide bg-cream" data-slide="9">
+  <div class="tag tag-coral">USEFUL EXPRESSIONS</div>
+  <h3 style="color:#16213E">Phrases to use in your discussion</h3>
+  <div class="body-content">
+    <div class="grid-2">
+      <div class="expr-box">
+        <h4>DESCRIBING A PURCHASE</h4>
+        <div class="expr-item">"I bought it because ___."</div>
+        <div class="expr-item">"It felt worth it at the time."</div>
+        <div class="expr-item">"I was influenced by ___."</div>
+        <div class="expr-item">"It solved a real problem / just changed my mood."</div>
+      </div>
+      <div class="expr-box">
+        <h4>GOING DEEPER</h4>
+        <div class="expr-item">"The hidden cost is ___."</div>
+        <div class="expr-item">"I think brands sell us ___, not just products."</div>
+        <div class="expr-item">"For me, minimalism sounds ___."</div>
+        <div class="expr-item">"I'm guilty of this too."</div>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:17px; color:#16213E">Don't aim for perfect English. Aim for a precise thought.</p>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide bg-white" data-slide="10">
+  <div class="tag tag-coral">BEFORE ROUND 2 · THE TENSION</div>
+  <h3>Need, desire, or anxiety?</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4B4F63; margin-bottom:20px; line-height:1.6">A purchase can be practical, emotional, social, and symbolic at the same time. The hard part is knowing which force is driving.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h4>Need</h4>
+        <p>It solves a real problem: food, health, work, safety, replacement, convenience, or quality of life.</p>
+      </div>
+      <div class="card green">
+        <div class="icon">✨</div>
+        <h4>Desire</h4>
+        <p>It gives pleasure, beauty, identity, novelty, status, comfort, or a sense of possibility.</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">⏳</div>
+        <h4>Anxiety</h4>
+        <p>It promises: buy this before you fall behind, look outdated, miss the sale, or become less attractive.</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="color:#4B4F63">Round 2 is not about judging people. It is about seeing the system more clearly.</p>
+  </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide bg-green" data-slide="11">
+  <div class="round-title">
+    <div class="tag tag-white">ROUND 2 · 25 MIN</div>
+    <h1>Seeing<br>The System</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.78)">3 questions · switch groups · go from personal habits to social consequences</p>
+  </div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide bg-white" data-slide="12">
+  <div class="tag tag-coral">ROUND 2 · QUESTION 1</div>
+  <h3>Is consumerism mostly freedom or manipulation?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px; line-height:1.6">Online shopping gives us choice and convenience. But it also gives companies endless chances to shape our attention, emotions, and self-image.</p>
+    <div class="grid-2">
+      <div class="debate-side need">
+        <h4>IT'S FREEDOM</h4>
+        <ul>
+          <li>People can choose what makes their life better</li>
+          <li>Good products save time, energy, and stress</li>
+          <li>Shopping can support creativity, hobbies, and self-expression</li>
+        </ul>
+      </div>
+      <div class="debate-side desire">
+        <h4>IT'S MANIPULATION</h4>
+        <ul>
+          <li>Algorithms learn our weak moments better than we do</li>
+          <li>Scarcity, discounts, and influencers create artificial urgency</li>
+          <li>Brands sell identity, not just function</li>
+        </ul>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:16px; color:#E76F51">Discussion tip: defend the side you disagree with for two minutes.</p>
+  </div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide bg-white" data-slide="13">
+  <div class="tag tag-coral">ROUND 2 · QUESTION 2 · ROLE-PLAY</div>
+  <h3>Who benefits from our desire?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px">Split into 4 mini-groups. Each defends one role. 5 min prep, 10 min cross-debate.</p>
+    <div class="grid-2x2">
+      <div class="card">
+        <div class="icon">📱</div>
+        <h4>PLATFORMS</h4>
+        <p style="font-size:14px; color:#666">(Taobao, Douyin, Xiaohongshu...)</p>
+        <p style="margin-top:8px">Should platforms reduce manipulative design even if sales and engagement drop?</p>
+      </div>
+      <div class="card green">
+        <div class="icon">📣</div>
+        <h4>BRANDS & INFLUENCERS</h4>
+        <p style="font-size:14px; color:#666">(marketing, KOLs, live hosts)</p>
+        <p style="margin-top:8px">Is emotional selling a problem, or just good communication?</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🏛️</div>
+        <h4>GOVERNMENT</h4>
+        <p style="font-size:14px; color:#666">(regulators, consumer protection)</p>
+        <p style="margin-top:8px">Should there be stronger rules on ads, data use, dark patterns, or "lowest price" claims?</p>
+      </div>
+      <div class="card">
+        <div class="icon">🙋</div>
+        <h4>EACH OF US</h4>
+        <p style="font-size:14px; color:#666">(consumers, friends, families)</p>
+        <p style="margin-top:8px">How much responsibility should individuals take for resisting temptation?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide bg-cream" data-slide="14">
+  <div class="tag tag-coral">ROUND 2 · QUESTION 3 · CLOSING ACTION</div>
+  <h3 style="color:#16213E">What would a healthier relationship with buying look like?</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4B4F63; margin-bottom:8px; line-height:1.6">Minimalism is not the only answer. The deeper question is: can we buy with more awareness, less anxiety, and more respect for future ourselves?</p>
+    <p style="font-size:15px; font-weight:bold; color:#E76F51; margin-bottom:12px; letter-spacing:1px">IDEAS TO STEAL:</p>
+    <ul class="action-list">
+      <li>Wait 24 hours before buying non-essential items</li>
+      <li>Ask: "What problem will this still solve one month from now?"</li>
+      <li>Unfollow one account that makes you feel inadequate</li>
+      <li>Track one week of small purchases without judging yourself</li>
+      <li>Repair, borrow, rent, or buy second-hand once this month</li>
+    </ul>
+    <p style="font-size:17px; margin-top:18px; text-align:center; color:#16213E"><strong>Finish with: "This week, I will ___."</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
+  <div style="text-align:center; margin-bottom:16px">
+    <div class="tag tag-coral">A FINAL INVITATION</div>
+    <h3 style="font-family:Georgia,serif">Eight Open Questions</h3>
+    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Eight cards hide eight questions. Tap one, answer honestly, then invite someone else.</p>
+  </div>
+  <div class="body-content">
+    <div class="flip-grid" id="questionCards"></div>
+  </div>
+  <p style="font-size:14px; text-align:center; color:#4B4F63; margin-top:12px; font-style:italic">No right answers. Only clearer ones.</p>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide bg-dark" data-slide="16">
+  <div class="quote-slide">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; max-width:860px; width:100%">
+      <div class="quote-mark">"</div>
+      <p class="quote" style="margin-left:-4px">Too many people spend money they haven't earned, to buy things they don't want, to impress people they don't like.</p>
+      <p class="quote-author" style="align-self:flex-end">— often attributed to Will Rogers</p>
+    </div>
+    <div class="separator" style="margin:20px auto"></div>
+    <p style="font-size:18px; opacity:0.82; margin-top:20px">Thanks for speaking, listening, and noticing what usually stays invisible.</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。</p>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button id="prevBtn" onclick="navigate(-1)" disabled>‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn" onclick="navigate(1)">›</button>
+  <span class="page-info" id="pageInfo">1 / 16</span>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+function update() {
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'prev');
+    if (i === cur) s.classList.add('active');
+    else if (i < cur) s.classList.add('prev');
+  });
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === total - 1;
+  document.getElementById('pageInfo').textContent = (cur + 1) + ' / ' + total;
+  document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+function navigate(dir) {
+  const n = cur + dir;
+  if (n >= 0 && n < total) {
+    cur = n;
+    update();
+  }
+}
+function goTo(i) { cur = i; update(); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+    e.preventDefault();
+    navigate(1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    navigate(-1);
+  }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
+document.addEventListener('touchend', e => {
+  const d = tx - e.changedTouches[0].screenX;
+  if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1);
+});
+
+let wt;
+document.addEventListener('wheel', e => {
+  if (wt) return;
+  wt = setTimeout(() => { wt = null; }, 500);
+  navigate(e.deltaY > 0 ? 1 : -1);
+});
+
+const cards = [
+  { icon:'🧾', name:'RECEIPT', latin:'what did it really cost?', q:'Tell the story of a purchase whose real cost was not only money. What did it take from you, and what did it give back?', zh:'讲一个故事：某次消费真正的代价不只是金钱。它从你这里拿走了什么，又给了你什么？' },
+  { icon:'🏷️', name:'LABEL', latin:'the identity tag', q:'Think of something you own that says something about your identity. What story do you hope it tells, and who is the audience?', zh:'想一件能表达你身份的东西。你希望它讲述什么故事？这个故事是讲给谁听的？' },
+  { icon:'📦', name:'PACKAGE', latin:'the waiting thrill', q:'Describe the emotional journey from wanting something to receiving it. At which moment is the pleasure strongest, and why?', zh:'描述一次从想买到收到的情绪变化。哪个时刻最快乐？为什么？' },
+  { icon:'⏰', name:'COUNTDOWN', latin:'the urgent clock', q:'Recall a time when limited-time offers or social media made you feel you had to act quickly. What was happening inside your mind?', zh:'回想一次限时优惠或社交媒体让你觉得必须马上行动的经历。当时你脑子里发生了什么？' },
+  { icon:'🪞', name:'MIRROR', latin:'the comparison trap', q:'When you compare your lifestyle with others online, what kind of life seems more attractive than your own? Where does that image come from?', zh:'当你在网上比较生活方式时，哪种生活会显得比自己的更有吸引力？这种想象来自哪里？' },
+  { icon:'🧘', name:'SPACE', latin:'the quiet shelf', q:'Imagine removing 30% of your possessions tomorrow. What would be easy to let go of, what would be hard, and what would you learn about yourself?', zh:'想象明天要减少 30% 的物品。什么容易放下？什么很难？这会让你看见怎样的自己？' },
+  { icon:'🔁', name:'LOOP', latin:'buy, regret, repeat', q:'Choose one repeated buying pattern in your life. What need or emotion is it trying to answer, and what else might answer it better?', zh:'选择一个你反复出现的消费模式。它试图回应什么需求或情绪？还有什么方式可能回应得更好？' },
+  { icon:'🌱', name:'ENOUGH', latin:'the harder answer', q:'If you designed a personal definition of "enough", what would it include: money, objects, time, beauty, freedom, relationships, or something else?', zh:'如果你要为“足够”下一个个人定义，它会包括什么：钱、物品、时间、美、自由、关系，还是别的东西？' }
+];
+
+const questionCardsEl = document.getElementById('questionCards');
+cards.sort(() => Math.random() - 0.5).forEach(c => {
+  const el = document.createElement('div');
+  el.className = 'flip-card';
+  el.innerHTML = `<div class="flip-inner"><div class="flip-face flip-front"><div class="f-icon">${c.icon}</div><div class="f-name">${c.name}</div><div class="f-latin">${c.latin}</div><div class="f-hint">tap to reveal</div></div><div class="flip-face flip-back"><div class="f-q">"${c.q}"</div><div class="f-qzh">${c.zh}</div></div></div>`;
+  el.onclick = () => el.classList.toggle('flipped');
+  questionCardsEl.appendChild(el);
+});
+</script>
+</body>
+</html>
