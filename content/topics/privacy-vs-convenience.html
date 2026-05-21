@@ -131,20 +131,20 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #5BC0BE; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .flip-card { perspective: 800px; cursor: pointer; }
 .flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #F8F6F2; border: 2px solid #E8E4DE; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .flip-front:hover { border-color: #E8871E; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.flip-front .f-icon { font-size: 38px; margin-bottom: 8px; }
-.flip-front .f-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A1A2E; }
-.flip-front .f-latin { font: italic 11px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
+.flip-front .f-icon { font-size: 42px; margin-bottom: 8px; }
+.flip-front .f-name { font: bold 15px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A1A2E; }
+.flip-front .f-latin { font: italic 12px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
 .flip-front .f-hint { font-size: 10px; color: #E8871E; margin-top: 8px; letter-spacing: 0.5px; }
 .flip-back { transform: rotateY(180deg); background: #1A1A2E; color: #F8F6F2; border: 2px solid #2E2E4A; text-align: center; gap: 8px; }
-.flip-back .f-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
-.flip-back .f-qzh { font-size: 12px; color: rgba(248,246,242,0.64); margin-top: 4px; }
+.flip-back .f-q { font: italic 17px/1.4 Georgia, serif; padding: 0 6px; }
+.flip-back .f-qzh { font-size: 14px; color: rgba(248,246,242,0.64); margin-top: 4px; }
 
 @media (max-width: 768px) {
   .slide { padding: 40px 30px; overflow-y: auto; }
@@ -489,8 +489,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-orange">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Eight Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Eight cards hide eight questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
+    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -580,14 +580,15 @@ document.addEventListener('wheel', e => {
 });
 
 const cards = [
-  { icon:'🐱', name:'CAT', latin:'Felis catus', q:'What is one small habit that quietly makes your life better? How did you discover it?', zh:'有什么小习惯在悄悄让你的生活变好？你是怎么发现它的？' },
-  { icon:'🐶', name:'DOG', latin:'Canis familiaris', q:'What is one convenience from technology that you are truly grateful for? What did life look like without it?', zh:'你真心感激科技带来的哪一项便利？没有它之前的生活是什么样的？' },
-  { icon:'🐰', name:'RABBIT', latin:'Oryctolagus cuniculus', q:'If you could design your perfect smart home, what would it do for you every morning?', zh:'如果你能设计一个理想的智能家居，它每天早上会为你做什么？' },
-  { icon:'🦊', name:'FOX', latin:'Vulpes vulpes', q:'If you had a free month with no work and no obligations, what would you do with it?', zh:'如果你有一个月的假期，没有工作没有义务，你会做什么？' },
-  { icon:'🐻', name:'BEAR', latin:'Ursus arctos', q:'What is a skill you wish you had learned earlier in life? Why does it matter to you now?', zh:'你希望自己更早学会什么技能？它现在对你为什么重要？' },
-  { icon:'🐼', name:'PANDA', latin:'Ailuropoda melanoleuca', q:'Describe a moment when a stranger did something kind for you. How did it affect your day?', zh:'描述一个陌生人对你善意相待的时刻。它如何影响了你那一天？' },
-  { icon:'🦉', name:'OWL', latin:'Strix nebulosa', q:'What piece of technology from today would most surprise someone from the year 2000?', zh:'今天的哪项科技会最让2000年的人感到惊讶？' },
-  { icon:'🐬', name:'DOLPHIN', latin:'Delphinus delphis', q:'If you could wake up tomorrow with one problem in the world solved, which problem would you choose?', zh:'如果明天醒来世界上有一个问题被解决了，你会选哪个？' }
+  { icon:'🦋', name:'BUTTERFLY', latin:'Lepidoptera', q:'What is one small habit that quietly makes your life better? How did you discover it?', zh:'有什么小习惯在悄悄让你的生活变好？你是怎么发现它的？' },
+  { icon:'🐝', name:'HONEYBEE', latin:'Apis mellifera', q:'What is one convenience from technology that you are truly grateful for? What did life look like without it?', zh:'你真心感激科技带来的哪一项便利？没有它之前的生活是什么样的？' },
+  { icon:'🐛', name:'CATERPILLAR', latin:'Papilio machaon', q:'If you could design your perfect smart home, what would it do for you every morning?', zh:'如果你能设计一个理想的智能家居，它每天早上会为你做什么？' },
+  { icon:'🐜', name:'ANT', latin:'Formicidae', q:'If you had a free month with no work and no obligations, what would you do with it?', zh:'如果你有一个月的假期，没有工作没有义务，你会做什么？' },
+  { icon:'🪲', name:'BEETLE', latin:'Coleoptera', q:'What is a skill you wish you had learned earlier in life? Why does it matter to you now?', zh:'你希望自己更早学会什么技能？它现在对你为什么重要？' },
+  { icon:'🦗', name:'CRICKET', latin:'Gryllidae', q:'Describe a moment when a stranger did something kind for you. How did it affect your day?', zh:'描述一个陌生人对你善意相待的时刻。它如何影响了你那一天？' },
+  { icon:'🪰', name:'FIREFLY', latin:'Lampyridae', q:'What piece of technology from today would most surprise someone from the year 2000?', zh:'今天的哪项科技会最让2000年的人感到惊讶？' },
+  { icon:'🐞', name:'LADYBUG', latin:'Coccinellidae', q:'If you could wake up tomorrow with one problem in the world solved, which problem would you choose?', zh:'如果明天醒来世界上有一个问题被解决了，你会选哪个？' },
+  { icon:'🪳', name:'MANTIS', latin:'Mantodea', q:'What is something about you that most people would never guess just from looking?', zh:'你身上有什么特点，是别人光看外表永远猜不到的？' }
 ];
 
 const questionCardsEl = document.getElementById('questionCards');

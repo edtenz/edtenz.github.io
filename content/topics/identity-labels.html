@@ -121,7 +121,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot.active { background: #F0A500; transform: scale(1.3); }
 
 /* Bestiary */
-.bestiary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.bestiary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .creature { perspective: 800px; cursor: pointer; }
 .creature-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .creature.flipped .creature-inner { transform: rotateY(180deg); }
@@ -129,14 +129,14 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .creature-front { background: linear-gradient(135deg, #FAF7F2 0%, #FFF0EB 100%); border: 2px dashed #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
 .creature-front::after { content: '?'; position: absolute; top: -10px; right: -5px; font: bold 80px Georgia, serif; color: rgba(232,93,58,0.06); pointer-events: none; }
 .creature-front:hover { border-color: #E85D3A; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(232,93,58,0.15); }
-.creature-front .c-icon { font-size: 40px; margin-bottom: 8px; }
+.creature-front .c-icon { font-size: 44px; margin-bottom: 8px; }
 .creature-front .c-name { font: bold 15px/1 Arial, sans-serif; letter-spacing: 1px; color: #2D1B4E; }
-.creature-front .c-latin { font: italic 11px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
+.creature-front .c-latin { font: italic 12px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
 .creature-front .c-hint { font-size: 10px; color: #E85D3A; margin-top: 8px; letter-spacing: 0.5px; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 .creature-back { transform: rotateY(180deg); background: #2D1B4E; color: #FAF7F2; border: 2px solid #3d2b5e; text-align: center; gap: 8px; }
-.creature-back .c-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
-.creature-back .c-qzh { font-size: 12px; color: rgba(250,247,242,0.6); margin-top: 4px; }
+.creature-back .c-q { font: italic 17px/1.4 Georgia, serif; padding: 0 6px; }
+.creature-back .c-qzh { font-size: 14px; color: rgba(250,247,242,0.6); margin-top: 4px; }
 
 @media (max-width: 768px) {
   .slide { padding: 40px 30px; overflow-y: auto; }
@@ -464,7 +464,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-accent">A FINAL INVITATION</div>
     <h3 style="font-family:Georgia,serif">Open Your Blind Box 🎁</h3>
-    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Eight boxes, eight questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
+    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Nine boxes, nine questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
   </div>
   <div class="body-content">
     <div class="bestiary-grid" id="bestiary"></div>
@@ -540,11 +540,12 @@ const creatures = [
   { icon:'🐙', name:'OCTOPUS', latin:'the shape-shifter', q:'What\'s something you used to be sure about, but now you\'re not so sure anymore?', zh:'有什么事你曾经很确定，但现在不那么确定了？' },
   { icon:'🪼', name:'JELLYFISH', latin:'the drifting one', q:'If you could live someone else\'s life for a week — anyone in the world — whose would you pick?', zh:'如果可以体验别人的生活一周——世界上任何人——你会选谁？' },
   { icon:'🐚', name:'SHELL', latin:'the hidden dweller', q:'What is a small moment from this year that you want to remember forever?', zh:'今年有哪个小瞬间，是你想永远记住的？' },
-  { icon:'🐋', name:'WHALE', latin:'the deep diver', q:'What do you think about when you can\'t fall asleep?', zh:'睡不着的时候你会想什么？' },
+  { icon:'🐋', name:'WHALE', latin:'the deep diver', q:'What is one question you keep coming back to in life — something you still haven\'t figured out?', zh:'你人生中有什么问题是反复在想、但至今没有答案的？' },
   { icon:'🦈', name:'SHARK', latin:'the misunderstood', q:'What\'s a popular opinion that you secretly disagree with?', zh:'有什么大家普遍认同的观点，你其实暗暗不同意？' },
   { icon:'🐠', name:'CLOWNFISH', latin:'the colorful one', q:'What makes you laugh the hardest — and who are you usually with when it happens?', zh:'什么事能让你笑到停不下来？那时候你通常和谁在一起？' },
   { icon:'🦑', name:'SQUID', latin:'the ink-sprayer', q:'If you could send a message to yourself five years ago, what would you say in one sentence?', zh:'如果能给五年前的自己发一条消息，你会说什么？' },
-  { icon:'🐡', name:'PUFFERFISH', latin:'the surprising one', q:'What\'s something you\'re proud of that no one would put on a resume?', zh:'有什么让你自豪的事，是永远不会出现在简历上的？' }
+  { icon:'🐡', name:'PUFFERFISH', latin:'the surprising one', q:'What\'s something you\'re proud of that no one would put on a resume?', zh:'有什么让你自豪的事，是永远不会出现在简历上的？' },
+  { icon:'🦀', name:'CRAB', latin:'the sideways walker', q:'If you could have any job for one week — just to experience it — what would you try?', zh:'如果你能体验任何工作一周，你会选什么？' }
 ];
 const bestiaryEl = document.getElementById('bestiary');
 creatures.sort(() => Math.random() - 0.5).forEach(c => {

@@ -131,20 +131,20 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F0A500; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .flip-card { perspective: 800px; cursor: pointer; }
 .flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .flip-front:hover { border-color: #E2703A; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.flip-front .f-icon { font-size: 38px; margin-bottom: 8px; }
-.flip-front .f-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A1A2E; }
-.flip-front .f-latin { font: italic 11px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
+.flip-front .f-icon { font-size: 42px; margin-bottom: 8px; }
+.flip-front .f-name { font: bold 15px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A1A2E; }
+.flip-front .f-latin { font: italic 12px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
 .flip-front .f-hint { font-size: 10px; color: #E2703A; margin-top: 8px; letter-spacing: 0.5px; }
 .flip-back { transform: rotateY(180deg); background: #1A1A2E; color: #FAF7F2; border: 2px solid #293554; text-align: center; gap: 8px; }
-.flip-back .f-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
-.flip-back .f-qzh { font-size: 12px; color: rgba(250,247,242,0.64); margin-top: 4px; }
+.flip-back .f-q { font: italic 17px/1.4 Georgia, serif; padding: 0 6px; }
+.flip-back .f-qzh { font-size: 14px; color: rgba(250,247,242,0.64); margin-top: 4px; }
 
 @media (max-width: 768px) {
   .slide { padding: 40px 30px; overflow-y: auto; }
@@ -490,8 +490,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-amber">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Eight Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Eight cards hide eight questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
+    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -581,14 +581,15 @@ document.addEventListener('wheel', e => {
 });
 
 const cards = [
-  { icon:'🐱', name:'CAT', latin:'felis catus', q:'What is one thing you do purely for fun, with zero goals attached?', zh:'你有什么事情是纯粹为了好玩而做的，完全没有目标？' },
-  { icon:'🐶', name:'DOG', latin:'canis familiaris', q:'What is the best meal you have had recently? What made it special?', zh:'你最近吃过最好的一顿饭是什么？是什么让它特别？' },
-  { icon:'🐰', name:'RABBIT', latin:'oryctolagus', q:'If you could live in any city for one year, where would you go and why?', zh:'如果你能在任何城市生活一年，你会去哪里？为什么？' },
-  { icon:'🦊', name:'FOX', latin:'vulpes vulpes', q:'Who is the most relaxed person you know? What do they do differently?', zh:'你认识的最放松的人是谁？他们和别人有什么不同？' },
-  { icon:'🐻', name:'BEAR', latin:'ursus arctos', q:'What is a skill or hobby you gave up because you felt you weren\'t progressing fast enough?', zh:'你有没有因为觉得进步太慢而放弃过某个技能或爱好？' },
-  { icon:'🐼', name:'PANDA', latin:'ailuropoda', q:'If you could have dinner with anyone — alive or dead — who would it be and what would you ask?', zh:'如果你能和任何人共进晚餐——无论古今——你会选谁？你会问什么？' },
-  { icon:'🦉', name:'OWL', latin:'strix varia', q:'What is something you believed strongly five years ago but have changed your mind about?', zh:'五年前你坚信不疑、但现在改变了看法的事情是什么？' },
-  { icon:'🐬', name:'DOLPHIN', latin:'delphinus', q:'If your week had 8 days, would you use the extra day for work or rest? Be honest.', zh:'如果一周有八天，你会用多出来的一天工作还是休息？说实话。' }
+  { icon:'🚲', name:'BICYCLE', latin:'slow & steady', q:'What is one thing you do purely for fun, with zero goals attached?', zh:'你有什么事情是纯粹为了好玩而做的，完全没有目标？' },
+  { icon:'🚗', name:'CAR', latin:'daily commute', q:'What is the best meal you have had recently? What made it special?', zh:'你最近吃过最好的一顿饭是什么？是什么让它特别？' },
+  { icon:'🚂', name:'TRAIN', latin:'long journey', q:'If you could live in any city for one year, where would you go and why?', zh:'如果你能在任何城市生活一年，你会去哪里？为什么？' },
+  { icon:'✈️', name:'AIRPLANE', latin:'across the sky', q:'Who is the most relaxed person you know? What do they do differently?', zh:'你认识的最放松的人是谁？他们和别人有什么不同？' },
+  { icon:'🚢', name:'SHIP', latin:'ocean voyage', q:'What is a skill or hobby you gave up because you felt you weren\'t progressing fast enough?', zh:'你有没有因为觉得进步太慢而放弃过某个技能或爱好？' },
+  { icon:'🚀', name:'ROCKET', latin:'escape velocity', q:'If you could have dinner with anyone — alive or dead — who would it be and what would you ask?', zh:'如果你能和任何人共进晚餐——无论古今——你会选谁？你会问什么？' },
+  { icon:'🛵', name:'SCOOTER', latin:'wind in hair', q:'What is something you believed strongly five years ago but have changed your mind about?', zh:'五年前你坚信不疑、但现在改变了看法的事情是什么？' },
+  { icon:'🚁', name:'HELICOPTER', latin:'bird\'s eye view', q:'If your week had 8 days, would you use the extra day for work or rest? Be honest.', zh:'如果一周有八天，你会用多出来的一天工作还是休息？说实话。' },
+  { icon:'⛵', name:'SAILBOAT', latin:'wind-powered', q:'What is something you are curious about right now — but haven\'t had time to explore yet?', zh:'你现在对什么事情感到好奇，但还没来得及去探索？' }
 ];
 
 const questionCardsEl = document.getElementById('questionCards');

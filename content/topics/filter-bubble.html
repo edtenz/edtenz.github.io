@@ -127,20 +127,20 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot.active { background: #F7B267; transform: scale(1.3); }
 
 /* Bestiary */
-.bestiary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.bestiary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .creature { perspective: 800px; cursor: pointer; }
 .creature-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .creature.flipped .creature-inner { transform: rotateY(180deg); }
 .creature-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .creature-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .creature-front:hover { border-color: #F25C54; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.creature-front .c-icon { font-size: 40px; margin-bottom: 8px; }
-.creature-front .c-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A2A4F; }
-.creature-front .c-latin { font: italic 11px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
+.creature-front .c-icon { font-size: 44px; margin-bottom: 8px; }
+.creature-front .c-name { font: bold 15px/1 Arial, sans-serif; letter-spacing: 1px; color: #1A2A4F; }
+.creature-front .c-latin { font: italic 12px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
 .creature-front .c-hint { font-size: 10px; color: #F25C54; margin-top: 8px; letter-spacing: 0.5px; }
 .creature-back { transform: rotateY(180deg); background: #1A2A4F; color: #FAF7F2; border: 2px solid #2d3854; text-align: center; gap: 8px; }
-.creature-back .c-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
-.creature-back .c-qzh { font-size: 12px; color: rgba(250,247,242,0.6); margin-top: 4px; }
+.creature-back .c-q { font: italic 17px/1.4 Georgia, serif; padding: 0 6px; }
+.creature-back .c-qzh { font-size: 14px; color: rgba(250,247,242,0.6); margin-top: 4px; }
 
 @media (max-width: 768px) {
   .slide { padding: 40px 30px; overflow-y: auto; }
@@ -477,7 +477,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-red">A FINAL INVITATION</div>
     <h3 style="font-family:Georgia,serif">The Bestiary of Final Questions</h3>
-    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Eight creatures hide eight questions. Tap the one that calls to you — and answer what it asks.</p>
+    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Nine creatures, nine questions. Tap the one that calls to you — and answer what it asks.</p>
   </div>
   <div class="body-content">
     <div class="bestiary-grid" id="bestiary"></div>
@@ -557,7 +557,8 @@ const creatures = [
   { icon:'🦊', name:'FOX', latin:'the clever self-deceiver', q:'What is something you say you like, but maybe you do not really like?', zh:'有什么是你嘴上说喜欢，但其实可能并不喜欢的？' },
   { icon:'🐢', name:'TURTLE', latin:'the slow witness', q:'When do you feel time moving slowly? When do you feel it moving too fast?', zh:'什么时候你觉得时间过得很慢？什么时候又觉得太快？' },
   { icon:'🦅', name:'EAGLE', latin:'the high observer', q:'If you could watch your own life from above, what would you tell yourself?', zh:'如果可以从高处看自己的人生，你想对自己说什么？' },
-  { icon:'🐺', name:'WOLF', latin:'the tribe-bound', q:'Who is a person you feel safe being completely yourself with? Why them?', zh:'在谁面前，你可以完全做自己？为什么是 ta？' }
+  { icon:'🐺', name:'WOLF', latin:'the tribe-bound', q:'Who is a person you feel safe being completely yourself with? Why them?', zh:'在谁面前，你可以完全做自己？为什么是 ta？' },
+  { icon:'🦩', name:'FLAMINGO', latin:'the patient one', q:'What is something you do slowly on purpose — in a world that rewards speed?', zh:'在这个追求速度的世界里，有什么事你故意做得很慢？' }
 ];
 const bestiaryEl = document.getElementById('bestiary');
 creatures.sort(() => Math.random() - 0.5).forEach(c => {

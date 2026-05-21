@@ -122,7 +122,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot.active { background: #E8A838; transform: scale(1.3); }
 
 /* Bestiary / Blind Box */
-.bestiary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.bestiary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .creature { perspective: 800px; cursor: pointer; }
 .creature-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .creature.flipped .creature-inner { transform: rotateY(180deg); }
@@ -130,14 +130,14 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .creature-front { background: linear-gradient(135deg, #FAF7F2 0%, #FFF0EB 100%); border: 2px dashed #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
 .creature-front::after { content: '?'; position: absolute; top: -10px; right: -5px; font: bold 80px Georgia, serif; color: rgba(217,109,57,0.06); pointer-events: none; }
 .creature-front:hover { border-color: #D96D39; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(217,109,57,0.15); }
-.creature-front .c-icon { font-size: 40px; margin-bottom: 8px; }
-.creature-front .c-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #1B3A4B; }
-.creature-front .c-latin { font: italic 11px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
+.creature-front .c-icon { font-size: 44px; margin-bottom: 8px; }
+.creature-front .c-name { font: bold 15px/1 Arial, sans-serif; letter-spacing: 1px; color: #1B3A4B; }
+.creature-front .c-latin { font: italic 12px Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
 .creature-front .c-hint { font-size: 10px; color: #D96D39; margin-top: 8px; letter-spacing: 0.5px; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 .creature-back { transform: rotateY(180deg); background: #1B3A4B; color: #FAF7F2; border: 2px solid #2a4d5e; text-align: center; gap: 8px; }
-.creature-back .c-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
-.creature-back .c-qzh { font-size: 12px; color: rgba(250,247,242,0.6); margin-top: 4px; }
+.creature-back .c-q { font: italic 17px/1.4 Georgia, serif; padding: 0 6px; }
+.creature-back .c-qzh { font-size: 14px; color: rgba(250,247,242,0.6); margin-top: 4px; }
 
 @media (max-width: 768px) {
   .slide { padding: 40px 30px; overflow-y: auto; }
@@ -471,7 +471,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-accent">A FINAL INVITATION</div>
     <h3 style="font-family:Georgia,serif">Open Your Blind Box 🎁</h3>
-    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Eight boxes, eight questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
+    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Nine boxes, nine questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
   </div>
   <div class="body-content">
     <div class="bestiary-grid" id="bestiary"></div>
@@ -544,14 +544,15 @@ document.addEventListener('wheel', e => { if (wt) return; wt = setTimeout(() => 
 
 // Blind Box Questions (fruit themed)
 const creatures = [
-  { icon:'🍎', name:'APPLE', latin:'the familiar one', q:'What\'s a place you\'ve been to more than once — and why do you keep going back?', zh:'有没有一个地方你去了不止一次？为什么总想回去？' },
-  { icon:'🍋', name:'LEMON', latin:'the sour surprise', q:'What is something you only understand now that you are older — that no one could have explained to you before?', zh:'有什么事是你现在才理解的——别人以前怎么解释你都不会懂？' },
-  { icon:'🍇', name:'GRAPE', latin:'the clustered one', q:'What is the best meal you have had recently? What made it special — the food, the place, or the people?', zh:'你最近吃过最好的一顿饭是什么？是食物、地方、还是一起吃的人让它特别？' },
-  { icon:'🍑', name:'PEACH', latin:'the soft one', q:'Describe a moment on a trip when you felt truly peaceful — no phone, no rush, just there.', zh:'描述一个旅途中真正平静的瞬间——没手机、不赶路、就只是在那里。' },
-  { icon:'🥝', name:'KIWI', latin:'the unexpected', q:'Have you ever gone somewhere with zero expectations — and been completely blown away?', zh:'有没有一次你毫无期待地去了一个地方，结果被彻底惊艳？' },
-  { icon:'🍒', name:'CHERRY', latin:'the tiny joy', q:'If you could learn one skill instantly — a language, an instrument, a sport — what would it be?', zh:'如果你能瞬间学会一项技能——一门语言、一种乐器、一项运动——你会选什么？' },
-  { icon:'🥭', name:'MANGO', latin:'the tropical dream', q:'What is one object you own that has a story behind it? Tell us the story.', zh:'你拥有的东西里，哪一件背后有故事？讲讲这个故事。' },
-  { icon:'🫐', name:'BLUEBERRY', latin:'the quiet one', q:'Has a trip ever changed how you see your everyday life back home?', zh:'有没有一次旅行改变了你看待日常生活的方式？' }
+  { icon:'🗼', name:'TOKYO TOWER', latin:'Japan', q:'What\'s a place you\'ve been to more than once — and why do you keep going back?', zh:'有没有一个地方你去了不止一次？为什么总想回去？' },
+  { icon:'🔺', name:'PYRAMIDS', latin:'Egypt', q:'What is something you only understand now that you are older — that no one could have explained to you before?', zh:'有什么事是你现在才理解的——别人以前怎么解释你都不会懂？' },
+  { icon:'🏯', name:'FORBIDDEN CITY', latin:'China', q:'What is the best meal you have had recently? What made it special — the food, the place, or the people?', zh:'你最近吃过最好的一顿饭是什么？是食物、地方、还是一起吃的人让它特别？' },
+  { icon:'🏖️', name:'MALDIVES', latin:'Indian Ocean', q:'Describe a moment on a trip when you felt truly peaceful — no phone, no rush, just there.', zh:'描述一个旅途中真正平静的瞬间——没手机、不赶路、就只是在那里。' },
+  { icon:'🗽', name:'NEW YORK', latin:'United States', q:'Have you ever gone somewhere with zero expectations — and been completely blown away?', zh:'有没有一次你毫无期待地去了一个地方，结果被彻底惊艳？' },
+  { icon:'🥐', name:'PARIS', latin:'France', q:'If you could learn one skill instantly — a language, an instrument, a sport — what would it be?', zh:'如果你能瞬间学会一项技能——一门语言、一种乐器、一项运动——你会选什么？' },
+  { icon:'🏞️', name:'ZHANGJIAJIE', latin:'China', q:'What is one object you own that has a story behind it? Tell us the story.', zh:'你拥有的东西里，哪一件背后有故事？讲讲这个故事。' },
+  { icon:'🛕', name:'ANGKOR WAT', latin:'Cambodia', q:'Has a trip ever changed how you see your everyday life back home?', zh:'有没有一次旅行改变了你看待日常生活的方式？' },
+  { icon:'🎡', name:'LONDON EYE', latin:'United Kingdom', q:'What is the most interesting conversation you have had with a stranger? Where were you?', zh:'你和陌生人最有意思的一次对话是什么？当时在哪里？' }
 ];
 const bestiaryEl = document.getElementById('bestiary');
 creatures.sort(() => Math.random() - 0.5).forEach(c => {
