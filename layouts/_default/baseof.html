@@ -23,12 +23,19 @@
 {{- if and (eq .Kind "page") (hasPrefix .RelPermalink "/deep/") -}}
     {{- $bodyClass = $bodyClass | append "section-deep" -}}
 {{- end -}}
+{{- if eq .Section "topics" -}}
+    {{- $bodyClass = $bodyClass | append "section-topics" -}}
+{{- end -}}
 <body{{- if gt (len $bodyClass) 0 }} class="{{ delimit $bodyClass " " }}"{{- end }} id="top">
-    {{ partialCached "header.html" . .Page -}}
+    {{- if ne .Section "topics" -}}
+        {{ partialCached "header.html" . .Page -}}
+    {{- end -}}
     <main class="main">
         {{- block "main" . }}{{ end }}
     </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    {{- if ne .Section "topics" -}}
+        {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    {{- end -}}
 </body>
 
 </html>
