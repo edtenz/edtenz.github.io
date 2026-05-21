@@ -57,15 +57,20 @@
 
 ---
 
-## Slide 3 — Warm-up (3 min)
+## Slide 3 — Warm-up: Raise Your Hand If... (3 min)
 
-**What to do:** Show the contrast: "The Productive Day" vs "The Wasted Day." Ask the question.
+**What to do:** Read each statement. Participants raise hands. Pause after each to let people look around.
 
-> "Look at these two days. One feels like control. The other feels like... maybe shame."
+> "No talking — just raise your hand honestly. Look around!"
 
-> "Quick pair-share: when your plan falls apart, do you feel FREE or ANXIOUS?"
+> 1. "Raise your hand if you have a to-do list app or planner open RIGHT NOW."
+> 2. "Raise your hand if you feel guilty when you rest on a weekday."
+> 3. "Raise your hand if you have watched a 'morning routine' or 'productive day' video in the last month."
+> 4. "Raise your hand if you have ever called a relaxing day 'wasted.'"
 
-**中文提示：** 让大家先承认这种焦虑感存在，之后讨论才能深入。
+> "Look around. If most hands went up on the second one — that is exactly what tonight is about."
+
+**中文提示：** 第二题通常很多人举手——停顿一下让大家意识到"原来大家都有休息内疚感"。这是进入主题的最好桥梁。
 
 ---
 

@@ -50,13 +50,21 @@
 
 ---
 
-## Slide 3 — Warm-up (3 min)
+## Slide 3 — Warm-up: Show Me Your Last Purchase (3 min)
 
-**What to do:** Show "The Need Receipt" vs "The Mood Receipt." Ask the question.
+**What to do:** Ask everyone to open their shopping app order history. Then call 2–3 volunteers to share, and finish with one quick hand-raise.
 
-> "Look at these two receipts. One solves a problem. The other changes your mood."
+> "Everyone — open Taobao, JD, or Douyin. Find your last order."
 
-> "Quick pair-share: your last purchase — did it solve a problem, express who you are, or change your mood?"
+**Wait 15 seconds.** Then:
+
+> "I need 2–3 brave volunteers. Tell us: what did you buy, and why? Was it a need, a mood, a discount, or FOMO?"
+
+**Call on volunteers.** React naturally. Then:
+
+> "Last thing: raise your hand if your last purchase was something you did NOT plan to buy."
+
+**中文提示：** 志愿者环节自然有趣——有人会说"我也不知道为什么买了"，制造笑声。最后举手环节是高潮——大多数人会举手，直接引出主题。
 
 ---
 

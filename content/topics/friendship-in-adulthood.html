@@ -1,7 +1,7 @@
 ---
-title: "Consumerism"
-date: 2026-05-21T00:00:00Z
-summary: "Are we buying what we need, or buying a new version of anxiety?"
+title: "Friendship in Adulthood"
+date: 2026-05-22T00:00:00Z
+summary: "After we grow up, what does it really take to keep a friendship alive?"
 ---
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ summary: "Are we buying what we need, or buying a new version of anxiety?"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Corner - Consumerism</title>
+<title>English Corner - Friendship in Adulthood</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', sans-serif; }
@@ -34,6 +34,7 @@ html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', s
 .bg-white { background: #FFF; color: #16213E; }
 .bg-green { background: #1F6F5B; color: #FFF; }
 .bg-coral { background: #E76F51; color: #FFF; }
+.bg-teal { background: #2A6F97; color: #FFF; }
 
 .tag { font: bold 18px/1 Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
 .tag-gold { color: #F2C078; }
@@ -76,20 +77,6 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .stat-number { font: bold clamp(40px,6vw,86px)/1 Georgia, serif; color: #F2C078; }
 .stat-label { font-size: clamp(14px,1.75vw,20px); opacity: 0.76; margin-top: 10px; line-height: 1.4; }
 
-.receipt-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(18px,3vw,48px); align-items: center; margin-top: clamp(12px,2vh,32px); }
-.receipt {
-  background: #FFF;
-  color: #16213E;
-  border-radius: 10px;
-  padding: clamp(18px,2.2vh,30px);
-  box-shadow: 0 5px 24px rgba(0,0,0,0.12);
-  border: 1px solid #ECE4D8;
-}
-.receipt h4 { font: bold clamp(18px,2.3vw,28px) Georgia, serif; color: #E76F51; margin-bottom: 12px; }
-.receipt-line { display: flex; justify-content: space-between; gap: 24px; padding: 10px 0; border-bottom: 1px dashed #DCCFBD; font-size: clamp(15px,1.8vw,23px); }
-.receipt-total { font-weight: bold; color: #1F6F5B; }
-.arrow-badge { font: bold clamp(38px,5vw,64px)/1 Georgia, serif; color: #E76F51; background: #FFF0EA; width: clamp(64px,6vw,94px); height: clamp(64px,6vw,94px); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
 .round-title { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-height: 60vh; padding: clamp(24px,4vh,64px) 0; }
 .round-title h1 { font-size: clamp(56px,9vw,112px); }
 
@@ -105,8 +92,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .expr-item { font-size: clamp(16px,2vw,27px); padding: 9px 0; color: #1F1F2E; font-style: italic; }
 
 .debate-side { border-radius: 12px; padding: clamp(16px,2vh,28px); }
-.debate-side.need { background: #FFF0EA; border-left: 5px solid #E76F51; }
-.debate-side.desire { background: #EFF8F4; border-left: 5px solid #1F6F5B; }
+.debate-side.pro { background: #FFF0EA; border-left: 5px solid #E76F51; }
+.debate-side.con { background: #EFF8F4; border-left: 5px solid #1F6F5B; }
 .debate-side h4 { font-size: clamp(16px,2vw,24px); font-weight: bold; margin-bottom: 12px; }
 .debate-side li { font-size: clamp(14px,1.8vw,22px); line-height: 1.62; margin-left: 18px; color: #333; }
 
@@ -150,8 +137,6 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   .slide { padding: 40px 30px; overflow-y: auto; }
   .grid-4, .grid-3, .grid-2, .grid-2x2, .flip-grid { grid-template-columns: 1fr 1fr; }
   .stats-row { grid-template-columns: repeat(2,1fr); }
-  .receipt-wrap { grid-template-columns: 1fr; }
-  .arrow-badge { margin: 0 auto; transform: rotate(90deg); }
 }
 </style>
 </head>
@@ -163,11 +148,11 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-dark active" data-slide="1">
   <div class="round-title">
     <div class="tag tag-gold">ENGLISH CORNER · DISCUSSION TOPIC</div>
-    <h1>Consumerism</h1>
-    <p class="subtitle" style="color:#FAF7F2">Buying Needs, Buying Identity, Buying Anxiety</p>
-    <p class="subtitle-zh">消费主义：我们到底在买什么？</p>
+    <h1>Friendship<br>in Adulthood</h1>
+    <p class="subtitle" style="color:#FAF7F2">What does it really take to keep a friendship alive?</p>
+    <p class="subtitle-zh">成年后的友谊：长大以后，我们靠什么维持一段友谊？</p>
     <div class="separator"></div>
-    <p class="meta">A 90-min discussion · 2 rounds · 7 questions · 8 open cards</p>
+    <p class="meta">A 90-min discussion · 2 rounds · 7 questions · 9 open cards</p>
   </div>
 </div>
 
@@ -189,39 +174,40 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
         <p style="font-size:clamp(16px,2vw,26px); opacity:1">"I work as a ___ ." or "I'm studying ___ ."</p>
       </div>
       <div class="card gold">
-        <div class="icon">🛍️</div>
-        <h4>Recent Purchase</h4>
-        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"The last thing I bought online was ___ . It was worth it / not worth it."</p>
+        <div class="icon">👯</div>
+        <h4>Your Oldest Friend</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"My oldest friend is ___ . We met ___ years ago. We last talked ___ ."</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>1 minute per person.</strong> Keep it real: useful purchase, stupid purchase, or surprisingly meaningful purchase.</p>
+    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>1 minute per person.</strong> Be honest: are you the one who reaches out, or the one who replies?</p>
   </div>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide bg-cream" data-slide="3">
   <div class="tag tag-coral">WARM-UP · 3 MIN</div>
-  <h2>Show me your last purchase!</h2>
+  <h2>Raise your hand if...</h2>
   <div class="body-content">
-    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">Open your shopping app (Taobao, JD, Douyin...) and find your most recent order. Then:</p>
-    <div class="grid-3">
+    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">No talking needed — just raise your hand honestly. Look around the room!</p>
+    <div class="grid-2x2">
       <div class="card">
-        <div class="icon">📱</div>
-        <h4>Step 1: Find it</h4>
-        <p style="opacity:1">Open your order history. Look at the last thing you bought.</p>
+        <div class="icon">✋</div>
+        <h4>...you have a friend you haven't talked to in 6+ months but still consider "close"</h4>
       </div>
       <div class="card green">
-        <div class="icon">🙋</div>
-        <h4>Step 2: Volunteers</h4>
-        <p style="opacity:1">2–3 volunteers share: "I bought ___. The reason was ___." (need? mood? discount? FOMO?)</p>
+        <div class="icon">✋</div>
+        <h4>...YOU are usually the one who reaches out first</h4>
       </div>
       <div class="card gold">
         <div class="icon">✋</div>
-        <h4>Step 3: Quick vote</h4>
-        <p style="opacity:1">Raise your hand if your last purchase was something you did NOT plan to buy.</p>
+        <h4>...you have made a NEW close friend in the last year</h4>
+      </div>
+      <div class="card">
+        <div class="icon">✋</div>
+        <h4>...you have a group chat that nobody talks in anymore</h4>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>No judgment — just notice.</strong> How much of our buying is truly a choice?</p>
+    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>Look around.</strong> You are not alone in any of these. That is what tonight is about.</p>
   </div>
 </div>
 
@@ -232,44 +218,44 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div class="body-content">
     <div class="grid-3">
       <div class="card">
-        <div class="icon">🛒</div>
-        <h4>Consumerism</h4>
-        <div class="zh">消费主义</div>
-        <div class="role">The culture does it.</div>
-        <p>A way of life where buying is not just about use, but about identity, status, reward, and belonging.</p>
+        <div class="icon">🌊</div>
+        <h4>Drift</h4>
+        <div class="zh">渐行渐远</div>
+        <div class="role">Time does it.</div>
+        <p>The slow, often painless fading of a friendship — not from conflict, but from distance, life changes, and silence.</p>
       </div>
       <div class="card green">
-        <div class="icon">⚡</div>
-        <h4>Impulse Buying</h4>
-        <div class="zh">冲动消费</div>
-        <div class="role">The moment does it.</div>
-        <p>You buy quickly because of emotion, social pressure, discounts, scarcity, or a persuasive recommendation.</p>
+        <div class="icon">🌱</div>
+        <h4>Intentionality</h4>
+        <div class="zh">有意经营</div>
+        <div class="role">Effort does it.</div>
+        <p>Choosing to reach out, make plans, and invest time — even when life doesn't force you together anymore.</p>
       </div>
       <div class="card gold">
-        <div class="icon">🧘</div>
-        <h4>Minimalism</h4>
-        <div class="zh">极简生活</div>
-        <div class="role">The boundary does it.</div>
-        <p>Owning fewer things on purpose, so your money, space, time, and attention serve what matters more.</p>
+        <div class="icon">🔒</div>
+        <h4>Boundaries</h4>
+        <div class="zh">边界感</div>
+        <div class="role">Respect does it.</div>
+        <p>Knowing how much to ask, how much to share, and when to give space — without the distance becoming permanent.</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#4B4F63">Today's core question: <strong>Are we satisfying needs, or manufacturing new desires?</strong></p>
+    <p class="bottom-note" style="font-style:normal; color:#4B4F63">Today's core question: <strong>What does it really take to maintain a friendship after we grow up?</strong></p>
   </div>
 </div>
 
 <!-- SLIDE 5 -->
 <div class="slide bg-dark" data-slide="5">
   <div class="tag tag-gold">WHY THIS TOPIC MATTERS</div>
-  <h3 style="color:#FFF">Shopping is no longer just shopping.</h3>
+  <h3 style="color:#FFF">Friendship is not supposed to fade — but it does.</h3>
   <div class="body-content">
     <div class="stats-row">
-      <div class="stat"><div class="stat-number">15.97T</div><div class="stat-label">RMB online retail sales in China in 2025</div></div>
-      <div class="stat"><div class="stat-number">26.1%</div><div class="stat-label">of China's retail sales were physical goods sold online</div></div>
-      <div class="stat"><div class="stat-number">$807B</div><div class="stat-label">estimated China livestream e-commerce market in 2024</div></div>
-      <div class="stat"><div class="stat-number">833M</div><div class="stat-label">livestreaming users in China by Dec 2024</div></div>
+      <div class="stat"><div class="stat-number">200h</div><div class="stat-label">hours needed to turn a stranger into a close friend</div></div>
+      <div class="stat"><div class="stat-number">12%</div><div class="stat-label">of Americans say they have no close friends (vs. 3% in 1990)</div></div>
+      <div class="stat"><div class="stat-number">5</div><div class="stat-label">maximum close friendships most people can maintain at once</div></div>
+      <div class="stat"><div class="stat-number">85yr</div><div class="stat-label">Harvard study: close relationships are the #1 predictor of happiness</div></div>
     </div>
-    <p class="source">Sources: National Bureau of Statistics of China, 2025; USDA Foreign Agricultural Service report on livestreaming e-commerce in China, 2025.</p>
-    <p style="font-size:17px; margin-top:12px; color:#FAF7F2; font-style:italic">When the mall moves into your pocket, the checkout counter is open all day.</p>
+    <p class="source">Sources: Hall, J. (2018) "How many hours does it take to make a friend?" Journal of Social and Personal Relationships; Survey Center on American Life, 2021; Dunbar, R. (2010) "How Many Friends Does One Person Need?"; Harvard Study of Adult Development (1938–present).</p>
+    <p style="font-size:17px; margin-top:12px; color:#FAF7F2; font-style:italic">We know friendship matters. So why do we keep letting it slip away?</p>
   </div>
 </div>
 
@@ -281,26 +267,26 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     <div class="grid-2x2">
       <div class="q-card">
         <div class="q-num">01</div>
-        <div class="q-title">Convenience</div>
-        <p>It is easier than ever to compare prices, buy essentials, and access products that were once hard to find.</p>
+        <div class="q-title">The "200 Hours" Problem</div>
+        <p>In school, proximity（近距离接触） gave us hundreds of hours together automatically. After graduation, every hour must be chosen. Most adults can barely find 2 hours a week for friends.</p>
       </div>
       <div class="q-card green">
         <div class="q-num">02</div>
-        <div class="q-title">Persuasion（说服术）</div>
-        <p>Livestream hosts, reviews, algorithms, coupons, and countdown timers turn shopping into entertainment.</p>
+        <div class="q-title">The Loneliness Paradox</div>
+        <p>We are more connected than ever through social media, yet surveys show people feel lonelier. Seeing others' social lives online may actually deepen isolation（隔离感）.</p>
       </div>
       <div class="q-card">
         <div class="q-num">03</div>
-        <div class="q-title">Emotional Value</div>
-        <p>A 2025 Gen Z emotional consumption report cited by People's Daily says 56.3% of young respondents were willing to pay for happiness and comfort.</p>
+        <div class="q-title">Life Stage Mismatch</div>
+        <p>Marriage, kids, career pressure, moving cities — when friends enter different life stages, shared context evaporates（消散）. The rhythm of life no longer overlaps.</p>
       </div>
       <div class="q-card green">
         <div class="q-num">04</div>
-        <div class="q-title">Environmental Cost</div>
-        <p>UNEP says the world generates about 92 million tonnes of textile waste each year.</p>
+        <div class="q-title">Cultural Expectations</div>
+        <p>Society celebrates romantic love and family bonds. Friendship gets no ceremony, no legal status, no holiday（没有仪式感）. We are not taught to fight for it.</p>
       </div>
     </div>
-    <p class="source">Sources: People's Daily Online, 2025; UNEP International Day of Zero Waste key messages, 2025.</p>
+    <p class="source">Sources: American Time Use Survey, BLS 2023; Cigna U.S. Loneliness Index, 2020; Rawlins, W. (2009) "The Compass of Friendship."</p>
   </div>
 </div>
 
@@ -308,36 +294,36 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-coral" data-slide="7">
   <div class="round-title">
     <div class="tag tag-white">ROUND 1 · 25 MIN</div>
-    <h1>Recognizing<br>Your Own Habits</h1>
-    <p class="subtitle" style="color:rgba(255,255,255,0.84)">4 questions · small groups of 5-7 · start from real experience</p>
+    <h1>Noticing<br>What Changed</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.84)">4 questions · small groups of 5–7 · start from real experience</p>
   </div>
 </div>
 
 <!-- SLIDE 8 -->
 <div class="slide bg-white" data-slide="8">
   <div class="tag tag-coral">ROUND 1 · 4 QUESTIONS · 25 MIN</div>
-  <h3>Recognizing Your Own Habits</h3>
+  <h3>Noticing What Changed</h3>
   <div class="body-content">
     <div class="grid-2x2">
       <div class="q-card">
         <div class="q-num">Q1</div>
-        <div class="q-title">The Last Purchase Test</div>
-        <p>Think of the last non-essential thing you bought. What triggered it: need, discount, mood, recommendation, boredom, or social pressure?</p>
+        <div class="q-title">The Friendship Audit</div>
+        <p>How many close friends did you have in school vs. now? What happened to the ones who faded away — conflict, distance, or simply... nothing?</p>
       </div>
       <div class="q-card green">
         <div class="q-num">Q2</div>
-        <div class="q-title">Online Shopping vs. Real Stores</div>
-        <p>Where are you more likely to buy things you didn't plan to buy: Taobao, JD, Xiaohongshu, Douyin livestreams, or offline stores? Why?</p>
+        <div class="q-title">Who Reaches Out First?</div>
+        <p>Think of your closest friend. Who usually initiates contact — you or them? If neither of you reached out, how long would the silence last?</p>
       </div>
       <div class="q-card">
         <div class="q-num">Q3</div>
-        <div class="q-title">Brands and Identity</div>
-        <p>Is there a brand, gadget, clothing style, or product category that says something about who you are? Is that expression real, performed, or both?</p>
+        <div class="q-title">WeChat Friends ≠ Real Friends?</div>
+        <p>You may have hundreds of WeChat contacts. How many would you feel comfortable calling right now to say "I'm having a bad day"? What's the gap between?</p>
       </div>
       <div class="q-card green">
         <div class="q-num">Q4</div>
-        <div class="q-title">Regret and Satisfaction</div>
-        <p>What purchase gave you long-term satisfaction? What purchase quickly became clutter（杂物/闲置品）? What was the difference?</p>
+        <div class="q-title">The Effort Mismatch</div>
+        <p>Have you ever felt you were giving more in a friendship than the other person? Or the opposite — someone tried hard but you pulled away? Why?</p>
       </div>
     </div>
     <p style="font-size:15px; color:#4B4F63; margin-top:16px; text-align:center">Take turns. Everyone answers Q1 first, then move deeper. About 6 minutes per question.</p>
@@ -351,18 +337,18 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div class="body-content">
     <div class="grid-2">
       <div class="expr-box">
-        <h4>DESCRIBING A PURCHASE</h4>
-        <div class="expr-item">"I bought it because ___."</div>
-        <div class="expr-item">"It felt worth it at the time."</div>
-        <div class="expr-item">"I was influenced by ___."</div>
-        <div class="expr-item">"It solved a real problem / just changed my mood."</div>
+        <h4>DESCRIBING FRIENDSHIP CHANGES</h4>
+        <div class="expr-item">"We drifted apart after ___."</div>
+        <div class="expr-item">"We're still close, but in a different way now."</div>
+        <div class="expr-item">"I realized I was always the one reaching out."</div>
+        <div class="expr-item">"We're in different life stages now."</div>
       </div>
       <div class="expr-box">
         <h4>GOING DEEPER</h4>
-        <div class="expr-item">"The hidden cost is ___."</div>
-        <div class="expr-item">"I think brands sell us ___, not just products."</div>
-        <div class="expr-item">"For me, minimalism sounds ___."</div>
-        <div class="expr-item">"I'm guilty of this too."</div>
+        <div class="expr-item">"What keeps us connected is ___."</div>
+        <div class="expr-item">"I think real friendship requires ___."</div>
+        <div class="expr-item">"The hardest part about adult friendship is ___."</div>
+        <div class="expr-item">"I've learned to accept that ___."</div>
       </div>
     </div>
     <p class="bottom-note" style="font-size:17px; color:#16213E">Don't aim for perfect English. Aim for a precise thought.</p>
@@ -372,27 +358,27 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <!-- SLIDE 10 -->
 <div class="slide bg-white" data-slide="10">
   <div class="tag tag-coral">BEFORE ROUND 2 · THE TENSION</div>
-  <h3>Need, desire, or anxiety?</h3>
+  <h3>What holds a friendship together?</h3>
   <div class="body-content">
-    <p style="font-size:17px; color:#4B4F63; margin-bottom:20px; line-height:1.6">A purchase can be practical, emotional, social, and symbolic at the same time. The hard part is knowing which force is driving.</p>
+    <p style="font-size:17px; color:#4B4F63; margin-bottom:20px; line-height:1.6">Adult friendships survive on different fuel than childhood ones. Which of these forces is strongest in your life?</p>
     <div class="grid-3">
       <div class="card">
-        <div class="icon">🔧</div>
-        <h4>Need</h4>
-        <p>It solves a real problem: food, health, work, safety, replacement, convenience, or quality of life.</p>
+        <div class="icon">🏠</div>
+        <h4>Proximity</h4>
+        <p>Being physically near — same city, same office, same gym. Remove proximity, and most friendships fade within a year.</p>
       </div>
       <div class="card green">
-        <div class="icon">✨</div>
-        <h4>Desire</h4>
-        <p>It gives pleasure, beauty, identity, novelty, status, comfort, or a sense of possibility.</p>
+        <div class="icon">🪞</div>
+        <h4>Shared Identity</h4>
+        <p>Similar values, humor, worldview. You feel understood without explaining yourself. "You get me."</p>
       </div>
       <div class="card gold">
-        <div class="icon">⏳</div>
-        <h4>Anxiety</h4>
-        <p>It promises: buy this before you fall behind, look outdated, miss the sale, or become less attractive.</p>
+        <div class="icon">⏰</div>
+        <h4>Accumulated History</h4>
+        <p>Years of shared memories create a bond that resists time. But is nostalgia（怀旧） enough to sustain a living relationship?</p>
       </div>
     </div>
-    <p class="bottom-note" style="color:#4B4F63">Round 2 is not about judging people. It is about seeing the system more clearly.</p>
+    <p class="bottom-note" style="color:#4B4F63">Round 2 asks harder questions. No judgment — just curiosity.</p>
   </div>
 </div>
 
@@ -400,89 +386,86 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-green" data-slide="11">
   <div class="round-title">
     <div class="tag tag-white">ROUND 2 · 25 MIN</div>
-    <h1>Seeing<br>The System</h1>
-    <p class="subtitle" style="color:rgba(255,255,255,0.78)">3 questions · switch groups · go from personal habits to social consequences</p>
+    <h1>Going<br>Deeper</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.78)">3 questions · switch groups · move from personal stories to harder trade-offs</p>
   </div>
 </div>
 
 <!-- SLIDE 12 -->
 <div class="slide bg-white" data-slide="12">
   <div class="tag tag-coral">ROUND 2 · QUESTION 1</div>
-  <h3>Is consumerism mostly freedom or manipulation?</h3>
+  <h3>Should we fight to save every friendship?</h3>
   <div class="body-content">
-    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px; line-height:1.6">Online shopping gives us choice and convenience. But it also gives companies endless chances to shape our attention, emotions, and self-image.</p>
+    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px; line-height:1.6">Some friendships end not with a fight, but with a slow fade. Is it always worth the effort to hold on? Or is letting go sometimes the healthier choice?</p>
     <div class="grid-2">
-      <div class="debate-side need">
-        <h4>IT'S FREEDOM</h4>
+      <div class="debate-side pro">
+        <h4>HOLD ON</h4>
         <ul>
-          <li>People can choose what makes their life better</li>
-          <li>Good products save time, energy, and stress</li>
-          <li>Shopping can support creativity, hobbies, and self-expression</li>
+          <li>Deep friendships take years to build — you can't replace that history</li>
+          <li>Every relationship has seasons; distance doesn't mean it's over</li>
+          <li>One honest conversation can revive what silence almost killed</li>
         </ul>
       </div>
-      <div class="debate-side desire">
-        <h4>IT'S MANIPULATION</h4>
+      <div class="debate-side con">
+        <h4>LET GO</h4>
         <ul>
-          <li>Algorithms learn our weak moments better than we do</li>
-          <li>Scarcity, discounts, and influencers create artificial urgency（人为制造的紧迫感）</li>
-          <li>Brands sell identity, not just function</li>
+          <li>People change — and that's okay. Not every bond is meant to last forever</li>
+          <li>Forcing connection out of guilt（愧疚感） creates resentment, not closeness</li>
+          <li>Letting go makes space for friendships that fit who you are now</li>
         </ul>
       </div>
     </div>
-    <p class="bottom-note" style="font-size:16px; color:#E76F51">Discussion tip: defend the side you disagree with for two minutes.</p>
+    <p class="bottom-note" style="font-size:16px; color:#E76F51">Discussion tip: Think of a specific friendship. Which side feels true for that one?</p>
   </div>
 </div>
 
 <!-- SLIDE 13 -->
 <div class="slide bg-white" data-slide="13">
-  <div class="tag tag-coral">ROUND 2 · QUESTION 2 · ROLE-PLAY</div>
-  <h3>Who benefits from our desire?</h3>
+  <div class="tag tag-coral">ROUND 2 · QUESTION 2</div>
+  <h3>How do you set boundaries without losing closeness?</h3>
   <div class="body-content">
-    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px">Split into 4 mini-groups. Each defends one role. 5 min prep, 10 min cross-debate.</p>
+    <p style="font-size:16px; color:#4B4F63; margin-bottom:16px; line-height:1.6">Adults need boundaries（边界感）: emotional energy is limited, time is scarce, and not every request deserves a "yes." But boundaries can also feel like rejection.</p>
     <div class="grid-2x2">
-      <div class="card">
-        <div class="icon">📱</div>
-        <h4>PLATFORMS</h4>
-        <p style="font-size:14px; color:#666">(Taobao, Douyin, Xiaohongshu...)</p>
-        <p style="margin-top:8px">Should platforms reduce manipulative design（操纵性设计） even if sales and engagement drop?</p>
+      <div class="q-card">
+        <div class="q-num">SCENARIO A</div>
+        <div class="q-title">The Emotional Drain</div>
+        <p>A friend always comes to you with problems but never asks how you are. You feel exhausted. What do you do?</p>
       </div>
-      <div class="card green">
-        <div class="icon">📣</div>
-        <h4>BRANDS & INFLUENCERS</h4>
-        <p style="font-size:14px; color:#666">(marketing, KOLs, live hosts)</p>
-        <p style="margin-top:8px">Is emotional selling a problem, or just good communication?</p>
+      <div class="q-card green">
+        <div class="q-num">SCENARIO B</div>
+        <div class="q-title">The Disappearing Act</div>
+        <p>A friend only reaches out when they need something. Between favors, silence. Do you confront them or quietly distance yourself?</p>
       </div>
-      <div class="card gold">
-        <div class="icon">🏛️</div>
-        <h4>GOVERNMENT</h4>
-        <p style="font-size:14px; color:#666">(regulators, consumer protection)</p>
-        <p style="margin-top:8px">Should there be stronger rules on ads, data use, dark patterns（暗黑设计模式）, or "lowest price" claims?</p>
+      <div class="q-card">
+        <div class="q-num">SCENARIO C</div>
+        <div class="q-title">The Life Gap</div>
+        <p>Your best friend got married and had kids. You're single. Conversations feel different now. How do you bridge the gap?</p>
       </div>
-      <div class="card">
-        <div class="icon">🙋</div>
-        <h4>EACH OF US</h4>
-        <p style="font-size:14px; color:#666">(consumers, friends, families)</p>
-        <p style="margin-top:8px">How much responsibility should individuals take for resisting temptation?</p>
+      <div class="q-card green">
+        <div class="q-num">SCENARIO D</div>
+        <div class="q-title">The Honest Truth</div>
+        <p>You disagree with a friend's major life choice. Do you speak up and risk the friendship, or stay silent and feel distant?</p>
       </div>
     </div>
+    <p style="font-size:14px; color:#4B4F63; margin-top:12px; text-align:center">Pick 1–2 scenarios. Share what you would actually do — not what sounds nice.</p>
   </div>
 </div>
 
 <!-- SLIDE 14 -->
 <div class="slide bg-cream" data-slide="14">
-  <div class="tag tag-coral">ROUND 2 · QUESTION 3 · CLOSING ACTION</div>
-  <h3 style="color:#16213E">What would a healthier relationship with buying look like?</h3>
+  <div class="tag tag-coral">ROUND 2 · QUESTION 3 · CLOSING REFLECTION</div>
+  <h3 style="color:#16213E">What does a friendship need to survive adulthood?</h3>
   <div class="body-content">
-    <p style="font-size:17px; color:#4B4F63; margin-bottom:8px; line-height:1.6">Minimalism is not the only answer. The deeper question is: can we buy with more awareness, less anxiety, and more respect for future ourselves?</p>
-    <p style="font-size:15px; font-weight:bold; color:#E76F51; margin-bottom:12px; letter-spacing:1px">IDEAS TO STEAL:</p>
+    <p style="font-size:17px; color:#4B4F63; margin-bottom:8px; line-height:1.6">Forget perfect answers. Think about the one friendship that has lasted — or the one you wish you'd saved. What was different about it?</p>
+    <p style="font-size:15px; font-weight:bold; color:#E76F51; margin-bottom:12px; letter-spacing:1px">CONVERSATION STARTERS:</p>
     <ul class="action-list">
-      <li>Wait 24 hours before buying non-essential items</li>
-      <li>Ask: "What problem will this still solve one month from now?"</li>
-      <li>Unfollow one account that makes you feel inadequate</li>
-      <li>Track one week of small purchases without judging yourself</li>
-      <li>Repair, borrow, rent, or buy second-hand once this month</li>
+      <li>What is the smallest thing that keeps a long-distance friendship alive?</li>
+      <li>Is vulnerability（脆弱/坦诚） necessary for deep friendship, or can you be close without it?</li>
+      <li>Do you believe in "friendship soulmates" — or is every friendship a choice you remake daily?</li>
+      <li>What would you tell your 18-year-old self about friendship?</li>
+      <li>Is there someone you should reach out to this week? What's stopping you?</li>
     </ul>
-    <p style="font-size:17px; margin-top:18px; text-align:center; color:#16213E"><strong>Finish with: "This week, I will ___."</strong></p>
+    <p style="font-size:17px; margin-top:18px; text-align:center; color:#16213E"><strong>Finish with: "One thing I want to do differently is ___."</strong></p>
   </div>
 </div>
 
@@ -496,7 +479,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
   </div>
-  <p style="font-size:14px; text-align:center; color:#4B4F63; margin-top:12px; font-style:italic">No right answers. Only clearer ones.</p>
+  <p style="font-size:14px; text-align:center; color:#4B4F63; margin-top:12px; font-style:italic">No right answers. Only honest ones.</p>
 </div>
 
 <!-- SLIDE 16 -->
@@ -504,12 +487,12 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
   <div class="quote-slide">
     <div style="display:flex; flex-direction:column; align-items:flex-start; max-width:860px; width:100%">
       <div class="quote-mark">"</div>
-      <p class="quote" style="margin-left:-4px">Too many people spend money they haven't earned, to buy things they don't want, to impress people they don't like.</p>
-      <p class="quote-author" style="align-self:flex-end">— often attributed to Will Rogers</p>
+      <p class="quote" style="margin-left:-4px">Friendship is born at that moment when one person says to another: 'What! You too? I thought I was the only one.'</p>
+      <p class="quote-author" style="align-self:flex-end">— C.S. Lewis</p>
     </div>
     <div class="separator" style="margin:20px auto"></div>
-    <p style="font-size:18px; opacity:0.82; margin-top:20px">Thanks for speaking, listening, and noticing what usually stays invisible.</p>
-    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。</p>
+    <p style="font-size:18px; opacity:0.82; margin-top:20px">The friends who last are the ones who make you feel less alone in being yourself.</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。愿你珍惜身边的朋友。</p>
   </div>
 </div>
 
@@ -581,15 +564,15 @@ document.addEventListener('wheel', e => {
 });
 
 const cards = [
-  { icon:'🍬', name:'CANDY', latin:'mystery flavor', q:'What is one small thing that has made you happy recently? Why did it matter to you?', zh:'最近有什么小事让你开心？它为什么对你有意义？' },
-  { icon:'🍩', name:'DONUT', latin:'mystery flavor', q:'Think of a decision you made this year. What helped you make that choice?', zh:'想一个你今年做过的决定。是什么帮助你做出这个选择？' },
-  { icon:'🍰', name:'CAKE', latin:'mystery flavor', q:'When you feel stressed, what usually helps you feel normal again? How did you discover it?', zh:'当你感到压力大时，什么通常能让你恢复正常？你是怎么发现这个方法的？' },
-  { icon:'🧁', name:'CUPCAKE', latin:'mystery flavor', q:'What is one object, place, or habit that feels very you? What does it say about you?', zh:'哪件物品、哪个地方或哪个习惯很像“你自己”？它说明了你什么？' },
-  { icon:'🍭', name:'LOLLIPOP', latin:'mystery flavor', q:'What is a trend or idea people around you talk about a lot? What is your honest reaction to it?', zh:'身边的人最近常讨论什么潮流或想法？你真实的反应是什么？' },
-  { icon:'🍮', name:'PUDDING', latin:'mystery flavor', q:'If you could make one part of your daily life simpler, what would you change first?', zh:'如果你能让日常生活的某一部分更简单，你会先改变什么？' },
-  { icon:'🍪', name:'COOKIE', latin:'mystery flavor', q:'What is something you learned from a friend, family member, or coworker recently?', zh:'最近你从朋友、家人或同事身上学到了什么？' },
-  { icon:'🍫', name:'CHOCOLATE', latin:'mystery flavor', q:'What does “enough” mean to you right now: enough time, money, energy, friendship, or something else?', zh:'此刻对你来说，”足够”意味着什么：足够的时间、金钱、精力、友谊，还是别的东西？' },
-  { icon:'🍯', name:'HONEY', latin:'mystery flavor', q:'What is a piece of advice you received that you ignored at first — but later realized was right?', zh:'有什么建议你当时没听进去，后来才发现是对的？' }
+  { icon:'🦉', name:'OWL', latin:'night thinker', q:'What is one belief you held strongly five years ago that you no longer believe? What changed your mind?', zh:'五年前你坚信的一件事，现在不再相信了？是什么改变了你？' },
+  { icon:'🦜', name:'PARROT', latin:'colorful talker', q:'If you could have dinner with any person — living or dead — who would it be and what would you ask them?', zh:'如果你能和任何人共进晚餐（古今皆可），你会选谁？你会问什么？' },
+  { icon:'🐧', name:'PENGUIN', latin:'loyal walker', q:'Who is someone you lost touch with that you still think about? If you messaged them today, what would you say?', zh:'有没有一个失联的人你偶尔会想起？如果今天联系他们，你会说什么？' },
+  { icon:'🦅', name:'EAGLE', latin:'high flyer', q:'What is one thing most people worry about that you think does not actually matter much?', zh:'大多数人都在担心的一件事，你觉得其实没那么重要？' },
+  { icon:'🦢', name:'SWAN', latin:'graceful drifter', q:'Describe a moment this year when you felt genuinely proud of yourself — big or small.', zh:'描述今年一个让你真心为自己骄傲的瞬间——大事小事都行。' },
+  { icon:'🦩', name:'FLAMINGO', latin:'standing out', q:'If you suddenly had three extra hours every day, how would you actually spend them? Be honest.', zh:'如果每天突然多出三小时，你真的会怎么用？诚实回答。' },
+  { icon:'🕊️', name:'DOVE', latin:'peace bringer', q:'What is the bravest thing you have ever done for a friend — or that a friend has done for you?', zh:'你为朋友做过最勇敢的事是什么？或者朋友为你做过最勇敢的事？' },
+  { icon:'🦆', name:'DUCK', latin:'calm surface', q:'What does "success" mean to you right now? Is it different from what it meant five years ago?', zh:'此刻"成功"对你来说意味着什么？和五年前一样吗？' },
+  { icon:'🐦', name:'SPARROW', latin:'small but present', q:'If friendship had a "contract," what would your top three terms be?', zh:'如果友谊有一份"合同"，你最重要的三条条款会是什么？' }
 ];
 
 const questionCardsEl = document.getElementById('questionCards');

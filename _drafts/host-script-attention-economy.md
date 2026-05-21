@@ -59,17 +59,21 @@
 
 ---
 
-## Slide 3 — Warm-up (3 min)
+## Slide 3 — Warm-up: Check Your Screen Time (3 min)
 
-**What to do:** Read "The Plan" vs "The Reality" comparison. Ask the pair-share question.
+**What to do:** Ask everyone to open screen time on their phone. Then call 2–3 volunteers to share.
 
-> "Raise your hand if this has happened to you — you planned to check your phone for 5 minutes, and suddenly 30 minutes disappeared."
+> "Everyone — open your phone, go to Settings → Screen Time. Find today's number and your #1 app."
 
-**Pause for hands.** Then:
+**Wait 20 seconds for people to check.** Then:
 
-> "Quick pair-share with your partner: what pulled you in this morning? Did you choose it, or did it choose you?"
+> "Now I need 2–3 brave volunteers. Tell us: how many hours so far today, and what's your top app?"
 
-**中文提示：** 这一页的核心是让大家承认"被手机偷走时间"这件事，轻松幽默地打开话题。
+**Call on volunteers.** React naturally ("Wow!" / "That's honest!"). Then:
+
+> "Raise your hand if your number was HIGHER than you expected."
+
+**中文提示：** 志愿者环节自然会有笑声（尤其是数字高的人）。最后举手问"比你预想的高吗？"——大多数人会举手，这就是今晚的议题切入点。
 
 ---
 
