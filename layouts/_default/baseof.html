@@ -23,9 +23,6 @@
 {{- if and (eq .Kind "page") (hasPrefix .RelPermalink "/deep/") -}}
     {{- $bodyClass = $bodyClass | append "section-deep" -}}
 {{- end -}}
-{{- if and (eq .Kind "page") (hasPrefix .RelPermalink "/topics/") -}}
-    {{- $bodyClass = $bodyClass | append "section-topics" -}}
-{{- end -}}
 <body{{- if gt (len $bodyClass) 0 }} class="{{ delimit $bodyClass " " }}"{{- end }} id="top">
     {{ partialCached "header.html" . .Page -}}
     <main class="main">
