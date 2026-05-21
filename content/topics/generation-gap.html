@@ -1,0 +1,596 @@
+---
+title: "Generation Gap"
+date: 2026-05-21T07:06:12Z
+summary: "The gap between generations isn't about age — it's about the worlds we grew up in."
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Corner - Do Your Parents Get You?</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', sans-serif; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(24px, 3vh, 48px) clamp(32px, 4vw, 72px);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+.slide.prev { opacity: 0; transform: translateX(-100%); }
+
+.bg-dark { background: #2D1B4E; color: #FFF; }
+.bg-cream { background: #FDF8F0; color: #2D1B4E; }
+.bg-white { background: #FFF; color: #2D1B4E; }
+.bg-accent { background: #E8563A; color: #FFF; }
+.bg-teal { background: #1B6B5C; color: #FFF; }
+
+.tag { font: bold 18px/1 Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+.tag-gold { color: #F2A541; }
+.tag-red { color: #E8563A; }
+.tag-teal { color: #1B6B5C; }
+.tag-white { color: #FFF; opacity: 0.86; }
+
+h1 { font: bold clamp(44px,7vw,88px)/1.08 Georgia, serif; margin: 32px 0 clamp(36px,4.5vh,64px); }
+h2 { font: bold clamp(34px,5.5vw,64px)/1.15 Georgia, serif; margin: 32px 0 clamp(34px,4.5vh,64px); }
+h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(30px,4vh,60px); }
+
+.subtitle { font-size: clamp(22px,3.5vw,40px); opacity: 0.9; margin-bottom: 20px; }
+.subtitle-zh { font-size: clamp(18px,3vw,32px); color: #F2A541; margin-bottom: 36px; }
+.meta { font-size: clamp(18px,2.5vw,26px); opacity: 0.72; margin-top: auto; }
+.separator { width: 100px; height: 4px; background: #F2A541; margin: 32px 0; }
+
+.body-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; padding-top: clamp(8px, 3vh, 40px); }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+.grid-2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
+
+.card {
+  background: #FFF;
+  border-radius: 12px;
+  padding: clamp(18px,2vh,30px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-top: 4px solid #E8563A;
+}
+.card.teal { border-top-color: #1B6B5C; }
+.card.gold { border-top-color: #F2A541; }
+.card .icon { font-size: clamp(30px,4vw,50px); margin-bottom: 12px; }
+.card h4 { font: bold clamp(18px,2.4vw,27px) Georgia, serif; margin-bottom: 8px; }
+.card .zh { color: #E8563A; font-size: clamp(14px,1.8vw,20px); margin-bottom: 10px; }
+.card .role { font-size: clamp(13px,1.5vw,17px); font-weight: bold; opacity: 0.62; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.card p { font-size: clamp(14px,1.75vw,20px); line-height: 1.55; opacity: 0.82; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(16px,2vw,30px); margin: clamp(16px,3vh,42px) 0; }
+.stat { text-align: center; }
+.stat-number { font: bold clamp(40px,6vw,86px)/1 Georgia, serif; color: #F2A541; }
+.stat-label { font-size: clamp(14px,1.75vw,20px); opacity: 0.76; margin-top: 10px; line-height: 1.4; }
+
+.compare-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(18px,3vw,48px); align-items: center; margin-top: clamp(12px,2vh,32px); }
+.compare-box {
+  background: #FFF;
+  border-radius: 12px;
+  padding: clamp(18px,2.2vh,28px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border: 1px solid #ECE4D8;
+}
+.compare-header { font: bold clamp(14px,1.5vw,20px) Georgia, serif; color: #E8563A; text-align: center; margin-bottom: 14px; letter-spacing: 1px; }
+.compare-item { font-size: clamp(15px,1.7vw,22px); padding: 11px 0; border-bottom: 1px solid #F0F0F0; color: #1F1F2E; }
+.vs { font: bold clamp(38px,5vw,64px)/1 Georgia, serif; color: #E8563A; background: #FFF0EE; width: clamp(64px,6vw,94px); height: clamp(64px,6vw,94px); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+.round-title { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-height: 60vh; padding: clamp(24px,4vh,64px) 0; }
+.round-title h1 { font-size: clamp(56px,9vw,112px); }
+
+.q-card { background: #FDF8F0; border-radius: 12px; padding: clamp(18px,2vh,30px); border-left: 5px solid #E8563A; }
+.q-card.teal { border-left-color: #1B6B5C; }
+.q-card .q-num { font: bold clamp(16px,2vw,24px) Georgia, serif; color: #E8563A; margin-bottom: 8px; }
+.q-card.teal .q-num { color: #1B6B5C; }
+.q-card .q-title { font: bold clamp(17px,2.2vw,28px) Georgia, serif; color: #2D1B4E; margin-bottom: 10px; }
+.q-card p { font-size: clamp(14px,1.8vw,22px); line-height: 1.55; color: #4A4A5E; }
+
+.expr-box { background: #FFF; border-radius: 12px; padding: clamp(16px,2vh,28px); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.expr-box h4 { font-size: clamp(13px,1.5vw,20px); font-weight: bold; color: #E8563A; letter-spacing: 1px; margin-bottom: 14px; }
+.expr-item { font-size: clamp(16px,2vw,27px); padding: 9px 0; color: #1F1F2E; font-style: italic; }
+
+.debate-side { border-radius: 12px; padding: clamp(16px,2vh,28px); }
+.debate-side.yes { background: #FFF0EE; border-left: 5px solid #E8563A; }
+.debate-side.no { background: #EFF8F4; border-left: 5px solid #1B6B5C; }
+.debate-side h4 { font-size: clamp(16px,2vw,24px); font-weight: bold; margin-bottom: 12px; }
+.debate-side li { font-size: clamp(14px,1.8vw,22px); line-height: 1.62; margin-left: 18px; color: #333; }
+
+.action-list { list-style: none; margin-top: clamp(14px,2vh,28px); }
+.action-list li { font-size: clamp(16px,2vw,27px); padding: 14px 20px; background: #FFF; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.action-list li::before { content: "\2192 "; color: #E8563A; font-weight: bold; }
+
+.quote-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.quote { font: italic clamp(22px,3vw,34px)/1.5 Georgia, serif; max-width: 820px; margin-bottom: 20px; }
+.quote-mark { font-size: 60px; color: #F2A541; line-height: 1; margin-bottom: 10px; }
+.quote-author { font-size: 18px; opacity: 0.65; }
+.bottom-note { text-align: center; font-size: 17px; margin-top: 22px; opacity: 0.72; font-style: italic; }
+.source { font-size: 12px; opacity: 0.55; margin-top: 14px; line-height: 1.45; }
+
+/* Nav */
+.progress { position: fixed; top: 0; left: 0; height: 3px; background: #E8563A; transition: width 0.3s; z-index: 1001; }
+.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; background: rgba(45,27,78,0.9); padding: 10px 24px; border-radius: 40px; z-index: 1000; backdrop-filter: blur(10px); }
+.nav button { background: none; border: none; color: #FFF; font-size: 20px; cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: background 0.2s; }
+.nav button:hover { background: rgba(255,255,255,0.1); }
+.nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav .page-info { color: #FDF8F0; font-size: 13px; min-width: 60px; text-align: center; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+.dot.active { background: #F2A541; transform: scale(1.3); }
+
+/* Flip cards */
+.flip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.flip-card { perspective: 800px; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
+.flip-front { background: #FDF8F0; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.flip-front:hover { border-color: #E8563A; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+.flip-front .f-icon { font-size: 38px; margin-bottom: 8px; }
+.flip-front .f-name { font: bold 13px/1 Arial, sans-serif; letter-spacing: 1px; color: #2D1B4E; }
+.flip-front .f-latin { font: italic 11px Georgia, serif; color: #8A7A5C; margin-top: 3px; text-align: center; }
+.flip-front .f-hint { font-size: 10px; color: #E8563A; margin-top: 8px; letter-spacing: 0.5px; }
+.flip-back { transform: rotateY(180deg); background: #2D1B4E; color: #FDF8F0; border: 2px solid #3d2b5e; text-align: center; gap: 8px; }
+.flip-back .f-q { font: italic 15px/1.4 Georgia, serif; padding: 0 6px; }
+.flip-back .f-qzh { font-size: 12px; color: rgba(253,248,240,0.64); margin-top: 4px; }
+
+@media (max-width: 768px) {
+  .slide { padding: 40px 30px; overflow-y: auto; }
+  .grid-3, .grid-2, .grid-2x2, .flip-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .compare-row { grid-template-columns: 1fr; }
+  .vs { margin: 0 auto; transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide bg-dark active" data-slide="1">
+  <div class="round-title">
+    <div class="tag tag-gold">ENGLISH CORNER · DISCUSSION TOPIC</div>
+    <h1>Do Your Parents Get You?</h1>
+    <p class="subtitle" style="color:#FDF8F0">Generation Gap, Value Shifts & The World Between Us</p>
+    <p class="subtitle-zh">代际差异：不同年代的人为什么无法互相理解</p>
+    <div class="separator"></div>
+    <p class="meta">A 90-min discussion · 2 rounds · 7 questions · 8 open cards</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: Introductions -->
+<div class="slide bg-cream" data-slide="2">
+  <div class="tag tag-red">ICE BREAKER · 5 MIN</div>
+  <h2>Let's Get to Know Each Other</h2>
+  <div class="body-content">
+    <p style="font-size:clamp(16px,2vw,26px); color:#4A4A5E; margin-bottom:24px">Turn to the person next to you and introduce yourself in English:</p>
+    <div class="grid-3" style="margin-top:10px">
+      <div class="card">
+        <div class="icon">🙋</div>
+        <h4>Your Name</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"Hi, I'm ___ . You can call me ___ ."</p>
+      </div>
+      <div class="card teal">
+        <div class="icon">💼</div>
+        <h4>What You Do</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"I work as a ___ ." or "I'm studying ___ ."</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🏠</div>
+        <h4>Family Quick Fact</h4>
+        <p style="font-size:clamp(16px,2vw,26px); opacity:1">"One thing my parents always say is ___ ."</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-style:normal; color:#2D1B4E"><strong>1 minute per person.</strong> Keep it real — that one phrase your parents repeat is your entry ticket to today's topic.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: Warm-up -->
+<div class="slide bg-cream" data-slide="3">
+  <div class="tag tag-red">WARM-UP · 3 MIN</div>
+  <h2>You just got ¥10,000. No strings attached.</h2>
+  <div class="body-content">
+    <p style="font-size:clamp(16px,2vw,26px); color:#4A4A5E; margin-bottom:20px">What would YOU do with it? Now — what would your PARENTS do?</p>
+    <div class="compare-row">
+      <div class="compare-box">
+        <div class="compare-header">YOU (20s–30s)</div>
+        <div class="compare-item">✈️ A trip to Japan or Thailand</div>
+        <div class="compare-item">🎮 New gadgets or experiences</div>
+        <div class="compare-item">📚 A course or personal investment</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="compare-box">
+        <div class="compare-header">YOUR PARENTS (50s–60s)</div>
+        <div class="compare-item">🏦 Save it. All of it.</div>
+        <div class="compare-item">🏥 Health supplements or checkups</div>
+        <div class="compare-item">👶 Put it aside for the kids</div>
+      </div>
+    </div>
+    <p class="bottom-note">Same money. Same family. Completely different priorities. Quick pair-share: whose instinct is "wiser"?</p>
+  </div>
+</div>
+
+<!-- SLIDE 4: Three Concepts -->
+<div class="slide bg-white" data-slide="4">
+  <div class="tag tag-red">THREE WORDS YOU NEED TODAY</div>
+  <h3>Three Angles on One Phenomenon</h3>
+  <div class="body-content">
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🪜</div>
+        <h4>Generation Gap</h4>
+        <div class="zh">代沟</div>
+        <div class="role">Different eras, different worlds.</div>
+        <p>The difference in values, attitudes, and behaviors between people of different age groups — shaped by the era they grew up in.</p>
+      </div>
+      <div class="card teal">
+        <div class="icon">🔄</div>
+        <h4>Value Shift</h4>
+        <div class="zh">价值观转变</div>
+        <div class="role">Society evolves, beliefs follow.</div>
+        <p>Each generation's core beliefs are molded by economic conditions, technology, and historical events of their formative years.</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">📱</div>
+        <h4>Digital Divide</h4>
+        <div class="zh">数字鸿沟</div>
+        <div class="role">Technology widens the gap.</div>
+        <p>The gulf between digital natives (grew up online) and digital immigrants (learned later) affects communication, trust, and worldview.</p>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-style:normal; color:#4A4A5E">Today's core question: <strong>Why can the same event mean completely different things to different generations?</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 5: Stats -->
+<div class="slide bg-dark" data-slide="5">
+  <div class="tag tag-gold">WHY THIS TOPIC MATTERS</div>
+  <h3 style="color:#FFF">China's generations live in parallel universes.</h3>
+  <div class="body-content">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-number">28.7</div><div class="stat-label">Average first marriage age in 2022 (was 22.4 in 1990)</div></div>
+      <div class="stat"><div class="stat-number">61%</div><div class="stat-label">of Gen Z change jobs within 2 years (vs 12% of their parents)</div></div>
+      <div class="stat"><div class="stat-number">36%</div><div class="stat-label">of post-95s say marriage is "necessary" (vs 78% of pre-70s)</div></div>
+      <div class="stat"><div class="stat-number">52%</div><div class="stat-label">of adults 60+ use mobile payment (vs 93% under 30)</div></div>
+    </div>
+    <p class="source">Sources: National Bureau of Statistics (2023), Zhaopin Recruitment Report (2024), China Internet Network Information Center (CNNIC 2024)</p>
+    <p style="font-size:17px; margin-top:12px; color:#FDF8F0; font-style:italic">These aren't just numbers — they represent fundamentally different ways of seeing life, work, love, and money.</p>
+  </div>
+</div>
+
+<!-- SLIDE 6: From Data to Daily Life -->
+<div class="slide bg-white" data-slide="6">
+  <div class="tag tag-red">FROM DATA TO DAILY LIFE</div>
+  <h3>What do these numbers hide?</h3>
+  <div class="body-content">
+    <div class="grid-2x2">
+      <div class="q-card">
+        <div class="q-num">01</div>
+        <div class="q-title">Scarcity vs. Abundance</div>
+        <p>Parents grew up saving every cent. Children grew up knowing the economy would keep growing. Same family, opposite instincts about risk.</p>
+      </div>
+      <div class="q-card teal">
+        <div class="q-num">02</div>
+        <div class="q-title">Duty vs. Choice</div>
+        <p>Older generations see marriage, career, and children as duties. Younger generations see them as choices — or even optional.</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">03</div>
+        <div class="q-title">Stability vs. Freedom</div>
+        <p>A "good life" used to mean a stable job and an apartment. Now it might mean freelancing, traveling, or simply not being bored.</p>
+      </div>
+      <div class="q-card teal">
+        <div class="q-num">04</div>
+        <div class="q-title">Respect vs. Authenticity</div>
+        <p>Parents value harmony, face, and obedience. Children value honesty, self-expression, and boundaries. Both call it "love."</p>
+      </div>
+    </div>
+    <p class="source">These patterns come from structural shifts: China's GDP per capita rose from ¥1,644 (1990) to ¥89,358 (2023).</p>
+  </div>
+</div>
+
+<!-- SLIDE 7: Round 1 Title -->
+<div class="slide bg-accent" data-slide="7">
+  <div class="round-title">
+    <div class="tag tag-white">ROUND 1 · 25 MIN</div>
+    <h1>Recognizing<br>the Gap</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.84)">4 questions · small groups of 5–7 · start from real experience</p>
+  </div>
+</div>
+
+<!-- SLIDE 8: Round 1 Questions -->
+<div class="slide bg-white" data-slide="8">
+  <div class="tag tag-red">ROUND 1 · 4 QUESTIONS · 25 MIN</div>
+  <h3>Recognizing the Gap</h3>
+  <div class="body-content">
+    <div class="grid-2x2">
+      <div class="q-card">
+        <div class="q-num">Q1</div>
+        <div class="q-title">The Money Test</div>
+        <p>How do your parents feel about how you spend money? Have they ever said "back in my day, we would never..."? What's the biggest spending disagreement you've had?</p>
+      </div>
+      <div class="q-card teal">
+        <div class="q-num">Q2</div>
+        <div class="q-title">The Career Conversation</div>
+        <p>Do your parents understand what you do for a living? Have they ever suggested you get a "real job" or a "stable" one? How do you feel about that?</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Q3</div>
+        <div class="q-title">The Love Question</div>
+        <p>At what age do your parents think you should marry? What about you? Have you ever been pressured at a family gathering? How did you respond?</p>
+      </div>
+      <div class="q-card teal">
+        <div class="q-num">Q4</div>
+        <div class="q-title">The Tech Divide</div>
+        <p>Have you ever had to teach your parents how to use technology? What was funny, frustrating, or surprisingly touching about that experience?</p>
+      </div>
+    </div>
+    <p style="font-size:15px; color:#4A4A5E; margin-top:16px; text-align:center">Take turns. Everyone answers Q1 first, then move deeper. About 6 minutes per question.</p>
+  </div>
+</div>
+
+<!-- SLIDE 9: Useful Expressions -->
+<div class="slide bg-cream" data-slide="9">
+  <div class="tag tag-red">USEFUL EXPRESSIONS</div>
+  <h3 style="color:#2D1B4E">Phrases to use in your discussion</h3>
+  <div class="body-content">
+    <div class="grid-2">
+      <div class="expr-box">
+        <h4>DESCRIBING THE GAP</h4>
+        <div class="expr-item">"My parents grew up in a completely different era."</div>
+        <div class="expr-item">"We see eye to eye on ___ but disagree on ___."</div>
+        <div class="expr-item">"They come from a place of love, but it feels like pressure."</div>
+        <div class="expr-item">"There's a disconnect between what they expect and what I want."</div>
+      </div>
+      <div class="expr-box">
+        <h4>SHARING YOUR VIEW</h4>
+        <div class="expr-item">"For my generation, ___ is completely normal."</div>
+        <div class="expr-item">"I think the real issue is ___."</div>
+        <div class="expr-item">"I can see their point, but ___."</div>
+        <div class="expr-item">"It's not that they're wrong — we just have different priorities."</div>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:17px; color:#2D1B4E">Don't aim for perfect English. Aim for a precise thought.</p>
+  </div>
+</div>
+
+<!-- SLIDE 10: Stakes -->
+<div class="slide bg-white" data-slide="10">
+  <div class="tag tag-red">BEFORE ROUND 2 · THE STAKES</div>
+  <h3>This isn't just about who pays the bill.</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4A4A5E; margin-bottom:20px; line-height:1.6">When the generation gap goes unaddressed, real things break.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">💔</div>
+        <h4>Family Estrangement</h4>
+        <p>A 2023 survey found 31% of Chinese young adults say they "avoid deep conversations" with parents entirely — not out of rebellion, but exhaustion.</p>
+      </div>
+      <div class="card teal">
+        <div class="icon">😰</div>
+        <h4>Mental Health Crisis</h4>
+        <p>Parental pressure around marriage and career is cited as a top stressor by 67% of Gen Z respondents in China's Youth Mental Health Report (2024).</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🏚️</div>
+        <h4>The Loneliness Loop</h4>
+        <p>Parents feel unneeded; children feel misunderstood. Both sides withdraw. The gap becomes a wall — and nobody built it on purpose.</p>
+      </div>
+    </div>
+    <p class="source">Sources: China Youth Daily (2023), DXY Health & China Youth Mental Health Report (2024)</p>
+  </div>
+</div>
+
+<!-- SLIDE 11: Round 2 Title -->
+<div class="slide bg-teal" data-slide="11">
+  <div class="round-title">
+    <div class="tag tag-white">ROUND 2 · 25 MIN</div>
+    <h1 style="color:#FFF">The Bigger<br>Picture</h1>
+    <p class="subtitle" style="color:rgba(255,255,255,0.78)">3 questions · switch groups · go from personal habits to social consequences</p>
+  </div>
+</div>
+
+<!-- SLIDE 12: Round 2 Q1 -->
+<div class="slide bg-white" data-slide="12">
+  <div class="tag tag-red">ROUND 2 · QUESTION 1</div>
+  <h3>Is the Gap Wider Than Ever?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4A4A5E; margin-bottom:16px; line-height:1.6">Every generation has clashed with the previous one. Socrates complained about "the youth" in 400 BC. But is today's generation gap truly unprecedented — or are we just more aware of it?</p>
+    <div class="grid-2">
+      <div class="debate-side yes">
+        <h4>IT'S WIDER THAN EVER</h4>
+        <ul>
+          <li>Technology changes faster than any generation can keep up</li>
+          <li>China went from poverty to prosperity in one generation — values shifted overnight</li>
+          <li>Social media creates entirely separate information worlds</li>
+          <li>Globalization exposed younger generations to radically different life models</li>
+        </ul>
+      </div>
+      <div class="debate-side no">
+        <h4>IT'S THE SAME AS ALWAYS</h4>
+        <ul>
+          <li>Parents have always worried; children have always rebelled</li>
+          <li>The 1960s had hippies vs. conservatives — equally dramatic</li>
+          <li>Core human needs (safety, love, meaning) haven't changed</li>
+          <li>We romanticize past harmony that never actually existed</li>
+        </ul>
+      </div>
+    </div>
+    <p class="bottom-note" style="font-size:16px; color:#E8563A">Discussion tip: defend the side you disagree with for two minutes.</p>
+  </div>
+</div>
+
+<!-- SLIDE 13: Round 2 Q2 -->
+<div class="slide bg-white" data-slide="13">
+  <div class="tag tag-red">ROUND 2 · QUESTION 2 · ROLE-PLAY</div>
+  <h3>Whose job is it to bridge the gap?</h3>
+  <div class="body-content">
+    <p style="font-size:16px; color:#4A4A5E; margin-bottom:16px">Split into 4 mini-groups. Each defends one perspective. 5 min prep, 10 min cross-debate.</p>
+    <div class="grid-2x2">
+      <div class="card">
+        <div class="icon">👨‍👩‍👧</div>
+        <h4>PARENTS</h4>
+        <p style="font-size:14px; color:#666">"We sacrificed everything for you"</p>
+        <p style="margin-top:8px">Should parents learn to let go of expectations? Or is their concern a form of love we should accept?</p>
+      </div>
+      <div class="card teal">
+        <div class="icon">🧑‍💻</div>
+        <h4>YOUNG ADULTS</h4>
+        <p style="font-size:14px; color:#666">"Let me live my own life"</p>
+        <p style="margin-top:8px">Should we be more patient in explaining our world? Or is it not our job to make them understand?</p>
+      </div>
+      <div class="card gold">
+        <div class="icon">🏫</div>
+        <h4>EDUCATION</h4>
+        <p style="font-size:14px; color:#666">"We shape the next generation"</p>
+        <p style="margin-top:8px">Should schools teach intergenerational communication? Would it help or is this too personal?</p>
+      </div>
+      <div class="card">
+        <div class="icon">📺</div>
+        <h4>MEDIA & CULTURE</h4>
+        <p style="font-size:14px; color:#666">"We tell the stories"</p>
+        <p style="margin-top:8px">Do shows like "都挺好" help families talk? Or do they just make everyone feel attacked?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14: Round 2 Q3 -->
+<div class="slide bg-cream" data-slide="14">
+  <div class="tag tag-red">ROUND 2 · QUESTION 3 · CLOSING ACTION</div>
+  <h3 style="color:#2D1B4E">What will YOU do differently?</h3>
+  <div class="body-content">
+    <p style="font-size:17px; color:#4A4A5E; margin-bottom:8px; line-height:1.6">One day, you'll be the "older generation." How will you be different from your parents? And — be honest — what might you repeat?</p>
+    <p style="font-size:15px; font-weight:bold; color:#E8563A; margin-bottom:12px; letter-spacing:1px">THINK ABOUT:</p>
+    <ul class="action-list">
+      <li>Will you pressure your kids about marriage or career?</li>
+      <li>Will you try to understand technology that feels alien to you?</li>
+      <li>Will you give unsolicited advice — or wait to be asked?</li>
+      <li>Will you respect choices you don't understand?</li>
+      <li>What is ONE thing your parents did right that you want to keep?</li>
+    </ul>
+    <p style="font-size:17px; margin-top:18px; text-align:center; color:#2D1B4E"><strong>Finish with: "When I'm a parent, I will ___ . But I'll probably also ___ ."</strong></p>
+  </div>
+</div>
+
+<!-- SLIDE 15: Flip Cards -->
+<div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
+  <div style="text-align:center; margin-bottom:16px">
+    <div class="tag tag-red">A FINAL INVITATION</div>
+    <h3 style="font-family:Georgia,serif">Eight Open Questions</h3>
+    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Eight treats hide eight questions. Tap one, answer honestly, then invite someone else.</p>
+  </div>
+  <div class="body-content">
+    <div class="flip-grid" id="questionCards"></div>
+  </div>
+  <p style="font-size:14px; text-align:center; color:#4A4A5E; margin-top:12px; font-style:italic">No right answers. Only honest ones.</p>
+</div>
+
+<!-- SLIDE 16: Closing -->
+<div class="slide bg-dark" data-slide="16">
+  <div class="quote-slide">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; max-width:860px; width:100%">
+      <div class="quote-mark">"</div>
+      <p class="quote" style="margin-left:-4px">The children now love luxury; they have bad manners, contempt for authority; they show disrespect for elders. Children are now tyrants, not the servants of their households.</p>
+      <p class="quote-author" style="align-self:flex-end">— attributed to Socrates, ~400 BC</p>
+    </div>
+    <div class="separator" style="margin:20px auto"></div>
+    <p style="font-size:18px; opacity:0.82; margin-top:20px; max-width:640px">The gap has always existed. What's new is our power to either widen it — or bridge it — with how we choose to listen.</p>
+    <p style="font-size:17px; color:#F2A541; margin-top:8px">感谢你今晚的真诚分享。理解，从对话开始。</p>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button id="prevBtn" onclick="navigate(-1)" disabled>‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn" onclick="navigate(1)">›</button>
+  <span class="page-info" id="pageInfo">1 / 16</span>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+function update() {
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'prev');
+    if (i === cur) s.classList.add('active');
+    else if (i < cur) s.classList.add('prev');
+  });
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === total - 1;
+  document.getElementById('pageInfo').textContent = (cur + 1) + ' / ' + total;
+  document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+function navigate(dir) {
+  const n = cur + dir;
+  if (n >= 0 && n < total) { cur = n; update(); }
+}
+function goTo(i) { cur = i; update(); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); navigate(1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
+document.addEventListener('touchend', e => {
+  const d = tx - e.changedTouches[0].screenX;
+  if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1);
+});
+
+let wt;
+document.addEventListener('wheel', e => {
+  if (wt) return;
+  wt = setTimeout(() => { wt = null; }, 500);
+  navigate(e.deltaY > 0 ? 1 : -1);
+});
+
+const cards = [
+  { icon:'🍰', name:'CAKE', latin:'mystery flavor', q:'What is one thing your parents taught you that you will keep forever — even if you rejected it at first?', zh:'父母教你的哪一件事，你曾经抗拒，但现在会永远保留？' },
+  { icon:'🧁', name:'CUPCAKE', latin:'mystery flavor', q:'If your parents were your age today, do you think they would make the same life choices? Why or why not?', zh:'如果你的父母是今天的年轻人，他们会做同样的人生选择吗？' },
+  { icon:'🍩', name:'DONUT', latin:'mystery flavor', q:'What is something your generation does that will probably confuse the NEXT generation?', zh:'你们这一代人做的什么事，可能会让下一代人感到困惑？' },
+  { icon:'🍪', name:'COOKIE', latin:'mystery flavor', q:'Is there a moment when you suddenly understood why your parents did something you used to hate?', zh:'有没有一个瞬间，你突然理解了父母曾经让你讨厌的某个行为？' },
+  { icon:'🎂', name:'BIRTHDAY CAKE', latin:'mystery flavor', q:'If you could send a one-sentence message back to your parents when they were 25, what would you say?', zh:'如果能给25岁时的父母发一句话，你会说什么？' },
+  { icon:'🍫', name:'CHOCOLATE', latin:'mystery flavor', q:'What is one belief you hold today that your future grandchildren will probably laugh at?', zh:'你现在持有的什么观念，未来的孙辈可能会笑话？' },
+  { icon:'🍬', name:'CANDY', latin:'mystery flavor', q:'Does technology bring generations closer together, or push them further apart? Give a real example from your life.', zh:'科技让代际之间更近了还是更远了？用你生活中的真实例子说明。' },
+  { icon:'🍭', name:'LOLLIPOP', latin:'mystery flavor', q:'What is something you secretly agree with your parents about — but would never admit to them?', zh:'有什么事你其实暗暗认同父母的看法，但永远不会承认？' }
+];
+
+const questionCardsEl = document.getElementById('questionCards');
+cards.sort(() => Math.random() - 0.5).forEach(c => {
+  const el = document.createElement('div');
+  el.className = 'flip-card';
+  el.innerHTML = `<div class="flip-inner"><div class="flip-face flip-front"><div class="f-icon">${c.icon}</div><div class="f-name">${c.name}</div><div class="f-latin">${c.latin}</div><div class="f-hint">tap to reveal</div></div><div class="flip-face flip-back"><div class="f-q">"${c.q}"</div><div class="f-qzh">${c.zh}</div></div></div>`;
+  el.onclick = () => el.classList.toggle('flipped');
+  questionCardsEl.appendChild(el);
+});
+</script>
+</body>
+</html>
+
