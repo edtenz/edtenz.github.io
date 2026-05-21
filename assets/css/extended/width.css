@@ -1,5 +1,6 @@
 @media screen and (min-width: 768px) {
-    body.section-deep .main {
+    body.section-deep .main,
+    body.section-topics .main {
         max-width: 80vw;
         width: 80vw;
     }

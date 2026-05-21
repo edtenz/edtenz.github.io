@@ -41,6 +41,11 @@ buildFuture = true
     url = "/deep/"
     weight = 30
   [[menu.main]]
+    identifier = "topics"
+    name = "Topics"
+    url = "/topics/"
+    weight = 35
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
