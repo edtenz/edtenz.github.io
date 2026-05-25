@@ -35,7 +35,7 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome to English Corner! Today: **Who Are You Beyond Your Label?** — MBTI, Zodiac, Stereotypes, and The Stories We Tell."
+> "Welcome to English Corner! Today: **What's in a Label?** — MBTI, Zodiac, Stereotypes & How We Make Sense of People."
 
 > "身份标签——它们帮助我们理解自己，还是限制了我们看待别人？"
 
@@ -69,7 +69,7 @@
 
 **Pause — most hands go up.**
 
-> "We label ourselves without even thinking about it. Today we ask: do these labels help us, or trap us?"
+> "We label ourselves without even thinking about it. Today we explore: why do we do it, and what happens when we do?"
 
 **中文提示：** 大部分人会不自觉地用"类别"（MBTI、职业、星座）来描述自己。这个发现本身就是进入话题的最好方式。
 
@@ -78,35 +78,37 @@
 ## Slide 4 — Three Concepts (3 min)
 
 1. **Identity Label** (身份标签) — "A shortcut for who you are: MBTI, zodiac, job title, generation, hometown."
-2. **Stereotype** (刻板印象) — "When a label hardens into an expectation. 'Engineers can't communicate.' The shortcut becomes a prison."
-3. **Self-Fulfilling Prophecy** (自我实现预言) — "When you behave according to a label because you believe it. 'I'm an introvert, so I won't go.'"
+2. **Stereotype** (刻板印象) — "When a label hardens into a fixed expectation. 'Engineers can't communicate.' The shortcut stops updating."
+3. **Self-Fulfilling Prophecy** (自我实现预言) — "When you act according to a label because you believe it. Works both ways: 'I'm creative' → try bolder things. 'I'm not a math person' → stop trying."
 
-> "Today's question: **Do labels reveal who we are — or decide who we become?**"
+> "Today's question: **Do labels reveal who we are — or do they shape who we become?**"
 
 ---
 
 ## Slide 5 — Stats (2 min)
 
-> - "**2.5 million** people take the MBTI test every year."
-> - "**88%** of Fortune 500 companies have used MBTI in hiring."
-> - "**72%** of Chinese Gen-Z say they 'somewhat believe' in zodiac compatibility."
-> - "But — **50%** of people who retake MBTI get a DIFFERENT type within 5 weeks."
+> - "**2.5 million** people take the MBTI test every year — it's a $2 billion industry."
+> - "**50%** of people who retake MBTI get a different type within 5 weeks."
+> - "**72%** of Chinese Gen-Z 'somewhat believe' in zodiac compatibility."
+> - "**16** personality types in MBTI — for 8 billion unique humans."
 
-> "We cling to labels as identity anchors — even when the science says they're unstable."
+> "Interesting, right? Labels are clearly useful to us — the question is how and why."
+
+**中文提示：** 语气是好奇，不是批判。这些数字本身就很有趣——让大家自己去想"这说明什么"。
 
 ---
 
 ## Slide 6 — The Barnum Effect (3 min)
 
-**What to do:** This is a key teaching moment. Read the "personalized" description aloud. Ask people if it sounds like them.
+**What to do:** Read the "personalized" description aloud. Ask if it sounds like them. Reveal the twist.
 
-> "In 1948, psychologist Forer gave students a 'personalized' personality assessment. Everyone rated it 4.3 out of 5 for accuracy. The catch? Everyone got the EXACT same text."
+> "In 1948, psychologist Forer gave students a 'personalized' personality assessment. They rated it 4.3 out of 5. The catch? Everyone got the EXACT same text."
 
 **Read aloud:** "You have a need for other people to like you, yet you tend to be critical of yourself. While you have personality weaknesses, you are generally able to compensate for them."
 
-> "Sound familiar? Sound like YOU? That's the Barnum Effect. It's how MBTI descriptions, horoscopes, and zodiac profiles work — vague enough to fit anyone."
+> "Sound like you? That's the Barnum Effect. We WANT labels to fit — our brains actively look for confirmation. That's not a flaw, it's how we make sense of ourselves."
 
-> "The question isn't whether your label is accurate. It's **why you need one at all.**"
+> "The interesting question is: **what do we get from that feeling of being 'seen'?**"
 
 ---
 
@@ -138,12 +140,15 @@
 
 ---
 
-## Slide 10 — Stakes / Before Round 2 (2 min)
+## Slide 10 — Transition / Before Round 2 (2 min)
 
-> "Labels aren't just personality quizzes. When they harden into systems, real consequences follow:"
-> - "**Stereotype Threat:** Being reminded of a negative stereotype makes performance drop — even if you don't believe it."
-> - "**Hiring Bias:** Some Chinese job posts say 'no Virgos' or 'INTJs only.'"
-> - "**Regional Discrimination** (地域歧视): People from certain provinces face prejudice in dating and hiring."
+> "Labels don't just live in our heads — they show up in real systems. Three observations, no judgment:"
+
+> - "**Labels in hiring:** Some job posts filter by MBTI or zodiac. Efficient shortcutting, or lazy thinking?"
+> - "**Labels that unlock help:** An ADHD diagnosis can be life-changing — access to support, self-understanding. Here the label IS the solution."
+> - "**Labels that stick:** Research shows: remind someone of a stereotype about their group, and their performance drops. The label shapes the outcome."
+
+> "Round 2 explores: why does this happen, and what — if anything — should we do about it?"
 
 ---
 
@@ -155,14 +160,14 @@
 
 ## Slide 12 — Round 2 Q1: Where Does Labeling Come From? (8 min)
 
-> "Round 1 was about YOUR labels. Now zoom out: **why do humans label at all?** Four forces — each with a dark side:"
+> "Round 1 was about YOUR labels. Now zoom out: **why do humans label at all?** Four forces — each with interesting tension:"
 
 > - "**Cognitive shortcut** — Our brains need categories to function. But when does a shortcut become a stereotype? Where's the line?"
 > - "**Tribal belonging** — Labels create 'my people.' But every tribe creates outsiders. Is belonging always at someone else's expense?"
 > - "**Commercial design** — MBTI, zodiac apps, quizzes — designed to make you feel 'seen.' Genuine, or manufactured identity?"
 > - "**Self-fulfilling loop** — Once you accept 'I'm not a math person,' you stop trying. Does the label describe reality or CREATE it?"
 
-> "Each group picks ONE force and debates: mostly helpful or mostly dangerous? Report back in 3 minutes."
+> "Each group picks ONE force to explore: what's the upside, and what's the risk? Report back in 3 minutes."
 
 **中文提示：** 这一题比第一轮深——从"我的标签"到"标签这个机制本身"。如果讨论卡住，可以问："你觉得哪个力量最难抵抗？为什么？"
 
