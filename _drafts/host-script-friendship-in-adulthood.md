@@ -1,7 +1,7 @@
 # Host Script: Friendship in Adulthood
 
 > **成年后的友谊：长大以后，我们靠什么维持一段友谊？**
-> 90 min · 2 rounds · 7 questions · 9 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -35,10 +35,10 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight we're talking about **Friendship in Adulthood** — what happens to our friendships after we leave school, change cities, and get busy with life."
+> "Welcome! Today we're talking about **Friendship in Adulthood** — what happens to our friendships after we leave school, change cities, and get busy with life."
 > "成年后的友谊——毕业之后，我们靠什么维持一段友谊？"
 
-**中文提示：** 轻松开场，可以说"今晚不聊鸡汤，聊真实——你上一次主动联系朋友是什么时候？"
+**中文提示：** 轻松开场，可以说"今天不聊鸡汤，聊真实——你上一次主动联系朋友是什么时候？"
 
 ---
 
@@ -52,18 +52,23 @@
 
 ---
 
-## Slide 3 — Warm-up: Raise Your Hand If... (3 min)
+## Slide 3 — Warm-up: Open Your Recent Chats (3 min)
 
-> "No talking needed — just raise your hand. Be honest! Look around the room."
+**What to do:** Everyone opens their messaging app and does a quick audit.
 
-> 1. "Raise your hand if you have a friend you haven't talked to in 6+ months but still consider 'close.'"
-> 2. "Raise your hand if YOU are usually the one who reaches out first."
-> 3. "Raise your hand if you have made a NEW close friend in the last year."
-> 4. "Raise your hand if you have a group chat that nobody talks in anymore."
+> "Open WeChat — or whatever your main messaging app is. Look at your last 10 conversations."
 
-> "Look around. You are not alone in any of these. That is what tonight is about."
+**Wait 15 seconds.**
 
-**中文提示：** 每个问题停顿3秒让大家看看周围。如果第三个很少人举手，可以说："See? Making new close friends as adults is hard. Let's talk about why."
+> "Step 1: Of your last 10 chats, how many are group chats vs. real one-on-one conversations? Count quickly."
+
+> "Step 2: Scroll down and find a friend you haven't messaged in 3+ months. Are they still 'close'?"
+
+> "Step 3: Raise your hand if YOU are usually the one who reaches out first."
+
+> "The gap between 'contacts' and 'connection' — that is what today is about."
+
+**中文提示：** 大部分人的近10条对话以群聊为主，真正1v1聊天很少——这个发现本身就很有冲击力。
 
 ---
 
@@ -183,9 +188,9 @@
 
 ---
 
-## Slide 15 — Nine Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
-> "Nine cards, nine questions — NOT about friendship this time. Tap, answer honestly, invite someone else."
+> "Six cards, six questions — NOT about friendship this time. Tap, answer honestly, invite someone else."
 
 **中文提示：** 这一轮是放松环节，问题刻意不再聚焦友谊主题，增加趣味性。可以说"这些问题和友谊无关——就像盲盒一样，翻到什么聊什么。"
 
@@ -196,9 +201,9 @@
 > "'Friendship is born at that moment when one person says to another: What! You too? I thought I was the only one.' — C.S. Lewis"
 
 > "The friends who last are the ones who make you feel less alone in being yourself."
-> "感谢你今晚的真诚分享。愿你珍惜身边的朋友。"
+> "感谢你今天的真诚分享。愿你珍惜身边的朋友。"
 
-**中文提示：** 结尾保持简短温暖。可以加一句："今晚回去，给一个很久没联系的朋友发条消息吧。"
+**中文提示：** 结尾保持简短温暖。可以加一句："今天回去，给一个很久没联系的朋友发条消息吧。"
 
 ---
 
@@ -227,5 +232,5 @@
 | 变成说教 | "Let's keep it personal — what happened in YOUR life?" |
 | 跑题 | "Interesting — how does that connect to how we maintain friendships?" |
 | 太沉重 | Lighten: "Okay, quick show of hands — who has ghosted a friend's message for more than a week? Be honest!" |
-| 能量下降 | "Stand up, find someone from a different group, and tell them one thing you heard tonight that surprised you." |
+| 能量下降 | "Stand up, find someone from a different group, and tell them one thing you heard today that surprised you." |
 | 超时 | Skip Q4 in Round 1. Protect Round 2 Q3 — it's the emotional peak. |

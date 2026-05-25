@@ -1,7 +1,7 @@
 # Host Script: Privacy vs Convenience
 
 > **隐私与便利：为了方便，我们愿意让渡多少？**
-> 90 min · 2 rounds · 7 questions · 8 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight: **Privacy vs Convenience** — How much of ourselves do we trade for a smoother life?"
+> "Welcome! Today: **Privacy vs Convenience** — How much of ourselves do we trade for a smoother life?"
 > "隐私与便利——为了方便，我们愿意让渡多少？"
 
 **中文提示：** 这个话题可能让人觉得"太大了跟我没关系"，所以要尽快拉回到个人经验。
@@ -51,13 +51,25 @@
 
 ---
 
-## Slide 3 — Warm-up (3 min)
+## Slide 3 — Warm-up: Check Your App Permissions (3 min)
 
-**What to do:** Show "What You Did" vs "What You Got." Make it visceral.
+**What to do:** Everyone checks their phone settings in real-time.
 
-> "This morning: you unlocked your phone with your face — that's face data. You ordered coffee — that's location + habit. You got... 2 seconds saved and ¥3 off."
+> "Go to Settings → Privacy → Location Services on iPhone, or App Permissions on Android. Count how many apps can access your location."
 
-> "Quick pair-share: was today's convenience worth the data you gave away? Did you even NOTICE?"
+**Wait 30 seconds while people check.**
+
+> "Step 1: How many apps have location access? Were you surprised?"
+
+> "Step 2: Find ONE app that has location access that you did NOT expect. Tell your neighbor."
+
+**Let pairs share for 30 seconds.**
+
+> "Step 3: Raise your hand if you found more than 10 apps with location access."
+
+> "You just saw what you traded without noticing. Today we ask: is it worth it?"
+
+**中文提示：** 很多人会惊讶于一些完全不需要定位的App也有权限——比如计算器、记事本。这个发现就是进入话题的最好方式。
 
 ---
 
@@ -167,9 +179,9 @@
 
 ---
 
-## Slide 15 — Eight Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
-> "Eight cards, eight questions. Tap, answer, invite someone."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 ---
 
@@ -178,7 +190,7 @@
 > "'Arguing that you don't care about privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say.' — Edward Snowden"
 
 > "Thanks for showing up — and for thinking about what usually stays invisible."
-> "感谢你今晚的思考和分享。"
+> "感谢你今天的思考和分享。"
 
 ---
 

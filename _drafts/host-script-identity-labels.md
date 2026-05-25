@@ -1,7 +1,7 @@
 # Host Script: Identity Labels
 
 > **身份标签：它们帮助我们理解自己，还是限制了我们看待别人？**
-> 90 min · 2 rounds · 7 questions · 8 blind box cards
+> 90 min · 2 rounds · 7 questions · 6 blind box cards
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome to English Corner! Tonight: **Who Are You Beyond Your Label?** — MBTI, Zodiac, Stereotypes, and The Stories We Tell."
+> "Welcome to English Corner! Today: **Who Are You Beyond Your Label?** — MBTI, Zodiac, Stereotypes, and The Stories We Tell."
 
 > "身份标签——它们帮助我们理解自己，还是限制了我们看待别人？"
 
@@ -53,18 +53,25 @@
 
 ---
 
-## Slide 3 — Warm-up: Quick Poll (1 min)
+## Slide 3 — Warm-up: Label Yourself in 3 Words (3 min)
 
-**What to do:** Read each line. Ask people to raise hands. Comment on the results.
+**What to do:** Quick self-labeling exercise, then compare with neighbor.
 
-> "Raise your hand if..."
-> - "You know your MBTI type." (大部分人会举手)
-> - "You've checked someone's zodiac sign before dating."
-> - "You've been told 'you don't seem like a ___'."
-> - "You've judged someone based on their hometown."
-> - "You've put your MBTI in your social media bio."
+> "Think of 3 words that describe you. Write them down — on your phone or a piece of paper. Quick — don't overthink it. First instinct."
 
-> "If most hands went up — we're all in the labeling game. Let's figure out why."
+**Wait 20 seconds.**
+
+> "Now show the person next to you. Compare! Did anyone write their MBTI? Their job title? Their zodiac?"
+
+**Let pairs share for 30 seconds.**
+
+> "Raise your hand if at least ONE of your 3 words was a category — like 'introvert,' 'Pisces,' 'programmer' — rather than a trait."
+
+**Pause — most hands go up.**
+
+> "We label ourselves without even thinking about it. Today we ask: do these labels help us, or trap us?"
+
+**中文提示：** 大部分人会不自觉地用"类别"（MBTI、职业、星座）来描述自己。这个发现本身就是进入话题的最好方式。
 
 ---
 
@@ -146,43 +153,52 @@
 
 ---
 
-## Slide 12 — Round 2 Q1: Help or Harm? (8 min)
+## Slide 12 — Round 2 Q1: Where Does Labeling Come From? (8 min)
 
-> "**Do labels help or harm?**"
-> - "HELP: They give language to feelings, build community, unlock support (ADHD diagnosis)."
-> - "HARM: They reduce complex humans to categories, create in-groups, become excuses."
+> "Round 1 was about YOUR labels. Now zoom out: **why do humans label at all?** Four forces — each with a dark side:"
 
-> "Think of a specific label that has BOTH helped and limited you."
+> - "**Cognitive shortcut** — Our brains need categories to function. But when does a shortcut become a stereotype? Where's the line?"
+> - "**Tribal belonging** — Labels create 'my people.' But every tribe creates outsiders. Is belonging always at someone else's expense?"
+> - "**Commercial design** — MBTI, zodiac apps, quizzes — designed to make you feel 'seen.' Genuine, or manufactured identity?"
+> - "**Self-fulfilling loop** — Once you accept 'I'm not a math person,' you stop trying. Does the label describe reality or CREATE it?"
 
----
+> "Each group picks ONE force and debates: mostly helpful or mostly dangerous? Report back in 3 minutes."
 
-## Slide 13 — Round 2 Q2: How Labels Form (8 min)
-
-> "**How are labels formed?** Split into 4 forces:"
-> - "**Media & Platforms** — algorithms sort us into categories for engagement."
-> - "**Social Circles** — friends label us to build belonging."
-> - "**Commercial Interests** — brands segment us to sell to us."
-> - "**Human Psychology** — our brains crave categories to reduce complexity."
-
-> "Which force shapes YOU most?"
+**中文提示：** 这一题比第一轮深——从"我的标签"到"标签这个机制本身"。如果讨论卡住，可以问："你觉得哪个力量最难抵抗？为什么？"
 
 ---
 
-## Slide 14 — Round 2 Q3: Living Beyond (9 min)
+## Slide 13 — Round 2 Q2: Help or Harm? (8 min)
 
-> "**What's ONE thing you could do this week to see yourself — or someone else — beyond a label?**"
-> - "Ask someone about their life story, not their MBTI type."
-> - "Try something your 'type' supposedly wouldn't do."
-> - "Remove personality labels from your bio for a week."
-> - "Notice next time you judge someone by job title or hometown."
+> "Now that we know WHY labels form — **are they a net positive or negative?** Take a side and defend it."
 
-> "**Finish with: 'This week, I will ___.'"** Say it out loud."
+> - "HELP: They give language to feelings, build community, medical labels unlock support, they reduce social friction."
+> - "HARM: They reduce humans to a single story, create in-groups and out-groups, become excuses to stop growing, harden into stereotypes."
+
+> "Try defending the side you DON'T agree with first. Then switch back."
+
+**中文提示：** 鼓励换位思考。如果全组同意一方，说"OK, now argue the other side for 2 minutes."
+
+---
+
+## Slide 14 — Round 2 Q3: Awareness in Action (9 min)
+
+> "Labels aren't inherently bad — but using them UNCONSCIOUSLY is. The goal isn't to stop labeling. It's to **notice** when we do it."
+
+> "Three awareness practices:"
+> - "Before using a label, ask: 'Is this a door (inviting exploration) or a wall (shutting it down)?'"
+> - "When meeting someone new, notice your first assumption — then question it."
+> - "Try saying 'I tend to ___' instead of 'I am a ___' — feel the difference?"
+
+> "**Share with the group: 'One label I want to hold more loosely is ___.'"**
+
+**中文提示：** 强调这不是要大家"反标签"——标签本身中性。关键是"意识到"。可以说："标签是工具，不是身份。工具可以放下。"
 
 ---
 
 ## Slide 15 — Blind Box Questions (10 min)
 
-> "Eight boxes, eight questions. Tap one, answer in 2 minutes, invite someone else."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 **If non-interactive:** Pick random cards and ask for volunteers.
 

@@ -1,7 +1,7 @@
 # Host Script: The Future of Relationships
 
 > **未来的人际关系：科技让我们更近，还是更远？**
-> 90 min · 2 rounds · 7 questions · 9 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -35,10 +35,10 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight we're talking about **The Future of Relationships** — how technology is changing the way we connect, date, make friends, and even feel less alone."
+> "Welcome! Today we're talking about **The Future of Relationships** — how technology is changing the way we connect, date, make friends, and even feel less alone."
 > "未来的人际关系——科技让我们更近，还是更远？"
 
-**中文提示：** 轻松开场："今晚我们聊一个每个人都在经历的变化——我们交朋友、谈恋爱、甚至排解孤独的方式，正在被科技彻底改变。"
+**中文提示：** 轻松开场："今天我们聊一个每个人都在经历的变化——我们交朋友、谈恋爱、甚至排解孤独的方式，正在被科技彻底改变。"
 
 ---
 
@@ -179,9 +179,9 @@
 
 ---
 
-## Slide 15 — Nine Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
-> "Nine cards, nine questions. Tap, answer honestly, invite someone else."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 **中文提示：** 这一轮问题大多与主题无直接关联，增加趣味性。可以说"最后一轮是开盲盒——海洋动物卡片，翻到什么聊什么，放松一下。"
 
@@ -192,9 +192,9 @@
 > "'We expect more from technology and less from each other.' — Sherry Turkle"
 
 > "The future of relationships is not decided by technology. It is decided by what we choose to protect."
-> "感谢你今晚的真诚分享。愿你找到值得投入的关系。"
+> "感谢你今天的真诚分享。愿你找到值得投入的关系。"
 
-**中文提示：** 结尾简短有力。可以加一句："今晚回去，放下手机，给一个重要的人打个电话——不是发消息，是打电话。"
+**中文提示：** 结尾简短有力。可以加一句："今天回去，放下手机，给一个重要的人打个电话——不是发消息，是打电话。"
 
 ---
 

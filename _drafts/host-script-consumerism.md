@@ -1,7 +1,7 @@
 # Host Script: Consumerism
 
 > **消费主义：我们到底在买什么？**
-> 90 min · 2 rounds · 7 questions · 8 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -35,10 +35,10 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight: **Consumerism** — Buying Needs, Buying Identity, Buying Anxiety."
+> "Welcome! Today: **Consumerism** — Buying Needs, Buying Identity, Buying Anxiety."
 > "消费主义——我们到底在买什么？"
 
-**中文提示：** 轻松开场，可以说"今晚我们聊聊花钱这件事——不是教你省钱。"
+**中文提示：** 轻松开场，可以说"今天我们聊聊花钱这件事——不是教你省钱。"
 
 ---
 
@@ -176,9 +176,9 @@
 
 ---
 
-## Slide 15 — Eight Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
-> "Eight cards, eight questions. Tap, answer honestly, invite someone else."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 ---
 
@@ -187,7 +187,7 @@
 > "'Too many people spend money they haven't earned, to buy things they don't want, to impress people they don't like.' — Will Rogers"
 
 > "Thanks for speaking, listening, and noticing what usually stays invisible."
-> "感谢你今晚的真诚分享。"
+> "感谢你今天的真诚分享。"
 
 ---
 

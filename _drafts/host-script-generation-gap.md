@@ -2,7 +2,7 @@
 
 **Topic:** Do Your Parents Get You? — Generation Gap, Value Shifts & The World Between Us  
 **Duration:** 90 minutes  
-**Structure:** 2 rounds, 7 questions, 8 open cards  
+**Structure:** 2 rounds, 7 questions, 6 open cards  
 **Ideal group size:** 15-30 participants  
 
 ---
@@ -40,7 +40,7 @@
 ### Your Mindset
 
 - You are a facilitator, not a lecturer. Your job is to create space for others to talk.
-- 你是引导者，不是老师。今晚的主角是参与者，不是你。
+- 你是引导者，不是老师。今天的主角是参与者，不是你。
 - Energy comes from YOU in the first 10 minutes, then from the GROUP. Front-load your enthusiasm.
 
 ---
@@ -51,7 +51,7 @@
 **Action:** Display as people settle in. Stand at the front, smile, make eye contact.
 
 > **SAY:**  
-> "Welcome, everyone! Tonight's topic is one that every single person in this room has experienced. Take a look at the screen — 'Do Your Parents Get You?' — and we're going to talk about that space between generations. Please find a seat with people you don't already know if possible."
+> "Welcome, everyone! Today's topic is one that every single person in this room has experienced. Take a look at the screen — 'Do Your Parents Get You?' — and we're going to talk about that space between generations. Please find a seat with people you don't already know if possible."
 
 **Tip:** Don't rush to start. Let people sit down and get comfortable. Chat casually with early arrivals.  
 / 不要急着开始。让大家坐好。跟早到的人随便聊几句暖场。
@@ -108,7 +108,7 @@
 
 *After 30 seconds:*
 
-> "Same money. Same family. Completely different priorities. And THAT is what we're talking about tonight. This gap — where does it come from? Can we bridge it? Should we?"
+> "Same money. Same family. Completely different priorities. And THAT is what we're talking about today. This gap — where does it come from? Can we bridge it? Should we?"
 
 **Tip:** This is a low-stakes warm-up. Don't over-discuss. Its purpose is to make the topic concrete and personal in 3 minutes.  
 / 这只是热身。不要过度讨论。目的是让话题变得具体和个人化。
@@ -133,7 +133,7 @@
 
 *Pause.*
 
-> "So here's our core question for tonight — and I want you to keep this in the back of your mind: **Why can the same event mean completely different things to different generations?** A wedding, a job change, a move abroad — same event, totally different emotional reactions depending on when you were born."
+> "So here's our core question for today — and I want you to keep this in the back of your mind: **Why can the same event mean completely different things to different generations?** A wedding, a job change, a move abroad — same event, totally different emotional reactions depending on when you were born."
 
 **Tip:** Speak slowly on the three terms. Let people read along. If your audience has lower English proficiency, repeat each term and its Chinese translation clearly.  
 / 三个概念说慢一点。让大家跟着读。如果水平参差不齐，中英文都念清楚。
@@ -409,13 +409,13 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 
 ---
 
-## Slide 15 — Eight Open Cards (Flip Cards)
+## Slide 15 — Six Open Cards (Flip Cards)
 
 **Time:** 72:30-82:30 (10 minutes)  
 **Action:** Click to Slide 15. Energy should be playful and lighter now.
 
 > **SAY:**  
-> "OK — final activity! These are eight mystery questions hiding behind eight desserts. I'll tap one, read the question aloud, and then someone answers — then that person picks the next card."
+> "OK — final activity! Six mystery questions hiding behind six flags. Tap one that calls to you — and answer honestly."
 
 *Tap the first card yourself. Read the question aloud in English AND Chinese.*
 
@@ -450,7 +450,7 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 **Action:** Click to Slide 16. Lower your voice. Slow down.
 
 > **SAY:**  
-> "Let me close with something that puts all of tonight into perspective."
+> "Let me close with something that puts all of today into perspective."
 
 *Read the quote:*
 
@@ -464,9 +464,9 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 
 *Look around the room:*
 
-> "Tonight, you practiced that. You listened to experiences different from your own. You tried to see through someone else's eyes. That IS the bridge."
+> "Today, you practiced that. You listened to experiences different from your own. You tried to see through someone else's eyes. That IS the bridge."
 
-> "感谢你今晚的真诚分享。理解，从对话开始。Thank you for your honest sharing tonight. Understanding starts with conversation."
+> "感谢你今天的真诚分享。理解，从对话开始。Thank you for your honest sharing today. Understanding starts with conversation."
 
 ---
 
@@ -476,7 +476,7 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 **Action:** Informal wrap-up.
 
 > **SAY:**  
-> "That's our formal session! If you want to stay and chat — please do. If you want to exchange WeChat with your table-mates, now's the time. And if tonight's conversation made you think of something you want to say to your parents... maybe send them a message on your way home."
+> "That's our formal session! If you want to stay and chat — please do. If you want to exchange WeChat with your table-mates, now's the time. And if today's conversation made you think of something you want to say to your parents... maybe send them a message on your way home."
 
 > "See you next time!"
 
@@ -532,8 +532,8 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 
 ### "We have extra time"
 - Extend flip cards — do all 8 with follow-up questions.
-- Ask the room: "What's one thing you're going to do differently after tonight?"
-- Open floor: "Any question you wish we'd asked tonight?"
+- Ask the room: "What's one thing you're going to do differently after today?"
+- Open floor: "Any question you wish we'd asked today?"
 
 ---
 
@@ -558,10 +558,10 @@ Acknowledge it briefly: "Thank you for sharing that. That takes courage." Don't 
 2. **Silence is not failure.** Sometimes people need 5 seconds to think. Don't fill every gap.
 3. **The best sessions feel like conversations, not classes.** If you talked less than 30% of the total time, you did your job well.
 4. **End on time.** Respect people's schedules. A good ending makes them come back.
-5. **Follow up.** Drop a message in the group chat afterward: "Thanks for tonight! What was your favorite moment?" This extends the conversation and builds community.
+5. **Follow up.** Drop a message in the group chat afterward: "Thanks for today! What was your favorite moment?" This extends the conversation and builds community.
 
 / 你的能量是天花板。沉默不是失败。最好的分享会像对话，不像上课。准时结束。事后跟进。
 
 ---
 
-*Good luck tonight. You've got this.*
+*Good luck today. You've got this.*

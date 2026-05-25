@@ -132,9 +132,9 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F2C078; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8vw,22px); }
 .flip-card { perspective: 800px; cursor: pointer; }
-.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px,22vh,260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -222,7 +222,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
         <p style="opacity:1">Raise your hand if your number was HIGHER than you expected.</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#1A1A2E"><strong>That number is what tonight is about.</strong> Who decided how you spent those hours — you or the algorithm?</p>
+    <p class="bottom-note" style="font-style:normal; color:#1A1A2E"><strong>That number is what today is about.</strong> Who decided how you spent those hours — you or the algorithm?</p>
   </div>
 </div>
 
@@ -490,8 +490,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-coral">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Six Open Questions</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4B4F63; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -509,7 +509,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     </div>
     <div class="separator" style="margin:20px auto"></div>
     <p style="font-size:18px; opacity:0.82; margin-top:20px">Thanks for being present — with each other, and with your own thoughts.</p>
-    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚放下手机，认真对话。</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今天放下手机，认真对话。</p>
   </div>
 </div>
 
@@ -583,12 +583,9 @@ document.addEventListener('wheel', e => {
 const cards = [
   { icon:'🍎', name:'APPLE', latin:'malus domestica', q:'What is something you used to enjoy that you no longer have patience for?', zh:'有什么事情你曾经很享受，但现在却没耐心了？' },
   { icon:'🍋', name:'LEMON', latin:'citrus limon', q:'What is one piece of content — article, video, or podcast — that genuinely changed how you think?', zh:'有没有一篇文章、一个视频或播客真正改变了你的想法？' },
-  { icon:'🍇', name:'GRAPE', latin:'vitis vinifera', q:'What is a skill or hobby you would love to learn if you had unlimited free time?', zh:'如果你有无限的空闲时间，你最想学什么技能或爱好？' },
   { icon:'🍑', name:'PEACH', latin:'prunus persica', q:'When was the last time you were truly bored — with nothing to scroll? What did you do?', zh:'你上次真正无聊（没有东西可刷）是什么时候？你做了什么？' },
   { icon:'🍒', name:'CHERRY', latin:'prunus avium', q:'What is a small moment from this year that you want to remember forever?', zh:'今年有哪个小瞬间，是你想永远记住的？' },
-  { icon:'🥝', name:'KIWI', latin:'actinidia deliciosa', q:'Who is someone — alive or dead — you would love to have a long, uninterrupted conversation with?', zh:'你最想和谁（古今皆可）进行一场不被打断的长谈？' },
   { icon:'🍊', name:'ORANGE', latin:'citrus sinensis', q:'What makes you laugh the hardest — and who are you usually with when it happens?', zh:'什么事能让你笑到停不下来？那时候你通常和谁在一起？' },
-  { icon:'🫐', name:'BLUEBERRY', latin:'vaccinium corymbosum', q:'If you could wake up tomorrow with one new ability — not a superpower, just a human skill — what would it be?', zh:'如果明天醒来你能拥有一项新能力（不是超能力，是普通人的技能），你会选什么？' },
   { icon:'🍓', name:'STRAWBERRY', latin:'fragaria ananassa', q:'What is one thing you do every day that your 10-year-old self would find surprising?', zh:'你每天做的什么事会让10岁的自己感到惊讶？' }
 ];
 

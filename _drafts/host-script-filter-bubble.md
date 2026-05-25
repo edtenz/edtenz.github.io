@@ -1,7 +1,7 @@
 # Host Script: Filter Bubble
 
 > **信息茧房：我们如何被算法塑造**
-> 90 min · 2 rounds · 7 questions · 8 bestiary cards
+> 90 min · 2 rounds · 7 questions · 6 bestiary cards
 
 ---
 
@@ -37,7 +37,7 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight: **Are You in a Bubble?** — Filter Bubbles, Echo Chambers & Information Cocoons."
+> "Welcome! Today: **Are You in a Bubble?** — Filter Bubbles, Echo Chambers & Information Cocoons."
 > "信息茧房——我们如何被算法塑造。"
 
 ---
@@ -64,7 +64,7 @@
 
 **Pause. Let reactions happen.**
 
-> "Same app. Same country. Same moment. **Completely different worlds.** That's tonight's topic."
+> "Same app. Same country. Same moment. **Completely different worlds.** That's today's topic."
 
 **中文提示：** 这个互动效果非常好，一定要做。如果有人没装抖音/小红书，让他们看微博热搜。
 
@@ -76,7 +76,7 @@
 2. **Echo Chamber** (回音室) — "Your SOCIAL CIRCLE does it. Like-minded people amplify your beliefs."
 3. **Information Cocoon** (信息茧房) — "YOU do it to yourself. Cass Sunstein, 2006. You avoid what challenges you."
 
-> "Tonight we'll use 'information cocoon' as the umbrella — but notice which kind YOU are in."
+> "Today we'll use 'information cocoon' as the umbrella — but notice which kind YOU are in."
 
 ---
 
@@ -183,7 +183,7 @@
 
 ## Slide 15 — Bestiary Questions (10 min)
 
-> "Eight creatures, eight questions. Tap one, answer honestly, invite someone else."
+> "Six creatures, six questions. Tap one that calls to you — and answer honestly."
 
 ---
 
@@ -192,7 +192,7 @@
 > "'The most dangerous thing about a filter bubble is that you don't know you're in one.' — Eli Pariser"
 
 > "Thanks for showing up — and for showing up honestly."
-> "感谢你今晚的诚实分享。"
+> "感谢你今天的诚实分享。"
 
 ---
 

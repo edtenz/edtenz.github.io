@@ -131,9 +131,9 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F0A500; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8vw,22px); }
 .flip-card { perspective: 800px; cursor: pointer; }
-.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px,22vh,260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -201,28 +201,27 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <!-- SLIDE 3 -->
 <div class="slide bg-cream" data-slide="3">
   <div class="tag tag-amber">WARM-UP · 3 MIN</div>
-  <h2>Raise your hand if...</h2>
+  <h2>30-second experiment. Ready?</h2>
   <div class="body-content">
-    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">No talking needed — just raise your hand honestly. Look around the room!</p>
-    <div class="grid-2x2">
+    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">Put your phone face-down. Close your eyes. I will time 30 seconds of doing <strong>absolutely nothing</strong>.</p>
+    <div class="grid-3">
       <div class="card">
-        <div class="icon">✋</div>
-        <h4>...you have a to-do list app or planner open RIGHT NOW</h4>
+        <div class="icon">⏱️</div>
+        <h4>Step 1: Stop</h4>
+        <p style="opacity:1">Phone down. Eyes closed. No planning, no thinking about your to-do list. Just breathe.</p>
       </div>
       <div class="card teal">
-        <div class="icon">✋</div>
-        <h4>...you feel guilty when you rest on a weekday</h4>
+        <div class="icon">🙋</div>
+        <h4>Step 2: Confess</h4>
+        <p style="opacity:1">Raise your hand if you felt uncomfortable, restless, or guilty during those 30 seconds.</p>
       </div>
       <div class="card gold">
-        <div class="icon">✋</div>
-        <h4>...you have watched a "morning routine" or "productive day" video in the last month</h4>
-      </div>
-      <div class="card">
-        <div class="icon">✋</div>
-        <h4>...you have ever called a relaxing day "wasted"</h4>
+        <div class="icon">💬</div>
+        <h4>Step 3: One word</h4>
+        <p style="opacity:1">Say ONE word for how that felt. Volunteers share: "peaceful", "anxious", "weird"...</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#1A1A2E"><strong>Look around.</strong> If most hands went up on the second one — that is exactly what tonight is about.</p>
+    <p class="bottom-note" style="font-style:normal; color:#1A1A2E"><strong>If 30 seconds of nothing felt hard</strong> — that is exactly what today is about.</p>
   </div>
 </div>
 
@@ -494,8 +493,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-amber">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Six Open Questions</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4B4F63; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -513,7 +512,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     </div>
     <div class="separator" style="margin:20px auto"></div>
     <p style="font-size:18px; opacity:0.82; margin-top:20px">Thanks for being here — not to be productive, but to be present.</p>
-    <p style="font-size:17px; color:#F0A500; margin-top:8px">感谢你今晚的真诚分享。允许自己慢下来。</p>
+    <p style="font-size:17px; color:#F0A500; margin-top:8px">感谢你今天的真诚分享。允许自己慢下来。</p>
   </div>
 </div>
 
@@ -586,11 +585,8 @@ document.addEventListener('wheel', e => {
 
 const cards = [
   { icon:'🚲', name:'BICYCLE', latin:'slow & steady', q:'What is one thing you do purely for fun, with zero goals attached?', zh:'你有什么事情是纯粹为了好玩而做的，完全没有目标？' },
-  { icon:'🚗', name:'CAR', latin:'daily commute', q:'What is the best meal you have had recently? What made it special?', zh:'你最近吃过最好的一顿饭是什么？是什么让它特别？' },
-  { icon:'🚂', name:'TRAIN', latin:'long journey', q:'If you could live in any city for one year, where would you go and why?', zh:'如果你能在任何城市生活一年，你会去哪里？为什么？' },
   { icon:'✈️', name:'AIRPLANE', latin:'across the sky', q:'Who is the most relaxed person you know? What do they do differently?', zh:'你认识的最放松的人是谁？他们和别人有什么不同？' },
   { icon:'🚢', name:'SHIP', latin:'ocean voyage', q:'What is a skill or hobby you gave up because you felt you weren\'t progressing fast enough?', zh:'你有没有因为觉得进步太慢而放弃过某个技能或爱好？' },
-  { icon:'🚀', name:'ROCKET', latin:'escape velocity', q:'If you could have dinner with anyone — alive or dead — who would it be and what would you ask?', zh:'如果你能和任何人共进晚餐——无论古今——你会选谁？你会问什么？' },
   { icon:'🛵', name:'SCOOTER', latin:'wind in hair', q:'What is something you believed strongly five years ago but have changed your mind about?', zh:'五年前你坚信不疑、但现在改变了看法的事情是什么？' },
   { icon:'🚁', name:'HELICOPTER', latin:'bird\'s eye view', q:'If your week had 8 days, would you use the extra day for work or rest? Be honest.', zh:'如果一周有八天，你会用多出来的一天工作还是休息？说实话。' },
   { icon:'⛵', name:'SAILBOAT', latin:'wind-powered', q:'What is something you are curious about right now — but haven\'t had time to explore yet?', zh:'你现在对什么事情感到好奇，但还没来得及去探索？' }

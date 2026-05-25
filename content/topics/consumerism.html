@@ -131,9 +131,9 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F2C078; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8vw,22px); }
 .flip-card { perspective: 800px; cursor: pointer; }
-.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px,22vh,260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -490,8 +490,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-coral">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Six Open Questions</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4B4F63; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -509,7 +509,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     </div>
     <div class="separator" style="margin:20px auto"></div>
     <p style="font-size:18px; opacity:0.82; margin-top:20px">Thanks for speaking, listening, and noticing what usually stays invisible.</p>
-    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今天的真诚分享。</p>
   </div>
 </div>
 
@@ -582,13 +582,10 @@ document.addEventListener('wheel', e => {
 
 const cards = [
   { icon:'🍬', name:'CANDY', latin:'mystery flavor', q:'What is one small thing that has made you happy recently? Why did it matter to you?', zh:'最近有什么小事让你开心？它为什么对你有意义？' },
-  { icon:'🍩', name:'DONUT', latin:'mystery flavor', q:'Think of a decision you made this year. What helped you make that choice?', zh:'想一个你今年做过的决定。是什么帮助你做出这个选择？' },
-  { icon:'🍰', name:'CAKE', latin:'mystery flavor', q:'When you feel stressed, what usually helps you feel normal again? How did you discover it?', zh:'当你感到压力大时，什么通常能让你恢复正常？你是怎么发现这个方法的？' },
-  { icon:'🧁', name:'CUPCAKE', latin:'mystery flavor', q:'What is one object, place, or habit that feels very you? What does it say about you?', zh:'哪件物品、哪个地方或哪个习惯很像“你自己”？它说明了你什么？' },
+  { icon:'🧁', name:'CUPCAKE', latin:'mystery flavor', q:'What is one object, place, or habit that feels very you? What does it say about you?', zh:'哪件物品、哪个地方或哪个习惯很像”你自己”？它说明了你什么？' },
   { icon:'🍭', name:'LOLLIPOP', latin:'mystery flavor', q:'What is a trend or idea people around you talk about a lot? What is your honest reaction to it?', zh:'身边的人最近常讨论什么潮流或想法？你真实的反应是什么？' },
   { icon:'🍮', name:'PUDDING', latin:'mystery flavor', q:'If you could make one part of your daily life simpler, what would you change first?', zh:'如果你能让日常生活的某一部分更简单，你会先改变什么？' },
-  { icon:'🍪', name:'COOKIE', latin:'mystery flavor', q:'What is something you learned from a friend, family member, or coworker recently?', zh:'最近你从朋友、家人或同事身上学到了什么？' },
-  { icon:'🍫', name:'CHOCOLATE', latin:'mystery flavor', q:'What does “enough” mean to you right now: enough time, money, energy, friendship, or something else?', zh:'此刻对你来说，”足够”意味着什么：足够的时间、金钱、精力、友谊，还是别的东西？' },
+  { icon:'🍫', name:'CHOCOLATE', latin:'mystery flavor', q:'What does “enough” mean to you right now? Is it different from what it meant five years ago?', zh:'此刻对你来说，”足够”意味着什么？和五年前一样吗？' },
   { icon:'🍯', name:'HONEY', latin:'mystery flavor', q:'What is a piece of advice you received that you ignored at first — but later realized was right?', zh:'有什么建议你当时没听进去，后来才发现是对的？' }
 ];
 

@@ -117,9 +117,9 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F2C078; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8vw,22px); }
 .flip-card { perspective: 800px; cursor: pointer; }
-.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px,22vh,260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -474,8 +474,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-coral">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Six Open Questions</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4B4F63; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -493,7 +493,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     </div>
     <div class="separator" style="margin:20px auto"></div>
     <p style="font-size:18px; opacity:0.82; margin-top:20px">The future of relationships is not decided by technology. It is decided by what we choose to protect.</p>
-    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。愿你找到值得投入的关系。</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今天的真诚分享。愿你找到值得投入的关系。</p>
   </div>
 </div>
 
@@ -566,13 +566,10 @@ document.addEventListener('wheel', e => {
 
 const cards = [
   { icon:'🐙', name:'OCTOPUS', latin:'deep dweller', q:'If you could read the private thoughts of one person for a day, who would you choose and why?', zh:'如果你能读取一个人一天的内心想法，你会选谁？为什么？' },
-  { icon:'🦑', name:'SQUID', latin:'ink maker', q:'What is something you do alone that you would never want to do with another person?', zh:'有什么事你只想一个人做，绝不想有人陪？' },
   { icon:'🐠', name:'CLOWNFISH', latin:'reef dancer', q:'Have you ever felt truly understood by a stranger — online or offline? What happened?', zh:'你有没有被一个陌生人真正理解过——线上或线下？发生了什么？' },
-  { icon:'🐡', name:'PUFFERFISH', latin:'spiky softie', q:'What is a trend or habit among young people today that older generations will never understand?', zh:'有什么年轻人的潮流或习惯是上一代人永远理解不了的？' },
   { icon:'🦈', name:'SHARK', latin:'lone cruiser', q:'If you had to delete all social apps for one month, what would you miss most — and what would improve?', zh:'如果你必须删除所有社交App一个月，你最想念什么？什么会变好？' },
   { icon:'🐳', name:'WHALE', latin:'deep singer', q:'What is one question you wish someone would ask you — but nobody ever does?', zh:'有什么问题你希望有人问你——但从来没人问过？' },
   { icon:'🐬', name:'DOLPHIN', latin:'playful one', q:'Describe a place — real or imaginary — where you feel completely at ease. What makes it special?', zh:'描述一个让你完全放松的地方（真实或想象的）。它特别在哪？' },
-  { icon:'🦐', name:'SHRIMP', latin:'small wonder', q:'What is the kindest thing a stranger has ever done for you? Did it change how you treat others?', zh:'陌生人为你做过最善意的事是什么？它改变了你对待他人的方式吗？' },
   { icon:'🐚', name:'SHELL', latin:'quiet keeper', q:'If you could send one message to everyone on Earth at the same time, what would it say?', zh:'如果你能同时给地球上所有人发一条信息，你会说什么？' }
 ];
 

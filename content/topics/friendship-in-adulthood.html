@@ -118,9 +118,9 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
 .dot.active { background: #F2C078; transform: scale(1.3); }
 
-.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.flip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8vw,22px); }
 .flip-card { perspective: 800px; cursor: pointer; }
-.flip-inner { position: relative; width: 100%; height: 100%; min-height: 164px; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.flip-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px,22vh,260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
 .flip-front { background: #FAF7F2; border: 2px solid #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -186,28 +186,27 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <!-- SLIDE 3 -->
 <div class="slide bg-cream" data-slide="3">
   <div class="tag tag-coral">WARM-UP · 3 MIN</div>
-  <h2>Raise your hand if...</h2>
+  <h2>Open your recent chats — right now!</h2>
   <div class="body-content">
-    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">No talking needed — just raise your hand honestly. Look around the room!</p>
-    <div class="grid-2x2">
+    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">Open WeChat (or your main messaging app). Look at your last 10 conversations. Then:</p>
+    <div class="grid-3">
       <div class="card">
-        <div class="icon">✋</div>
-        <h4>...you have a friend you haven't talked to in 6+ months but still consider "close"</h4>
+        <div class="icon">📱</div>
+        <h4>Step 1: Count</h4>
+        <p style="opacity:1">Of your last 10 chats, how many are group chats vs. real 1-on-1 conversations?</p>
       </div>
       <div class="card green">
-        <div class="icon">✋</div>
-        <h4>...YOU are usually the one who reaches out first</h4>
+        <div class="icon">🕐</div>
+        <h4>Step 2: Notice</h4>
+        <p style="opacity:1">Find a friend you haven't messaged in 3+ months. Are they still "close"?</p>
       </div>
       <div class="card gold">
         <div class="icon">✋</div>
-        <h4>...you have made a NEW close friend in the last year</h4>
-      </div>
-      <div class="card">
-        <div class="icon">✋</div>
-        <h4>...you have a group chat that nobody talks in anymore</h4>
+        <h4>Step 3: Quick vote</h4>
+        <p style="opacity:1">Raise your hand if YOU are usually the one who reaches out first.</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>Look around.</strong> You are not alone in any of these. That is what tonight is about.</p>
+    <p class="bottom-note" style="font-style:normal; color:#16213E"><strong>The gap between "contacts" and "connection"</strong> — that is what today is about.</p>
   </div>
 </div>
 
@@ -473,8 +472,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-coral">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Nine Open Questions</h3>
-    <p style="font-size:15px; color:#4B4F63; font-style:italic; margin-top:6px">Nine cards, nine questions. Tap one, answer honestly, then invite someone else.</p>
+    <h3 style="font-family:Georgia,serif">Six Open Questions</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4B4F63; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="flip-grid" id="questionCards"></div>
@@ -492,7 +491,7 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
     </div>
     <div class="separator" style="margin:20px auto"></div>
     <p style="font-size:18px; opacity:0.82; margin-top:20px">The friends who last are the ones who make you feel less alone in being yourself.</p>
-    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今晚的真诚分享。愿你珍惜身边的朋友。</p>
+    <p style="font-size:17px; color:#F2C078; margin-top:8px">感谢你今天的真诚分享。愿你珍惜身边的朋友。</p>
   </div>
 </div>
 
@@ -564,11 +563,8 @@ document.addEventListener('wheel', e => {
 });
 
 const cards = [
-  { icon:'🦉', name:'OWL', latin:'night thinker', q:'What is one belief you held strongly five years ago that you no longer believe? What changed your mind?', zh:'五年前你坚信的一件事，现在不再相信了？是什么改变了你？' },
-  { icon:'🦜', name:'PARROT', latin:'colorful talker', q:'If you could have dinner with any person — living or dead — who would it be and what would you ask them?', zh:'如果你能和任何人共进晚餐（古今皆可），你会选谁？你会问什么？' },
   { icon:'🐧', name:'PENGUIN', latin:'loyal walker', q:'Who is someone you lost touch with that you still think about? If you messaged them today, what would you say?', zh:'有没有一个失联的人你偶尔会想起？如果今天联系他们，你会说什么？' },
   { icon:'🦅', name:'EAGLE', latin:'high flyer', q:'What is one thing most people worry about that you think does not actually matter much?', zh:'大多数人都在担心的一件事，你觉得其实没那么重要？' },
-  { icon:'🦢', name:'SWAN', latin:'graceful drifter', q:'Describe a moment this year when you felt genuinely proud of yourself — big or small.', zh:'描述今年一个让你真心为自己骄傲的瞬间——大事小事都行。' },
   { icon:'🦩', name:'FLAMINGO', latin:'standing out', q:'If you suddenly had three extra hours every day, how would you actually spend them? Be honest.', zh:'如果每天突然多出三小时，你真的会怎么用？诚实回答。' },
   { icon:'🕊️', name:'DOVE', latin:'peace bringer', q:'What is the bravest thing you have ever done for a friend — or that a friend has done for you?', zh:'你为朋友做过最勇敢的事是什么？或者朋友为你做过最勇敢的事？' },
   { icon:'🦆', name:'DUCK', latin:'calm surface', q:'What does "success" mean to you right now? Is it different from what it meant five years ago?', zh:'此刻"成功"对你来说意味着什么？和五年前一样吗？' },

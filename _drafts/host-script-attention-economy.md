@@ -1,7 +1,7 @@
 # Host Script: Attention Economy
 
 > **注意力经济：谁在偷走你的时间？**
-> 90 min · 2 rounds · 7 questions · 8 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -39,9 +39,9 @@
 
 **What to do:** Stand center, welcome everyone warmly. Read the title and subtitle aloud.
 
-> "Good evening, everyone! Welcome to English Corner. Tonight's topic: **Attention Economy** — Short Videos, Clickbait, and the War for Your Mind."
+> "Good evening, everyone! Welcome to English Corner. Today's topic: **Attention Economy** — Short Videos, Clickbait, and the War for Your Mind."
 
-**中文提示：** 如果有人看起来紧张，用中文补一句"今晚轻松聊，说错没关系。"
+**中文提示：** 如果有人看起来紧张，用中文补一句"今天轻松聊，说错没关系。"
 
 ---
 
@@ -73,7 +73,7 @@
 
 > "Raise your hand if your number was HIGHER than you expected."
 
-**中文提示：** 志愿者环节自然会有笑声（尤其是数字高的人）。最后举手问"比你预想的高吗？"——大多数人会举手，这就是今晚的议题切入点。
+**中文提示：** 志愿者环节自然会有笑声（尤其是数字高的人）。最后举手问"比你预想的高吗？"——大多数人会举手，这就是今天的议题切入点。
 
 ---
 
@@ -81,13 +81,13 @@
 
 **What to do:** Teach the three key terms. Read each card aloud, slowly.
 
-> "Before we discuss, let me give you three words for tonight."
+> "Before we discuss, let me give you three words for today."
 
 1. **Attention Economy** (注意力经济) — "Your attention is the product being sold."
 2. **Doomscrolling** (无意识刷屏) — "You scroll even though it makes you feel worse."
 3. **Deep Work** (深度工作) — "Sustained focus on one task — the opposite of scrolling."
 
-> "Tonight's core question: **Who controls where your attention goes — you, or the algorithm?**"
+> "Today's core question: **Who controls where your attention goes — you, or the algorithm?**"
 
 **Tip:** Write the three terms on a whiteboard if available. Participants will reference them later.
 
@@ -230,11 +230,11 @@
 
 ---
 
-## Slide 15 — Eight Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
 **What to do:** Explain the interactive cards. Let people tap/click and answer.
 
-> "Eight cards, eight surprise questions. Tap one — answer honestly in 2 minutes or less — then invite someone else to pick a card."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 **If on projector without interaction:** Read cards aloud randomly. Ask for volunteers.
 
@@ -250,8 +250,8 @@
 
 **Pause.**
 
-> "Thanks for being present tonight — with each other, and with your own thoughts."
-> "感谢你今晚放下手机，认真对话。"
+> "Thanks for being present today — with each other, and with your own thoughts."
+> "感谢你今天放下手机，认真对话。"
 
 **Final:** Thank people. Remind them of next session if applicable. Say goodbye personally at the door.
 

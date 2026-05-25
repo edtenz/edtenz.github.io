@@ -194,16 +194,27 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <!-- SLIDE 3: Warm-up -->
 <div class="slide bg-cream" data-slide="3">
   <div class="tag tag-accent">WARM-UP · 3 MIN</div>
-  <h2>Quick poll. Raise your hand if…</h2>
+  <h2>Show me a travel photo — right now!</h2>
   <div class="body-content">
-    <div style="display:flex; flex-direction:column; gap:clamp(14px,2vh,24px); margin-top:20px">
-      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">🏃 You've visited 3+ cities in a single weekend</div>
-      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">📸 You've taken a photo of food before eating it on a trip</div>
-      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">📱 You've traveled somewhere mainly because you saw it on Xiaohongshu</div>
-      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">😴 You've felt more tired AFTER a vacation than before</div>
-      <div style="font-size:clamp(20px,2.8vw,36px); padding:18px 24px; background:#FFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05)">🧳 You've ever traveled alone — and liked it</div>
+    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">Open your camera roll. Find a photo from your most recent trip (weekend getaway counts!). Then:</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">📸</div>
+        <h4>Step 1: Find it</h4>
+        <p style="opacity:1">Scroll to your most recent travel photo. Any trip counts — even a day trip.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👀</div>
+        <h4>Step 2: Show & tell</h4>
+        <p style="opacity:1">Show the person next to you. Tell the story in ONE sentence: "This is from ___ when ___."</p>
+      </div>
+      <div class="card">
+        <div class="icon">✋</div>
+        <h4>Step 3: Quick vote</h4>
+        <p style="opacity:1">Raise your hand if you posted this photo online. Keep it down if you kept it just for yourself.</p>
+      </div>
     </div>
-    <p class="bottom-note">Look around. We all travel — but clearly not the same way. Let's talk about why.</p>
+    <p class="bottom-note"><strong>Same trip, different stories.</strong> Tonight we ask: what makes travel meaningful — the experience or the memory?</p>
   </div>
 </div>
 
@@ -470,8 +481,8 @@ h3 { font: bold clamp(26px,4vw,48px)/1.22 Georgia, serif; margin: 28px 0 clamp(3
 <div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
   <div style="text-align:center; margin-bottom:16px">
     <div class="tag tag-accent">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Open Your Blind Box 🎁</h3>
-    <p style="font-size:15px; color:#4A4A5E; font-style:italic; margin-top:6px">Nine boxes, nine questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
+    <h3 style="font-family:Georgia,serif">Open Your Blind Box</h3>
+    <p style="font-size:clamp(16px,2vw,22px); color:#4A4A5E; font-style:italic; margin-top:8px">Six cards, six questions. Tap one that calls to you — and answer honestly.</p>
   </div>
   <div class="body-content">
     <div class="bestiary-grid" id="bestiary"></div>
@@ -546,10 +557,7 @@ document.addEventListener('wheel', e => { if (wt) return; wt = setTimeout(() => 
 const creatures = [
   { icon:'🗽', name:'NEW YORK', latin:'Statue of Liberty', q:'Have you ever gone somewhere with zero expectations — and been completely blown away?', zh:'有没有一次你毫无期待地去了一个地方，结果被彻底惊艳？' },
   { icon:'🏖️', name:'MALDIVES', latin:'Indian Ocean', q:'Describe a moment on a trip when you felt truly peaceful — no phone, no rush, just there.', zh:'描述一个旅途中真正平静的瞬间——没手机、不赶路、就只是在那里。' },
-  { icon:'🗼', name:'PARIS', latin:'Eiffel Tower', q:'What is the best meal you have had recently? What made it special — the food, the place, or the people?', zh:'你最近吃过最好的一顿饭是什么？是食物、地方、还是一起吃的人让它特别？' },
   { icon:'🏯', name:'BEIJING', latin:'Forbidden City', q:'What\'s a place you\'ve been to more than once — and why do you keep going back?', zh:'有没有一个地方你去了不止一次？为什么总想回去？' },
-  { icon:'🕌', name:'ISTANBUL', latin:'Blue Mosque', q:'What is something you only understand now that you are older — that no one could have explained to you before?', zh:'有什么事是你现在才理解的——别人以前怎么解释你都不会懂？' },
-  { icon:'🏔️', name:'TIBET', latin:'Potala Palace', q:'If you could learn one skill instantly — a language, an instrument, a sport — what would it be?', zh:'如果你能瞬间学会一项技能——一门语言、一种乐器、一项运动——你会选什么？' },
   { icon:'🎡', name:'LONDON', latin:'London Eye', q:'What is one object you own that has a story behind it? Tell us the story.', zh:'你拥有的东西里，哪一件背后有故事？讲讲这个故事。' },
   { icon:'🛕', name:'ANGKOR WAT', latin:'Cambodia', q:'Has a trip ever changed how you see your everyday life back home?', zh:'有没有一次旅行改变了你看待日常生活的方式？' },
   { icon:'🦘', name:'SYDNEY', latin:'Opera House', q:'What is the most interesting conversation you have had with a stranger? Where were you?', zh:'你和陌生人最有意思的一次对话是什么？当时在哪里？' }

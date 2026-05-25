@@ -1,7 +1,7 @@
 # Host Script: Meaning of Travel
 
 > **旅行的意义：是在放松自己，还是在完成一种社交展示？**
-> 90 min · 2 rounds · 7 questions · 8 blind box cards
+> 90 min · 2 rounds · 7 questions · 6 blind box cards
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## Slide 1 — Title (1 min)
 
-> "Welcome! Tonight: **What's the Point of Travel?** — Check-in Tourism, Slow Travel, Solo Trips & The Instagram Trap."
+> "Welcome! Today: **What's the Point of Travel?** — Check-in Tourism, Slow Travel, Solo Trips & The Instagram Trap."
 > "旅行的意义——是在放松自己，还是在完成一种社交展示？"
 
 **中文提示：** 旅行话题轻松有趣，大家都有话说。开场保持活泼。
@@ -50,18 +50,25 @@
 
 ---
 
-## Slide 3 — Warm-up: Quick Poll (2 min)
+## Slide 3 — Warm-up: Show Me a Travel Photo (3 min)
 
-**What to do:** Read each line, ask for raised hands, react to the results.
+**What to do:** Everyone opens their camera roll and shares a travel photo with their neighbor.
 
-> "Raise your hand if..."
-> - "You've visited 3+ cities in a single weekend." (特种兵！)
-> - "You've taken a photo of food before eating it on a trip."
-> - "You traveled somewhere mainly because you saw it on Xiaohongshu."
-> - "You felt MORE tired after a vacation than before."
-> - "You've traveled alone — and liked it."
+> "Open your camera roll. Find a photo from your most recent trip — a weekend getaway counts, even a day trip."
 
-> "We all travel — but clearly not the same way. Let's talk about why."
+**Wait 20 seconds.**
+
+> "Step 1: Show the person next to you. Tell the story in ONE sentence: 'This is from ___ when ___.'"
+
+**Let pairs share for 1 minute.**
+
+> "Step 2: Raise your hand if you posted this photo online. Keep it down if you kept it just for yourself."
+
+**Pause — let people see the split.**
+
+> "Same trip, different stories. Today we ask: what makes travel meaningful — the experience or the memory?"
+
+**中文提示：** 大部分人都发过朋友圈——但如果有人没发，可以问"为什么没发？"这个对比就是进入话题的好角度。
 
 ---
 
@@ -177,7 +184,7 @@
 
 ## Slide 15 — Blind Box Questions (10 min)
 
-> "Eight boxes, eight questions. Tap one, answer, invite someone else."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 ---
 

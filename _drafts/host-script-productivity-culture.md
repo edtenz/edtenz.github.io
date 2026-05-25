@@ -1,7 +1,7 @@
 # Host Script: Productivity Culture
 
 > **效率崇拜：我们是在管理时间，还是被时间管理了？**
-> 90 min · 2 rounds · 7 questions · 8 open cards
+> 90 min · 2 rounds · 7 questions · 6 open cards
 
 ---
 
@@ -37,11 +37,11 @@
 
 **What to do:** Welcome everyone. Read the title with energy.
 
-> "Welcome to English Corner! Tonight's topic: **Productivity Culture** — To-Do Lists, Streaks, Self-Discipline, and the Anxiety In Between."
+> "Welcome to English Corner! Today's topic: **Productivity Culture** — To-Do Lists, Streaks, Self-Discipline, and the Anxiety In Between."
 
 > "效率崇拜——我们真的在管理时间，还是已经被时间管理了？"
 
-**中文提示：** 今晚话题贴近每个人，很容易引发共鸣，开场可以轻松一些。
+**中文提示：** 今天话题贴近每个人，很容易引发共鸣，开场可以轻松一些。
 
 ---
 
@@ -57,20 +57,25 @@
 
 ---
 
-## Slide 3 — Warm-up: Raise Your Hand If... (3 min)
+## Slide 3 — Warm-up: 30-Second Experiment (3 min)
 
-**What to do:** Read each statement. Participants raise hands. Pause after each to let people look around.
+**What to do:** Lead a micro-experiment. Everyone does nothing for 30 seconds, then reflects.
 
-> "No talking — just raise your hand honestly. Look around!"
+> "Put your phone face-down. Close your eyes. I'm going to time 30 seconds of doing **absolutely nothing**. No planning, no thinking about your to-do list. Just breathe. Ready? Go."
 
-> 1. "Raise your hand if you have a to-do list app or planner open RIGHT NOW."
-> 2. "Raise your hand if you feel guilty when you rest on a weekday."
-> 3. "Raise your hand if you have watched a 'morning routine' or 'productive day' video in the last month."
-> 4. "Raise your hand if you have ever called a relaxing day 'wasted.'"
+**Time 30 seconds in silence.**
 
-> "Look around. If most hands went up on the second one — that is exactly what tonight is about."
+> "OK, open your eyes. Raise your hand if you felt uncomfortable, restless, or guilty during those 30 seconds."
 
-**中文提示：** 第二题通常很多人举手——停顿一下让大家意识到"原来大家都有休息内疚感"。这是进入主题的最好桥梁。
+**Pause — let people look around.**
+
+> "Now — one word for how that felt. Volunteers? 'Peaceful'? 'Anxious'? 'Weird'?"
+
+**Take 2-3 answers.**
+
+> "If 30 seconds of nothing felt hard — that is exactly what today is about."
+
+**中文提示：** 这个实验效果非常好。大部分人会举手说不舒服——这就是进入话题的最佳方式。关键是30秒要完全安静，主持人也不要说话。
 
 ---
 
@@ -78,7 +83,7 @@
 
 **What to do:** Teach the three terms clearly.
 
-> "Three words for tonight:"
+> "Three words for today:"
 
 1. **Productivity Culture** (效率崇拜) — "A belief that your worth is measured by your output."
 2. **Hustle Mentality** (自律打卡) — "Tracking streaks, waking early, posting progress — life as a performance dashboard."
@@ -198,9 +203,9 @@
 
 ---
 
-## Slide 15 — Eight Open Cards (10 min)
+## Slide 15 — Six Open Cards (10 min)
 
-> "Eight cards, eight questions. Tap one, answer honestly, invite someone else."
+> "Six cards, six questions. Tap one that calls to you — and answer honestly."
 
 **Sample questions if needed verbally:**
 - "What is one thing you do purely for fun, with zero goals?"
@@ -215,8 +220,8 @@
 
 **Pause 3 seconds.**
 
-> "Thanks for being here tonight — not to be productive, but to be present."
-> "感谢你今晚的真诚分享。允许自己慢下来。"
+> "Thanks for being here today — not to be productive, but to be present."
+> "感谢你今天的真诚分享。允许自己慢下来。"
 
 ---
 
