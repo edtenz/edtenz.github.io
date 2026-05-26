@@ -1,0 +1,1333 @@
+---
+title: "价值投资：从格雷厄姆到巴菲特"
+date: 2026-05-26
+summary: "价值投资核心智慧的读书总结——涵盖安全边际、能力圈、三要素估值法、护城河理论，以及巴菲特、芒格、克拉曼、马克斯四位大师的方法论对比。"
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>价值投资：从格雷厄姆到巴菲特 · 读书总结</title>
+<style>
+:root {
+  --bg: #faf9f7;
+  --fg: #1a1a1a;
+  --surface: #ffffff;
+  --surface-dark: #1a1a1a;
+  --accent: #1a6b4a;
+  --accent-light: rgba(26, 107, 74, 0.07);
+  --warm: #b8860b;
+  --warm-light: rgba(184, 134, 11, 0.08);
+  --red: #a63d2f;
+  --red-light: rgba(166, 61, 47, 0.06);
+  --muted: #6b6b6b;
+  --border: rgba(26, 26, 26, 0.08);
+  --shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: Georgia, "Noto Serif SC", serif; color: var(--fg); background: var(--bg); }
+
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 7vh 8vw;
+  background: var(--bg);
+  opacity: 0; pointer-events: none;
+  transform: translateY(20px);
+  transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.4s ease;
+}
+.slide.active { opacity: 1; pointer-events: auto; transform: none; }
+.slide.prev { transform: translateY(-20px); opacity: 0; }
+
+.slide-dark { background: var(--surface-dark); color: #f0ede8; }
+.slide-dark .tag { color: var(--warm); }
+.slide-dark .muted { color: #a0998e; }
+.slide-dark .card { background: #262626; border-color: rgba(255,255,255,0.06); }
+.slide-dark .card p { color: #a0998e; }
+.slide-dark h2 { color: #f0ede8; }
+
+.tag { font-family: -apple-system, "Segoe UI", sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 3vh; }
+h1 { font-size: clamp(44px, 6.5vw, 88px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: clamp(34px, 4.5vw, 60px); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; }
+h3 { font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; line-height: 1.3; font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif; }
+p, li { font-size: clamp(18px, 2vw, 26px); line-height: 1.65; }
+.large { font-size: clamp(22px, 2.6vw, 34px); line-height: 1.5; }
+.small { font-size: clamp(13px, 1.2vw, 16px); color: var(--muted); font-family: -apple-system, sans-serif; }
+.accent { color: var(--accent); }
+.warm { color: var(--warm); }
+.red { color: var(--red); }
+.muted { color: var(--muted); }
+
+.body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 3.5vh; }
+.center { text-align: center; align-items: center; }
+
+.number { font-size: clamp(56px, 9vw, 120px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 48px); align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 28px); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: clamp(24px, 3vh, 38px); display: flex; flex-direction: column; gap: 12px;
+  box-shadow: var(--shadow);
+}
+.card h3 { font-size: clamp(18px, 2vw, 24px); }
+.card p { font-size: clamp(15px, 1.6vw, 21px); color: var(--muted); line-height: 1.55; }
+
+.highlight-box {
+  background: var(--accent-light); border-left: 4px solid var(--accent);
+  padding: clamp(20px, 2.5vh, 32px) clamp(24px, 3vw, 36px);
+  border-radius: 0 10px 10px 0;
+}
+.highlight-box.warn { background: var(--warm-light); border-color: var(--warm); }
+.highlight-box.danger { background: var(--red-light); border-color: var(--red); }
+
+.versus { display: grid; grid-template-columns: 1fr 1fr; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.versus-side { padding: clamp(28px, 3.5vh, 44px); display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.versus-a { background: var(--surface); }
+.versus-b { background: var(--accent-light); }
+.versus-side h3 { font-size: clamp(22px, 2.5vw, 30px); margin-bottom: 4px; }
+.versus-side p { font-size: clamp(16px, 1.7vw, 22px); color: var(--muted); line-height: 1.5; }
+.versus-b p { color: var(--fg); }
+
+.quote { border-left: 3px solid var(--warm); padding-left: clamp(20px, 2.5vw, 36px); }
+.quote p { font-size: clamp(26px, 3.2vw, 44px); font-weight: 500; font-style: italic; line-height: 1.35; }
+.quote cite { display: block; margin-top: 2vh; font-style: normal; font-size: clamp(15px, 1.5vw, 20px); color: var(--muted); font-family: -apple-system, sans-serif; }
+
+.stat-row { display: flex; gap: clamp(32px, 4vw, 64px); flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 6px; }
+.stat-number { font-size: clamp(48px, 7vw, 96px); font-weight: 700; line-height: 1; color: var(--accent); }
+.stat-label { font-size: clamp(16px, 1.6vw, 22px); color: var(--muted); font-family: -apple-system, sans-serif; }
+
+.flow { display: flex; flex-direction: column; gap: 1.5vh; }
+.flow-step { display: flex; align-items: baseline; gap: 1vw; }
+.flow-arrow { color: var(--accent); font-weight: 700; font-size: clamp(18px, 2vw, 24px); }
+.flow-text { font-size: clamp(16px, 1.8vw, 24px); }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--accent); z-index: 100; transition: width 0.3s ease; }
+.nav { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 10px; padding: 7px 14px; background: rgba(255,255,255,0.88); border: 1px solid var(--border); border-radius: 999px; backdrop-filter: blur(12px); opacity: 0.4; transition: opacity 0.3s; font-family: -apple-system, sans-serif; }
+.nav:hover { opacity: 1; }
+.nav-btn { width: 28px; height: 28px; border: none; border-radius: 50%; background: rgba(0,0,0,0.04); color: var(--fg); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.nav-btn:hover { background: rgba(0,0,0,0.08); }
+.nav-btn:disabled { opacity: 0.2; cursor: default; }
+.nav-page { font-size: 11px; color: var(--muted); min-width: 50px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     序章：关联与颠覆 (1-5)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 1. 封面 -->
+<section class="slide active slide-dark center">
+  <div class="body center">
+    <p class="small" style="color:#a0998e">读书总结 · 64 页</p>
+    <h1 style="margin-top:2vh"><span class="warm">价值投资</span></h1>
+    <p class="large" style="color:#a0998e; margin-top:2vh">从格雷厄姆到巴菲特的核心智慧</p>
+    <p class="small" style="margin-top:6vh; color:#666">← → 键 / 空格翻页</p>
+  </div>
+</section>
+
+<!-- 2. 开场问题 -->
+<section class="slide center">
+  <div class="body center">
+    <p class="large muted">一个值得诚实回答的问题</p>
+    <h1 style="margin-top:2vh">你在<span class="accent">投资</span><br>还是在<span class="red">赌博</span>？</h1>
+    <p class="muted" style="max-width:600px; margin-top:3vh">大多数人盯着价格涨跌做决定。少数人像买下一家店铺一样研究公司。前者叫交易，后者叫投资。</p>
+  </div>
+</section>
+
+<!-- 3. 核心命题 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">核心命题</div>
+    <h1><span class="warm">价格</span> ≠ 价值</h1>
+    <p class="large" style="max-width:700px; margin-top:3vh; color:#a0998e">价格是市场先生每天喊出来的数字——它反映情绪。<br>价值是这门生意未来能产生的现金——它反映事实。</p>
+    <p class="small" style="margin-top:3vh; color:#666">当价格远低于价值时买入，这个差距叫做"安全边际"。</p>
+  </div>
+</section>
+
+<!-- 4. 安全边际 -->
+<section class="slide">
+  <div class="tag">核心概念</div>
+  <h2>安全边际：给犯错留空间</h2>
+  <div class="body">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-number accent">30-33%</div>
+        <div class="stat-label">格雷厄姆要求的最低折扣</div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <p>估算一家公司值 100 元 → 只有在 67 元以下才考虑买入。这不是贪便宜——而是承认你的估算一定有误差，折扣就是容错空间。</p>
+    </div>
+    <p class="small">安全边际的本质是一种<strong>不对称性</strong>：下行风险有限，上行空间大。</p>
+  </div>
+</section>
+
+<!-- 5. 这本书的地图 -->
+<section class="slide">
+  <div class="tag">全书结构</div>
+  <h2>接下来的旅程</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>理论基础</h3>
+        <p>为什么市场会犯错？证据是什么？反方怎么说？</p>
+      </div>
+      <div class="card">
+        <h3>方法论</h3>
+        <p>能力圈、专业化、筛选漏斗——从哪里开始找？</p>
+      </div>
+      <div class="card">
+        <h3>估值框架</h3>
+        <p>三要素法：资产价值、盈利能力、成长性</p>
+      </div>
+    </div>
+    <div class="three-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>大师方法</h3>
+        <p>巴菲特、克拉曼、马克斯各有什么不同</p>
+      </div>
+      <div class="card">
+        <h3>行为陷阱</h3>
+        <p>知道方法不等于做得到——你的大脑会背叛你</p>
+      </div>
+      <div class="card">
+        <h3>行动路径</h3>
+        <p>你的第一步是什么？从哪里开始建设能力？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     第一幕：理论基础 (6-14)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 6. 价值投资的定义 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">第一章</div>
+    <h2 style="color:#f0ede8">价值投资是什么</h2>
+    <p class="large" style="color:#a0998e; max-width:700px; margin-top:2vh">找到公司的内在价值，以低于内在价值的价格买入，然后等待市场纠正错误。</p>
+    <p style="color:#666; margin-top:3vh; max-width:600px; font-size:clamp(16px,1.7vw,22px)">关键词不是"便宜"——是"低于内在价值"。知道什么是"内在价值"，才是真正困难的部分。</p>
+  </div>
+</section>
+
+<!-- 7. 对比：投资流派 -->
+<section class="slide">
+  <div class="tag">定位</div>
+  <h2>四种投资哲学</h2>
+  <div class="body">
+    <div class="two-col" style="align-items:stretch">
+      <div style="display:flex; flex-direction:column; gap:2vh">
+        <div class="card" style="flex:1">
+          <h3>技术分析派</h3>
+          <p>看 K 线、看形态。逻辑：历史会重复。</p>
+        </div>
+        <div class="card" style="flex:1">
+          <h3>宏观分析派</h3>
+          <p>看经济周期、政策。逻辑：自上而下。</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:2vh">
+        <div class="card" style="flex:1">
+          <h3>有效市场派</h3>
+          <p>价格永远对的。逻辑：买指数就好。</p>
+        </div>
+        <div class="card" style="flex:1; border-color:var(--accent); background:var(--accent-light)">
+          <h3 class="accent">价值投资派</h3>
+          <p style="color:var(--fg)">市场会犯错，犯错就是机会。逻辑：自下而上分析企业。</p>
+        </div>
+      </div>
+    </div>
+    <p class="small">有效市场假说是价值投资最主要的学术对立面——它说你不可能持续跑赢市场。</p>
+  </div>
+</section>
+
+<!-- 8. 风险的两种定义 -->
+<section class="slide">
+  <div class="tag">根本分歧</div>
+  <h2>什么是"风险"？</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3>学术金融（CAPM）</h3>
+        <p>风险 = 价格波动率（β）</p>
+        <p>高波动 = 高风险 = 需要更高回报</p>
+        <p class="small">结论：价值股跑赢是因为承担了更高风险</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3>格雷厄姆（价值投资）</h3>
+        <p>风险 = 永久性资本损失</p>
+        <p>不是股价波动，而是生意质量恶化</p>
+        <p class="small">结论：安全边际足够大时，波动反而是机会</p>
+      </div>
+    </div>
+    <p class="small">这不是学术争论——它决定了你看到股价下跌时是恐慌还是兴奋。</p>
+  </div>
+</section>
+
+<!-- 9. 证据 -->
+<section class="slide">
+  <div class="tag">实证数据</div>
+  <h2>价值投资有效吗？</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>历史回测</h3>
+        <p>低 P/E 组合在美国、欧洲、日本市场都长期跑赢高 P/E 组合。跨时空一致。</p>
+      </div>
+      <div class="card">
+        <h3>暴跌时的表现</h3>
+        <p>2000、2008 年危机中，价值股组合跌幅小于大盘——如果风险更高，应该跌更多才对。</p>
+      </div>
+      <div class="card">
+        <h3>知识聚集性</h3>
+        <p>巴菲特、芒格等顶级投资者来自同一个知识源头，不像随机概率能解释的。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 挑战一 -->
+<section class="slide">
+  <div class="tag">反方质疑</div>
+  <h2>挑战一：幸存者偏差</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>质疑：</strong>如果 10,000 人采用价值投资，按概率也会有少数人持续跑赢——巴菲特是否只是那个极端幸运的人？</p>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p><strong>回应：</strong>如果只是运气，这些赢家应该随机分布在各地各行。但他们来自同一个"知识源头"（格雷厄姆的学生群体），地域聚集性很难用随机解释。</p>
+    </div>
+    <p class="small">这个回应有力但不完美——它仍然是少量样本的归纳推理。</p>
+  </div>
+</section>
+
+<!-- 11. 挑战二 -->
+<section class="slide">
+  <div class="tag">反方质疑</div>
+  <h2>挑战二：价值陷阱</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>最致命的问题：</strong>便宜可能不是低估，而是市场<em>正确判断</em>了这家公司正在衰落。</p>
+    </div>
+    <div class="two-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>柯达</h3>
+        <p>曾经的"价值股"。低 P/E 不是错误定价——是数码相机正在颠覆胶片。</p>
+      </div>
+      <div class="card">
+        <h3>诺基亚</h3>
+        <p>曾经的"价值股"。智能手机彻底改写了游戏规则。</p>
+      </div>
+    </div>
+    <p class="small">这是巴菲特从格雷厄姆的"烟蒂股"进化到"护城河"理论的核心原因。便宜不够——还要好。</p>
+  </div>
+</section>
+
+<!-- 12. 挑战三 -->
+<section class="slide">
+  <div class="tag">反方质疑</div>
+  <h2>挑战三：因子拥挤与时效性</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>现实：</strong>2010-2020 年间，简单的低 P/E 策略持续跑输成长股长达十多年。价值因子"失效"了？</p>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p><strong>解释：</strong>量化基金系统性地挖掘这些因子收益，机械式套利空间被压缩。低利率环境让远期现金流更值钱，成长股天然受益。</p>
+    </div>
+    <p class="large" style="margin-top:2vh">但这意味着价值投资无效了吗？</p>
+  </div>
+</section>
+
+<!-- 13. 关键分层 -->
+<section class="slide slide-dark">
+  <div class="body">
+    <div class="tag">关键洞察</div>
+    <h2 style="color:#f0ede8">机械策略的 alpha 在衰减<br>深度判断力的 alpha 没有</h2>
+    <div class="versus" style="margin-top:3vh; border-color:rgba(255,255,255,0.1)">
+      <div class="versus-side" style="background:#262626">
+        <h3 style="color:#a0998e">已被吃掉的</h3>
+        <p style="color:#666">按公式买低 P/E</p>
+        <p style="color:#666">量化基金每天在做</p>
+        <p style="color:#666">散户没有速度优势</p>
+      </div>
+      <div class="versus-side" style="background:rgba(26,107,74,0.1)">
+        <h3 style="color:var(--accent)">仍然存在的</h3>
+        <p style="color:#ccc">判断护城河是否变窄</p>
+        <p style="color:#ccc">评估管理层的资本配置</p>
+        <p style="color:#ccc">预判行业竞争格局演变</p>
+      </div>
+    </div>
+    <p class="small" style="color:#666; margin-top:2vh">巴菲特买苹果不是因为 P/E 低，而是因为他判断出生态系统黏性和服务收入转型的潜力。</p>
+  </div>
+</section>
+
+<!-- 14. 卡尼曼连接 -->
+<section class="slide">
+  <div class="body">
+    <div class="quote">
+      <p>价值投资的理论基础，恰恰是卡尼曼研究的镜像。</p>
+    </div>
+    <div class="highlight-box" style="margin-top:3vh">
+      <p>卡尼曼告诉你市场参与者会犯<strong>哪些</strong>系统性错误——过度反应、锚定效应、损失厌恶。价值投资告诉你：当别人犯这些错时，你保持理性，并有耐心等待价格回归。</p>
+    </div>
+    <p style="margin-top:2vh; color:var(--muted); font-size:clamp(16px,1.8vw,24px)">安全边际不只是数学缓冲——它还是对自己认知局限的谦逊。你承认自己的估值也可能有系统误差。</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     第二幕：寻找价值 (15-24)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 15. 第二章开篇 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">第二章</div>
+    <h1 style="color:#f0ede8">寻找价值</h1>
+    <p class="large" style="color:#a0998e; max-width:600px; margin-top:2vh">投资的第一步不是选股——而是选"圈"。</p>
+  </div>
+</section>
+
+<!-- 16. 能力圈 -->
+<section class="slide">
+  <div class="tag">第一原则</div>
+  <h2>能力圈：知道自己<span class="red">不懂</span>什么</h2>
+  <div class="body">
+    <p class="large">大多数投资者高估自己的能力圈范围。<br>真正优秀的投资者反而画一个<strong>很小</strong>的圈。</p>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p>知道自己不能做什么，往往比知道能做什么更重要。投资中最大的风险，往往不是选错了股票——而是在自己<strong>不懂的地方</strong>下了注。</p>
+    </div>
+    <p class="small">这跟卡尼曼的"过度自信偏差"直接对应——你觉得自己懂的，很可能只是表面的。</p>
+  </div>
+</section>
+
+<!-- 17. 专业化 -->
+<section class="slide">
+  <div class="tag">建设路径</div>
+  <h2>专业化 vs 能力圈</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3>专业化</h3>
+        <p>主动建设</p>
+        <p>"我去深入学某个行业"</p>
+        <p>强调深度</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3>能力圈</h3>
+        <p>边界意识</p>
+        <p>"我承认大部分行业看不懂"</p>
+        <p>强调纪律</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">两者最终趋于重合——但出发点不同。专业化让你的圈变大，能力圈让你不跨出圈外。</p>
+    <p class="small">作者建议：至少 1000 小时的行业学习，达到"工作流利度"——不是成为专家，而是能做独立判断。</p>
+  </div>
+</section>
+
+<!-- 18. 巴菲特实例 -->
+<section class="slide">
+  <div class="tag">实例</div>
+  <h2>巴菲特的能力圈纪律</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>报纸业</h3>
+        <p>华盛顿邮报。理解媒体的广告护城河。</p>
+      </div>
+      <div class="card">
+        <h3>保险业</h3>
+        <p>GEICO。理解浮存金的投资杠杆。</p>
+      </div>
+      <div class="card">
+        <h3>消费品</h3>
+        <p>可口可乐、喜诗糖果。理解品牌定价权。</p>
+      </div>
+    </div>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p>他明确说"不投科技股是因为<strong>看不懂</strong>"——直到对苹果建立了足够理解（生态系统黏性 + 服务收入转型），才终于出手。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19. 魅力股 vs 价值股 -->
+<section class="slide">
+  <div class="tag">核心发现</div>
+  <h2>市场系统性地犯同一个错</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3 class="red">魅力股（被高估）</h3>
+        <p>明星公司、媒体追捧</p>
+        <p>过去增长好 → 外推未来继续好</p>
+        <p>高估继续优秀的概率</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3 class="accent">价值股（被低估）</h3>
+        <p>无聊公司、无人关注</p>
+        <p>过去表现差 → 假设永远差下去</p>
+        <p>高估继续恶化的概率</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">实际上两者都存在<strong>均值回归</strong>——优秀不会永远优秀，糟糕不会永远糟糕。这种均值回归是价值投资超额收益的重要来源。</p>
+  </div>
+</section>
+
+<!-- 20. 偏误的三层来源 -->
+<section class="slide">
+  <div class="tag">为什么错误定价不会消失</div>
+  <h2>三层偏误来源</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>个人层面</h3>
+        <p>损失厌恶、外推偏差、注意力偏差、锚定效应。互相强化形成定价扭曲循环。</p>
+      </div>
+      <div class="card">
+        <h3>机构层面</h3>
+        <p>规模约束（不关注小公司）、代理人问题（职业风险优先）、季度考核、窗口粉饰。</p>
+      </div>
+      <div class="card">
+        <h3>结构层面</h3>
+        <p>分拆公司被迫抛售、指数调整、评级下调、流动性折价。价格偏离价值的系统性来源。</p>
+      </div>
+    </div>
+    <p class="small">关键：这些偏误不会因为被研究就消失——因为它们根植于人类心理结构和制度设计。</p>
+  </div>
+</section>
+
+<!-- 21. 个人投资者的优势 -->
+<section class="slide">
+  <div class="tag">逆转视角</div>
+  <h2>机构的约束 = 你的机会</h2>
+  <div class="body">
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:2vh">机构做不到的事</h3>
+        <p style="font-size:clamp(16px,1.7vw,22px); color:var(--muted); line-height:1.6">• 买入 10 亿美元以下的小公司<br>• 长期持有"丑陋"的被低估公司<br>• 忍受连续几个季度跑输大盘<br>• 无需向客户解释持仓空窗期</p>
+      </div>
+      <div class="highlight-box">
+        <p>你没有这些约束。你可以关注那些机构<strong>被迫忽视</strong>的领域：小市值公司、分拆公司、暂时遭遇坏消息但基本面未改变的公司。</p>
+        <p style="margin-top:12px; font-size:clamp(14px,1.4vw,18px); color:var(--muted)">这是你作为个人投资者少数真正的"不对称优势"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22. 寻找标的的信号 -->
+<section class="slide">
+  <div class="tag">具体策略</div>
+  <h2>从哪里找候选标的</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>52 周新低清单</h3>
+        <p>自动过滤出正在被市场抛弃的公司——但需要你判断"为什么便宜"。</p>
+      </div>
+      <div class="card">
+        <h3>内部人买入</h3>
+        <p>管理层用自己的钱在公开市场买入。他们比任何外部分析师都了解真实状况。</p>
+      </div>
+      <div class="card">
+        <h3>被迫卖出场景</h3>
+        <p>指数调整、分拆、评级下调导致的被动抛售。价格偏离来自制度逻辑而非基本面。</p>
+      </div>
+    </div>
+    <p class="small">定量筛选是起点而不是终点——从 5000 家缩小到 50 家后，最终决策必须依赖定性分析。</p>
+  </div>
+</section>
+
+<!-- 23. 定量 vs 定性 -->
+<section class="slide">
+  <div class="tag">工作流</div>
+  <h2>用定量做筛选，用定性做决策</h2>
+  <div class="body">
+    <div class="flow">
+      <div class="flow-step"><span class="flow-arrow">→</span><span class="flow-text">5000 家公司</span></div>
+      <div class="flow-step"><span class="flow-arrow">↓</span><span class="flow-text" style="color:var(--muted)">定量筛选（P/E、P/B、52 周新低、内部人买入信号）</span></div>
+      <div class="flow-step"><span class="flow-arrow">→</span><span class="flow-text">50 家候选</span></div>
+      <div class="flow-step"><span class="flow-arrow">↓</span><span class="flow-text" style="color:var(--muted)">定性分析（为什么便宜？暂时困难还是永久衰败？管理层？竞争格局？）</span></div>
+      <div class="flow-step"><span class="flow-arrow">→</span><span class="flow-text">3-5 家深度研究</span></div>
+      <div class="flow-step"><span class="flow-arrow">↓</span><span class="flow-text" style="color:var(--muted)">预验尸（如果一年后亏 40%，最可能的三个原因是什么？）</span></div>
+      <div class="flow-step"><span class="flow-arrow">→</span><span class="flow-text accent"><strong>最终决策</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 24. AI 时代 -->
+<section class="slide">
+  <div class="tag">时代变量</div>
+  <h2>AI 时代的悖论</h2>
+  <div class="body">
+    <p class="large">工具越强大，<strong>人的判断力</strong>反而越珍贵。</p>
+    <div class="three-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>已被 AI 吃掉的</h3>
+        <p>按公式筛选、财报数据扫描、因子套利。量化基金每天在做。</p>
+      </div>
+      <div class="card">
+        <h3>AI 赋能给你的</h3>
+        <p>快速阅读财报、跟踪行业动态、消除语言壁垒、批量比较指标。</p>
+      </div>
+      <div class="card">
+        <h3>AI 做不到的</h3>
+        <p>判断竞争格局演变、评估管理层品格、理解长期商业趋势。这才是溢价所在。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     第三幕：估值框架 (25-35)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 25. 第三章开篇 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">第三章</div>
+    <h1 style="color:#f0ede8">价值估值</h1>
+    <p class="large" style="color:#a0998e; max-width:600px; margin-top:2vh">估值不是算出一个精确数字。而是判断：这东西明显便宜，还是不确定，还是明显太贵。</p>
+  </div>
+</section>
+
+<!-- 26. DCF 的问题 -->
+<section class="slide">
+  <div class="tag">传统方法的缺陷</div>
+  <h2>折现现金流（DCF）为什么不可靠</h2>
+  <div class="body">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-number red">60-80%</div>
+        <div class="stat-label">DCF 估值中来自"终值"的比例——即对遥远未来的猜测</div>
+      </div>
+    </div>
+    <div class="highlight-box danger" style="margin-top:2vh">
+      <p>改变折现率或增长率一两个百分点，估值可以差出一倍。你估算结果的大部分取决于你<strong>最不确定</strong>的假设。</p>
+    </div>
+    <p class="small">这就是为什么格林沃尔德提出三要素法——把太多不确定的东西搅在一起是 DCF 的致命缺陷。</p>
+  </div>
+</section>
+
+<!-- 27. 三要素法总览 -->
+<section class="slide">
+  <div class="tag">核心框架</div>
+  <h2>三要素法：分层处理不确定性</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card" style="border-color:var(--accent)">
+        <h3 class="accent">第一层：资产价值</h3>
+        <p>公司清算了能值多少？<br><strong>确定性最高</strong></p>
+      </div>
+      <div class="card" style="border-color:var(--warm)">
+        <h3 class="warm">第二层：盈利能力价值</h3>
+        <p>当前盈利永续时值多少？<br><strong>确定性中等</strong></p>
+      </div>
+      <div class="card" style="border-color:var(--red)">
+        <h3 class="red">第三层：成长性价值</h3>
+        <p>未来增长能额外增加多少？<br><strong>确定性最低</strong></p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">核心洞察：不要试图一步到位算出公司值多少钱。把确定性从高到低分层，分别估算。每加一层，你的信心就应该降低一些。</p>
+  </div>
+</section>
+
+<!-- 28. 第一层：资产价值 -->
+<section class="slide">
+  <div class="tag">第一层</div>
+  <h2>资产价值：估值的<span class="accent">地板</span></h2>
+  <div class="body">
+    <p class="large">如果今天把公司清算，所有东西卖掉，能值多少钱？</p>
+    <div class="two-col" style="margin-top:2vh">
+      <div>
+        <p style="font-size:clamp(15px,1.5vw,20px); line-height:1.8">
+          <span class="accent">现金</span>：100%<br>
+          <span class="accent">应收账款</span>：~90%<br>
+          <span class="warm">存货（原材料）</span>：50-70%<br>
+          <span class="warm">存货（成品）</span>：40-60%<br>
+          <span class="red">专用设备</span>：10-30%<br>
+          <span class="red">无形资产</span>：~0%
+        </p>
+      </div>
+      <div class="highlight-box">
+        <p>折价率反映<strong>专用性</strong>——离开这家公司，对别人还有没有用。现金对任何人都有用（0%折价）。专用设备对外人没有用（90%折价）。</p>
+      </div>
+    </div>
+    <p class="small">最终减去全部负债 = 清算价值。如果股价低于这个数，市场在说"这家公司活着还不如死了"。</p>
+  </div>
+</section>
+
+<!-- 29. 第二层：EPV -->
+<section class="slide">
+  <div class="tag">第二层</div>
+  <h2>盈利能力价值（EPV）</h2>
+  <div class="body">
+    <p class="large">假设公司维持当前盈利不变，它值多少钱？</p>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p style="font-size:clamp(20px,2.5vw,32px); font-weight:700; text-align:center">EPV = 调整后可持续盈利 ÷ 资本成本率</p>
+    </div>
+    <p style="margin-top:2vh">例：每年稳定赚 1 亿，资本成本 10% → 公司值 10 亿。</p>
+    <p style="margin-top:1vh; color:var(--muted)">关键是"调整后"——去掉一次性项目，用多年平均平滑周期，确保维护性资本支出被扣除。</p>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p>EPV 的价值在于<strong>不做任何未来预测</strong>——只依赖当前可观察的盈利水平。比 DCF 可靠得多。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 30. 两者关系 -->
+<section class="slide">
+  <div class="tag">诊断工具</div>
+  <h2>EPV vs 资产价值：读出护城河</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card" style="border-color:var(--accent)">
+        <h3 class="accent">EPV > 资产价值</h3>
+        <p>有护城河。同样资产赚更多钱。差额 = 护城河的价值量。</p>
+      </div>
+      <div class="card">
+        <h3>EPV ≈ 资产价值</h3>
+        <p>竞争均衡。没有特别优势。普通生意。</p>
+      </div>
+      <div class="card" style="border-color:var(--red)">
+        <h3 class="red">EPV < 资产价值</h3>
+        <p>管理层在毁灭价值。手里的资产本该赚更多钱。</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">这个比较本身就是一个强大的分析工具——即使不用来估值，它也能帮你判断一家公司的竞争地位。</p>
+  </div>
+</section>
+
+<!-- 31. 第三层：成长性 -->
+<section class="slide">
+  <div class="tag">第三层</div>
+  <h2>成长性价值：<span class="red">最危险</span>的部分</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>格林沃尔德的立场：</strong>大多数增长并不创造价值。只有当增长的回报率超过资本成本时，增长才真正有价值——而这通常需要护城河保护。</p>
+    </div>
+    <p style="margin-top:2vh">没有护城河的公司即使增长了，竞争者会涌入，把回报率压回到资本成本水平。净现值 = 零。</p>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p><strong>保守原则：</strong>除非有强证据表明持久护城河，否则不要为成长性付钱。宁可错过上涨，也不要因高估成长而买贵。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 32. 决策逻辑 -->
+<section class="slide">
+  <div class="tag">决策框架</div>
+  <h2>什么时候买？</h2>
+  <div class="body">
+    <div class="flow">
+      <div class="flow-step"><span class="flow-arrow accent">●</span><span class="flow-text">股价 < 资产价值 → 可能有机会（清算也不亏）</span></div>
+      <div class="flow-step"><span class="flow-arrow accent">●</span><span class="flow-text">股价 < EPV 且有护城河 → <strong>更好的机会</strong></span></div>
+      <div class="flow-step"><span class="flow-arrow red">●</span><span class="flow-text">需要成长性假设才能证明股价合理 → <strong>非常危险</strong></span></div>
+    </div>
+    <p class="large" style="margin-top:3vh">如果一笔投资必须依赖成长性才能成立——<br>那你的安全边际极薄。</p>
+  </div>
+</section>
+
+<!-- 33. 科技公司挑战 -->
+<section class="slide">
+  <div class="tag">特殊情况</div>
+  <h2>科技公司：三要素法的边界</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3 class="red">资产价值失效</h3>
+        <p>核心资产是代码和人才——在资产负债表上几乎不存在。</p>
+      </div>
+      <div class="card">
+        <h3 class="red">EPV 不稳定</h3>
+        <p>竞争格局 3 年内可能颠覆。"当前盈利永续"的假设不可靠。</p>
+      </div>
+      <div class="card">
+        <h3 class="red">成长性是核心</h3>
+        <p>亚马逊 2010 年按 EPV 看"严重高估"——但增长创造了巨大价值。</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p>科技公司需要不同的工具：用户经济学、单位经济模型、网络效应强度评估。三要素法告诉你它的边界在哪里——这本身就是有价值的信息。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 34. 巴菲特的辩护 -->
+<section class="slide">
+  <div class="body">
+    <div class="quote">
+      <p>"你不需要知道一个人的精确体重，就能看出他是胖还是瘦。"</p>
+      <cite>— 本杰明·格雷厄姆</cite>
+    </div>
+    <p class="large" style="margin-top:4vh; color:var(--muted); max-width:700px">如果需要复杂的电子表格才能证明一只股票便宜——那它可能根本不够便宜。</p>
+    <p style="margin-top:2vh; font-size:clamp(16px,1.7vw,22px)">追求的不是精确——是决策质量。"这东西明显便宜"还是"不确定"还是"明显太贵"。</p>
+  </div>
+</section>
+
+<!-- 35. 芒格的辩护 -->
+<section class="slide">
+  <div class="body">
+    <div class="quote">
+      <p>"宁要模糊的正确，不要精确的错误。"</p>
+      <cite>— 查理·芒格</cite>
+    </div>
+    <div class="highlight-box" style="margin-top:4vh">
+      <p>所有估值方法的价值，不在于给你一个精确数字，而在于帮你做出正确的<strong>决策</strong>。那些追求精确估值的复杂模型，往往给人虚假的安全感——让你以为自己知道得比实际多。这种虚假安全感，才是最危险的东西。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     插入幕：深度辩护与扩展 (36-45)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 36. 辩护篇开篇 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">深度辩护</div>
+    <h1 style="color:#f0ede8">如果你是巴菲特<br>你怎么<span class="warm">回应</span>？</h1>
+    <p class="large" style="color:#a0998e; max-width:600px; margin-top:2vh">面对前面的五大质疑，顶级价值投资者会如何辩护？他们的回应揭示了更深层的投资智慧。</p>
+  </div>
+</section>
+
+<!-- 37. 辩护：循环论证 -->
+<section class="slide">
+  <div class="tag">辩护一</div>
+  <h2>对"循环论证"的回应</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>质疑：</strong>"低 P/E 股票收益好"→"所以低 P/E 就是被低估"——这是循环论证。也许便宜只是因为公司质量差。</p>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p><strong>格林沃尔德的回应：</strong>你把因果搞反了。我的起点是内在价值可以被<em>独立</em>估算——通过分析资产、盈利能力和成长性。然后我发现市场价格低于这个范围。这不是循环——是两个独立判断的交叉。</p>
+    </div>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p><strong>实践解法：</strong>筛出低 P/E 后，你必须回答——这家公司便宜，是因为市场暂时失去兴趣，还是因为生意正在瓦解？能回答这个问题才叫价值投资，不能回答就只是赌统计因子。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 38. 辩护：专业化与确认偏差 -->
+<section class="slide">
+  <div class="tag">辩护二</div>
+  <h2>对"专业化放大确认偏差"的回应</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>质疑：</strong>当你对一个行业非常了解时，你更容易说服自己某只股票值得买——因为你总能找到支持判断的行业知识。深度知识给你信心，但可能是过度自信。</p>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p><strong>芒格的回应：</strong>你说的对，但你开错了药方。解决方案不是"少了解一些"，而是改变你<em>使用知识的方式</em>。我一辈子在做一件事：收集<strong>证伪</strong>自己判断的证据。</p>
+    </div>
+    <p style="margin-top:2vh; color:var(--muted); font-size:clamp(16px,1.7vw,22px)">航空业飞行员不是因为经验丰富就不用检查清单了——恰恰是因为经验丰富的人更容易跳过关键步骤。投资也一样。</p>
+  </div>
+</section>
+
+<!-- 39. 辩护：赢家通吃 -->
+<section class="slide">
+  <div class="tag">辩护三</div>
+  <h2>对"赢家通吃打破均值回归"的回应</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>质疑：</strong>谷歌、亚马逊过去 20 年没有均值回归。如果赢家可以持续赢，"魅力股被高估"的论点就不成立了。</p>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p><strong>巴菲特的回应：</strong>这恰恰证明了我的进化是对的。护城河分析本质上就是在问——这家公司能不能<em>抵抗</em>均值回归？</p>
+    </div>
+    <p style="margin-top:2vh">过去 20 年有成百上千家公司被认为是"下一个谷歌"。其中绝大多数最终都均值回归了。市场的错误不是高估了平台经济——是<strong>高估了能建立持久护城河的公司数量</strong>。</p>
+    <p class="small">大多数公司没有护城河，均值回归仍是默认规律。识别少数例外——正是专业化的核心价值。</p>
+  </div>
+</section>
+
+<!-- 40. 辩护：时间成本 -->
+<section class="slide">
+  <div class="tag">辩护四</div>
+  <h2>对"等待的时间成本"的回应</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p><strong>质疑：</strong>持有被低估的股票可能需要等 3-5 年。同期资金投入指数基金可能已有可观收益。时间成本巨大。</p>
+    </div>
+    <div class="two-col" style="margin-top:2vh">
+      <div class="highlight-box">
+        <p><strong>巴菲特：</strong>你把等待当成本，我把等待当<em>筛选器</em>。正因为大多数人没耐心等，这个策略的超额收益才不会被套利消失。<strong>耐心本身就是稀缺资源</strong>——你赚的一部分钱，就是别人付给你的"耐心溢价"。</p>
+      </div>
+      <div class="highlight-box warn">
+        <p><strong>实践解法：</strong>等待期间资金不需要闲置——放在国债或指数基金里。更重要的是持续研究。当恐慌来临时，你已经准备好了候选清单。2008 年巴菲特能快速出手，是因为之前的"无聊"年份里功课已做完。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 41. 辩护：折现率敏感性 -->
+<section class="slide">
+  <div class="body">
+    <div class="tag">辩护五</div>
+    <h2>对"折现率选择主观"的回应</h2>
+    <div class="quote" style="margin-top:2vh">
+      <p>"如果折现率变动 1% 就改变你的买入决策，<br>说明这个机会的安全边际<span class="red">不够大</span>。"</p>
+      <cite>— 芒格的逻辑</cite>
+    </div>
+    <p style="margin-top:3vh; color:var(--muted); font-size:clamp(16px,1.8vw,24px)">折现率敏感性不是缺陷——是<strong>特性</strong>。它自动帮你过滤掉不够便宜的机会。我和巴菲特的做法很简单：统一用长期国债利率，然后要求很大的安全边际。不是解方程——是做判断。</p>
+  </div>
+</section>
+
+<!-- 42. 护城河进化 -->
+<section class="slide">
+  <div class="tag">关键进化</div>
+  <h2>从烟蒂股到护城河</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3>格雷厄姆时代</h3>
+        <p>捡"烟蒂"——地上的便宜货</p>
+        <p>不关心公司质量</p>
+        <p>机械式买入低于清算价值的股票</p>
+        <p>利润来源：价格修复</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3>巴菲特时代</h3>
+        <p>用合理价格买<strong>优秀</strong>公司</p>
+        <p>质量是第一考量</p>
+        <p>护城河决定了内在价值的可持续性</p>
+        <p>利润来源：价值持续增长</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">芒格说服巴菲特的关键一句："用合理的价格买优秀的公司，远好过用便宜的价格买平庸的公司。"</p>
+  </div>
+</section>
+
+<!-- 43. 分拆公司 -->
+<section class="slide">
+  <div class="tag">价值富矿</div>
+  <h2>分拆公司（Spinoffs）</h2>
+  <div class="body">
+    <p class="large">为什么分拆出来的子公司往往被低估？</p>
+    <div class="three-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>原因一</h3>
+        <p>不在原来股东的关注范围内——他们买的是母公司，对子公司没兴趣。</p>
+      </div>
+      <div class="card">
+        <h3>原因二</h3>
+        <p>不符合基金章程或规模要求——机构被迫机械性抛售。</p>
+      </div>
+      <div class="card">
+        <h3>原因三</h3>
+        <p>体量太小，分析师不覆盖——信息真空期，市场定价效率低。</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p>Joel Greenblatt 专门写了一本书论证 spinoffs 是价值投资的富矿。核心逻辑：价格偏离来自<strong>制度逻辑</strong>而非基本面判断——这正是最可靠的错误定价来源。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 44. 清算价值 vs 重置成本 -->
+<section class="slide">
+  <div class="tag">两个视角</div>
+  <h2>清算价值 vs 重置成本</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3>清算价值</h3>
+        <p><strong>退出视角</strong></p>
+        <p>关掉它，所有东西卖掉能拿回多少</p>
+        <p>= 各项资产折价总和 - 全部负债 - 额外费用</p>
+        <p class="small">告诉你：最坏情况的底线</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3>重置成本</h3>
+        <p><strong>外部视角</strong></p>
+        <p>从零开始造一个同样的要花多少</p>
+        <p>= 复制这门生意所需的全部投入</p>
+        <p class="small">告诉你：竞争者进入的门槛</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">当重置成本远高于清算价值时 → 说明公司有某种难以复制的竞争优势。微软花了 200+ 亿做 Bing，至今搜索份额仍是个位数——这就是谷歌护城河强度的直接度量。</p>
+  </div>
+</section>
+
+<!-- 45. 有序 vs 强制清算 -->
+<section class="slide">
+  <div class="tag">重要区分</div>
+  <h2>有序清算 vs 强制清算</h2>
+  <div class="body">
+    <div class="versus">
+      <div class="versus-side versus-a">
+        <h3>有序清算</h3>
+        <p>有几个月到一两年的时间</p>
+        <p>可以等到合适的买家</p>
+        <p>能谈到合理的价格</p>
+      </div>
+      <div class="versus-side versus-b">
+        <h3>强制清算</h3>
+        <p>法院下令 30 天内清算</p>
+        <p>必须贱卖</p>
+        <p>同样资产只拿到 50-70%</p>
+      </div>
+    </div>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p>任何知道你着急出手的买家都会压价。这就是为什么"被迫卖出"场景（分拆、指数调整、评级下调）是价值投资者的机会——<strong>卖方的约束就是买方的安全边际</strong>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     第五幕：大师方法 (46-55)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 46. 大师篇开篇 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">大师方法</div>
+    <h1 style="color:#f0ede8">不同的路径<br>相同的纪律</h1>
+    <p class="large" style="color:#a0998e; max-width:600px; margin-top:2vh">顶级投资者用非常不同的方式评估价值。了解差异本身就能帮你找到适合自己的路径。</p>
+  </div>
+</section>
+
+<!-- 37. 巴菲特 -->
+<section class="slide">
+  <div class="tag">方法一</div>
+  <h2>巴菲特：护城河优先</h2>
+  <div class="body">
+    <p class="large">99% 的精力花在判断<strong>生意质量</strong>。<br>估值反而是最后、最简单的一步。</p>
+    <div class="two-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>他真正做的事</h3>
+        <p>• 寻找持久护城河<br>• 看历史而非预测<br>• 估值必须显而易见<br>• 每年检查护城河是否还在</p>
+      </div>
+      <div class="card">
+        <h3>他不做的事</h3>
+        <p>• 不用复杂模型<br>• 不做短期预测<br>• 不频繁交易<br>• 不投看不懂的生意</p>
+      </div>
+    </div>
+    <p class="small">如果你需要精确计算才能说服自己一只股票便宜，那它可能根本不够便宜。</p>
+  </div>
+</section>
+
+<!-- 38. 克拉曼 -->
+<section class="slide">
+  <div class="tag">方法二</div>
+  <h2>克拉曼：永远不依赖单一方法</h2>
+  <div class="body">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-number accent">~20%</div>
+        <div class="stat-label">Baupost 基金 30+ 年年化回报</div>
+      </div>
+    </div>
+    <div class="three-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>验证一</h3>
+        <p>折现现金流分析</p>
+      </div>
+      <div class="card">
+        <h3>验证二</h3>
+        <p>私有市场价值（收购价格）</p>
+      </div>
+      <div class="card">
+        <h3>验证三</h3>
+        <p>分部估值（零件加总）</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">他的独特之处：不在拥挤的赛道竞争。Baupost 大量时间花在冷门领域——<strong>竞争对手的缺席</strong>本身就是关键优势。</p>
+  </div>
+</section>
+
+<!-- 39. 马克斯 -->
+<section class="slide">
+  <div class="body">
+    <div class="tag">方法三</div>
+    <h2>马克斯：不预测，定位</h2>
+    <div class="quote" style="margin-top:3vh">
+      <p>"我们永远不知道要去哪里，<br>但我们必须知道<span class="accent">我们在哪里</span>。"</p>
+      <cite>— Howard Marks, Oaktree Capital</cite>
+    </div>
+    <p style="margin-top:3vh; color:var(--muted); font-size:clamp(16px,1.8vw,24px)">不关心精确估值。极度关注你在市场周期中的位置——贪心时谨慎，恐惧时出手。投资决策不基于预测。</p>
+  </div>
+</section>
+
+<!-- 40. 芒格 -->
+<section class="slide">
+  <div class="tag">方法四</div>
+  <h2>芒格：逆向构建反方论点</h2>
+  <div class="body">
+    <div class="highlight-box">
+      <p>每次对一个投资机会感到<strong>兴奋</strong>时——专门花等量时间构建"为什么不应该买"的论证。不是象征性地想一想，而是认真写下来，像辩论赛中被分配到反方。</p>
+    </div>
+    <p style="margin-top:2vh; font-size:clamp(16px,1.8vw,24px)">如果你发现自己总是花 80% 时间论证"为什么该买"，只用 20% 想风险——你大概率已经陷入了确认偏差。</p>
+    <div class="highlight-box warn" style="margin-top:2vh">
+      <p><strong>硬规则：</strong>如果反方的论点你自己都觉得很强，要么放弃，要么等到更便宜的价格再买。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 41. 共同点 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <h2 style="color:#f0ede8">四位大师的共同点</h2>
+    <p class="number warm" style="margin:3vh 0">纪律 > 公式</p>
+    <p style="color:#a0998e; max-width:650px; font-size:clamp(18px,2vw,26px)">公式可以被复制和套利掉。但纪律不会——因为它违反人类天性。用独立分析对抗市场情绪，用耐心对抗短期压力，用自我怀疑对抗过度自信。</p>
+  </div>
+</section>
+
+<!-- 42. 等待 -->
+<section class="slide">
+  <div class="body">
+    <div class="quote">
+      <p>"人生中真正改变命运的投资机会不会超过 20 个。"</p>
+      <cite>— 查理·芒格</cite>
+    </div>
+    <p class="large" style="margin-top:4vh; max-width:700px">如果你每年做 50 笔交易，你不是在投资——你是在付手续费。不如等。等到一个你真正理解、真正便宜、真正有安全边际的机会出现。</p>
+    <p style="margin-top:2vh; color:var(--muted); font-size:clamp(16px,1.7vw,22px)">等待不是无所事事——等待期间持续研究。当机会出现时（比如一次恐慌），你已经准备好了候选清单和估值模型。</p>
+  </div>
+</section>
+
+<!-- 补充：均值回归深度讨论 -->
+<section class="slide">
+  <div class="tag">深度思考</div>
+  <h2>均值回归：默认规律还是过时假设？</h2>
+  <div class="body">
+    <div class="two-col">
+      <div class="card">
+        <h3 class="accent">仍然成立的情况</h3>
+        <p>• 大多数公司没有持久护城河<br>• 利润丰厚的行业会吸引竞争者进入<br>• 管理层更替会打断增长势头<br>• 技术变化会削弱既有优势</p>
+      </div>
+      <div class="card">
+        <h3 class="red">可能不成立的情况</h3>
+        <p>• 网络效应极强的平台（用户越多越值钱）<br>• 数据壁垒持续加深（越用越精准）<br>• 高转换成本锁定用户<br>• 赢家通吃的市场结构</p>
+      </div>
+    </div>
+    <p style="margin-top:2vh">关键判断：这家公司的护城河是在<strong>变宽</strong>（均值回归被抵抗）还是<strong>变窄</strong>（均值回归在逼近）？这个判断能力正是专业化的核心价值。</p>
+  </div>
+</section>
+
+<!-- 补充：代理人问题 -->
+<section class="slide">
+  <div class="tag">制度性偏误</div>
+  <h2>代理人问题：为什么机构"理性地犯错"</h2>
+  <div class="body">
+    <p class="large">投资经理优化的不是<strong>收益最大化</strong>——<br>而是<strong>职业风险最小化</strong>。</p>
+    <div class="three-col" style="margin-top:2vh">
+      <div class="card">
+        <h3>买魅力股</h3>
+        <p>亏了不会被指责——"所有人都亏了"。职业安全。</p>
+      </div>
+      <div class="card">
+        <h3>避开"丑陋"公司</h3>
+        <p>需要解释为什么买一家看起来很烂的公司。解释成本高。</p>
+      </div>
+      <div class="card">
+        <h3>窗口粉饰</h3>
+        <p>季度末买入当季表现好的股票、清理差的。让报告好看。</p>
+      </div>
+    </div>
+    <p class="small">这些行为制造了系统性的定价偏差——对个人投资者来说恰恰是机会，因为你的激励结构完全不同。</p>
+  </div>
+</section>
+
+<!-- 补充：价值投资的最深层矛盾 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">最深层矛盾</div>
+    <h2 style="color:#f0ede8; max-width:700px">价值投资的理论基础是<span class="warm">人类不理性</span><br><br>但它要求执行者自己<span class="warm">保持理性</span></h2>
+    <p style="color:#666; margin-top:3vh; max-width:600px; font-size:clamp(16px,1.7vw,22px)">知道别人非理性是一回事。在别人恐慌时保持理性去行动——是完全不同的事。2020 年 3 月理论上所有人都知道是买入机会，但实际上大部分人在恐慌中卖出。</p>
+  </div>
+</section>
+
+<!-- 补充：内在价值的主观性 -->
+<section class="slide">
+  <div class="tag">诚实的承认</div>
+  <h2>内在价值本身是主观的</h2>
+  <div class="body">
+    <div class="highlight-box danger">
+      <p>不同分析师用不同假设会得出差异巨大的数字。安全边际是相对于"你自己估算的价值"——这个估算本身可能就是错的。</p>
+    </div>
+    <p style="margin-top:2vh; font-size:clamp(18px,2vw,26px)">这个挑战没有完美答案。价值投资者承认这一点——<strong>所以才需要安全边际</strong>。</p>
+    <div class="highlight-box" style="margin-top:2vh">
+      <p>安全边际的双重作用：<br>① 对市场情绪波动的缓冲<br>② <strong>对自己估算误差的缓冲</strong><br><br>它不只是给别人犯错留空间——也是给自己犯错留空间。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     最终幕：行动路径
+     ═══════════════════════════════════════════════════ -->
+
+<!-- 行动篇开篇 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <div class="tag">行动</div>
+    <h1 style="color:#f0ede8">从知道<br>到<span class="warm">做到</span></h1>
+    <p class="large" style="color:#a0998e; max-width:600px; margin-top:2vh">知道框架不等于能执行。这道鸿沟只能通过实践跨越。</p>
+  </div>
+</section>
+
+<!-- 44. 预验尸 -->
+<section class="slide">
+  <div class="tag">最重要的单一工具</div>
+  <h2>预验尸（Pre-mortem）</h2>
+  <div class="body">
+    <div class="highlight-box">
+      <p style="font-size:clamp(20px,2.5vw,32px); font-weight:700">在最终买入前，花 30 分钟写下：<br>"如果一年后亏损 40%，三个最可能的原因是什么？"</p>
+    </div>
+    <div class="two-col" style="margin-top:2vh">
+      <div>
+        <p style="font-size:clamp(16px,1.7vw,22px); color:var(--muted); line-height:1.6">• 写不出三个理由 → 你对风险理解不够深</p>
+        <p style="font-size:clamp(16px,1.7vw,22px); color:var(--muted); line-height:1.6">• 写完后仍然想买 → 至少是充分知情的决策</p>
+        <p style="font-size:clamp(16px,1.7vw,22px); color:var(--muted); line-height:1.6">• 写完后犹豫了 → 说明安全边际不够</p>
+      </div>
+      <div class="highlight-box warn">
+        <p>这个简单练习把卡尼曼的"系统二"强制拉入你的决策流程。对抗"系统一"的直觉冲动。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 45. 筛选漏斗 -->
+<section class="slide">
+  <div class="tag">建立系统</div>
+  <h2>你的个人筛选漏斗</h2>
+  <div class="body">
+    <div class="three-col">
+      <div class="card">
+        <h3>① 选择信号源</h3>
+        <p>不要同时使用所有策略。选 1-2 个最适合你的：如 52 周新低 + 内部人买入。</p>
+      </div>
+      <div class="card">
+        <h3>② 在能力圈内过滤</h3>
+        <p>只保留你有"工作流利度"的行业标的。其余全部丢掉，无论多诱人。</p>
+      </div>
+      <div class="card">
+        <h3>③ 深度定性分析</h3>
+        <p>漏斗越窄越好。目标不是 100 个机会——而是 3-5 个你真正理解的。</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:2vh">用 AI 来加速已有优势（信息处理、财报阅读），但不要因为信息获取变容易就扩大能力圈——那是危险的错觉。</p>
+  </div>
+</section>
+
+<!-- 46. 了解偏误≠免疫偏误 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <h2 style="color:#f0ede8">了解偏误<br><span class="red">≠</span><br>免疫偏误</h2>
+    <p class="large" style="color:#a0998e; max-width:650px; margin-top:3vh">你读了所有关于损失厌恶的理论。当你的持仓暴跌 30% 的时候，你的系统一仍然会尖叫着让你卖出。</p>
+    <p style="color:#666; margin-top:2vh; max-width:600px; font-size:clamp(16px,1.7vw,22px)">所以需要<strong>机制</strong>而不只是知识：提前写下买入和卖出的条件、设定检查清单、避免在市场极端情绪时做决策。</p>
+  </div>
+</section>
+
+<!-- 47. 检查清单 -->
+<section class="slide">
+  <div class="tag">决策纪律</div>
+  <h2>投资决策检查清单</h2>
+  <div class="body">
+    <div class="two-col">
+      <div style="font-size:clamp(15px,1.6vw,21px); line-height:2">
+        <p>□ 这在我能力圈内吗？</p>
+        <p>□ 我能用一段话说清楚商业模式？</p>
+        <p>□ 管理层值得信任吗？</p>
+        <p>□ 有护城河保护吗？</p>
+        <p>□ 内在价值我能估算吗？</p>
+      </div>
+      <div style="font-size:clamp(15px,1.6vw,21px); line-height:2">
+        <p>□ 当前价格有 30%+ 安全边际？</p>
+        <p>□ 最坏情况下我能承受吗？</p>
+        <p>□ 预验尸做了吗？</p>
+        <p>□ 我能持有 5 年以上吗？</p>
+        <p>□ 我是基于理性还是冲动？</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:2vh">任何一个"否"都应该让你停下来。最好的投资机会会让你对大部分问题说"是"。</p>
+  </div>
+</section>
+
+<!-- 48. 行动第一步 -->
+<section class="slide">
+  <div class="tag">从这里开始</div>
+  <h2>你的第一步</h2>
+  <div class="body">
+    <div class="two-col" style="align-items:stretch">
+      <div style="display:flex; flex-direction:column; gap:2vh">
+        <div class="card" style="flex:1">
+          <h3>这个月</h3>
+          <p>选一个你有基础或兴趣的行业，开始深入学习。不是找股票——是建设能力圈。</p>
+        </div>
+        <div class="card" style="flex:1">
+          <h3>接下来 3 个月</h3>
+          <p>用三要素法分析这个行业的 5 家公司。不下注——只是练习判断。</p>
+        </div>
+        <div class="card" style="flex:1">
+          <h3>6 个月后</h3>
+          <p>当发现明显被低估的机会时，用小资金试验。记录每一笔决策和理由。</p>
+        </div>
+      </div>
+      <div class="highlight-box" style="display:flex; flex-direction:column; justify-content:center">
+        <h3 style="color:var(--accent); margin-bottom:12px">核心原则</h3>
+        <p>不要从"哪只股票会涨"开始。<br><br>从<strong>"我真正理解什么"</strong>开始。</p>
+        <p style="margin-top:16px; font-size:clamp(14px,1.4vw,18px); color:var(--muted)">这可能意味着半年到一年你不会做任何交易。这不是浪费——这是投资。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 49. 一句话总结 -->
+<section class="slide center">
+  <div class="body center">
+    <div class="tag">全书浓缩</div>
+    <p class="number accent" style="font-size:clamp(36px,5vw,72px)">一句话</p>
+    <h2 style="max-width:800px; margin-top:3vh">价值投资是一种思维纪律：<br>用独立分析对抗市场情绪，<br>用耐心对抗短期压力，<br>用自我怀疑对抗过度自信。</h2>
+    <p class="muted" style="margin-top:3vh; max-width:600px">公式可以被复制和套利掉。但纪律不会——因为它违反人类天性。</p>
+  </div>
+</section>
+
+<!-- 50. 收束 -->
+<section class="slide slide-dark center">
+  <div class="body center">
+    <h2 style="color:#f0ede8">最后的话</h2>
+    <p class="large" style="color:#a0998e; max-width:650px; margin-top:3vh">你无法通过读书学会游泳。<br><br>这 64 页给你的不是一个可以直接执行的清单——而是一张需要你用实践去填充的地图。</p>
+    <p style="color:#666; margin-top:4vh; font-size:clamp(16px,1.7vw,22px)">1000 小时的刻意练习，等待着你。</p>
+    <p class="small" style="margin-top:4vh; color:#555">祝你找到好生意。</p>
+  </div>
+</section>
+
+<nav class="nav">
+  <button class="nav-btn" id="prev" aria-label="Previous">‹</button>
+  <span class="nav-page" id="page"></span>
+  <button class="nav-btn" id="next" aria-label="Next">›</button>
+</nav>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const pageEl = document.getElementById('page');
+const progressEl = document.getElementById('progress');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let cur = 0, wheelLock = false;
+
+function go(i) {
+  cur = Math.max(0, Math.min(i, slides.length - 1));
+  slides.forEach((s, idx) => { s.classList.toggle('active', idx === cur); s.classList.toggle('prev', idx < cur); });
+  prevBtn.disabled = cur === 0;
+  nextBtn.disabled = cur === slides.length - 1;
+  pageEl.textContent = `${cur + 1} / ${slides.length}`;
+  progressEl.style.width = `${((cur + 1) / slides.length) * 100}%`;
+}
+
+prevBtn.addEventListener('click', () => go(cur - 1));
+nextBtn.addEventListener('click', () => go(cur + 1));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+});
+document.addEventListener('wheel', e => { if (wheelLock) return; wheelLock = true; go(cur + (e.deltaY > 0 ? 1 : -1)); setTimeout(() => { wheelLock = false; }, 500); }, { passive: true });
+go(0);
+</script>
+</body>
+</html>
