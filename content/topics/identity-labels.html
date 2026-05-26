@@ -1,7 +1,7 @@
 ---
 title: "Identity Labels"
 date: 2026-05-21T07:06:12Z
-summary: "The single story creates stereotypes — and the problem with stereotypes is not that they are untrue, but that they are incomplete."
+summary: "MBTI, zodiac signs, hometowns, jobs, ages: quick shortcuts for identity, first impressions, and sometimes misunderstanding. Identity labels can help us understand ourselves and connect with others, but they can also create assumptions and limit how we see people. Let's explore the world of identity labels and the implications of using them."
 ---
 
 
@@ -13,552 +13,938 @@ summary: "The single story creates stereotypes — and the problem with stereoty
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Corner - Identity Labels</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; overflow: hidden; font-family: Calibri, 'Segoe UI', sans-serif; }
+:root {
+  --ink: #17202a;
+  --paper: #f7f2e8;
+  --white: #ffffff;
+  --red: #d94c3d;
+  --blue: #2c72b8;
+  --green: #26825f;
+  --yellow: #f1ba45;
+  --violet: #7a5aa6;
+  --muted: #607080;
+  --line: rgba(23, 32, 42, 0.14);
+  --shadow: 0 18px 46px rgba(23, 32, 42, 0.13);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  background: var(--ink);
+  color: var(--ink);
+  font-family: "Segoe UI", Calibri, Arial, sans-serif;
+}
 
 .slide {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: clamp(24px, 3vh, 48px) clamp(32px, 4vw, 72px) 80px;
+  padding: clamp(28px, 4vh, 54px) clamp(34px, 5vw, 86px);
   opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
 }
-.slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
-.slide.prev { opacity: 0; transform: translateX(-100%); }
+.slide.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+.slide.prev { transform: translateX(-100%); }
 
-.bg-dark { background: #2D1B4E; color: #FFF; }
-.bg-cream { background: #FAF7F2; color: #2D1B4E; }
-.bg-white { background: #FFF; color: #2D1B4E; }
-.bg-accent { background: #E85D3A; color: #FFF; }
+.dark { background: var(--ink); color: var(--white); }
+.paper { background: var(--paper); }
+.white { background: var(--white); }
+.red { background: var(--red); color: var(--white); }
+.blue { background: var(--blue); color: var(--white); }
+.green { background: var(--green); color: var(--white); }
 
-.tag { font: bold clamp(16px,1.8vw,20px)/1 Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
-.tag-gold { color: #F0A500; }
-.tag-accent { color: #E85D3A; }
-.tag-white { color: #FFF; opacity: 0.8; }
-
-h1 { font: bold clamp(48px,7vw,96px)/1.08 Georgia, serif; margin: 32px 0 clamp(36px,4.5vh,64px); }
-h2 { font: bold clamp(36px,5.5vw,64px)/1.15 Georgia, serif; margin: 32px 0 clamp(34px,4.5vh,64px); }
-h3 { font: bold clamp(36px,5vw,64px)/1.22 Georgia, serif; margin: 28px 0 clamp(30px,4vh,60px); }
-
-.subtitle { font-size: clamp(22px,3.5vw,40px); opacity: 0.9; margin-bottom: 20px; }
-.subtitle-zh { font-size: clamp(20px,3vw,32px); color: #F0A500; margin-bottom: 36px; }
-.meta { font-size: clamp(20px,2.5vw,28px); opacity: 0.72; margin-top: auto; }
-.separator { width: 100px; height: 4px; background: #F0A500; margin: 32px 0; }
-
-.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
-.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
-.grid-2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vh,28px); margin-top: clamp(12px,2vh,28px); }
-
-.card {
-  background: #FFF;
-  border-radius: 12px;
-  padding: clamp(18px,2vh,30px);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  border-top: 4px solid #E85D3A;
+.kicker {
+  color: var(--red);
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.card .icon { font-size: clamp(30px,4vw,50px); margin-bottom: 12px; }
-.card h4 { font: bold clamp(20px,2.5vw,30px) Georgia, serif; margin-bottom: 8px; }
-.card .zh { color: #E85D3A; font-size: clamp(16px,2vw,22px); margin-bottom: 10px; }
-.card .role { font-size: clamp(16px,1.8vw,22px); font-weight: bold; opacity: 0.62; margin-bottom: 8px; }
-.card p { font-size: clamp(18px,2.2vw,26px); line-height: 1.55; opacity: 0.82; }
+.dark .kicker, .red .kicker, .blue .kicker, .green .kicker { color: var(--yellow); }
 
-.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(16px,2vw,30px); margin: clamp(16px,3vh,42px) 0; }
-.stat { text-align: center; }
-.stat-number { font: bold clamp(48px,7vw,96px)/1 Georgia, serif; color: #F0A500; }
-.stat-label { font-size: clamp(16px,2vw,22px); opacity: 0.76; margin-top: 10px; line-height: 1.4; }
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+h1 {
+  font-size: clamp(64px, 9vw, 126px);
+  line-height: 0.94;
+  max-width: 1120px;
+}
+h2 {
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 1.04;
+  max-width: 1050px;
+}
+h3 {
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 1.18;
+}
+p, li {
+  font-size: clamp(20px, 2.1vw, 29px);
+  line-height: 1.42;
+}
+.small {
+  color: var(--muted);
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.45;
+}
+.dark .small, .red .small, .blue .small, .green .small {
+  color: rgba(255, 255, 255, 0.72);
+}
+.cn {
+  color: var(--blue);
+  font-size: clamp(18px, 1.8vw, 24px);
+}
+.dark .cn, .red .cn, .blue .cn, .green .cn {
+  color: rgba(255, 255, 255, 0.8);
+}
 
-.round-title { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-height: 60vh; padding: clamp(24px,4vh,64px) 0; }
-.round-title h1 { font-size: clamp(56px,9vw,112px); }
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(20px, 3vh, 34px);
+}
+.spread {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+.stack { display: flex; flex-direction: column; gap: clamp(18px, 2.4vh, 28px); }
+.wide { max-width: 1180px; }
 
-.q-card { background: #FAF7F2; border-radius: 12px; padding: clamp(18px,2.5vh,32px); border-left: 5px solid #E85D3A; }
-.q-card .q-num { font: bold clamp(18px,2.2vw,26px) Georgia, serif; color: #E85D3A; margin-bottom: 8px; }
-.q-card .q-title { font: bold clamp(20px,2.5vw,30px) Georgia, serif; color: #2D1B4E; margin-bottom: 10px; }
-.q-card p { font-size: clamp(20px,2.5vw,28px); line-height: 1.55; color: #4A4A5E; }
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-content: center;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: clamp(17px, 1.7vw, 24px);
+  font-weight: 750;
+  padding: 10px 15px;
+  box-shadow: 5px 5px 0 currentColor;
+}
+.tag.red-t { color: var(--red); }
+.tag.blue-t { color: var(--blue); }
+.tag.green-t { color: var(--green); }
+.tag.yellow-t { color: #9a6b00; }
+.tag.violet-t { color: var(--violet); }
 
-.expr-box { background: #FFF; border-radius: 12px; padding: clamp(16px,2vh,28px); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.expr-box h4 { font-size: clamp(16px,1.8vw,22px); font-weight: bold; color: #E85D3A; letter-spacing: 1px; margin-bottom: 14px; }
-.expr-item { font-size: clamp(20px,2.5vw,30px); padding: 9px 0; color: #1F1F2E; font-style: italic; }
+.label-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 26px);
+}
+.label-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: clamp(170px, 23vh, 250px);
+  padding: clamp(22px, 3vh, 34px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.label-card h3 { color: var(--ink); }
+.label-card p { color: var(--muted); }
+.label-card .stamp {
+  align-self: flex-start;
+  border-radius: 8px;
+  color: var(--white);
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+.stamp.red-s { background: var(--red); }
+.stamp.blue-s { background: var(--blue); }
+.stamp.green-s { background: var(--green); }
+.stamp.yellow-s { background: #b98200; }
 
-.debate-side { border-radius: 12px; padding: clamp(16px,2vh,28px); }
-.debate-side.side-a { background: #FFF0EE; border-left: 5px solid #E85D3A; }
-.debate-side.side-b { background: #F0F0FF; border-left: 5px solid #2D1B4E; }
-.debate-side h4 { font-size: clamp(20px,2.5vw,28px); font-weight: bold; margin-bottom: 12px; }
-.debate-side li { font-size: clamp(18px,2.2vw,26px); line-height: 1.65; margin-left: 18px; color: #333; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 30px);
+}
+.step {
+  border-left: 8px solid var(--red);
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-height: clamp(190px, 24vh, 270px);
+  padding: clamp(24px, 3vh, 34px);
+}
+.step:nth-child(2) { border-left-color: var(--blue); }
+.step:nth-child(3) { border-left-color: var(--green); }
+.step .num {
+  color: var(--muted);
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+.step .step-heading {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.step .step-heading h3 {
+  margin: 0;
+}
+.step .step-icon {
+  align-items: center;
+  color: var(--ink);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: clamp(24px, 3vw, 38px);
+  height: clamp(36px, 4.5vw, 52px);
+  justify-content: center;
+  width: clamp(36px, 4.5vw, 52px);
+}
+.step:nth-child(1) .step-icon { color: var(--red); }
+.step:nth-child(2) .step-icon { color: var(--blue); }
+.step:nth-child(3) .step-icon { color: var(--green); }
 
-.action-list { list-style: none; margin-top: clamp(14px,2vh,28px); }
-.action-list li { font-size: clamp(20px,2.5vw,30px); padding: 14px 20px; background: #FFF; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-.action-list li::before { content: "\2192 "; color: #E85D3A; font-weight: bold; }
+.choice-line {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: clamp(14px, 2vw, 24px);
+}
+.choice {
+  align-items: center;
+  border: 3px solid currentColor;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  min-height: clamp(118px, 18vh, 180px);
+  padding: 24px;
+  text-align: center;
+}
+.choice.red-c { color: var(--red); }
+.choice.blue-c { color: var(--blue); }
+.or {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 850;
+}
 
-.quote-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.quote { font: italic clamp(24px,3.5vw,38px)/1.5 Georgia, serif; max-width: 820px; margin-bottom: 20px; }
-.quote-mark { font-size: 60px; color: #F0A500; line-height: 1; margin-bottom: 10px; }
-.quote-author { font-size: clamp(16px,1.8vw,22px); opacity: 0.65; }
+.question {
+  background: var(--white);
+  border-left: 8px solid var(--blue);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 3.5vh, 42px);
+}
+.question strong {
+  color: var(--blue);
+  display: block;
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.question.red-q { border-left-color: var(--red); }
+.question.red-q strong { color: var(--red); }
+.question.green-q { border-left-color: var(--green); }
+.question.green-q strong { color: var(--green); }
+.question.yellow-q { border-left-color: var(--yellow); }
+.question.yellow-q strong { color: #9a6b00; }
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 26px);
+}
+.question-grid .question {
+  min-height: clamp(190px, 24vh, 265px);
+  padding: clamp(20px, 2.8vh, 32px);
+}
+.discussion-prompts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+.discussion-prompts.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.prompt-box {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: clamp(135px, 18vh, 190px);
+  padding: clamp(18px, 2.5vh, 28px);
+}
+.prompt-box h3 {
+  color: var(--ink);
+  font-size: clamp(21px, 2.2vw, 31px);
+  margin-bottom: 10px;
+}
+.prompt-box p {
+  color: var(--muted);
+  font-size: clamp(17px, 1.7vw, 22px);
+}
+.green .prompt-box {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.green .prompt-box h3,
+.green .prompt-box p { color: var(--white); }
+.debate-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 3vw, 36px);
+}
+.debate-side {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-height: clamp(260px, 36vh, 390px);
+  padding: clamp(26px, 3.5vh, 42px);
+}
+.debate-side.help { border-top: 9px solid var(--green); }
+.debate-side.limit { border-top: 9px solid var(--red); }
+.debate-side h3 {
+  font-size: clamp(34px, 4vw, 56px);
+  margin-bottom: 18px;
+}
+.debate-side p {
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.debate-tip {
+  background: var(--paper);
+  border-left: 6px solid var(--yellow);
+  border-radius: 8px;
+  padding: clamp(16px, 2vh, 24px);
+}
 
-.bottom-note { text-align: center; font-size: clamp(16px,1.8vw,22px); margin-top: 22px; opacity: 0.72; font-style: italic; }
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 34px);
+}
+.scene {
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: var(--white);
+  padding: clamp(22px, 3vh, 34px);
+}
+.scene .small { margin-top: 12px; }
 
-.body-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; padding-top: clamp(8px, 3vh, 40px); }
+.vocab {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.vocab-item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--green);
+  border-radius: 8px;
+  min-height: clamp(125px, 17vh, 185px);
+  padding: 18px;
+}
+.vocab-item:nth-child(2) { border-top-color: var(--blue); }
+.vocab-item:nth-child(3) { border-top-color: var(--red); }
+.vocab-item:nth-child(4) { border-top-color: var(--yellow); }
+.vocab-item:nth-child(5) { border-top-color: var(--violet); }
+.vocab-item h3 {
+  font-size: clamp(20px, 2vw, 28px);
+  margin-bottom: 8px;
+}
+.vocab-item p {
+  color: var(--muted);
+  font-size: clamp(15px, 1.45vw, 19px);
+}
 
-/* Barnum cards */
-.barnum-box { background: #FFF; border-radius: 12px; padding: clamp(18px,2.5vh,32px); box-shadow: 0 3px 20px rgba(0,0,0,0.07); border: 2px solid #E8DFD0; text-align: center; }
-.barnum-box .b-quote { font: italic clamp(18px,2.2vw,28px)/1.6 Georgia, serif; color: #2D1B4E; margin: 16px 0; }
-.barnum-box .b-label { font: bold clamp(14px,1.5vw,18px) Arial, sans-serif; letter-spacing: 1px; color: #E85D3A; margin-bottom: 12px; }
-.barnum-box .b-reveal { font-size: clamp(16px,2vw,22px); color: #666; margin-top: 12px; }
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 26px);
+}
+.flip-card {
+  cursor: pointer;
+  min-height: clamp(190px, 24vh, 265px);
+  perspective: 1000px;
+}
+.flip-inner {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(18px, 2.5vh, 30px);
+  text-align: center;
+}
+.front {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 7px 7px 0 rgba(23, 32, 42, 0.18);
+}
+.front:hover { transform: translateY(-2px); }
+.symbol {
+  font-size: clamp(46px, 6vw, 76px);
+  line-height: 1;
+}
+.card-name {
+  color: var(--ink);
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+.hint {
+  color: var(--muted);
+  font-size: clamp(13px, 1.25vw, 17px);
+  margin-top: 10px;
+}
+.back {
+  background: var(--ink);
+  color: var(--white);
+  transform: rotateY(180deg);
+}
+.back p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-style: italic;
+  line-height: 1.35;
+}
+.back .cn {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(14px, 1.35vw, 18px);
+  margin-top: 12px;
+}
 
-/* Nav */
-.progress { position: fixed; top: 0; left: 0; height: 3px; background: #E85D3A; transition: width 0.3s; z-index: 1001; }
-.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; background: rgba(45,27,78,0.9); padding: 10px 24px; border-radius: 40px; z-index: 1000; backdrop-filter: blur(10px); }
-.nav button { background: none; border: none; color: #FFF; font-size: 20px; cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: background 0.2s; }
-.nav button:hover { background: rgba(255,255,255,0.1); }
-.nav button:disabled { opacity: 0.3; cursor: not-allowed; }
-.nav .page-info { color: #FAF7F2; font-size: 14px; min-width: 60px; text-align: center; }
-.dots { display: flex; gap: 6px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
-.dot.active { background: #F0A500; transform: scale(1.3); }
+.quote {
+  border-left: 8px solid var(--yellow);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4.6vw, 66px);
+  line-height: 1.08;
+  max-width: 960px;
+  padding-left: clamp(20px, 2.8vw, 38px);
+}
+.source-list {
+  display: grid;
+  gap: 8px;
+  max-width: 1050px;
+}
+.source-list p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(13px, 1.25vw, 17px);
+  line-height: 1.35;
+}
 
-/* Bestiary */
-.bestiary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(12px, 1.5vh, 20px); }
-.creature { perspective: 800px; cursor: pointer; }
-.creature-inner { position: relative; width: 100%; height: 100%; min-height: clamp(180px, 22vh, 260px); transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-.creature.flipped .creature-inner { transform: rotateY(180deg); }
-.creature-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; }
-.creature-front { background: linear-gradient(135deg, #FAF7F2 0%, #FFF0EB 100%); border: 2px dashed #E8DFD0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
-.creature-front::after { content: '?'; position: absolute; top: -10px; right: -5px; font: bold 80px Georgia, serif; color: rgba(232,93,58,0.06); pointer-events: none; }
-.creature-front:hover { border-color: #E85D3A; border-style: solid; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(232,93,58,0.15); }
-.creature-front .c-icon { font-size: clamp(48px,5vw,64px); margin-bottom: 8px; }
-.creature-front .c-name { font: bold clamp(16px,2vw,22px)/1 Arial, sans-serif; letter-spacing: 1px; color: #2D1B4E; }
-.creature-front .c-latin { font: italic clamp(14px,1.5vw,18px) Georgia, serif; color: #8a7a5c; margin-top: 3px; text-align: center; }
-.creature-front .c-hint { font-size: 14px; color: #E85D3A; margin-top: 8px; letter-spacing: 0.5px; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-.creature-back { transform: rotateY(180deg); background: #2D1B4E; color: #FAF7F2; border: 2px solid #3d2b5e; text-align: center; gap: 8px; }
-.creature-back .c-q { font: italic clamp(18px,2.2vw,26px)/1.4 Georgia, serif; padding: 0 6px; }
-.creature-back .c-qzh { font-size: clamp(15px,1.8vw,22px); color: rgba(250,247,242,0.6); margin-top: 4px; }
+.progress {
+  background: var(--yellow);
+  height: 4px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 0;
+  z-index: 20;
+  transition: width 0.25s ease;
+}
+.nav {
+  align-items: center;
+  bottom: 18px;
+  display: flex;
+  gap: 12px;
+  position: fixed;
+  right: 22px;
+  z-index: 30;
+}
+.nav button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(23, 32, 42, 0.16);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 22px;
+  font-weight: 850;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+.nav button:hover { background: var(--yellow); }
+.counter {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  min-width: 64px;
+  padding: 11px 12px;
+  text-align: center;
+}
 
-@media (max-width: 768px) {
-  .slide { padding: 40px 30px; overflow-y: auto; }
-  .grid-3, .grid-2, .grid-2x2 { grid-template-columns: 1fr 1fr; }
-  .bestiary-grid { grid-template-columns: 1fr 1fr; }
-  .stats-row { grid-template-columns: repeat(2,1fr); }
+@media (max-width: 900px) {
+  .spread, .two-col, .label-board, .steps, .flip-grid, .vocab, .question-grid, .discussion-prompts, .discussion-prompts.four, .debate-board {
+    grid-template-columns: 1fr;
+  }
+  .slide {
+    overflow: auto;
+  }
+  .choice-line {
+    grid-template-columns: 1fr;
+  }
+  .or { justify-content: center; }
 }
 </style>
 </head>
 <body>
-
 <div class="progress" id="progress"></div>
 
-<!-- SLIDE 1: Title -->
-<div class="slide bg-dark active" data-slide="1">
-  <div class="round-title">
-    <div class="tag tag-gold">ENGLISH CORNER · DISCUSSION TOPIC</div>
-    <h1>What's in<br>a Label?</h1>
-    <p class="subtitle" style="color:#FAF7F2">MBTI, Zodiac, Stereotypes & How We Make Sense of People</p>
-    <p class="subtitle-zh">身份标签：它们帮助我们理解自己，还是限制了我们看待别人？</p>
-    <div class="separator"></div>
-    <p class="meta">A 90-min discussion · 2 rounds · 7 questions</p>
+<section class="slide dark active">
+  <div class="spread">
+    <div class="stack">
+      <div class="kicker">English Corner · 2 Rounds · Open Questions</div>
+      <h1>Labels We Live With</h1>
+      <p class="wide">MBTI, zodiac signs, hometowns, jobs, ages: quick shortcuts for identity, first impressions, and sometimes misunderstanding.</p>
+      <p class="cn">身份标签 Identity Labels：它们帮助我们理解自己，还是限制我们看待别人？</p>
+    </div>
+    <div class="tag-cloud" aria-label="identity label examples">
+      <span class="tag red-t">ENFP</span>
+      <span class="tag blue-t">Leo</span>
+      <span class="tag green-t">Engineer</span>
+      <span class="tag yellow-t">Gen Z</span>
+      <span class="tag violet-t">Northerner</span>
+      <span class="tag blue-t">Newcomer</span>
+      <span class="tag red-t">Introvert</span>
+      <span class="tag green-t">Local</span>
+      <span class="tag yellow-t">Manager</span>
+      <span class="tag violet-t">Only child</span>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 2: Ice Breaker -->
-<div class="slide bg-cream" data-slide="2">
-  <div class="tag tag-accent">ICE BREAKER · 5 MIN</div>
-  <h2>Let's Get to Know Each Other 🏷️</h2>
-  <div class="body-content">
-    <p style="font-size:clamp(20px,2.5vw,28px); color:#4A4A5E; margin-bottom:24px">Turn to the person next to you and introduce yourself in English:</p>
-    <div class="grid-3" style="margin-top:10px">
-      <div class="card">
-        <div class="icon">🙋</div>
-        <h4>Your Name</h4>
+<section class="slide paper">
+  <div class="center">
+    <div class="kicker">Self-Introduction</div>
+    <h2>Introduce yourself</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-heading">
+          <div class="step-icon" aria-hidden="true">👤</div>
+          <h3>Your Name</h3>
+        </div>
         <p>"Hi, I'm ___ . You can call me ___ ."</p>
       </div>
-      <div class="card">
-        <div class="icon">💼</div>
-        <h4>What You Do</h4>
+      <div class="step">
+        <div class="step-heading">
+          <div class="step-icon" aria-hidden="true">💼</div>
+          <h3>What You Do</h3>
+        </div>
         <p>"I work as a ___ at ___ ." or "I'm a student majoring in ___ ."</p>
       </div>
-      <div class="card">
-        <div class="icon">🏷️</div>
-        <h4>Three Labels</h4>
-        <p>"Three labels I'd give myself: ___ , ___ , and ___ ."<br><span style="font-size:14px; opacity:0.7">(e.g., INTJ, Scorpio, introvert, night owl…)</span></p>
+      <div class="step">
+        <div class="step-heading">
+          <div class="step-icon" aria-hidden="true">🏷️</div>
+          <h3>Three Labels</h3>
+        </div>
+        <p>"Three labels I'd give myself: ___ , ___ , and ___ ."</p>
+        <p class="small">(e.g., INTJ, Scorpio, introvert, night owl…)</p>
       </div>
     </div>
-    <p class="bottom-note" style="margin-top:30px; font-style:normal; color:#2D1B4E"><strong>1 minute per person.</strong> Notice: which labels did you reach for first? That says something.</p>
+    <p class="small">1 minute per person. Notice: which labels did you reach for first? That says something.</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 3: Warm-up -->
-<div class="slide bg-cream" data-slide="3">
-  <div class="tag tag-accent">WARM-UP · 3 MIN</div>
-  <h2>Label yourself in 3 words — go!</h2>
-  <div class="body-content">
-    <p style="font-size:clamp(16px,2vw,24px); color:#4B4F63; margin-bottom:20px; line-height:1.6">Think of 3 words that describe you. Write them down (on phone or paper). Then compare with your neighbor.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">✍️</div>
-        <h4>Step 1: Write</h4>
-        <p style="opacity:1">3 words that describe who you are. Quick — don't overthink it. First instinct.</p>
+<section class="slide white">
+  <div class="center">
+    <div class="kicker">Warm-Up · 3 Minutes</div>
+    <h2>Which shortcut would you trust first?</h2>
+    <div class="choice-line">
+      <div class="choice red-c"><h3>A person’s self-description</h3></div>
+      <div class="or">or</div>
+      <div class="choice blue-c"><h3>A label other people use for them</h3></div>
+    </div>
+    <p>Choose one quietly, then tell the person next to you: <strong>What kind of situation made you choose this answer?</strong></p>
+    <p class="cn">先快速做一个直觉选择，再和旁边的人交换理由。</p>
+  </div>
+</section>
+
+<section class="slide paper">
+  <div class="center">
+    <div class="kicker">Shared Inputs</div>
+    <h2>Four ways labels work</h2>
+    <div class="label-board">
+      <div class="label-card">
+        <span class="stamp red-s">Personal</span>
+        <h3>They give language</h3>
+        <p>MBTI is described by its publisher as a framework for preferences and interpersonal differences.</p>
+        <p class="small">Source: The Myers-Briggs Company, MBTI Facts.</p>
       </div>
-      <div class="card">
-        <div class="icon">👀</div>
-        <h4>Step 2: Compare</h4>
-        <p style="opacity:1">Show the person next to you. Did anyone write their MBTI? Their job title? Their zodiac?</p>
+      <div class="label-card">
+        <span class="stamp blue-s">Social</span>
+        <h3>They connect us to groups</h3>
+        <p>Social identity theory studies how group membership can become part of a person’s self-concept.</p>
+        <p class="small">Source: Tajfel & Turner, 1979.</p>
       </div>
-      <div class="card">
-        <div class="icon">✋</div>
-        <h4>Step 3: Quick vote</h4>
-        <p style="opacity:1">Raise your hand if at least ONE of your words was a category (introvert, Pisces, programmer...) rather than a trait.</p>
+      <div class="label-card">
+        <span class="stamp green-s">Ambiguous</span>
+        <h3>They can feel surprisingly accurate</h3>
+        <p>In Forer’s 1949 study, students rated a vague personality profile as highly accurate: 4.26 out of 5 on average.</p>
+        <p class="small">Source: Bertram R. Forer, 1949.</p>
+      </div>
+      <div class="label-card">
+        <span class="stamp yellow-s">Playful</span>
+        <h3>They are often entertainment, too</h3>
+        <p>A 2024 Pew survey found 30% of U.S. adults consult astrology, tarot, or fortune tellers at least once a year, often just for fun.</p>
+        <p class="small">Source: Pew Research Center, 2025 report.</p>
       </div>
     </div>
-    <p class="bottom-note"><strong>We label ourselves without thinking.</strong> Today we explore: why do we do it, and what happens when we do?</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 4: Three Concepts -->
-<div class="slide bg-white" data-slide="4">
-  <div class="tag tag-accent">THREE WORDS YOU NEED TODAY</div>
-  <h3>Three Concepts, One Question</h3>
-  <div class="body-content">
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">🏷️</div>
-        <h4>Identity Label</h4>
-        <div class="zh">身份标签</div>
-        <div class="role">A shortcut for who you are.</div>
-        <p>Any category you use to define yourself or others: MBTI type, zodiac sign, generation, nationality, job title, gender role.</p>
+<section class="slide white">
+  <div class="center">
+    <div class="kicker">Useful Language</div>
+    <h2>Words that keep the discussion open</h2>
+    <div class="vocab">
+      <div class="vocab-item">
+        <h3>self-label</h3>
+        <p>a word you choose for yourself</p>
       </div>
-      <div class="card">
-        <div class="icon">📦</div>
-        <h4>Stereotype</h4>
-        <div class="zh">刻板印象</div>
-        <div class="role">When a label becomes fixed.</div>
-        <p>When a label hardens into an expectation: "Engineers can't communicate." "Scorpios are vengeful." The shortcut stops updating.</p>
+      <div class="vocab-item">
+        <h3>assigned label</h3>
+        <p>a word others put on you</p>
       </div>
-      <div class="card">
-        <div class="icon">🔄</div>
-        <h4>Self-Fulfilling Prophecy</h4>
-        <div class="zh">自我实现预言</div>
-        <div class="role">The label shapes you back.</div>
-        <p>You act according to a label because you believe it. "I'm creative" → you try bolder things. "I'm not a math person" → you stop trying. It works both ways.</p>
+      <div class="vocab-item">
+        <h3>stereotype</h3>
+        <p>a fixed idea about a group</p>
+      </div>
+      <div class="vocab-item">
+        <h3>context</h3>
+        <p>the situation around a label</p>
+      </div>
+      <div class="vocab-item">
+        <h3>agency</h3>
+        <p>the ability to choose or change</p>
       </div>
     </div>
-    <p class="bottom-note" style="font-style:normal; color:#4A4A5E">Today's question: Do labels describe who we are — or do they shape who we become? Or both?</p>
+    <p class="small">Try: “In my experience...”, “It depends on...”, “That label can be useful when...”, “It becomes unfair when...”</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 5: Stats -->
-<div class="slide bg-dark" data-slide="5">
-  <div class="tag tag-gold">SOME NUMBERS THAT MIGHT SURPRISE YOU</div>
-  <h3 style="color:#FFF">Labels are everywhere — here's the proof.</h3>
-  <div class="body-content">
-    <div class="stats-row">
-      <div class="stat"><div class="stat-number">2.5M</div><div class="stat-label">people take the MBTI test every year — it's a $2B industry</div></div>
-      <div class="stat"><div class="stat-number">50%</div><div class="stat-label">of MBTI retakers get a different type within 5 weeks</div></div>
-      <div class="stat"><div class="stat-number">72%</div><div class="stat-label">of Chinese Gen-Z "somewhat believe" in zodiac compatibility</div></div>
-      <div class="stat"><div class="stat-number">16</div><div class="stat-label">personality types in MBTI — but 8 billion unique humans on Earth</div></div>
-    </div>
-    <p style="font-size:14px; opacity:0.5">Sources: CPP Inc., Journal of Personality Assessment, ChinaYouth Daily 2023</p>
-    <p style="font-size:clamp(20px,2.5vw,28px); margin-top:12px; color:#FAF7F2; font-style:italic">Interesting, right? Labels are clearly useful to us — the question is how and why.</p>
-  </div>
-</div>
-
-<!-- SLIDE 6: The Barnum Effect -->
-<div class="slide bg-cream" data-slide="6">
-  <div class="tag tag-accent">A FUN EXPERIMENT FROM 1948</div>
-  <h3>The Barnum Effect: Why labels "feel right"</h3>
-  <div class="body-content">
-    <p style="font-size:clamp(18px,2.2vw,26px); color:#4A4A5E; margin-bottom:16px">Psychologist Bertram Forer gave students a "personalized" personality assessment. They rated its accuracy <strong>4.3 out of 5</strong>. The catch? Everyone got the exact same text:</p>
-    <div class="grid-2">
-      <div class="barnum-box">
-        <div class="b-label">THE "PERSONALIZED" RESULT</div>
-        <div class="b-quote">"You have a need for other people to like and admire you, yet you tend to be critical of yourself. While you have some personality weaknesses, you are generally able to compensate（弥补） for them."</div>
-        <div class="b-reveal">Every student thought this was written just for them. Sound familiar?</div>
+<section class="slide blue">
+  <div class="center">
+    <div class="kicker">Round 1 · Everyday Experience</div>
+    <h2>Round 1: personal stories first</h2>
+    <div class="two-col">
+      <div class="scene">
+        <h3>Start small</h3>
+        <p>A first meeting, a team intro, a family joke, a school memory, a dating profile, a hometown comment, an online bio.</p>
       </div>
-      <div class="barnum-box">
-        <div class="b-label">WHAT THIS TELLS US</div>
-        <div class="b-quote">"You are an independent thinker — but sometimes you are extroverted, sociable, while at other times you are introverted and reserved."</div>
-        <div class="b-reveal">We WANT labels to fit. Our brains actively look for confirmation. That's not a flaw — it's how we make sense of ourselves.</div>
+      <div class="scene">
+        <h3>Group rhythm</h3>
+        <p>Pick one question. Each person shares a short example, then the group looks for patterns and differences.</p>
       </div>
     </div>
-    <p style="font-size:clamp(18px,2.2vw,26px); text-align:center; margin-top:16px"><strong>Labels feel accurate because we need them to. The interesting question is: what do we get from that feeling?</strong></p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 7: Round 1 Title -->
-<div class="slide bg-accent" data-slide="7">
-  <div class="round-title">
-    <div class="tag tag-white">ROUND 1 · 25 MIN</div>
-    <h1>The Labels<br>We Wear</h1>
-    <p class="subtitle" style="color:rgba(255,255,255,0.8)">4 questions · small groups of 5–7 · share your real experience</p>
-  </div>
-</div>
-
-<!-- SLIDE 8: Round 1 Questions -->
-<div class="slide bg-white" data-slide="8">
-  <div class="tag tag-accent">ROUND 1 · 4 QUESTIONS · 25 MIN</div>
-  <h3>The Labels We Wear</h3>
-  <div class="body-content">
-    <div class="grid-2x2">
-      <div class="q-card">
-        <div class="q-num">Q1</div>
-        <div class="q-title">Your Label Collection</div>
-        <p>What labels do you currently use to describe yourself? Which one do you use most often, and why?</p>
+<section class="slide paper">
+  <div class="center">
+    <div class="kicker">Round 1 · 4 Group Questions</div>
+    <h2>Start from real life, not right answers</h2>
+    <div class="question-grid">
+      <div class="question">
+        <strong>Question 1</strong>
+        <p>What is a label you sometimes use for yourself? In what situation does it feel useful?</p>
       </div>
-      <div class="q-card">
-        <div class="q-num">Q2</div>
-        <div class="q-title">The Label That Didn't Fit</div>
-        <p>Has someone ever labeled you with something that felt wrong? Did you push back, or quietly accept it?</p>
+      <div class="question red-q">
+        <strong>Question 2</strong>
+        <p>When has someone guessed something about you from a label? What did they get right or miss?</p>
       </div>
-      <div class="q-card">
-        <div class="q-num">Q3</div>
-        <div class="q-title">Comfort vs. Cage</div>
-        <p>Think of a label you enjoy. Has it ever stopped you from trying something new?</p>
+      <div class="question green-q">
+        <strong>Question 3</strong>
+        <p>What is a label people around you often joke about? Why does it feel funny, friendly, or uncomfortable?</p>
       </div>
-      <div class="q-card">
-        <div class="q-num">Q4</div>
-        <div class="q-title">Labeling Others</div>
-        <p>Have you ever judged someone based on their zodiac sign, hometown, or job title — before knowing them?</p>
+      <div class="question yellow-q">
+        <strong>Question 4</strong>
+        <p>Which label changes meaning depending on who says it, where they say it, or how well they know you?</p>
       </div>
     </div>
-    <p class="bottom-note" style="color:#4A4A5E">Take turns — each person answers Q1 before moving on. About 6 minutes per question.</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 9: Useful Expressions -->
-<div class="slide bg-cream" data-slide="9">
-  <div class="tag tag-accent">USEFUL EXPRESSIONS</div>
-  <h3 style="color:#2D1B4E">Phrases to use in your discussion 🗣️</h3>
-  <div class="body-content">
-    <div class="grid-2">
-      <div class="expr-box">
-        <h4>TALKING ABOUT LABELS</h4>
-        <div class="expr-item">"I identify as ___ , but it doesn't define me."</div>
-        <div class="expr-item">"People assume I'm ___ because of ___."</div>
-        <div class="expr-item">"That label is reductive / limiting / empowering."</div>
-        <div class="expr-item">"I used to believe that, but then ___."</div>
+<section class="slide white">
+  <div class="center">
+    <div class="kicker">Round 1 · Extend</div>
+    <h2>After everyone shares, compare the stories</h2>
+    <div class="label-board">
+      <div class="label-card">
+        <span class="stamp blue-s">Pattern</span>
+        <h3>Repeating patterns</h3>
+        <p>Notice shared labels, feelings, or situations across different stories.</p>
       </div>
-      <div class="expr-box">
-        <h4>AGREEING & PUSHING BACK</h4>
-        <div class="expr-item">"I see your point, but in my experience ___."</div>
-        <div class="expr-item">"That's a generalization — what about ___?"</div>
-        <div class="expr-item">"I think it depends on context."</div>
-        <div class="expr-item">"To play devil's advocate ___."</div>
+      <div class="label-card">
+        <span class="stamp green-s">Difference</span>
+        <h3>Changing meanings</h3>
+        <p>The same label can shift across age, region, job, relationship, or tone.</p>
+      </div>
+      <div class="label-card">
+        <span class="stamp red-s">Feeling</span>
+        <h3>Emotional tone</h3>
+        <p>Pride, relief, pressure, humor, distance, curiosity, or resistance.</p>
+      </div>
+      <div class="label-card">
+        <span class="stamp yellow-s">Try saying</span>
+        <h3>“For me, it means...”</h3>
+        <p>This phrase helps move from a fixed label to a personal story.</p>
       </div>
     </div>
-    <p class="bottom-note" style="color:#2D1B4E">Don't worry about being perfect — speak. <strong>The best discussions start with "I'm not sure, but..."</strong></p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 10: Transition -->
-<div class="slide bg-white" data-slide="10">
-  <div class="tag tag-accent">BEFORE ROUND 2 · GOING DEEPER</div>
-  <h3>Labels in the real world — three observations.</h3>
-  <div class="body-content">
-    <p style="font-size:clamp(18px,2.2vw,26px); color:#4A4A5E; margin-bottom:16px">Labels don't just live in our heads. They shape systems — sometimes helpfully, sometimes not. No judgment yet — just notice.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">💼</div>
-        <h4>Labels in Hiring</h4>
-        <p>Some Chinese job posts filter by MBTI or zodiac. Is that efficient shortcutting — or lazy thinking? Both sides have a point.</p>
+<section class="slide dark">
+  <div class="center">
+    <div class="kicker">Round 2 · 3 Group Questions</div>
+    <h2>Move from experience to reflection</h2>
+    <div class="tag-cloud">
+      <span class="tag red-t">1. why it happens</span>
+      <span class="tag blue-t">2. what it does</span>
+      <span class="tag green-t">3. what we can do</span>
+      <span class="tag yellow-t">no single answer</span>
+    </div>
+  </div>
+</section>
+
+<section class="slide paper">
+  <div class="center">
+    <div class="kicker">Round 2 · Question 1</div>
+    <h2>Why do labels become so common?</h2>
+    <div class="discussion-prompts four">
+      <div class="prompt-box">
+        <h3>Cognitive shortcut</h3>
+        <p>We group information to reduce complexity and make fast sense of people.</p>
       </div>
-      <div class="card">
-        <div class="icon">🏥</div>
-        <h4>Labels That Unlock Help</h4>
-        <p>An ADHD diagnosis can change a life — access to support, medication, self-understanding. Here, the label IS the solution.</p>
+      <div class="prompt-box">
+        <h3>Belonging</h3>
+        <p>Labels can signal “people like me” and make identity easier to share.</p>
       </div>
-      <div class="card">
-        <div class="icon">🔄</div>
-        <h4>Labels That Stick</h4>
-        <p>Research shows: remind someone of a stereotype about their group, and their performance drops（刻板印象威胁）. The label becomes the reality.</p>
+      <div class="prompt-box">
+        <h3>Social script</h3>
+        <p>Groups repeat familiar categories: hometown, job, age, MBTI, zodiac, school.</p>
+      </div>
+      <div class="prompt-box">
+        <h3>Efficiency</h3>
+        <p>Labels save time in introductions, matching, hiring, dating, and online profiles.</p>
       </div>
     </div>
-    <p style="font-size:14px; opacity:0.5; margin-top:12px">Sources: Steele & Aronson (1995), South China Morning Post (2023)</p>
-    <p class="bottom-note" style="color:#4A4A5E">Round 2 explores: why does this happen, and what — if anything — should we do about it?</p>
+    <p class="small">Small-group task: rank these explanations from most convincing to least convincing, then add one explanation your group thinks is missing.</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 11: Round 2 Title -->
-<div class="slide bg-dark" data-slide="11">
-  <div class="round-title">
-    <div class="tag tag-gold">ROUND 2 · 25 MIN</div>
-    <h1 style="color:#FFF">The Bigger<br>Picture</h1>
-    <p class="subtitle" style="color:rgba(255,255,255,0.7)">3 questions · switch groups · go deeper</p>
-  </div>
-</div>
-
-<!-- SLIDE 12: Round 2 Q1 -->
-<div class="slide bg-white" data-slide="12">
-  <div class="tag tag-accent">ROUND 2 · QUESTION 1</div>
-  <h3 style="margin-bottom:clamp(16px,2vh,28px)">Where does the labeling instinct come from?</h3>
-  <div class="body-content" style="padding-top:0">
-    <p style="font-size:clamp(18px,2vw,24px); color:#4A4A5E; margin-bottom:12px; line-height:1.4">Now zoom out: why do humans label at all? Four forces are at work — each with interesting tension.</p>
-    <div class="grid-2x2" style="margin-top:8px; gap:clamp(10px,1.5vh,18px)">
-      <div class="card" style="padding:clamp(14px,1.8vh,24px)">
-        <div class="icon" style="margin-bottom:6px">🧠</div>
-        <h4>Cognitive Shortcut（认知捷径）</h4>
-        <p>Our brains NEED categories. But when does a shortcut harden into a stereotype?</p>
+<section class="slide white">
+  <div class="center">
+    <div class="kicker">Round 2 · Question 2</div>
+    <h2>Do labels help us or limit us?</h2>
+    <div class="debate-board">
+      <div class="debate-side help">
+        <h3>HELP</h3>
+        <p>Labels give language, belonging, confidence, and useful starting points.</p>
+        <p>They can help people explain preferences, needs, boundaries, and background faster.</p>
       </div>
-      <div class="card" style="padding:clamp(14px,1.8vh,24px)">
-        <div class="icon" style="margin-bottom:6px">🤝</div>
-        <h4>Tribal Belonging（部落归属）</h4>
-        <p>Labels create "my people." But every tribe creates outsiders. Is belonging always exclusion?</p>
-      </div>
-      <div class="card" style="padding:clamp(14px,1.8vh,24px)">
-        <div class="icon" style="margin-bottom:6px">💰</div>
-        <h4>Commercial Design（商业设计）</h4>
-        <p>MBTI, zodiac apps, personality quizzes — genuine self-discovery, or manufactured identity?</p>
-      </div>
-      <div class="card" style="padding:clamp(14px,1.8vh,24px)">
-        <div class="icon" style="margin-bottom:6px">🔄</div>
-        <h4>Self-Fulfilling Loop（自我实现）</h4>
-        <p>"I'm not a math person" → stop trying. Does the label describe reality, or CREATE it?</p>
+      <div class="debate-side limit">
+        <h3>LIMIT</h3>
+        <p>Labels create assumptions, stereotypes, and frozen first impressions.</p>
+        <p>They can reduce curiosity and make it harder for people to change or be complex.</p>
       </div>
     </div>
-    <p class="bottom-note" style="color:#E85D3A; margin-top:14px">Each group picks ONE force to explore: what's the upside, and what's the risk? Report back.</p>
+    <div class="debate-tip">
+      <p class="small">Mini debate: split into two sides for 4 minutes. Use examples from Round 1, then switch sides and make the strongest argument for the opposite view.</p>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 13: Round 2 Q2 -->
-<div class="slide bg-white" data-slide="13">
-  <div class="tag tag-accent">ROUND 2 · QUESTION 2 · DEBATE</div>
-  <h3>Do Labels Help or Harm?</h3>
-  <div class="body-content">
-    <p style="font-size:clamp(20px,2.5vw,28px); color:#4A4A5E; margin-bottom:16px; line-height:1.6">Now that we know WHY labels form — are they a net positive or negative（利大于弊还是弊大于利）? Take a side and defend it.</p>
-    <div class="grid-2">
-      <div class="debate-side side-a">
-        <h4>🏷️ LABELS HELP US</h4>
-        <ul>
-          <li>They give language to feelings we couldn't name</li>
-          <li>They build community ("finding my people")</li>
-          <li>Medical labels (ADHD, autism) unlock real support</li>
-          <li>They reduce social friction（社交摩擦） — faster to connect</li>
-        </ul>
+<section class="slide green">
+  <div class="center">
+    <div class="kicker">Round 2 · Question 3</div>
+    <h2>How can we use labels without putting people in a box?</h2>
+    <div class="discussion-prompts four">
+      <div class="prompt-box">
+        <h3>Add context</h3>
+        <p>“For me, it means...” “It helps explain...” “It does not mean...”</p>
       </div>
-      <div class="debate-side side-b">
-        <h4>📦 LABELS LIMIT US</h4>
-        <ul>
-          <li>They reduce complex humans to a single story</li>
-          <li>They create in-groups and out-groups（内群体和外群体）</li>
-          <li>They become excuses to stop growing（不再成长的借口）</li>
-          <li>They harden into stereotypes when applied to others</li>
-        </ul>
+      <div class="prompt-box">
+        <h3>Ask better</h3>
+        <p>Ask for the story behind the label before assuming the meaning.</p>
+      </div>
+      <div class="prompt-box">
+        <h3>Make it optional</h3>
+        <p>Let people choose whether to use a label, explain it, skip it, or change it.</p>
+      </div>
+      <div class="prompt-box">
+        <h3>Keep updating</h3>
+        <p>Leave room for people to grow, contradict themselves, or surprise you later.</p>
       </div>
     </div>
-    <p class="bottom-note" style="color:#E85D3A">Discussion tip: Try defending the side you DON'T agree with first. Then switch back.</p>
+    <p class="small">Group challenge: create two useful sentences: one for introducing yourself, and one for responding to someone else’s label.</p>
   </div>
-</div>
+</section>
 
-<!-- SLIDE 14: Round 2 Q3 -->
-<div class="slide bg-cream" data-slide="14">
-  <div class="tag tag-accent">ROUND 2 · QUESTION 3 · AWARENESS IN ACTION</div>
-  <h3 style="color:#2D1B4E">Using labels consciously.</h3>
-  <div class="body-content">
-    <p style="font-size:clamp(20px,2.5vw,28px); color:#4A4A5E; margin-bottom:12px; line-height:1.6">Labels aren't inherently bad — but using them <em>unconsciously</em> is. The goal isn't to stop labeling. It's to notice when we do it, and choose whether it serves us.</p>
-    <p style="font-size:clamp(16px,1.8vw,22px); font-weight:bold; color:#E85D3A; margin-bottom:12px; letter-spacing:1px">THREE AWARENESS PRACTICES:</p>
-    <ul class="action-list">
-      <li>Before using a label, ask: "Is this a door（让我探索更多）or a wall（让我停止探索）?"</li>
-      <li>When meeting someone new, notice your first assumption — then question it</li>
-      <li>When describing yourself, try: "I tend to ___" instead of "I am a ___"</li>
-    </ul>
-    <p style="font-size:clamp(20px,2.5vw,28px); margin-top:24px; text-align:center; color:#2D1B4E"><strong>Share with the group: "One label I want to hold more loosely（轻轻拿起） is ___."</strong></p>
-  </div>
-</div>
-
-<!-- SLIDE 15: Blind Box Questions -->
-<div class="slide bg-white" data-slide="15" style="padding:30px 40px; overflow-y:auto">
-  <div style="text-align:center; margin-bottom:16px">
-    <div class="tag tag-accent">A FINAL INVITATION</div>
-    <h3 style="font-family:Georgia,serif">Open Your Blind Box 🎁</h3>
-    <p style="font-size:clamp(16px,1.8vw,22px); color:#4A4A5E; font-style:italic; margin-top:6px">Six boxes, six questions. Pick one — you won't know what's inside until you tap. Answer in 2 minutes or less.</p>
-  </div>
-  <div class="body-content">
-    <div class="bestiary-grid" id="bestiary"></div>
-  </div>
-  <p style="font-size:14px; text-align:center; color:#4A4A5E; margin-top:12px; font-style:italic">No right answers. Only honest ones. 🎲</p>
-</div>
-
-<!-- SLIDE 16: Closing Quote -->
-<div class="slide bg-dark" data-slide="16">
-  <div class="quote-slide">
-    <div style="display:flex; flex-direction:column; align-items:flex-start; max-width:750px; width:100%">
-      <div class="quote-mark">"</div>
-      <p class="quote" style="margin-left:-4px">The single story creates stereotypes, and the problem with stereotypes is not that they are untrue, but that they are incomplete. They make one story become the only story.</p>
-      <p class="quote-author" style="align-self:flex-end">— Chimamanda Ngozi Adichie</p>
+<section class="slide paper">
+  <div class="center">
+    <div class="kicker">Open Questions · Flip Cards</div>
+    <h2>Pick a sticker, open a new conversation</h2>
+    <div class="flip-grid" id="flipGrid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🧩</div><div class="card-name">Puzzle</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What is one small thing people often misunderstand about you?</p><div class="cn">别人常常误解你的一个小地方是什么？</div></div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🎧</div><div class="card-name">Playlist</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What kind of music fits your current mood this week?</p><div class="cn">什么音乐最符合你这周的状态？</div></div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🗺️</div><div class="card-name">Map</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What place has shaped the way you talk, think, or relax?</p><div class="cn">哪个地方影响了你说话、思考或放松的方式？</div></div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🕰️</div><div class="card-name">Clock</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What is something you used to care about more than you do now?</p><div class="cn">有什么事你以前更在意，现在没那么在意了？</div></div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🪪</div><div class="card-name">Pass</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What is a question you wish people asked more often?</p><div class="cn">你希望别人更常问你的一个问题是什么？</div></div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="face front"><div class="symbol">🧭</div><div class="card-name">Compass</div><div class="hint">Click to flip</div></div>
+          <div class="face back"><p>What kind of person do you want to become more like?</p><div class="cn">你希望自己更接近哪种人？</div></div>
+        </div>
+      </div>
     </div>
-    <div class="separator" style="margin:20px auto"></div>
-    <p style="font-size:clamp(20px,2.5vw,28px); opacity:0.8; margin-top:20px">You are not your label. You are the whole story.</p>
-    <p style="font-size:clamp(20px,2.5vw,28px); color:#F0A500; margin-top:8px">你不是一个标签，你是一个完整的故事。</p>
   </div>
-</div>
+</section>
 
-<!-- Navigation -->
-<nav class="nav">
-  <button id="prevBtn" onclick="navigate(-1)" disabled>&#8249;</button>
-  <div class="dots" id="dots"></div>
-  <button id="nextBtn" onclick="navigate(1)">&#8250;</button>
-  <span class="page-info" id="pageInfo">1 / 16</span>
+<section class="slide dark">
+  <div class="center">
+    <div class="kicker">Closing</div>
+    <div class="quote">“I contain multitudes.”</div>
+    <p class="small">Walt Whitman, <em>Song of Myself</em>, 1855.</p>
+    <p class="wide">A label can start a conversation. It does not have to finish one.</p>
+    <p class="cn">一个标签可以开启理解，但不必终结理解。</p>
+    <div class="source-list">
+      <p>Sources: The Myers-Briggs Company, “MBTI Facts”; Henri Tajfel & John Turner, “An Integrative Theory of Intergroup Conflict,” 1979; Bertram R. Forer, “The Fallacy of Personal Validation,” 1949; Pew Research Center, “Astrology, Tarot Cards or Fortune Tellers Used by 30% of Americans,” May 21, 2025.</p>
+    </div>
+  </div>
+</section>
+
+<nav class="nav" aria-label="slide navigation">
+  <button id="prevBtn" aria-label="Previous slide">‹</button>
+  <div class="counter" id="counter">1 / 14</div>
+  <button id="nextBtn" aria-label="Next slide">›</button>
 </nav>
 
 <script>
-const slides = document.querySelectorAll('.slide');
-const total = slides.length;
-let cur = 0;
+const slides = Array.from(document.querySelectorAll(".slide"));
+const progress = document.getElementById("progress");
+const counter = document.getElementById("counter");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+let index = 0;
+let wheelLocked = false;
 
-const dotsEl = document.getElementById('dots');
-for (let i = 0; i < total; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.onclick = () => goTo(i);
-  dotsEl.appendChild(d);
-}
-
-function update() {
-  slides.forEach((s, i) => {
-    s.classList.remove('active', 'prev');
-    if (i === cur) s.classList.add('active');
-    else if (i < cur) s.classList.add('prev');
+function showSlide(nextIndex) {
+  index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+    slide.classList.toggle("prev", i < index);
   });
-  document.getElementById('prevBtn').disabled = cur === 0;
-  document.getElementById('nextBtn').disabled = cur === total - 1;
-  document.getElementById('pageInfo').textContent = (cur + 1) + ' / ' + total;
-  document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
-  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+  counter.textContent = `${index + 1} / ${slides.length}`;
 }
 
-function navigate(dir) { const n = cur + dir; if (n >= 0 && n < total) { cur = n; update(); } }
-function goTo(i) { cur = i; update(); }
+function nextSlide() { showSlide(index + 1); }
+function prevSlide() { showSlide(index - 1); }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); navigate(1); }
-  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1); }
+prevBtn.addEventListener("click", prevSlide);
+nextBtn.addEventListener("click", nextSlide);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight" || event.key === " ") {
+    event.preventDefault();
+    nextSlide();
+  }
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    prevSlide();
+  }
 });
 
-let tx = 0;
-document.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
-document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1); });
+document.addEventListener("wheel", (event) => {
+  if (wheelLocked || Math.abs(event.deltaY) < 24) return;
+  wheelLocked = true;
+  if (event.deltaY > 0) nextSlide();
+  if (event.deltaY < 0) prevSlide();
+  window.setTimeout(() => { wheelLocked = false; }, 560);
+}, { passive: true });
 
-let wt;
-document.addEventListener('wheel', e => { if (wt) return; wt = setTimeout(() => { wt = null; }, 500); navigate(e.deltaY > 0 ? 1 : -1); });
-
-// Blind Box Questions
-const creatures = [
-  { icon:'\u{1F419}', name:'OCTOPUS', latin:'the shape-shifter', q:'What’s something you used to be sure about, but now you’re not so sure anymore?', zh:'有什么事你曾经很确定，但现在不那么确定了？' },
-  { icon:'\u{1F40B}', name:'WHALE', latin:'the deep diver', q:'What is one question you keep coming back to in life — something you still haven’t figured out?', zh:'你人生中有什么问题是反复在想、但至今没有答案的？' },
-  { icon:'\u{1F988}', name:'SHARK', latin:'the misunderstood', q:'What’s a popular opinion that you secretly disagree with?', zh:'有什么大家普遍认同的观点，你其实暗暗不同意？' },
-  { icon:'\u{1F420}', name:'CLOWNFISH', latin:'the colorful one', q:'What makes you laugh the hardest — and who are you usually with when it happens?', zh:'什么事能让你笑到停不下来？那时候你通常和谁在一起？' },
-  { icon:'\u{1F991}', name:'SQUID', latin:'the ink-sprayer', q:'If you could send a message to yourself five years ago, what would you say in one sentence?', zh:'如果能给五年前的自己发一条消息，你会说什么？' },
-  { icon:'\u{1F421}', name:'PUFFERFISH', latin:'the surprising one', q:'What’s something you’re proud of that no one would put on a resume?', zh:'有什么让你自豪的事，是永远不会出现在简历上的？' }
-];
-const bestiaryEl = document.getElementById('bestiary');
-creatures.sort(() => Math.random() - 0.5).forEach(c => {
-  const el = document.createElement('div');
-  el.className = 'creature';
-  el.innerHTML = `<div class="creature-inner"><div class="creature-face creature-front"><div class="c-icon">${c.icon}</div><div class="c-name">${c.name}</div><div class="c-latin">${c.latin}</div><div class="c-hint">tap to reveal</div></div><div class="creature-face creature-back"><div class="c-q">“${c.q}”</div><div class="c-qzh">${c.zh}</div></div></div>`;
-  el.onclick = () => el.classList.toggle('flipped');
-  bestiaryEl.appendChild(el);
+document.querySelectorAll(".flip-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
 });
+
+function shuffleFlipCards() {
+  const grid = document.getElementById("flipGrid");
+  const cards = Array.from(grid.children);
+  for (let i = cards.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    grid.appendChild(cards[j]);
+    cards.splice(j, 1);
+  }
+}
+
+shuffleFlipCards();
+showSlide(0);
 </script>
 </body>
 </html>
