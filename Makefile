@@ -9,6 +9,7 @@ help:
 	@echo "  build-drafts Build Hugo site (include drafts/future)"
 	@echo "  clean        Remove public/ and resources/_gen/"
 	@echo "  deploy       Push to origin master"
+	@echo "  publish      Add all, commit, and push"
 	@echo "  new-post     Create posts/new-post.md"
 	@echo "  new-deep     Create deep/new-deep.html"
 
@@ -44,6 +45,13 @@ clean:
 .PHONY: deploy
 deploy:
 	@echo "Deploying Hugo site to GitHub Pages..."
+	git push origin master
+
+.PHONY: publish
+publish:
+	@echo "Adding, committing and pushing..."
+	git add -A
+	git commit -m "Publish updates"
 	git push origin master
 
 .PHONY: new-post
