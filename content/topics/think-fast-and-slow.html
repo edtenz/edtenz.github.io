@@ -1,0 +1,1291 @@
+---
+title: "思考，快与慢"
+date: 2026-05-30
+summary: "卡尼曼《思考，快与慢》读书总结：双系统认知框架、启发法与偏见清单、前景理论，以及如何在不确定性中做出更稳健的决策。"
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思考，快与慢 — 读书总结</title>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #faf9f7;
+  --text: #1a1a1a;
+  --accent: #1a6b4a;
+  --gold: #b8860b;
+  --red: #a63d2f;
+  --dark-bg: #1a1a1a;
+  --dark-text: #f0ede8;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* Navigation */
+#nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+#nav:hover { opacity: 1; }
+#nav button {
+  background: rgba(26,26,26,0.7);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+#nav button:hover { background: var(--accent); }
+#nav .counter {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Slide Container */
+#slides-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(2rem, 5vw, 5rem) clamp(2rem, 8vw, 10rem);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition), transform var(--transition);
+  pointer-events: none;
+  overflow-y: auto;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dark Slides */
+.slide.dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+.slide.dark .counter { color: var(--dark-text); }
+
+/* Typography */
+.slide h1 {
+  font-family: Georgia, "Noto Serif SC", "Source Han Serif SC", serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.slide h2 {
+  font-family: Georgia, "Noto Serif SC", "Source Han Serif SC", serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.slide h3 {
+  font-family: Georgia, "Noto Serif SC", "Source Han Serif SC", serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.slide p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  max-width: 750px;
+  text-align: left;
+}
+.slide .subtitle {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+.slide .tag {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+.slide.dark .tag {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Quote Style */
+.quote-block {
+  border-left: 4px solid var(--gold);
+  padding: 1.5rem 2rem;
+  background: rgba(184,134,11,0.05);
+  border-radius: 0 8px 8px 0;
+  max-width: 700px;
+  margin: 1rem 0;
+}
+.quote-block p {
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  line-height: 2;
+}
+.slide.dark .quote-block {
+  border-left-color: var(--gold);
+  background: rgba(184,134,11,0.1);
+}
+
+/* Versus Layout */
+.versus {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 800px;
+  width: 100%;
+}
+.versus .side {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+.versus .side h3 {
+  margin-bottom: 0.6rem;
+}
+.versus .side.left h3 { color: var(--accent); }
+.versus .side.right h3 { color: var(--red); }
+.versus .divider {
+  font-size: 1.5rem;
+  color: var(--gold);
+  align-self: center;
+  font-weight: bold;
+}
+.slide.dark .versus .side {
+  background: rgba(255,255,255,0.06);
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Card Layout */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  width: 100%;
+}
+.cards .card {
+  background: var(--card-bg);
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border-top: 3px solid var(--accent);
+}
+.cards .card h4 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.cards .card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.slide.dark .cards .card {
+  background: rgba(255,255,255,0.06);
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 3px solid var(--gold);
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: rgba(26,107,74,0.06);
+  border: 1px solid rgba(26,107,74,0.2);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  max-width: 700px;
+  margin: 1rem 0;
+}
+.highlight-box.gold {
+  background: rgba(184,134,11,0.06);
+  border-color: rgba(184,134,11,0.3);
+}
+.highlight-box.red {
+  background: rgba(166,61,47,0.06);
+  border-color: rgba(166,61,47,0.2);
+}
+.slide.dark .highlight-box {
+  background: rgba(26,107,74,0.15);
+  border-color: rgba(26,107,74,0.4);
+}
+
+/* Big Stat */
+.big-stat {
+  font-family: Georgia, serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+  margin: 1rem 0;
+}
+.slide.dark .big-stat { color: var(--gold); }
+
+/* Grid 2x2 */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 750px;
+  width: 100%;
+}
+.grid-2x2 .cell {
+  padding: 1.2rem;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+.grid-2x2 .cell h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.grid-2x2 .cell p { font-size: 0.88rem; line-height: 1.6; }
+.grid-2x2 .cell.green { border-left: 3px solid var(--accent); }
+.grid-2x2 .cell.gold { border-left: 3px solid var(--gold); }
+.grid-2x2 .cell.red { border-left: 3px solid var(--red); }
+.slide.dark .grid-2x2 .cell {
+  background: rgba(255,255,255,0.05);
+  box-shadow: none;
+}
+
+/* Section number */
+.section-num {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
+/* Flow map */
+.flow-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  max-width: 750px;
+  margin: 1rem 0;
+}
+.flow-map .node {
+  background: var(--card-bg);
+  border: 1px solid rgba(26,107,74,0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  box-shadow: var(--card-shadow);
+}
+.flow-map .arrow {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+/* List styled */
+.insight-list {
+  list-style: none;
+  max-width: 650px;
+}
+.insight-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.7;
+}
+.insight-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.insight-list li.gold::before { background: var(--gold); }
+.insight-list li.red::before { background: var(--red); }
+
+/* Formula */
+.formula {
+  font-family: Georgia, serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  padding: 1rem 2rem;
+  background: rgba(26,26,26,0.04);
+  border-radius: 6px;
+  margin: 1rem 0;
+  text-align: center;
+  max-width: 700px;
+}
+.slide.dark .formula {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Bottom text */
+.bottom-note {
+  margin-top: 1.5rem;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  opacity: 0.6;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .versus { grid-template-columns: 1fr; }
+  .versus .divider { text-align: center; }
+  .cards { grid-template-columns: 1fr; }
+  .grid-2x2 { grid-template-columns: 1fr; }
+  .slide { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<div id="slides-container">
+
+<!-- Slide 1: Title (dark) -->
+<div class="slide dark active" data-slide="1">
+  <div class="section-num">Personal Reading Summary</div>
+  <h1>《思考，快与慢》</h1>
+  <p style="text-align:center; opacity:0.8; margin-top:0.5rem;">丹尼尔 &middot; 卡尼曼</p>
+  <p class="subtitle" style="text-align:center; margin-top:1.5rem; max-width:500px;">认知偏差、决策心理学与行为经济学的奠基之作</p>
+</div>
+
+<!-- Slide 2: Quote -->
+<div class="slide" data-slide="2">
+  <span class="tag">全书一句话</span>
+  <div class="quote-block">
+    <p>"你的大脑不是为了追求真相而设计的，而是为了快速做出'够用'的判断而设计的——这套机制在日常生活中大多数时候运转良好，但在涉及概率、风险、金钱和幸福的重要决策中，它会系统性地把你带偏。"</p>
+  </div>
+</div>
+
+<!-- Slide 3: Structure Map -->
+<div class="slide" data-slide="3">
+  <h2>全书结构地图</h2>
+  <div class="flow-map">
+    <div class="node"><strong>一</strong><br>双系统</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node"><strong>二</strong><br>启发与偏见</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node"><strong>三</strong><br>过度自信</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node"><strong>四</strong><br>选择与风险</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node"><strong>五</strong><br>两个自我</div>
+  </div>
+  <p class="bottom-note">从认知机制出发，经由偏差清单，到决策理论，最终回归幸福本身</p>
+</div>
+
+<!-- Slide 4: Section 1 Title (dark) -->
+<div class="slide dark" data-slide="4">
+  <div class="section-num">第一部分</div>
+  <h1>你的大脑是怎么工作的</h1>
+  <p class="subtitle" style="text-align:center;">认知的双系统</p>
+</div>
+
+<!-- Slide 5: Versus -->
+<div class="slide" data-slide="5">
+  <span class="tag">核心框架</span>
+  <h2>双系统</h2>
+  <div class="versus">
+    <div class="side left">
+      <h3>系统1</h3>
+      <ul class="insight-list">
+        <li>快速、自动</li>
+        <li>几乎不费力</li>
+        <li>随时在线</li>
+        <li>无法关闭</li>
+      </ul>
+    </div>
+    <div class="divider">vs</div>
+    <div class="side right">
+      <h3>系统2</h3>
+      <ul class="insight-list">
+        <li class="red">缓慢、费力</li>
+        <li class="red">需要注意力</li>
+        <li class="red">有意识调用</li>
+        <li class="red">经常偷懒</li>
+      </ul>
+    </div>
+  </div>
+  <p class="bottom-note">核心：系统1先出手，系统2大多数时候只是签字放行</p>
+</div>
+
+<!-- Slide 6: Highlight Box -->
+<div class="slide" data-slide="6">
+  <span class="tag">联想激活</span>
+  <div class="highlight-box">
+    <h3>"香蕉 + 呕吐"</h3>
+    <p style="margin-top:0.8rem;">你的大脑瞬间构建了一个画面和身体反应。联想激活不仅是想法层面，它同时触发情绪和身体反应。</p>
+    <p style="margin-top:0.6rem; color:var(--accent); font-weight:600;">系统1的工作方式就是联想激活——一个词点燃一整片神经网络。</p>
+  </div>
+</div>
+
+<!-- Slide 7: Priming -->
+<div class="slide" data-slide="7">
+  <span class="tag">启动效应</span>
+  <h2>你刚接触到的信息<br>会影响接下来的行为</h2>
+  <p style="margin-top:1rem;">老年相关词汇 &rarr; 走路变慢</p>
+  <p style="margin-top:0.5rem;">金钱相关暗示 &rarr; 更自私的行为</p>
+  <p style="margin-top:0.5rem;">微笑动作 &rarr; 觉得笑话更好笑</p>
+  <p class="bottom-note">你不知道的信息在控制你的行为——这不是"影响"，是"塑造"</p>
+</div>
+
+<!-- Slide 8: Cognitive Ease -->
+<div class="slide" data-slide="8">
+  <span class="tag">认知放松</span>
+  <h2>熟悉 = 好感 = 信任 = 可信</h2>
+  <p style="margin-top:1rem;">曝光效应：看得越多 &rarr; 越喜欢 &rarr; 越觉得可信</p>
+  <div class="highlight-box gold" style="margin-top:1.5rem;">
+    <p>广告的核心机制不是说服你，而是让你对品牌产生"认知放松"——熟悉感会自动被大脑转译为好感和安全感。</p>
+  </div>
+</div>
+
+<!-- Slide 9: WYSIATI -->
+<div class="slide dark" data-slide="9">
+  <span class="tag">关键概念</span>
+  <h1>WYSIATI</h1>
+  <p style="text-align:center; color:var(--gold); font-size:clamp(1rem,1.5vw,1.2rem);">What You See Is All There Is</p>
+  <p style="text-align:center; margin-top:1.5rem; max-width:600px;">系统1用手边能找到的信息构建自洽故事，然后对这个故事充满信心。</p>
+  <p style="text-align:center; margin-top:1rem; max-width:600px; opacity:0.8;">它不会主动想"我还缺什么信息"——信息够不够用不重要，故事说不说得通才重要。</p>
+</div>
+
+<!-- Slide 10: Meaning Machine -->
+<div class="slide" data-slide="10">
+  <span class="tag">快速得出结论</span>
+  <h2>系统1是一台意义生成机器</h2>
+  <div class="highlight-box" style="margin-top:1rem;">
+    <p>同一个模糊符号：</p>
+    <p style="margin-top:0.5rem;font-size:1.3rem;">在 A <strong style="font-size:1.8rem;">B</strong> C 语境中 &rarr; 自动解读为 <strong>B</strong></p>
+    <p style="margin-top:0.3rem;font-size:1.3rem;">在 12 <strong style="font-size:1.8rem;">B</strong> 14 语境中 &rarr; 自动解读为 <strong>13</strong></p>
+  </div>
+  <p class="bottom-note">系统1不只是"快"——它在你意识到之前就已经替你决定了"这是什么"</p>
+</div>
+
+<!-- Slide 11: Believing -->
+<div class="slide" data-slide="11">
+  <span class="tag">理解即相信</span>
+  <h2>相信是默认的<br>怀疑需要额外努力</h2>
+  <p style="margin-top:1rem;">吉尔伯特实验：认知负荷下，人会把标记为"假"的陈述也当成真的。</p>
+  <div class="highlight-box red" style="margin-top:1rem;">
+    <p><strong>你在什么状态下接收信息，和信息本身一样重要。</strong></p>
+    <p style="margin-top:0.5rem;">疲惫、分心、情绪化时——系统2无力执行"怀疑"这项耗能操作。</p>
+  </div>
+</div>
+
+<!-- Slide 12: Causal Thinking -->
+<div class="slide" data-slide="12">
+  <span class="tag">因果思维</span>
+  <h2>人天生不能容忍"没有原因"</h2>
+  <p style="margin-top:1rem;">婴儿几个月大就用因果框架理解世界。</p>
+  <p style="margin-top:0.5rem;">海德实验：人给几何图形编出爱恨情仇。</p>
+  <p style="margin-top:0.5rem;">宗教的起源之一：系统1宁可编造原因也不接受随机性。</p>
+  <p class="bottom-note">"为什么"是系统1最强烈的本能需求——即使答案是错的，有答案就比没答案舒服</p>
+</div>
+
+<!-- Slide 13: Substitution -->
+<div class="slide dark" data-slide="13">
+  <span class="tag">核心洞察</span>
+  <h2>替代机制</h2>
+  <p style="text-align:center; margin-top:1rem; max-width:600px;">面对难问题时，系统1偷偷把它换成一个容易的问题。</p>
+  <div class="quote-block" style="margin-top:1.5rem;">
+    <p>"你有多幸福？" &rarr; 被替换成 &rarr; "你最近约会怎样？"</p>
+  </div>
+  <p style="text-align:center; margin-top:1rem; opacity:0.8; max-width:550px;">你得到了一个流畅的答案——但它是对错误问题的回答。</p>
+</div>
+
+<!-- Slide 14: Affect Heuristic -->
+<div class="slide" data-slide="14">
+  <span class="tag">情感启发</span>
+  <h2>感觉好 &rarr; 高估收益 + 低估风险</h2>
+  <p style="margin-top:1rem;">你对一家公司有好感，就会同时高估收益前景和低估风险。</p>
+  <p style="margin-top:0.8rem;">调研发现：风险判断和收益判断呈<strong>负相关</strong>。</p>
+  <div class="highlight-box red" style="margin-top:1rem;">
+    <p>但在现实中，高收益和高风险往往是<strong>正相关</strong>的——你的感觉让你看到的恰恰相反。</p>
+  </div>
+</div>
+
+<!-- Slide 15: Part 1 Summary (cards) -->
+<div class="slide" data-slide="15">
+  <span class="tag">第一部分小结</span>
+  <h3>系统1的核心特征</h3>
+  <div class="cards" style="margin-top:1rem;">
+    <div class="card"><h4>自动运行</h4><p>无法关闭，持续输出</p></div>
+    <div class="card"><h4>联想激活</h4><p>一个线索点燃一片网络</p></div>
+    <div class="card"><h4>默认相信</h4><p>怀疑是奢侈品</p></div>
+    <div class="card"><h4>寻找因果</h4><p>宁编原因不接受随机</p></div>
+    <div class="card"><h4>替代难题</h4><p>偷换问题而不自知</p></div>
+    <div class="card"><h4>感觉代替分析</h4><p>喜欢=安全=正确</p></div>
+  </div>
+  <p class="bottom-note">你以为你在思考，其实大部分时候是系统1在替你"感觉"</p>
+</div>
+
+<!-- Slide 16: Section 2 Title (dark) -->
+<div class="slide dark" data-slide="16">
+  <div class="section-num">第二部分</div>
+  <h1>你的直觉在哪里跑偏</h1>
+  <p class="subtitle" style="text-align:center;">启发法与偏见</p>
+</div>
+
+<!-- Slide 17: Law of Small Numbers -->
+<div class="slide" data-slide="17">
+  <span class="tag">小数定律</span>
+  <h2>系统1没有"样本量"这个概念</h2>
+  <p style="margin-top:1rem;">"我认识的三个素食者都很健康"</p>
+  <p style="margin-top:0.3rem; text-align:center;">vs</p>
+  <p style="margin-top:0.3rem;">"一项追踪十万人的研究"</p>
+  <p style="margin-top:1rem; color:var(--red); font-weight:600; text-align:center;">在系统1看来，这两者的说服力差不多。</p>
+  <p class="bottom-note">小窗口看到的风景和大窗口看到的可能完全不同</p>
+</div>
+
+<!-- Slide 18: Small Sample Extremes (versus) -->
+<div class="slide" data-slide="18">
+  <span class="tag">小样本的极端值</span>
+  <div class="versus">
+    <div class="side left">
+      <h3 style="color:var(--accent);">肾癌发病率最低</h3>
+      <p>农村地区</p>
+      <p style="margin-top:0.5rem; opacity:0.7;">"因为空气好、生活压力小"</p>
+    </div>
+    <div class="divider">但</div>
+    <div class="side right">
+      <h3 style="color:var(--red);">肾癌发病率最高</h3>
+      <p>也是农村地区</p>
+      <p style="margin-top:0.5rem; opacity:0.7;">不需要因果解释</p>
+    </div>
+  </div>
+  <p class="bottom-note">小样本天然产生极端值——这是数学，不是故事</p>
+</div>
+
+<!-- Slide 19: Anchoring -->
+<div class="slide" data-slide="19">
+  <span class="tag">锚定效应</span>
+  <h2>一个无关数字能钉死你的判断</h2>
+  <p style="margin-top:1rem;">先问"甘地去世时是否超过114岁"</p>
+  <p>再问实际年龄 &rarr; 估计值显著偏高</p>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p>你在购物、谈薪资、评估房价时，无时无刻不在被锚定。</p>
+    <p style="margin-top:0.5rem;">第一个出现的数字，就是引力场的中心。</p>
+  </div>
+</div>
+
+<!-- Slide 20: Availability -->
+<div class="slide" data-slide="20">
+  <span class="tag">可得性启发</span>
+  <h2>不是"数数"，而是"感受容易程度"</h2>
+  <p style="margin-top:1rem;">判断频率和概率时，系统1的方法：</p>
+  <p style="margin-top:0.5rem; text-align:center;"><strong>"想到相关例子有多容易？"</strong></p>
+  <div class="highlight-box red" style="margin-top:1.5rem;">
+    <p>飞机失事的恐惧 >> 心脏病的关注</p>
+    <p style="margin-top:0.3rem;">前者画面更生动，不是因为更常见</p>
+  </div>
+</div>
+
+<!-- Slide 21: Availability deeper -->
+<div class="slide" data-slide="21">
+  <span class="tag">可得性的深层发现</span>
+  <h2>流畅性 > 内容</h2>
+  <p style="margin-top:1rem;">写<strong>6个</strong>果断例子的人觉得自己很果断。</p>
+  <p style="margin-top:0.3rem;">写<strong>12个</strong>果断例子的人反而觉得自己<strong>不够</strong>果断。</p>
+  <p style="margin-top:1rem; color:var(--accent); font-weight:600; text-align:center;">当内容和流畅性冲突时，流畅性赢了。</p>
+  <p class="bottom-note">你的判断被"认知体验"驱动，而不是被"认知内容"驱动</p>
+</div>
+
+<!-- Slide 22: Availability Cascade -->
+<div class="slide" data-slide="22">
+  <span class="tag">可得性级联</span>
+  <h2>自我强化的恐慌回路</h2>
+  <div class="flow-map" style="margin-top:1.5rem;">
+    <div class="node">小风险</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node">媒体报道</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node">公众恐慌</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node">政治响应</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node">更多报道</div>
+    <span class="arrow">&circlearrowright;</span>
+  </div>
+  <p style="margin-top:1.5rem; color:var(--red); text-align:center;">资源被投向"更可怕"而非"更致命"的风险</p>
+</div>
+
+<!-- Slide 23: Representativeness -->
+<div class="slide" data-slide="23">
+  <span class="tag">代表性启发</span>
+  <h2>用"像不像"替代"概率有多大"</h2>
+  <p style="margin-top:1rem;">安静、戴眼镜、爱读书 &rarr; 图书管理员？</p>
+  <p style="margin-top:0.5rem; color:var(--red);">但销售员数量是图书管理员的几十倍。</p>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p>系统1不做概率计算，只看像不像。它是一个模式匹配器，不是一个统计引擎。</p>
+  </div>
+</div>
+
+<!-- Slide 24: Base Rate Neglect -->
+<div class="slide" data-slide="24">
+  <span class="tag">基础比率忽视</span>
+  <h3>出租车问题</h3>
+  <div class="highlight-box gold" style="margin-top:1rem;">
+    <p><strong>场景：</strong>85%绿车 / 15%蓝车，证人80%准确率说"蓝色"</p>
+    <p style="margin-top:0.8rem;"><strong>直觉答案：</strong>80%是蓝车</p>
+    <p style="margin-top:0.5rem;"><strong>正确答案：</strong><span style="color:var(--red); font-weight:700; font-size:1.3rem;">41%</span></p>
+    <p style="margin-top:0.8rem;">具体证词（因果线索）压过了背景统计（基础比率）</p>
+  </div>
+</div>
+
+<!-- Slide 25: Causality > Statistics -->
+<div class="slide dark" data-slide="25">
+  <span class="tag">因果胜于统计</span>
+  <div class="quote-block">
+    <p>"人的大脑宁愿相信一个能讲通的故事，也不愿老老实实服从概率。"</p>
+  </div>
+  <ul class="insight-list" style="margin-top:1.5rem;">
+    <li>看重证词，不看基率</li>
+    <li>看重个案，不看总体</li>
+    <li>看重故事，不看分布</li>
+    <li class="red">看重"解释感"，不看正确率</li>
+  </ul>
+</div>
+
+<!-- Slide 26: Regression to Mean -->
+<div class="slide" data-slide="26">
+  <span class="tag">均值回归</span>
+  <h2>极端表现后必然回落</h2>
+  <p style="margin-top:1rem;">不是因为有什么"力量把你拉回来"，而是极端值里的随机成分不会次次复制。</p>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p><strong>经典误解：</strong>教练惩罚后学员表现变好 &rarr; "惩罚有用"</p>
+    <p style="margin-top:0.5rem;"><strong>真相：</strong>不是惩罚有用，是极端差表现自然回归均值</p>
+  </div>
+</div>
+
+<!-- Slide 27: Planning Fallacy -->
+<div class="slide" data-slide="27">
+  <span class="tag">规划谬误</span>
+  <h2>为什么项目总是延期超支？</h2>
+  <div class="versus" style="margin-top:1rem;">
+    <div class="side left">
+      <h3 style="color:var(--red);">内部视角</h3>
+      <p>看着自己的计划<br>觉得合理</p>
+    </div>
+    <div class="divider">vs</div>
+    <div class="side right">
+      <h3 style="color:var(--accent);">外部视角</h3>
+      <p>看历史上类似项目<br>实际用了多久</p>
+    </div>
+  </div>
+  <p class="bottom-note">解决方案：强制加入外部视角——这类事情的基础比率是多少？</p>
+</div>
+
+<!-- Slide 28: Optimism Bias -->
+<div class="slide" data-slide="28">
+  <span class="tag">乐观偏见</span>
+  <h2>企业家不是因为看得更准才行动</h2>
+  <p style="margin-top:1rem;">而是因为看得过于乐观才行动。</p>
+  <p style="margin-top:1rem;">这种系统性的"错判"在整体上推动了资本主义运转——</p>
+  <p style="margin-top:0.5rem; color:var(--red); font-weight:600;">但个体为此付出的代价是巨大的。</p>
+  <p class="bottom-note">进化偏爱乐观者——即使他们中的大多数会失败</p>
+</div>
+
+<!-- Slide 29: Premortem -->
+<div class="slide" data-slide="29">
+  <span class="tag">实用工具</span>
+  <h2>事前验尸</h2>
+  <div class="highlight-box" style="margin-top:1rem;">
+    <p><strong>方法：</strong>假设一年后这个决定彻底失败了。写下3-5个最可能的原因。</p>
+    <p style="margin-top:1rem;">这一步会显著降低灾难性错误——因为它强迫你构建一个"失败的故事"，对抗系统1只构建"成功故事"的倾向。</p>
+  </div>
+  <p class="bottom-note">克莱因发明的最简单有效的决策纠偏工具</p>
+</div>
+
+<!-- Slide 30: Formulas vs Experts -->
+<div class="slide" data-slide="30">
+  <span class="tag">直觉 vs 公式</span>
+  <h2>简单公式为什么常常比专家更准？</h2>
+  <p style="margin-top:1rem;">不是因为公式更聪明，而是因为它足够<strong>稳定</strong>——</p>
+  <p style="margin-top:0.5rem;">不会被心情、疲劳、光环效应、第一印象带偏。</p>
+  <div class="highlight-box gold" style="margin-top:1.5rem;">
+    <p>预测质量很多时候输在"不稳定"而非"不聪明"。</p>
+    <p style="margin-top:0.3rem;">一致性本身就是一种优势。</p>
+  </div>
+</div>
+
+<!-- Slide 31: Face Judgments -->
+<div class="slide" data-slide="31">
+  <span class="tag">面孔判断</span>
+  <h2>100毫秒定输赢</h2>
+  <p style="margin-top:1rem;">人在100毫秒内对面孔形成"可信/有能力"的印象。</p>
+  <p style="margin-top:0.5rem;">这个印象和选举结果有<strong style="color:var(--red);">60-70%</strong>的吻合率。</p>
+  <p style="margin-top:1rem;">你以为在评估能力，实际上有一部分只是在读取面部骨骼结构。</p>
+  <p class="bottom-note">对策：结构化评估，减少第一印象的权重</p>
+</div>
+
+<!-- Slide 32: First Impression -->
+<div class="slide" data-slide="32">
+  <span class="tag">第一印象的力量</span>
+  <h2>极短时间内生成的印象<br>会变成你的"锚点"</h2>
+  <p style="margin-top:1rem;">后续信息在这个锚点上微调——增量修正，不是重新评估。</p>
+  <div class="highlight-box red" style="margin-top:1.5rem;">
+    <p>如果你对一个复杂问题有了一个特别快、特别确定的答案——</p>
+    <p style="margin-top:0.5rem;">这几乎可以断定<strong>替代</strong>已经发生了。</p>
+  </div>
+</div>
+
+<!-- Slide 33: Part 2 Summary (dark) -->
+<div class="slide dark" data-slide="33">
+  <span class="tag">第二部分小结</span>
+  <h3 style="text-align:center;">系统1的偏差不是"偶尔犯错"<br>而是系统性的运作方式</h3>
+  <div class="cards" style="margin-top:1.5rem;">
+    <div class="card"><h4>样本量盲区</h4><p>不区分3人和10万人</p></div>
+    <div class="card"><h4>锚定</h4><p>第一个数字定基调</p></div>
+    <div class="card"><h4>可得性</h4><p>容易想到=经常发生</p></div>
+    <div class="card"><h4>代表性</h4><p>像=概率高</p></div>
+    <div class="card"><h4>因果偏好</h4><p>故事>数据</p></div>
+    <div class="card"><h4>均值回归盲区</h4><p>极端之后必平庸</p></div>
+  </div>
+  <p class="bottom-note">直觉在"像不像""想不想得到""有没有故事"上很强，在概率和统计上天然失灵</p>
+</div>
+
+<!-- Slide 34: Section 3 Title (dark) -->
+<div class="slide dark" data-slide="34">
+  <div class="section-num">第三部分</div>
+  <h1>为什么我们总觉得<br>自己看透了世界</h1>
+  <p class="subtitle" style="text-align:center;">过度自信</p>
+</div>
+
+<!-- Slide 35: Narrative Fallacy -->
+<div class="slide" data-slide="35">
+  <span class="tag">叙事谬误</span>
+  <h2>把混乱的现实<br>事后整理成合理的故事</h2>
+  <p style="margin-top:1rem;">故事把不确定、偶然、噪声很大的现实包装成过度确定的因果链条。</p>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p><strong>叙事 + 幸存者偏差：</strong></p>
+    <p style="margin-top:0.3rem;">我们只看成功样本，越看越确信"成功有公式"</p>
+  </div>
+</div>
+
+<!-- Slide 36: Hindsight Bias (quote) -->
+<div class="slide" data-slide="36">
+  <span class="tag">后见之明</span>
+  <div class="quote-block">
+    <p>"我早就知道会这样。"</p>
+  </div>
+  <p style="margin-top:1.5rem; max-width:600px;">但你没有。结果一旦出来，大脑会自动重组你对过去的理解。</p>
+  <p style="margin-top:0.8rem; max-width:600px;">原本模糊的信息被整理得很清楚，原本不确定的判断被回忆得很确定。</p>
+  <p style="margin-top:1rem; color:var(--red); font-weight:600;">记忆是重建的，不是回放的。</p>
+</div>
+
+<!-- Slide 37: Outcome Bias (versus) -->
+<div class="slide" data-slide="37">
+  <span class="tag">结果偏见</span>
+  <div class="versus">
+    <div class="side left">
+      <h3 style="color:var(--accent);">赚钱了</h3>
+      <p>&ne; 决策对了</p>
+    </div>
+    <div class="divider">/</div>
+    <div class="side right">
+      <h3 style="color:var(--red);">亏钱了</h3>
+      <p>&ne; 决策错了</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem; text-align:center; max-width:600px;">结果里混有大量随机性。一次赚钱最容易强化一个错误的方法——因为亏钱时你会反省，赚钱时你会神化自己。</p>
+</div>
+
+<!-- Slide 38: Luck in Success -->
+<div class="slide" data-slide="38">
+  <span class="tag">成功中的运气</span>
+  <h2>领域随机性越强<br>从成功中能学到的越少</h2>
+  <p style="margin-top:1rem;">投资、创业、畅销书——这些领域里成功故事中"可复制"的部分被系统性高估。</p>
+  <div class="highlight-box gold" style="margin-top:1.5rem;">
+    <p>不能学"必胜公式"，但可以学"提高概率的原则"。</p>
+    <p style="margin-top:0.3rem;">区分哪些是技能，哪些是运气——这本身就是一项核心技能。</p>
+  </div>
+</div>
+
+<!-- Slide 39: Expert Predictions -->
+<div class="slide" data-slide="39">
+  <span class="tag">专家预测的局限</span>
+  <h2>解释世界的能力<br>&ne; 预测世界的能力</h2>
+  <p style="margin-top:1rem;">在高复杂、高不确定的领域，专家的长期预测往往不显著优于简单模型。</p>
+  <p style="margin-top:0.8rem; color:var(--red);">事后头头是道，事前未必比掷骰子强。</p>
+  <p class="bottom-note">泰特洛克研究：专家的政治预测表现接近"黑猩猩丢飞镖"</p>
+</div>
+
+<!-- Slide 40: Epistemic Humility -->
+<div class="slide dark" data-slide="40">
+  <span class="tag">认知谦逊</span>
+  <div class="highlight-box" style="margin-top:1rem;">
+    <p style="font-size:clamp(1.05rem,1.5vw,1.25rem);">不是放弃判断，而是让判断更谦逊、更概率化。</p>
+    <ul class="insight-list" style="margin-top:1rem;">
+      <li>我可以有判断，但不把判断神化</li>
+      <li>可以总结经验，但不忘记运气</li>
+      <li>可以复盘过去，但知道记忆会改写过去</li>
+      <li class="gold">可以自信，但保留被证伪的空间</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Slide 41: Decision Review Framework -->
+<div class="slide" data-slide="41">
+  <span class="tag">实用工具</span>
+  <h2>决策复盘框架</h2>
+  <div class="highlight-box" style="margin-top:1rem;">
+    <p>做重大决策前写下：</p>
+    <ul class="insight-list" style="margin-top:0.8rem;">
+      <li>我的结论是什么</li>
+      <li class="gold">依据是什么（事实 / 解释 / 感觉）</li>
+      <li>运气可能占多大比重</li>
+      <li class="red">如果错了最可能错在哪</li>
+      <li>错了我怎样活下来</li>
+    </ul>
+  </div>
+  <p class="bottom-note">这套方法不是消除偏差，是让你看见偏差</p>
+</div>
+
+<!-- Slide 42: Part 3 Core Message -->
+<div class="slide dark" data-slide="42">
+  <span class="tag">第三部分核心信息</span>
+  <div class="formula">解释 &ne; 预测 &nbsp;/&nbsp; 结果 &ne; 能力 &nbsp;/&nbsp; 故事 &ne; 证据 &nbsp;/&nbsp; 确信 &ne; 正确</div>
+  <p style="text-align:center; margin-top:1.5rem; max-width:600px;">在高不确定领域，目标不是"预测准确"，而是"决策稳健"——</p>
+  <p style="text-align:center; margin-top:0.5rem; color:var(--gold); font-weight:600;">即使看错了也不会被一击致命。</p>
+</div>
+
+<!-- Slide 43: Section 4 Title (dark) -->
+<div class="slide dark" data-slide="43">
+  <div class="section-num">第四部分</div>
+  <h1>前景理论</h1>
+  <p class="subtitle" style="text-align:center;">让卡尼曼拿到诺贝尔奖的发现</p>
+</div>
+
+<!-- Slide 44: Bernoulli's Error -->
+<div class="slide" data-slide="44">
+  <span class="tag">伯努利的错误</span>
+  <h2>人不是按"最终有多少财富"感受得失</h2>
+  <p style="margin-top:1rem;">而是按"相对于参考点变化了多少"。</p>
+  <div class="highlight-box gold" style="margin-top:1.5rem;">
+    <p>今天杰克和吉尔各有500万——</p>
+    <p style="margin-top:0.3rem;">但杰克昨天有1000万，吉尔昨天只有100万。</p>
+    <p style="margin-top:0.5rem;">伯努利说他们应该一样幸福。</p>
+    <p style="margin-top:0.3rem; color:var(--red); font-weight:600;">但任何人都知道不是。</p>
+  </div>
+</div>
+
+<!-- Slide 45: Reference Point -->
+<div class="slide" data-slide="45">
+  <span class="tag">参考点</span>
+  <h2>满足感不取决于绝对水平<br>而取决于"变化方向"</h2>
+  <p style="margin-top:1rem;">年终奖期望5万，拿到4万 &rarr; 感觉像损失</p>
+  <p style="margin-top:0.3rem;">即使4万客观上不少。</p>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p>参考点可以是：</p>
+    <p style="margin-top:0.3rem;"><strong>现状</strong> / <strong>期望</strong> / <strong>别人的收入</strong> / <strong>过去的自己</strong></p>
+  </div>
+</div>
+
+<!-- Slide 46: Loss Aversion (big stat) -->
+<div class="slide" data-slide="46">
+  <span class="tag">损失厌恶</span>
+  <div class="big-stat">2&times;</div>
+  <h3>损失的痛苦约为同等收益快乐的2倍</h3>
+  <p style="margin-top:1.5rem; max-width:600px; text-align:center;">这不是个人性格，是神经系统的基本特征。进化让我们对威胁比对机会更敏感——忽视一次威胁可能致命，错过一次机会通常不会。</p>
+</div>
+
+<!-- Slide 47: Loss Aversion Consequences (cards) -->
+<div class="slide" data-slide="47">
+  <span class="tag">损失厌恶的后果</span>
+  <div class="cards" style="margin-top:0.5rem;">
+    <div class="card">
+      <h4>投资</h4>
+      <p>割肉难、止盈快</p>
+    </div>
+    <div class="card">
+      <h4>谈判</h4>
+      <p>宁可僵持也不让步</p>
+    </div>
+    <div class="card">
+      <h4>改革</h4>
+      <p>既得利益者的抵抗力度远超受益者的支持</p>
+    </div>
+    <div class="card">
+      <h4>日常</h4>
+      <p>丢100元郁闷一整天<br>捡100元快乐半小时消散</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 48: S-Curve -->
+<div class="slide" data-slide="48">
+  <span class="tag">S曲线与敏感度递减</span>
+  <h2>价值函数</h2>
+  <p style="margin-top:1rem;">原点 = 参考点</p>
+  <p>右上收益区：平缓递增</p>
+  <p>左下损失区：更陡峭递减</p>
+  <p style="margin-top:1rem;">从0到100的快乐感 <strong style="color:var(--accent);">远大于</strong> 从900到1000。</p>
+  <div class="highlight-box gold" style="margin-top:1.5rem;">
+    <p><strong>实用启发：</strong>好消息分开说（每次都在参考点附近），坏消息合并说。</p>
+  </div>
+</div>
+
+<!-- Slide 49: Probability Weighting -->
+<div class="slide" data-slide="49">
+  <span class="tag">概率加权的扭曲</span>
+  <h2>人对概率的感受也是非线性的</h2>
+  <ul class="insight-list" style="margin-top:1.5rem;">
+    <li>小概率被高估 &rarr; 买彩票 + 买保险</li>
+    <li class="gold">大概率被低估 &rarr; 面对95%胜率仍接受打折和解</li>
+    <li class="red">从95%到100%的心理跳跃远大于从50%到55%</li>
+  </ul>
+  <p class="bottom-note">确定性效应：人为"确定"支付的溢价远超概率论的建议</p>
+</div>
+
+<!-- Slide 50: Fourfold Pattern (2x2 grid) -->
+<div class="slide" data-slide="50">
+  <span class="tag">四重模式</span>
+  <h3 style="margin-bottom:1rem;">了解自己处于哪个模式是理性决策的第一步</h3>
+  <div class="grid-2x2">
+    <div class="cell green">
+      <h4 style="color:var(--accent);">高概率收益</h4>
+      <p>风险厌恶（锁定利润）<br>"落袋为安"</p>
+    </div>
+    <div class="cell gold">
+      <h4 style="color:var(--gold);">低概率收益</h4>
+      <p>风险寻求（买彩票）<br>"万一呢"</p>
+    </div>
+    <div class="cell red">
+      <h4 style="color:var(--red);">高概率损失</h4>
+      <p>风险寻求（拒绝止损）<br>"再等等"</p>
+    </div>
+    <div class="cell green">
+      <h4 style="color:var(--accent);">低概率损失</h4>
+      <p>风险厌恶（买保险）<br>"以防万一"</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 51: Framing Effect -->
+<div class="slide" data-slide="51">
+  <span class="tag">框架效应</span>
+  <div class="versus">
+    <div class="side left">
+      <h3 style="color:var(--accent);">90%存活率</h3>
+      <p>更多人选择手术</p>
+    </div>
+    <div class="divider">=</div>
+    <div class="side right">
+      <h3 style="color:var(--red);">10%死亡率</h3>
+      <p>更多人拒绝手术</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem; text-align:center; max-width:600px;">完全等价，但前者让更多人（包括医生）选择手术。</p>
+  <p style="margin-top:0.5rem; text-align:center; color:var(--red); font-weight:600;">你的偏好不是内心深处的固定真理，而是被描述方式临时塑造出来的。</p>
+</div>
+
+<!-- Slide 52: Mental Accounting -->
+<div class="slide" data-slide="52">
+  <span class="tag">心理账户与处置效应</span>
+  <h2>每只股票在心里是独立账户</h2>
+  <p style="margin-top:1rem;">卖掉赚钱的 = 关闭盈利账户（<span style="color:var(--accent);">舒服</span>）</p>
+  <p style="margin-top:0.3rem;">卖掉亏钱的 = 确认损失（<span style="color:var(--red);">极痛苦</span>）</p>
+  <div class="highlight-box red" style="margin-top:1.5rem;">
+    <p><strong>结果：</strong>70%的人过早卖赢家、过久持有输家</p>
+    <p style="margin-top:0.3rem;">实证证明这在系统性损害收益</p>
+  </div>
+</div>
+
+<!-- Slide 53: Default Options (stat) -->
+<div class="slide" data-slide="53">
+  <span class="tag">默认选项的力量</span>
+  <div style="display:flex; gap:2rem; align-items:baseline; justify-content:center; margin:1rem 0; flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-family:Georgia,serif; font-size:clamp(2.5rem,6vw,4rem); color:var(--red); font-weight:700;">12%</div>
+      <p style="margin-top:0.3rem;">德国器官捐献率</p>
+    </div>
+    <div style="font-size:2rem; color:var(--gold);">vs</div>
+    <div style="text-align:center;">
+      <div style="font-family:Georgia,serif; font-size:clamp(2.5rem,6vw,4rem); color:var(--accent); font-weight:700;">99%</div>
+      <p style="margin-top:0.3rem;">奥地利器官捐献率</p>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:1rem; max-width:600px;">差异不在于两国人民对生命态度不同，而在于驾照表格：一个opt-in，一个opt-out。</p>
+  <p style="text-align:center; margin-top:0.5rem; color:var(--gold); font-weight:600;">一个表格设计差异决定了无数生命。</p>
+</div>
+
+<!-- Slide 54: Regret and Action -->
+<div class="slide" data-slide="54">
+  <span class="tag">后悔与行动</span>
+  <div class="versus">
+    <div class="side left">
+      <h3 style="color:var(--red);">短期后悔</h3>
+      <p>更多因为"做了"<br>反事实太容易构建</p>
+    </div>
+    <div class="divider">vs</div>
+    <div class="side right">
+      <h3 style="color:var(--accent);">长期后悔</h3>
+      <p>更多因为"没做"<br>未尝试的遗憾持续存在</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem; text-align:center; max-width:600px; color:var(--accent); font-weight:600;">如果下行风险可承受、上行空间开放——行动几乎总比不行动好。</p>
+</div>
+
+<!-- Slide 55: Part 4 Core Formula (dark) -->
+<div class="slide dark" data-slide="55">
+  <span class="tag">第四部分核心公式</span>
+  <div class="formula" style="font-size:clamp(0.95rem,1.5vw,1.2rem);">前景理论 = 参考点依赖 + 损失厌恶(2x) + 敏感度递减 + 概率扭曲 + 框架效应</div>
+  <p style="text-align:center; margin-top:1.5rem; max-width:600px;">你以为在做理性决策，但你的大脑在用一套进化遗留的心理机制处理信息。</p>
+  <p style="text-align:center; margin-top:0.8rem; opacity:0.7; max-width:500px;">了解这套机制不能让你免疫，但能让你在关键时刻按下暂停键。</p>
+</div>
+
+<!-- Slide 56: Section 5 Title (dark) -->
+<div class="slide dark" data-slide="56">
+  <div class="section-num">第五部分</div>
+  <h1>你甚至不知道<br>自己到底幸不幸福</h1>
+  <p class="subtitle" style="text-align:center;">两个自我</p>
+</div>
+
+<!-- Slide 57: Two Selves (versus) -->
+<div class="slide" data-slide="57">
+  <span class="tag">经验自我 vs 记忆自我</span>
+  <div class="versus">
+    <div class="side left">
+      <h3 style="color:var(--accent);">经验自我</h3>
+      <p>活在每个当下<br>感受此刻的快乐痛苦<br>寿命约3秒</p>
+    </div>
+    <div class="divider">vs</div>
+    <div class="side right">
+      <h3 style="color:var(--gold);">记忆自我</h3>
+      <p>事后讲述故事<br>只记住峰值和终点<br>决定你的未来选择</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem; text-align:center; color:var(--red); font-weight:600; max-width:600px;">做选择的是记忆自我，承担后果的是经验自我。</p>
+</div>
+
+<!-- Slide 58: Peak-End Rule -->
+<div class="slide" data-slide="58">
+  <span class="tag">峰终定律</span>
+  <h2>你的回忆不是体验的忠实记录</h2>
+  <div class="highlight-box" style="margin-top:1.5rem;">
+    <p><strong>冷水实验：</strong></p>
+    <p style="margin-top:0.5rem;">情境B包含A的全部痛苦 + 额外30秒痛苦</p>
+    <p style="margin-top:0.3rem;">但<strong style="color:var(--red);">80%的人</strong>选择重复B</p>
+    <p style="margin-top:0.8rem;">因为B的结尾"没那么冷"——峰值和终点决定了回忆的评分。</p>
+  </div>
+  <p class="bottom-note">你的回忆是被峰值和终点严重扭曲的版本</p>
+</div>
+
+<!-- Slide 59: Focusing Illusion (quote) -->
+<div class="slide" data-slide="59">
+  <span class="tag">聚焦错觉</span>
+  <div class="quote-block">
+    <p>"生活中没有什么东西像你想的那样重要，当你正在想它的时候。"</p>
+  </div>
+  <p style="margin-top:1.5rem; max-width:600px;">加州人并不比中西部人更幸福——</p>
+  <p style="max-width:600px;">当你被问到气候时聚焦于气候，但真实生活中你大部分时间在想工作和账单。</p>
+  <p class="bottom-note">你以为会改变幸福的东西，在实际生活中占据的注意力远比你想象的少</p>
+</div>
+
+<!-- Slide 60: Final (dark) -->
+<div class="slide dark" data-slide="60">
+  <h2 style="text-align:center; color:var(--gold); margin-bottom:1.5rem;">最后一个问题</h2>
+  <div class="quote-block">
+    <p>"我现在的想法，是真的想清楚了，还是大脑的自动驾驶仪在替我做决定？"</p>
+  </div>
+  <p style="text-align:center; margin-top:1.5rem; opacity:0.8;">这一个问题的价值，就抵得上整本书。</p>
+  <div style="margin-top:2.5rem; max-width:500px; opacity:0.5; font-size:clamp(0.75rem,1vw,0.85rem); line-height:2; text-align:center;">
+    <p>重大决策慢下来 &nbsp;&middot;&nbsp; 建立规则而非临场判断</p>
+    <p>用反面框架重新审视 &nbsp;&middot;&nbsp; 关注日常小事的幸福</p>
+    <p>保持温和的自我怀疑</p>
+  </div>
+</div>
+
+</div><!-- end slides-container -->
+
+<div id="nav">
+  <button id="prev-btn" onclick="navigate(-1)">&larr; 上一页</button>
+  <span class="counter" id="counter">1 / 60</span>
+  <button id="next-btn" onclick="navigate(1)">下一页 &rarr;</button>
+</div>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  let isTransitioning = false;
+
+  const progressBar = document.getElementById('progress-bar');
+  const counter = document.getElementById('counter');
+
+  function updateUI() {
+    progressBar.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + total;
+    const isDark = slides[current].classList.contains('dark');
+    counter.style.color = isDark ? '#f0ede8' : '#1a1a1a';
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= total || index === current || isTransitioning) return;
+    isTransitioning = true;
+
+    const prev = slides[current];
+    const next = slides[index];
+    const direction = index > current ? 1 : -1;
+
+    prev.style.transform = 'translateY(' + (-30 * direction) + 'px)';
+    prev.style.opacity = '0';
+
+    next.style.transform = 'translateY(' + (30 * direction) + 'px)';
+    next.style.opacity = '0';
+    next.classList.add('active');
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        next.style.transform = 'translateY(0)';
+        next.style.opacity = '1';
+      });
+    });
+
+    setTimeout(function() {
+      prev.classList.remove('active');
+      prev.style.transform = '';
+      prev.style.opacity = '';
+      current = index;
+      updateUI();
+      isTransitioning = false;
+    }, 500);
+  }
+
+  function navigate(dir) {
+    goTo(current + dir);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    switch(e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case ' ':
+      case 'PageDown':
+        e.preventDefault();
+        navigate(1);
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+      case 'PageUp':
+        e.preventDefault();
+        navigate(-1);
+        break;
+      case 'Home':
+        e.preventDefault();
+        goTo(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        goTo(total - 1);
+        break;
+    }
+  });
+
+  // Mouse wheel with debounce
+  var wheelTimer = null;
+  document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (wheelTimer) return;
+    wheelTimer = setTimeout(function() { wheelTimer = null; }, 400);
+    if (e.deltaY > 0) navigate(1);
+    else if (e.deltaY < 0) navigate(-1);
+  }, { passive: false });
+
+  // Touch swipe support
+  var touchStartY = 0;
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    var deltaY = e.changedTouches[0].clientY - touchStartY;
+    var deltaX = e.changedTouches[0].clientX - touchStartX;
+    var absDeltaY = Math.abs(deltaY);
+    var absDeltaX = Math.abs(deltaX);
+
+    if (absDeltaX > absDeltaY && absDeltaX > 50) {
+      if (deltaX < 0) navigate(1);
+      else navigate(-1);
+    } else if (absDeltaY > 50) {
+      if (deltaY < 0) navigate(1);
+      else navigate(-1);
+    }
+  }, { passive: true });
+
+  // Expose navigate globally for buttons
+  window.navigate = navigate;
+
+  updateUI();
+})();
+</script>
+</body>
+</html>
